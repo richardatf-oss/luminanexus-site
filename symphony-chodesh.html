@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Symphony Chodesh – LuminaNexus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Symphony Chodesh – a monthly new-moon symphony that translates fundamental constants into sound as an offering of praise." />
+
+  <style>
+    :root {
+      --bg: #050810;
+      --bg-soft: #101525;
+      --card: #141a30;
+      --accent: #f4e28a;
+      --accent-soft: rgba(244,226,138,0.12);
+      --text: #f5f6ff;
+      --muted: #a2acc7;
+      --radius: 1.3rem;
+      --shadow: 0 22px 55px rgba(0,0,0,0.6);
+      --max-width: 820px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #202b4a 0, #050810 52%);
+      color: var(--text);
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.8rem 1.2rem;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: var(--max-width);
+      background: radial-gradient(circle at top left, #181f3a 0, #050810 70%);
+      border-radius: 1.6rem;
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: var(--shadow);
+      padding: 1.8rem 1.6rem 1.9rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(244,226,138,0.7);
+      background: radial-gradient(circle at 30% 0, #f4e28a, #42331e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .brand-text-main {
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.76rem;
+    }
+
+    nav a {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(244,226,138,0.35);
+      text-decoration: none;
+      color: var(--accent);
+      background: rgba(244,226,138,0.05);
+    }
+
+    nav a.current {
+      background: rgba(244,226,138,0.14);
+      border-color: rgba(244,226,138,0.8);
+      color: #21160c;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
+      margin: 0 0 0.4rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin: 1.1rem 0 0.35rem;
+    }
+
+    p {
+      margin: 0.35rem 0;
+      color: var(--muted);
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.6rem 0 0.2rem;
+      font-size: 0.78rem;
+    }
+
+    .pill {
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(244,226,138,0.35);
+      color: var(--accent);
+      background: rgba(244,226,138,0.05);
+      white-space: nowrap;
+    }
+
+    .panel {
+      margin-top: 1.2rem;
+      padding: 1.2rem 1.1rem 1.1rem;
+      border-radius: var(--radius);
+      background: radial-gradient(circle at top left, rgba(244,226,138,0.08), transparent 55%);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    ul {
+      margin: 0.4rem 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    li { margin-bottom: 0.25rem; }
+
+    .hebrew {
+      font-family: "Times New Roman", serif;
+      letter-spacing: 0.03em;
+    }
+
+    .footer {
+      margin-top: 1.4rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0.2rem 0;
+    }
+
+    @media (max-width: 640px) {
+      .shell { padding: 1.4rem 1.1rem 1.6rem; }
+      header { flex-direction: column; align-items: flex-start; }
+      nav { align-self: stretch; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <div class="brand-mark">״ל״</div>
+        <div>
+          <div class="brand-text-main">LuminaNexus</div>
+          <div class="brand-text-sub">Symphony Chodesh · Monthly New-Moon Symphony</div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">← Back to the Tree</a>
+        <a href="symphony-chodesh.html" class="current">Symphony Chodesh</a>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <div class="hero-kicker">Lab of Light · Etz Mayim · עץ מים</div>
+        <h1>Symphony Chodesh</h1>
+        <p>
+          <span class="hebrew">סימפוניה חודש</span> – a new-moon symphony that listens to the
+          constants of creation and asks: “If they could sing, what would their song sound like?”
+        </p>
+        <p>
+          Each month, at (or near) Rosh Chodesh, a short piece of music is generated from
+          fundamental constants – Planck length, electron charge, the fine-structure constant,
+          and others – tuned into the range of human hearing and offered as a small
+          <span class="hebrew">ניגון</span> of praise.
+        </p>
+        <div class="pill-row">
+          <span class="pill">Fundamental constants → Frequencies</span>
+          <span class="pill">New-moon cycles</span>
+          <span class="pill">Physics as niggun</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>What Symphony Chodesh Is</h2>
+        <p>
+          Symphony Chodesh is not a concert hall project. It is a quiet listening experiment:
+          an attempt to translate the “fixed” aspects of the universe into something we can
+          hear, softly, once a month, as the moon renews herself.
+        </p>
+        <p>
+          The goal is not scientific accuracy for its own sake, and not musical virtuosity.
+          The goal is <em>awareness</em> – to remember that behind the math, behind the code,
+          there is a Creator, and that even the constants can be read as a kind of psalm.
+        </p>
+      </section>
+
+      <section>
+        <h2>How It Works (Conceptual Blueprint)</h2>
+        <p>
+          The exact implementation will evolve, but the basic idea is to gently map
+          fundamental constants into the language of sound:
+        </p>
+        <ul>
+          <li>
+            Choose a small set of constants for a given month
+            (for example, Planck length, electron charge, fine-structure constant).
+          </li>
+          <li>
+            Normalize each constant into a range that can be mapped into audible
+            frequencies (e.g. 80–1200 Hz) and musical intervals.
+          </li>
+          <li>
+            Treat each constant as a “voice” or “instrument”: one becomes a bassline,
+            another a melody, another a slow modulation or drone.
+          </li>
+          <li>
+            Let the current Hebrew month and its traditional themes influence
+            the scale, mode, or rhythmic pattern.
+          </li>
+          <li>
+            Render a short piece (a few minutes) and keep it simple and listenable –
+            more like a meditation than a soundtrack.
+          </li>
+        </ul>
+        <p>
+          Over time, a quiet archive of monthly pieces can form: a year of constants
+          sung once for each Rosh Chodesh.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Kavanah · Intention</h2>
+        <p>
+          This Lab of Light lives under <span class="hebrew">עץ מים – Etz Mayim</span>, the Tree of Water,
+          because it thinks of sound as a kind of flowing river:
+        </p>
+        <ul>
+          <li>
+            To let the listener feel, even for a moment, that reality is finely tuned
+            and held in place by a Divine hand.
+          </li>
+          <li>
+            To make room for awe without requiring advanced math or physics background.
+          </li>
+          <li>
+            To honor Rosh Chodesh as a time of subtle renewal – a small song, not a loud one.
+          </li>
+        </ul>
+        <p>
+          You might listen once when the new moon arrives, or loop the piece softly while
+          you learn, write, or simply breathe.
+        </p>
+      </section>
+
+      <section>
+        <h2>Status &amp; Future Steps</h2>
+        <p>
+          Symphony Chodesh is currently in the design and prototyping phase.
+          The plan, Be’ezrat HaShem, is:
+        </p>
+        <ul>
+          <li>Design a simple script that reads constants and maps them to pitches.</li>
+          <li>Choose a small set of sound palettes (strings, soft synths, bells).</li>
+          <li>Generate one short piece per month and archive them here.</li>
+          <li>Eventually, allow a visitor to toggle which constants they want to “hear.”</li>
+        </ul>
+        <p>
+          For now, this page is a <em>kli</em> – a vessel. The music will grow into it.
+        </p>
+      </section>
+    </main>
+
+    <div class="footer">
+      <p>Symphony Chodesh · A Lab of Light under Etz Mayim.</p>
+      <p>May every constant become a reminder that nothing is truly constant but You.</p>
+    </div>
+  </div>
+</body>
+</html>
