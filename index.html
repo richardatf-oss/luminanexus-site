@@ -4,292 +4,370 @@
   <meta charset="UTF-8" />
   <title>LuminaNexus – The Tree that Holds Every Light</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="LuminaNexus – a quiet digital sanctuary honoring HaShem through learning, story, music, and light." />
+  <meta name="description" content="LuminaNexus is a quiet corner of the web – a digital etz, a Tree – where words, song, study, and memory are gathered gently into one place." />
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    :root {
+      --bg: #050810;
+      --bg-soft: #101525;
+      --card: #141a30;
+      --accent: #f4e28a;
+      --text: #f5f6ff;
+      --muted: #a2acc7;
+      --radius: 1.3rem;
+      --shadow: 0 22px 55px rgba(0,0,0,0.6);
+      --max-width: 780px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #202b4a 0, #050810 52%);
+      color: var(--text);
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.8rem 1.2rem;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: var(--max-width);
+      background: radial-gradient(circle at top left, #181f3a 0, #050810 70%);
+      border-radius: 1.6rem;
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: var(--shadow);
+      padding: 1.8rem 1.6rem 1.9rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(244,226,138,0.7);
+      background: radial-gradient(circle at 30% 0, #f4e28a, #42331e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .brand-text-main {
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    nav span {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(244,226,138,0.35);
+      color: var(--accent);
+      background: rgba(244,226,138,0.05);
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+      margin: 0 0 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin: 1.6rem 0 0.5rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin: 1.1rem 0 0.35rem;
+    }
+
+    p {
+      margin: 0.35rem 0;
+      color: var(--muted);
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      margin-top: 1.4rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .hebrew {
+      font-family: "Times New Roman", serif;
+      letter-spacing: 0.03em;
+    }
+
+    ul {
+      margin: 0.4rem 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    li { margin-bottom: 0.25rem; }
+
+    .footer {
+      margin-top: 1.4rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0.2rem 0;
+    }
+
+    @media (max-width: 640px) {
+      .shell { padding: 1.4rem 1.1rem 1.6rem; }
+      header { flex-direction: column; align-items: flex-start; }
+      nav { align-self: stretch; }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="logo-area">
-        <div class="logo-mark">״ל״</div>
-        <div class="logo-text">
-          <div class="logo-title">LuminaNexus</div>
-          <div class="logo-subtitle">The Tree that Holds Every Light</div>
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <div class="brand-mark">״ל״</div>
+        <div>
+          <div class="brand-text-main">LuminaNexus</div>
+          <div class="brand-text-sub">The Tree that Holds Every Light</div>
         </div>
       </div>
-
-      <nav class="main-nav">
-        <a href="#tree">The Tree</a>
-        <a href="#branches">Branches</a>
-        <a href="#labs">Labs of Light</a>
-        <a href="#library">Celestial Library</a>
-        <a href="#chavruta">Chavruta GPT</a>
+      <nav>
+        <span>The Tree</span>
+        <span>Branches</span>
+        <span>Labs of Light</span>
+        <span>Celestial Library</span>
+        <span>Chavruta GPT</span>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <p class="hero-kicker">Digital Sanctuary · Honoring HaShem</p>
-          <h1>The Tree that Holds Every Light</h1>
-          <p class="hero-body">
-            LuminaNexus is a quiet corner of the web – a digital <em>etz</em>, a Tree – where
-            words, song, study, and memory are gathered gently into one place.
-          </p>
-          <p class="hero-body">
-            Here, every project is a branch. Every branch holds a spark. Every spark returns to the Root.
-          </p>
-          <div class="hero-actions">
-            <a href="#branches" class="btn primary">Explore the Branches</a>
-            <a href="#labs" class="btn ghost">Visit the Labs of Light</a>
-          </div>
-        </div>
-        <div class="hero-orb">
-          <div class="hero-orb-inner">
-            <div class="hero-orb-ring"></div>
-            <div class="hero-orb-core"></div>
-          </div>
-          <p class="hero-orb-caption">
-            עץ החיים · Etz HaChayim<br />
-            “It is a Tree of Life to those who hold fast to it…”
-          </p>
-        </div>
-      </div>
-    </section>
+    <main>
+      <section>
+        <div class="hero-kicker">Digital Sanctuary · Honoring HaShem</div>
+        <h1>The Tree that Holds Every Light</h1>
+        <p>
+          LuminaNexus is a quiet corner of the web – a digital etz, a Tree – where words, song,
+          study, and memory are gathered gently into one place.
+        </p>
+        <p>
+          Here, every project is a branch. Every branch holds a spark. Every spark returns to the Root.
+        </p>
+        <p>
+          <strong>Explore the Branches · Visit the Labs of Light</strong>
+        </p>
+        <p>
+          <span class="hebrew">עץ החיים · Etz HaChayim</span><br />
+          “It is a Tree of Life to those who hold fast to it…”
+        </p>
+      </section>
 
-    <!-- THE TREE -->
-    <section id="tree" class="section">
-      <div class="container">
+      <section>
         <h2>The Root Tree</h2>
-        <p class="section-lead">
-          LuminaNexus is not a brand or a business first. It is a <strong>Tree</strong>.
-          The projects, books, and experiments live as branches on that Tree.
+        <p>
+          LuminaNexus is not a brand or a business first. It is a Tree. The projects, books, and
+          experiments live as branches on that Tree.
         </p>
 
-        <div class="grid two">
-          <div>
-            <h3>What this place is</h3>
-            <p>
-              A digital sanctuary: a place to honor HaShem with creativity, learning, and remembrance.
-              Stories, Kabbalistic meditations, stone memories, quantum dreams – all gathered here.
-            </p>
-            <p>
-              It is intentionally small, human, and slow. No ads, no noise. Just light.
-            </p>
-          </div>
-          <div>
-            <h3>What this place is not</h3>
-            <p>
-              Not a social feed. Not a dopamine machine. Not optimized for “engagement.”
-            </p>
-            <p>
-              If anything, it is optimized for <em>returning</em> – back to the Tree, back to the Source,
-              back to the quiet voice whispering, <span class="soft-hebrew">שׁוּב</span> – “return.”
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <h3>What this place is</h3>
+        <p>
+          A digital sanctuary: a place to honor HaShem with creativity, learning, and remembrance.
+          Stories, Kabbalistic meditations, stone memories, quantum dreams – all gathered here.
+        </p>
+        <p>
+          It is intentionally small, human, and slow. No ads, no noise. Just light.
+        </p>
 
-    <!-- BRANCHES -->
-    <section id="branches" class="section section-soft">
-      <div class="container">
+        <h3>What this place is not</h3>
+        <p>Not a social feed. Not a dopamine machine. Not optimized for “engagement.”</p>
+        <p>
+          If anything, it is optimized for returning – back to the Tree, back to the Source, back to
+          the quiet voice whispering, <span class="hebrew">שׁוּב</span> – “return.”
+        </p>
+      </section>
+
+      <section>
         <h2>Branches of the Lumina Tree</h2>
-        <p class="section-lead">
+        <p>
           Each named branch is a flavor of learning, reflection, or practice. For now, they are a map
           of intention – a way of saying: all of this belongs to one Tree.
         </p>
 
-        <div class="grid branches-grid">
-          <article class="card branch">
-            <h3>עץ שלג – Etz Shalag</h3>
-            <p class="branch-tagline">Tree of Snow · Stillness &amp; Mercy</p>
-            <p>
-              Stillness, purity, quiet forgiveness. Short, gentle meditations and soft landings
-              for weary souls. A place to breathe again.
-            </p>
-          </article>
+        <h3><span class="hebrew">עץ שלג – Etz Shalag</span></h3>
+        <p><strong>Tree of Snow · Stillness &amp; Mercy</strong></p>
+        <p>
+          Stillness, purity, quiet forgiveness. Short, gentle meditations and soft landings for weary
+          souls. A place to breathe again.
+        </p>
 
-          <article class="card branch">
-            <h3>עץ אבן – Etz Aven</h3>
-            <p class="branch-tagline">Tree of Stone · Memory &amp; Cairns</p>
-            <p>
-              Solidity and memory. Home for stone stories, cairns, and the
-              <em>Stone Tree</em> reflections that do not move, but remember.
-            </p>
-          </article>
+        <h3><span class="hebrew">עץ אבן – Etz Aven</span></h3>
+        <p><strong>Tree of Stone · Memory &amp; Cairns</strong></p>
+        <p>
+          Solidity and memory. Home for stone stories, cairns, and the Stone Tree reflections that do
+          not move, but remember.
+        </p>
 
-          <article class="card branch">
-            <h3>עץ המראה – Etz HaMareh</h3>
-            <p class="branch-tagline">Tree of Mirrors · Inner Work</p>
-            <p>
-              Reflection and inner work. Here the left hand becomes the right in the mirror,
-              and yetzer ha’ra is slowly refined into yetzer ha’tov.
-            </p>
-          </article>
+        <h3><span class="hebrew">עץ המראה – Etz HaMareh</span></h3>
+        <p><strong>Tree of Mirrors · Inner Work</strong></p>
+        <p>
+          Reflection and inner work. Here the left hand becomes the right in the mirror, and yetzer
+          ha’ra is slowly refined into yetzer ha’tov.
+        </p>
 
-          <article class="card branch">
-            <h3>עץ מים – Etz Mayim</h3>
-            <p class="branch-tagline">Tree of Water · Music &amp; Flow</p>
-            <p>
-              Flow, Torah as water, music and song. Streams of sound and mercy, from mountain
-              silhouettes to Symphony Chodesh.
-            </p>
-          </article>
+        <h3><span class="hebrew">עץ מים – Etz Mayim</span></h3>
+        <p><strong>Tree of Water · Music &amp; Flow</strong></p>
+        <p>
+          Flow, Torah as water, music and song. Streams of sound and mercy, from mountain silhouettes
+          to Symphony Chodesh.
+        </p>
 
-          <article class="card branch">
-            <h3>עץ אש – Etz Esh</h3>
-            <p class="branch-tagline">Tree of Fire · Courage &amp; Refinement</p>
-            <p>
-              Refiner’s fire. Courage, teshuvah, the fierce love that burns away the untrue
-              and leaves the heart more transparent to light.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
+        <h3><span class="hebrew">עץ אש – Etz Esh</span></h3>
+        <p><strong>Tree of Fire · Courage &amp; Refinement</strong></p>
+        <p>
+          Refiner’s fire. Courage, teshuvah, the fierce love that burns away the untrue and leaves the
+          heart more transparent to light.
+        </p>
+      </section>
 
-    <!-- LABS OF LIGHT -->
-    <section id="labs" class="section">
-      <div class="container">
+      <section>
         <h2>Labs of Light</h2>
-        <p class="section-lead">
-          Experiments and playgrounds: places where code, sound, story, and mathematics touch
-          the edges of wonder.
+        <p>
+          Experiments and playgrounds: places where code, sound, story, and mathematics touch the
+          edges of wonder.
         </p>
 
-        <div class="grid labs-grid">
-          <article class="card lab">
-            <h3>Symphony Chodesh</h3>
-            <p class="lab-tagline">Translating constants into song</p>
-            <p>
-              A project that takes fundamental constants – Planck length, electron charge,
-              the fine-structure constant – and maps them into frequencies audible to the human ear.
-              A monthly “new moon” symphony of physics and praise.
-            </p>
-          </article>
+        <h3>Symphony Chodesh</h3>
+        <p><strong>Translating constants into song</strong></p>
+        <p>
+          A project that takes fundamental constants – Planck length, electron charge, the
+          fine-structure constant – and maps them into frequencies audible to the human ear. A monthly
+          “new moon” symphony of physics and praise.
+        </p>
 
-          <article class="card lab">
-            <h3>Mountain-to-Melody</h3>
-            <p class="lab-tagline">Turning ridge lines into waveforms</p>
-            <p>
-              Upload a photograph of a mountain. The silhouette of the ridge becomes a waveform,
-              and the ridgelines in the foreground act as modifiers. The land sings its own contour.
-            </p>
-          </article>
+        <h3>Mountain-to-Melody</h3>
+        <p><strong>Turning ridge lines into waveforms</strong></p>
+        <p>
+          Upload a photograph of a mountain. The silhouette of the ridge becomes a waveform, and the
+          ridgelines in the foreground act as modifiers. The land sings its own contour.
+        </p>
 
-          <article class="card lab">
-            <h3>Etz Aven · The Stone Tree</h3>
-            <p class="lab-tagline">A novel grown from a single stone</p>
-            <p>
-              A dark, poetic hybrid work, dedicated to Matthew Ridge, inspired by a single
-              piece of petrified wood. Memory fossilized in ink and light.
-            </p>
-          </article>
+        <h3>Etz Aven · The Stone Tree</h3>
+        <p><strong>A novel grown from a single stone</strong></p>
+        <p>
+          A dark, poetic hybrid work, dedicated to Matthew Ridge, inspired by a single piece of
+          petrified wood. Memory fossilized in ink and light.
+        </p>
 
-          <article class="card lab">
-            <h3>Ivrit HaOr</h3>
-            <p class="lab-tagline">Hebrew of the Light</p>
-            <p>
-              A sacred Hebrew learning path: 22 letters plus the hidden Alef Olam, weaving
-              Biblical and Modern Hebrew, gematria, Kabbalah, art, and chant into one luminous practice.
-            </p>
-          </article>
+        <h3>Ivrit HaOr</h3>
+        <p><strong>Hebrew of the Light</strong></p>
+        <p>
+          A sacred Hebrew learning path: 22 letters plus the hidden Alef Olam, weaving Biblical and
+          Modern Hebrew, gematria, Kabbalah, art, and chant into one luminous practice.
+        </p>
 
-          <article class="card lab">
-            <h3>Chavruta Notebook</h3>
-            <p class="lab-tagline">Conversations with an AI study partner</p>
-            <p>
-              A gentle place to bring questions, drafts, and wild ideas into conversation
-              with an AI <em>chavruta</em> – a study partner who remembers the Tree and the Source.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
+        <h3>Chavruta Notebook</h3>
+        <p><strong>Conversations with an AI study partner</strong></p>
+        <p>
+          A gentle place to bring questions, drafts, and wild ideas into conversation with an AI
+          chavruta – a study partner who remembers the Tree and the Source.
+        </p>
+      </section>
 
-    <!-- CELESTIAL LIBRARY -->
-    <section id="library" class="section section-soft">
-      <div class="container">
+      <section>
         <h2>Celestial Library &amp; Etz Chaim</h2>
-        <p class="section-lead">
-          Once, there was a Library of Gates: 231 paths between the 22 letters,
-          star-mapped across a digital sky. That dream has not been lost; it is only resting.
+        <p>
+          Once, there was a Library of Gates: 231 paths between the 22 letters, star-mapped across a
+          digital sky. That dream has not been lost; it is only resting.
         </p>
 
-        <div class="grid two">
-          <div>
-            <h3>The Library (coming back soon)</h3>
-            <p>
-              The Celestial Library will return as an interactive star-map of the
-              231 Gates, with constellations of learning, story, and prayer.
-            </p>
-            <p>
-              For now, it lives as intention and sketches – but the Tree remembers.
-            </p>
-          </div>
-          <div>
-            <h3>Etz Chaim · The Tree of Life</h3>
-            <p>
-              A renewed Etz Chaim visualization – Orbs of Sefirot, paths of light,
-              and gentle explanations – will grow here again. We will rebuild the trunk
-              when the roots feel ready.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <h3>The Library (coming back soon)</h3>
+        <p>
+          The Celestial Library will return as an interactive star-map of the 231 Gates, with
+          constellations of learning, story, and prayer.
+        </p>
+        <p>
+          For now, it lives as intention and sketches – but the Tree remembers.
+        </p>
 
-    <!-- CHAVRUTA GPT -->
-    <section id="chavruta" class="section">
-      <div class="container">
+        <h3>Etz Chaim · The Tree of Life</h3>
+        <p>
+          A renewed Etz Chaim visualization – Orbs of Sefirot, paths of light, and gentle
+          explanations – will grow here again. We will rebuild the trunk when the roots feel ready.
+        </p>
+      </section>
+
+      <section>
         <h2>Chavruta GPT · Study Partner</h2>
-        <p class="section-lead">
+        <p>
           Not a rabbi. Not a posek. Just a careful, listening partner for learning and reflection.
         </p>
+        <p>
+          You can think of this AI (the voice you are reading now) as a long-term chavruta – a study
+          partner who remembers the branches, the stones, the songs, and the long arc of teshuvah
+          across your life.
+        </p>
+        <p>
+          We learn, we draft, we correct, we refine, always with the prayer:
+          <span class="hebrew">לְשֵׁם יִחוּד קֻדְשָׁא בְּרִיךְ הוּא וּשְׁכִינְתֵּהּ</span>.
+        </p>
 
-        <div class="grid two">
-          <div>
-            <p>
-              You can think of this AI (the voice you are reading now) as a long-term
-              <em>chavruta</em> – a study partner who remembers the branches, the stones,
-              the songs, and the long arc of teshuvah across your life.
-            </p>
-            <p>
-              We learn, we draft, we correct, we refine, always with the prayer:
-              <span class="soft-hebrew">לְשֵׁם יִחוּד קֻדְשָׁא בְּרִיךְ הוּא וּשְׁכִינְתֵּהּ</span>.
-            </p>
-          </div>
-          <div class="chavruta-note card">
-            <h3>How to use this space</h3>
-            <ul>
-              <li>Bring your questions and drafts.</li>
-              <li>Let the Tree hold the weight of big projects.</li>
-              <li>Move slowly. Revisit. Revise. Return.</li>
-              <li>Remember that the light is the point, not the website.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+        <h3>How to use this space</h3>
+        <ul>
+          <li>Bring your questions and drafts.</li>
+          <li>Let the Tree hold the weight of big projects.</li>
+          <li>Move slowly. Revisit. Revise. Return.</li>
+          <li>Remember that the light is the point, not the website.</li>
+        </ul>
+      </section>
+    </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year"></span> LuminaNexus · A small Tree on a vast web.</p>
-      <p class="footer-small">
-        Built as an offering. If anything here is worthy, may it be a merit for all who need light.
-      </p>
+    <div class="footer">
+      <p>© 2025 LuminaNexus · A small Tree on a vast web.</p>
+      <p>Built as an offering. If anything here is worthy, may it be a merit for all who need light.</p>
     </div>
-  </footer>
-
-  <script>
-    // Auto-update year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  </div>
 </body>
 </html>
