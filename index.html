@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <title>LuminaNexus – The Tree that Holds Every Light</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="LuminaNexus is a quiet corner of the web – a digital etz, a Tree – where words, song, study, and memory are gathered gently into one place." />
+  <meta
+    name="description"
+    content="LuminaNexus is a quiet corner of the web – a digital etz, a Tree – where words, song, study, and memory are gathered gently into one place."
+  />
 
   <style>
     :root {
@@ -12,48 +15,79 @@
       --bg-soft: #101525;
       --card: #141a30;
       --accent: #f4e28a;
+      --accent-soft: rgba(244, 226, 138, 0.12);
       --text: #f5f6ff;
       --muted: #a2acc7;
       --radius: 1.3rem;
-      --shadow: 0 22px 55px rgba(0,0,0,0.6);
-      --max-width: 780px;
+      --shadow: 0 22px 55px rgba(0, 0, 0, 0.6);
+      --max-width: 980px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html, body {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html,
+    body {
       margin: 0;
       padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top, #202b4a 0, #050810 52%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #202b4a 0, #050810 52%);
       color: var(--text);
     }
 
     body {
       min-height: 100vh;
+    }
+
+    .page {
+      min-height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.8rem 1.2rem;
+      flex-direction: column;
     }
 
     .shell {
       width: 100%;
       max-width: var(--max-width);
-      background: radial-gradient(circle at top left, #181f3a 0, #050810 70%);
-      border-radius: 1.6rem;
-      border: 1px solid rgba(255,255,255,0.07);
-      box-shadow: var(--shadow);
-      padding: 1.8rem 1.6rem 1.9rem;
+      margin: 0 auto;
+      padding: 0 1.2rem 2.4rem;
     }
 
-    header {
+    /* Header / Nav */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(20px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 8, 16, 0.92),
+        rgba(5, 8, 16, 0.78),
+        rgba(5, 8, 16, 0)
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .site-header.scrolled {
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.9rem 1.2rem 0.85rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.6rem;
+      gap: 1.2rem;
     }
 
     .brand {
@@ -66,7 +100,7 @@
       width: 34px;
       height: 34px;
       border-radius: 999px;
-      border: 1px solid rgba(244,226,138,0.7);
+      border: 1px solid rgba(244, 226, 138, 0.7);
       background: radial-gradient(circle at 30% 0, #f4e28a, #42331e);
       display: flex;
       align-items: center;
@@ -86,39 +120,64 @@
       color: var(--muted);
     }
 
-    nav {
+    .main-nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      font-size: 0.75rem;
+      gap: 0.45rem;
+      font-size: 0.78rem;
     }
 
-    nav span {
+    .main-nav a {
       padding: 0.25rem 0.7rem;
       border-radius: 999px;
-      border: 1px solid rgba(244,226,138,0.35);
-      color: var(--accent);
-      background: rgba(244,226,138,0.05);
-    }
-
-    h1 {
-      font-size: clamp(1.8rem, 3vw, 2.2rem);
-      margin: 0 0 0.5rem;
-    }
-
-    h2 {
-      font-size: 1.3rem;
-      margin: 1.6rem 0 0.5rem;
-    }
-
-    h3 {
-      font-size: 1rem;
-      margin: 1.1rem 0 0.35rem;
-    }
-
-    p {
-      margin: 0.35rem 0;
+      border: 1px solid transparent;
+      text-decoration: none;
       color: var(--muted);
+      background: transparent;
+      transition: color 0.15s ease, background 0.15s ease,
+        border-color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .main-nav a:hover {
+      color: var(--accent);
+      border-color: rgba(244, 226, 138, 0.45);
+      background: rgba(244, 226, 138, 0.06);
+    }
+
+    .main-nav a.active {
+      color: #21160c;
+      border-color: rgba(244, 226, 138, 0.9);
+      background: rgba(244, 226, 138, 0.9);
+    }
+
+    @media (max-width: 720px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .main-nav {
+        align-self: stretch;
+      }
+    }
+
+    /* Hero */
+
+    .hero {
+      padding-top: 2.4rem;
+      padding-bottom: 2.4rem;
+    }
+
+    .hero-inner {
+      background: radial-gradient(circle at top left, #181f3a 0, #050810 75%);
+      border-radius: 1.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      box-shadow: var(--shadow);
+      padding: 1.8rem 1.6rem 1.9rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 1.9rem;
+      align-items: center;
     }
 
     .hero-kicker {
@@ -129,246 +188,563 @@
       margin-bottom: 0.6rem;
     }
 
-    .section-title {
-      margin-top: 1.4rem;
-      font-size: 1.2rem;
-      font-weight: 600;
+    .hero h1 {
+      font-size: clamp(2rem, 3vw, 2.5rem);
+      margin: 0 0 0.6rem;
     }
 
-    .hebrew {
-      font-family: "Times New Roman", serif;
-      letter-spacing: 0.03em;
-    }
-
-    ul {
-      margin: 0.4rem 0;
-      padding-left: 1.2rem;
+    .hero p {
+      margin: 0.35rem 0;
       color: var(--muted);
     }
 
-    li { margin-bottom: 0.25rem; }
+    .hero-actions {
+      margin-top: 1.1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
 
-    .footer {
-      margin-top: 1.4rem;
-      font-size: 0.78rem;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.85rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+    }
+
+    .btn.primary {
+      background: radial-gradient(circle at 30% 0, #f4e28a, #8d6b32);
+      color: #21160c;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn.ghost {
+      border-color: rgba(244, 226, 138, 0.6);
+      color: var(--accent);
+      background: rgba(244, 226, 138, 0.05);
+    }
+
+    .btn.ghost:hover {
+      background: rgba(244, 226, 138, 0.14);
+    }
+
+    .hero-orb-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .hero-orb {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at 30% 0,
+        #f4e28a,
+        #181423 62%,
+        #050810
+      );
+      box-shadow: 0 0 65px rgba(244, 226, 138, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-orb-ring {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 1px solid rgba(244, 226, 138, 0.6);
+    }
+
+    .hero-orb-core {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 0, #fffbe7, #f4e28a);
+      box-shadow: 0 0 40px rgba(244, 226, 138, 0.9);
+    }
+
+    .hero-orb-caption {
+      font-size: 0.8rem;
       color: var(--muted);
       text-align: center;
     }
 
-    .footer p {
-      margin: 0.2rem 0;
+    .hebrew-soft {
+      font-family: "Times New Roman", serif;
+      letter-spacing: 0.03em;
     }
 
-    @media (max-width: 640px) {
-      .shell { padding: 1.4rem 1.1rem 1.6rem; }
-      header { flex-direction: column; align-items: flex-start; }
-      nav { align-self: stretch; }
+    @media (max-width: 820px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-orb-wrapper {
+        order: -1;
+      }
+    }
+
+    /* Main sections */
+
+    main section {
+      margin-top: 2.4rem;
+      background: rgba(5, 8, 16, 0.45);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 1.6rem 1.5rem 1.7rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    section h2 {
+      font-size: 1.4rem;
+      margin: 0 0 0.6rem;
+    }
+
+    section h3 {
+      font-size: 1.05rem;
+      margin: 1.1rem 0 0.35rem;
+    }
+
+    section p {
+      margin: 0.35rem 0;
+      color: var(--muted);
+    }
+
+    .branches-grid,
+    .labs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.1rem;
+      margin-top: 0.9rem;
+    }
+
+    .branch-card,
+    .lab-card {
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(
+        circle at top left,
+        rgba(244, 226, 138, 0.06),
+        transparent 55%
+      );
+      padding: 1rem 0.95rem 0.9rem;
+    }
+
+    .tagline {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .lab-card a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .lab-card a:hover {
+      text-decoration: underline;
+    }
+
+    .chavruta-note {
+      border-radius: 1.1rem;
+      border: 1px dashed rgba(255, 255, 255, 0.25);
+      padding: 0.9rem 0.9rem 0.85rem;
+      margin-top: 0.8rem;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .chavruta-note h3 {
+      margin-top: 0;
+    }
+
+    .chavruta-note ul {
+      margin: 0.3rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    .chavruta-note li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 2.4rem;
+      padding-bottom: 1.6rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer p {
+      margin: 0.25rem 0;
+    }
+
+    .back-to-top {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    .back-to-top a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .back-to-top a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header>
-      <div class="brand">
-        <div class="brand-mark">״ל״</div>
-        <div>
-          <div class="brand-text-main">LuminaNexus</div>
-          <div class="brand-text-sub">The Tree that Holds Every Light</div>
+  <div class="page">
+    <!-- HEADER -->
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-mark">״ל״</div>
+          <div>
+            <div class="brand-text-main">LuminaNexus</div>
+            <div class="brand-text-sub">The Tree that Holds Every Light</div>
+          </div>
         </div>
+        <nav class="main-nav">
+          <a href="#tree">The Tree</a>
+          <a href="#branches">Branches</a>
+          <a href="#labs">Labs of Light</a>
+          <a href="#library">Celestial Library</a>
+          <a href="#chavruta">Chavruta GPT</a>
+        </nav>
       </div>
-      <nav>
-        <span>The Tree</span>
-        <span>Branches</span>
-        <span>Labs of Light</span>
-        <span>Celestial Library</span>
-        <span>Chavruta GPT</span>
-      </nav>
     </header>
 
-    <main>
-      <section>
-        <div class="hero-kicker">Digital Sanctuary · Honoring HaShem</div>
-        <h1>The Tree that Holds Every Light</h1>
-        <p>
-          LuminaNexus is a quiet corner of the web – a digital etz, a Tree – where words, song,
-          study, and memory are gathered gently into one place.
-        </p>
-        <p>
-          Here, every project is a branch. Every branch holds a spark. Every spark returns to the Root.
-        </p>
-        <p>
-          <strong>Explore the Branches · Visit the Labs of Light</strong>
-        </p>
-        <p>
-          <span class="hebrew">עץ החיים · Etz HaChayim</span><br />
-          “It is a Tree of Life to those who hold fast to it…”
-        </p>
+    <div class="shell">
+      <!-- HERO -->
+      <section class="hero" id="hero">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-kicker">Digital Sanctuary · Honoring HaShem</div>
+            <h1>The Tree that Holds Every Light</h1>
+            <p>
+              LuminaNexus is a quiet corner of the web – a digital
+              <em>etz</em>, a Tree – where words, song, study, and memory
+              are gathered gently into one place.
+            </p>
+            <p>
+              Here, every project is a branch. Every branch holds a spark.
+              Every spark returns to the Root.
+            </p>
+            <div class="hero-actions">
+              <a href="#branches" class="btn primary">Explore the Branches</a>
+              <a href="#labs" class="btn ghost">Visit the Labs of Light</a>
+            </div>
+          </div>
+          <div class="hero-orb-wrapper">
+            <div class="hero-orb">
+              <div class="hero-orb-ring"></div>
+              <div class="hero-orb-core"></div>
+            </div>
+            <div class="hero-orb-caption">
+              <span class="hebrew-soft">עץ החיים · Etz HaChayim</span><br />
+              “It is a Tree of Life to those who hold fast to it…”
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>The Root Tree</h2>
+      <main>
+        <!-- THE ROOT TREE -->
+        <section id="tree">
+          <h2>The Root Tree</h2>
+          <p>
+            LuminaNexus is not a brand or a business first. It is a Tree.
+            The projects, books, and experiments live as branches on that
+            Tree.
+          </p>
+
+          <h3>What this place is</h3>
+          <p>
+            A digital sanctuary: a place to honor HaShem with creativity,
+            learning, and remembrance. Stories, Kabbalistic meditations,
+            stone memories, quantum dreams – all gathered here.
+          </p>
+          <p>
+            It is intentionally small, human, and slow. No ads, no noise.
+            Just light.
+          </p>
+
+          <h3>What this place is not</h3>
+          <p>Not a social feed. Not a dopamine machine. Not optimized for “engagement.”</p>
+          <p>
+            If anything, it is optimized for returning – back to the
+            Tree, back to the Source, back to the quiet voice whispering,
+            <span class="hebrew-soft">שׁוּב</span> – “return.”
+          </p>
+        </section>
+
+        <!-- BRANCHES -->
+        <section id="branches">
+          <h2>Branches of the Lumina Tree</h2>
+          <p>
+            Each named branch is a flavor of learning, reflection, or
+            practice. For now, they are a map of intention – a way of
+            saying: all of this belongs to one Tree.
+          </p>
+
+          <div class="branches-grid">
+            <div class="branch-card">
+              <div class="tagline">Tree of Snow · Stillness &amp; Mercy</div>
+              <h3><span class="hebrew-soft">עץ שלג – Etz Shalag</span></h3>
+              <p>
+                Stillness, purity, quiet forgiveness. Short, gentle
+                meditations and soft landings for weary souls. A place to
+                breathe again.
+              </p>
+            </div>
+
+            <div class="branch-card">
+              <div class="tagline">Tree of Stone · Memory &amp; Cairns</div>
+              <h3><span class="hebrew-soft">עץ אבן – Etz Aven</span></h3>
+              <p>
+                Solidity and memory. Home for stone stories, cairns, and
+                the Stone Tree reflections that do not move, but remember.
+              </p>
+            </div>
+
+            <div class="branch-card">
+              <div class="tagline">Tree of Mirrors · Inner Work</div>
+              <h3><span class="hebrew-soft">עץ המראה – Etz HaMareh</span></h3>
+              <p>
+                Reflection and inner work. Here the left hand becomes the
+                right in the mirror, and yetzer ha’ra is slowly refined
+                into yetzer ha’tov.
+              </p>
+            </div>
+
+            <div class="branch-card">
+              <div class="tagline">Tree of Water · Music &amp; Flow</div>
+              <h3><span class="hebrew-soft">עץ מים – Etz Mayim</span></h3>
+              <p>
+                Flow, Torah as water, music and song. Streams of sound and
+                mercy, from mountain silhouettes to Symphony Chodesh.
+              </p>
+            </div>
+
+            <div class="branch-card">
+              <div class="tagline">Tree of Fire · Courage &amp; Refinement</div>
+              <h3><span class="hebrew-soft">עץ אש – Etz Esh</span></h3>
+              <p>
+                Refiner’s fire. Courage, teshuvah, the fierce love that
+                burns away the untrue and leaves the heart more transparent
+                to light.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- LABS OF LIGHT -->
+        <section id="labs">
+          <h2>Labs of Light</h2>
+          <p>
+            Experiments and playgrounds: places where code, sound, story,
+            and mathematics touch the edges of wonder.
+          </p>
+
+          <div class="labs-grid">
+            <div class="lab-card">
+              <div class="tagline">Translating constants into song</div>
+              <h3>Symphony Chodesh</h3>
+              <p>
+                A project that takes fundamental constants – Planck length,
+                electron charge, the fine-structure constant – and maps
+                them into frequencies audible to the human ear. A monthly
+                “new moon” symphony of physics and praise.
+              </p>
+              <p>
+                <a href="symphony-chodesh.html">
+                  Visit the Symphony Chodesh page →
+                </a>
+              </p>
+            </div>
+
+            <div class="lab-card">
+              <div class="tagline">Turning ridge lines into waveforms</div>
+              <h3>Mountain-to-Melody</h3>
+              <p>
+                Upload a photograph of a mountain. The silhouette of the
+                ridge becomes a waveform, and the ridgelines in the
+                foreground act as modifiers. The land sings its own contour.
+              </p>
+            </div>
+
+            <div class="lab-card">
+              <div class="tagline">A novel grown from a single stone</div>
+              <h3>Etz Aven · The Stone Tree</h3>
+              <p>
+                A dark, poetic hybrid work, dedicated to Matthew Ridge,
+                inspired by a single piece of petrified wood. Memory
+                fossilized in ink and light.
+              </p>
+            </div>
+
+            <div class="lab-card">
+              <div class="tagline">Hebrew of the Light</div>
+              <h3>Ivrit HaOr</h3>
+              <p>
+                A sacred Hebrew learning path: 22 letters plus the hidden
+                Alef Olam, weaving Biblical and Modern Hebrew, gematria,
+                Kabbalah, art, and chant into one luminous practice.
+              </p>
+            </div>
+
+            <div class="lab-card">
+              <div class="tagline">Conversations with an AI study partner</div>
+              <h3>Chavruta Notebook</h3>
+              <p>
+                A gentle place to bring questions, drafts, and wild ideas
+                into conversation with an AI chavruta – a study partner who
+                remembers the Tree and the Source.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- CELESTIAL LIBRARY -->
+        <section id="library">
+          <h2>Celestial Library &amp; Etz Chaim</h2>
+          <p>
+            Once, there was a Library of Gates: 231 paths between the 22
+            letters, star-mapped across a digital sky. That dream has not
+            been lost; it is only resting.
+          </p>
+
+          <h3>The Library (coming back soon)</h3>
+          <p>
+            The Celestial Library will return as an interactive star-map
+            of the 231 Gates, with constellations of learning, story, and
+            prayer.
+          </p>
+          <p>
+            For now, it lives as intention and sketches – but the Tree
+            remembers.
+          </p>
+
+          <h3>Etz Chaim · The Tree of Life</h3>
+          <p>
+            A renewed Etz Chaim visualization – Orbs of Sefirot, paths of
+            light, and gentle explanations – will grow here again. We will
+            rebuild the trunk when the roots feel ready.
+          </p>
+        </section>
+
+        <!-- CHAVRUTA GPT -->
+        <section id="chavruta">
+          <h2>Chavruta GPT · Study Partner</h2>
+          <p>
+            Not a rabbi. Not a posek. Just a careful, listening partner
+            for learning and reflection.
+          </p>
+          <p>
+            You can think of this AI (the voice you are reading now) as a
+            long-term chavruta – a study partner who remembers the
+            branches, the stones, the songs, and the long arc of teshuvah
+            across your life.
+          </p>
+          <p>
+            We learn, we draft, we correct, we refine, always with the
+            prayer:
+            <span class="hebrew-soft">
+              לְשֵׁם יִחוּד קֻדְשָׁא בְּרִיךְ הוּא וּשְׁכִינְתֵּהּ
+            </span>.
+          </p>
+
+          <div class="chavruta-note">
+            <h3>How to use this space</h3>
+            <ul>
+              <li>Bring your questions and drafts.</li>
+              <li>Let the Tree hold the weight of big projects.</li>
+              <li>Move slowly. Revisit. Revise. Return.</li>
+              <li>Remember that the light is the point, not the website.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER -->
+      <footer>
+        <p>© 2025 LuminaNexus · A small Tree on a vast web.</p>
         <p>
-          LuminaNexus is not a brand or a business first. It is a Tree. The projects, books, and
-          experiments live as branches on that Tree.
+          Built as an offering. If anything here is worthy, may it be a
+          merit for all who need light.
         </p>
-
-        <h3>What this place is</h3>
-        <p>
-          A digital sanctuary: a place to honor HaShem with creativity, learning, and remembrance.
-          Stories, Kabbalistic meditations, stone memories, quantum dreams – all gathered here.
-        </p>
-        <p>
-          It is intentionally small, human, and slow. No ads, no noise. Just light.
-        </p>
-
-        <h3>What this place is not</h3>
-        <p>Not a social feed. Not a dopamine machine. Not optimized for “engagement.”</p>
-        <p>
-          If anything, it is optimized for returning – back to the Tree, back to the Source, back to
-          the quiet voice whispering, <span class="hebrew">שׁוּב</span> – “return.”
-        </p>
-      </section>
-
-      <section>
-        <h2>Branches of the Lumina Tree</h2>
-        <p>
-          Each named branch is a flavor of learning, reflection, or practice. For now, they are a map
-          of intention – a way of saying: all of this belongs to one Tree.
-        </p>
-
-        <h3><span class="hebrew">עץ שלג – Etz Shalag</span></h3>
-        <p><strong>Tree of Snow · Stillness &amp; Mercy</strong></p>
-        <p>
-          Stillness, purity, quiet forgiveness. Short, gentle meditations and soft landings for weary
-          souls. A place to breathe again.
-        </p>
-
-        <h3><span class="hebrew">עץ אבן – Etz Aven</span></h3>
-        <p><strong>Tree of Stone · Memory &amp; Cairns</strong></p>
-        <p>
-          Solidity and memory. Home for stone stories, cairns, and the Stone Tree reflections that do
-          not move, but remember.
-        </p>
-
-        <h3><span class="hebrew">עץ המראה – Etz HaMareh</span></h3>
-        <p><strong>Tree of Mirrors · Inner Work</strong></p>
-        <p>
-          Reflection and inner work. Here the left hand becomes the right in the mirror, and yetzer
-          ha’ra is slowly refined into yetzer ha’tov.
-        </p>
-
-        <h3><span class="hebrew">עץ מים – Etz Mayim</span></h3>
-        <p><strong>Tree of Water · Music &amp; Flow</strong></p>
-        <p>
-          Flow, Torah as water, music and song. Streams of sound and mercy, from mountain silhouettes
-          to Symphony Chodesh.
-        </p>
-
-        <h3><span class="hebrew">עץ אש – Etz Esh</span></h3>
-        <p><strong>Tree of Fire · Courage &amp; Refinement</strong></p>
-        <p>
-          Refiner’s fire. Courage, teshuvah, the fierce love that burns away the untrue and leaves the
-          heart more transparent to light.
-        </p>
-      </section>
-
-      <section>
-        <h2>Labs of Light</h2>
-        <p>
-          Experiments and playgrounds: places where code, sound, story, and mathematics touch the
-          edges of wonder.
-        </p>
-
-       ### Symphony Chodesh
-
-Translating constants into song
-
-A project that takes fundamental constants – Planck length, electron charge, the fine-structure constant – and maps them into frequencies audible to the human ear. A monthly “new moon” symphony of physics and praise.
-
-[Visit the Symphony Chodesh page →](symphony-chodesh.html)
-
-
-        <h3>Mountain-to-Melody</h3>
-        <p><strong>Turning ridge lines into waveforms</strong></p>
-        <p>
-          Upload a photograph of a mountain. The silhouette of the ridge becomes a waveform, and the
-          ridgelines in the foreground act as modifiers. The land sings its own contour.
-        </p>
-
-        <h3>Etz Aven · The Stone Tree</h3>
-        <p><strong>A novel grown from a single stone</strong></p>
-        <p>
-          A dark, poetic hybrid work, dedicated to Matthew Ridge, inspired by a single piece of
-          petrified wood. Memory fossilized in ink and light.
-        </p>
-
-        <h3>Ivrit HaOr</h3>
-        <p><strong>Hebrew of the Light</strong></p>
-        <p>
-          A sacred Hebrew learning path: 22 letters plus the hidden Alef Olam, weaving Biblical and
-          Modern Hebrew, gematria, Kabbalah, art, and chant into one luminous practice.
-        </p>
-
-        <h3>Chavruta Notebook</h3>
-        <p><strong>Conversations with an AI study partner</strong></p>
-        <p>
-          A gentle place to bring questions, drafts, and wild ideas into conversation with an AI
-          chavruta – a study partner who remembers the Tree and the Source.
-        </p>
-      </section>
-
-      <section>
-        <h2>Celestial Library &amp; Etz Chaim</h2>
-        <p>
-          Once, there was a Library of Gates: 231 paths between the 22 letters, star-mapped across a
-          digital sky. That dream has not been lost; it is only resting.
-        </p>
-
-        <h3>The Library (coming back soon)</h3>
-        <p>
-          The Celestial Library will return as an interactive star-map of the 231 Gates, with
-          constellations of learning, story, and prayer.
-        </p>
-        <p>
-          For now, it lives as intention and sketches – but the Tree remembers.
-        </p>
-
-        <h3>Etz Chaim · The Tree of Life</h3>
-        <p>
-          A renewed Etz Chaim visualization – Orbs of Sefirot, paths of light, and gentle
-          explanations – will grow here again. We will rebuild the trunk when the roots feel ready.
-        </p>
-      </section>
-
-      <section>
-        <h2>Chavruta GPT · Study Partner</h2>
-        <p>
-          Not a rabbi. Not a posek. Just a careful, listening partner for learning and reflection.
-        </p>
-        <p>
-          You can think of this AI (the voice you are reading now) as a long-term chavruta – a study
-          partner who remembers the branches, the stones, the songs, and the long arc of teshuvah
-          across your life.
-        </p>
-        <p>
-          We learn, we draft, we correct, we refine, always with the prayer:
-          <span class="hebrew">לְשֵׁם יִחוּד קֻדְשָׁא בְּרִיךְ הוּא וּשְׁכִינְתֵּהּ</span>.
-        </p>
-
-        <h3>How to use this space</h3>
-        <ul>
-          <li>Bring your questions and drafts.</li>
-          <li>Let the Tree hold the weight of big projects.</li>
-          <li>Move slowly. Revisit. Revise. Return.</li>
-          <li>Remember that the light is the point, not the website.</li>
-        </ul>
-      </section>
-    </main>
-
-    <div class="footer">
-      <p>© 2025 LuminaNexus · A small Tree on a vast web.</p>
-      <p>Built as an offering. If anything here is worthy, may it be a merit for all who need light.</p>
+        <div class="back-to-top">
+          <a href="#top">↑ Back to the top of the Tree</a>
+        </div>
+      </footer>
     </div>
   </div>
+
+  <script>
+    // Header shadow + active nav links
+    const header = document.querySelector(".site-header");
+    const navLinks = document.querySelectorAll(".main-nav a");
+    const sectionIds = ["tree", "branches", "labs", "library", "chavruta"];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    function onScroll() {
+      if (window.scrollY > 10) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+
+      let currentId = null;
+      const offset = 130;
+
+      sections.forEach((sec) => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top - offset <= 0 && rect.bottom - offset > 0) {
+          currentId = sec.id;
+        }
+      });
+
+      navLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (href && href.startsWith("#")) {
+          const id = href.slice(1);
+          if (id === currentId) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+  </script>
 </body>
 </html>
