@@ -394,3 +394,33 @@ footer p {
 .back-to-top a:hover {
   text-decoration: underline;
 }
+/* Symphony Chodesh helpers */
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+  font-size: 0.78rem;
+}
+
+.pill {
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(244, 226, 138, 0.35);
+  color: var(--accent);
+  background: rgba(244, 226, 138, 0.06);
+  white-space: nowrap;
+}
+
+.panel {
+  border-radius: 1.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.1rem 1.1rem 1.1rem;
+  background: radial-gradient(
+    circle at top left,
+    rgba(244, 226, 138, 0.06),
+    transparent 60%
+  );
+  margin-top: 0.9rem;
+}
