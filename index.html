@@ -10,18 +10,6 @@
   />
   <link rel="stylesheet" href="style.css" />
 </head>
-  <!-- Sefaria Linker (v3) -->
-  <script
-    type="text/javascript"
-    charset="utf-8"
-    src="https://www.sefaria.org/linker.v3.js">
-  </script>
-  <script>
-    // Basic setup – scans the whole <body> for refs like "Genesis 1:1", "Berakhot 2a"
-    sefaria.link();
-  </script>
-</body>
-</html>
 <body>
   <div class="page">
     <!-- HEADER -->
@@ -40,6 +28,7 @@
           <a href="#labs">Labs of Light</a>
           <a href="#library">Celestial Library</a>
           <a href="#chavruta">Chavruta GPT</a>
+          <a href="sefaria-library.html">Sefaria Gateway</a>
         </nav>
       </div>
     </header>
@@ -244,17 +233,16 @@
             been lost; it is only resting.
           </p>
 
-         <h3>The Library (coming back soon)</h3>
-<p>
-  The Celestial Library will return as an interactive star-map
-  of the 231 Gates, with constellations of learning, story, and
-  prayer.
-</p>
-<p>
-  Until then, the <strong>Sephoria Library</strong> serves as a quiet
-  reading room for the Sefirot and their shelves.
-  <a href="sephoria-library.html">Visit the Sephoria Library →</a>
-</p>
+          <h3>The Library (coming back soon)</h3>
+          <p>
+            The Celestial Library will return as an interactive star-map
+            of the 231 Gates, with constellations of learning, story, and
+            prayer.
+          </p>
+          <p>
+            For now, it lives as intention and sketches – but the Tree
+            remembers.
+          </p>
 
           <h3>Etz Chaim · The Tree of Life</h3>
           <p>
@@ -347,6 +335,7 @@
             link.classList.remove("active");
           }
         } else {
+          // external links (like Sefaria Gateway) don't get active state
           link.classList.remove("active");
         }
       });
