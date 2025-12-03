@@ -82,8 +82,11 @@
 
         const data = await response.json();
 
-        // Adjust "data.reply" if your function uses a different field name
-        const replyText = data.reply || data.message || "I received your question, but something went wrong parsing the reply.";
+        // Adjust this line if your function uses a different field name
+        const replyText =
+          data.reply ||
+          data.message ||
+          "I received your question, but something went wrong parsing the reply.";
 
         appendMessage("assistant", replyText);
         convo.push({ role: "assistant", content: replyText });
