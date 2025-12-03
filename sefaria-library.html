@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sefaria Gateway • LuminaNexus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/luminanexus.css" />
+</head>
+<body>
+  <div class="ln-shell">
+    <header class="ln-header">
+      <div class="ln-brand">
+        <div class="ln-brand-icon">ספר</div>
+        <div class="ln-brand-text">
+          <div class="ln-brand-title">Sefaria Gateway</div>
+          <div class="ln-brand-sub">Source Library • LuminaNexus</div>
+        </div>
+      </div>
+      <nav class="ln-nav">
+        <a href="index.html" class="ln-nav-link">Home</a>
+        <a href="sephoria-library.html" class="ln-nav-link">Sephoria</a>
+        <a href="chavruta-gpt.html" class="ln-nav-link">ChavrutaGPT</a>
+        <a href="symphony-chodesh.html" class="ln-nav-link">Symphony</a>
+      </nav>
+    </header>
+
+    <main class="ln-main">
+      <section class="ln-section">
+        <div class="ln-section-header">
+          <h1 class="ln-section-title">Sefaria Gateway</h1>
+          <p class="ln-section-sub">
+            A simple, focused entryway into the vast library of Sefaria.
+          </p>
+        </div>
+
+        <div class="ln-two-col ln-gap-lg">
+          <div class="ln-section-half">
+            <h2 class="ln-mini-title">Search & Jump</h2>
+            <p class="ln-text">
+              Use this page as a launchpad into
+              <a href="https://www.sefaria.org" target="_blank">Sefaria.org</a>.
+              You can search by keyword, or jump straight to a reference (for example
+              <code>Bereshit 1:1</code>, <code>Tehillim 27</code>, or <code>Zohar 1:15a</code>).
+            </p>
+            <form class="ln-search-form" onsubmit="return false;">
+              <label class="ln-label" for="sefaria-search">Search term or reference</label>
+              <input
+                id="sefaria-search"
+                class="ln-input"
+                type="text"
+                placeholder="e.g. Shabbat 31a, Bereshit 3:8, teshuvah"
+              />
+              <button class="ln-btn ln-btn-primary" type="submit">
+                Open in Sefaria (manual or JS wiring)
+              </button>
+            </form>
+            <p class="ln-note">
+              This UI is currently symbolic. To fully automate, you can write JavaScript that constructs a Sefaria URL
+              based on the input and opens it in a new tab.
+            </p>
+          </div>
+
+          <div class="ln-section-half ln-section-box">
+            <h2 class="ln-mini-title">Quick Links</h2>
+            <ul class="ln-list">
+              <li><a href="https://www.sefaria.org/Tanakh" target="_blank">Tanakh (Hebrew Bible)</a></li>
+              <li><a href="https://www.sefaria.org/Talmud" target="_blank">Talmud Bavli</a></li>
+              <li><a href="https://www.sefaria.org/Midrash" target="_blank">Midrashic Literature</a></li>
+              <li><a href="https://www.sefaria.org/Zohar" target="_blank">Zohar</a></li>
+              <li><a href="https://www.sefaria.org/texts/Philosophy" target="_blank">Jewish Philosophy</a></li>
+              <li><a href="https://www.sefaria.org/texts/Hasidut" target="_blank">Chassidut</a></li>
+            </ul>
+            <p class="ln-note">
+              All external texts are hosted and maintained by Sefaria. LuminaNexus is simply offering a gentle doorway.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="ln-footer">
+    <div class="ln-footer-inner">
+      <div class="ln-footer-left">
+        © <span id="year"></span> LuminaNexus • Sefaria Gateway
+      </div>
+      <div class="ln-footer-right">
+        <a href="index.html" class="ln-footer-link">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/luminanexus.js"></script>
+</body>
+</html>
