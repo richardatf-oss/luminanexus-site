@@ -1,20 +1,48 @@
 // netlify/functions/chavruta-gpt.js
 
-// ChavrutaGPT Netlify Function
-// Expects POST JSON: { message: string, conversation?: [{ role, content }], source?: string }
-// Uses OPENAI_API_KEY from Netlify environment variables to call OpenAI's chat API.
-
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
+// Helper to build JSON responses
+function jsonResponse(statusCode, body, extraHeaders = {}) {
+  return {
+    statusCode,
+    headers: {
+      "Content-Type": "application/json",
+      ...extraHeaders,
+    },
+    body: JSON.stringify(body),
+  };
+}
 
 exports.handler = async (event, context) => {
   try {
-    if (event.httpMethod !== "POST") {
-      return jsonResponse(
-        405,
-        { reply: "Please use POST for ChavrutaGPT." },
-        { allow: "POST" }
-      );
+    const method = event.httpMethod || "GET";
+    let message = "";
+    let conversation = [];
+    let source = "luminanexus-chavruta-page";
+
+    if (method === "GET") {
+      // Read from query string for GET
+      const params = event.queryStringParameters || {};
+      message = params.message || "";
+      source = params.source || source;
+
+      if (params.conversation) {
+        try {
+          conversation = JSON.parse(params.conversation);
+        } catch {
+          conversation = [];
+        }
+      }
+    } else if (method === "POST") {
+      // Read from JSON body for POST
+      const body = JSON.parse(event.body || "{}");
+      message = body.message || "";
+      conversation = Array.isArray(body.conversation) ? body.conversation : [];
+      source = body.source || source;
     }
+
+    console.log("ChavrutaGPT received:", { method, message, source, conversationLength: conversation.length });
 
     if (!OPENAI_API_KEY) {
       console.error("Missing OPENAI_API_KEY environment variable.");
@@ -24,15 +52,6 @@ exports.handler = async (event, context) => {
       });
     }
 
-    const body = JSON.parse(event.body || "{}");
-    const message = body.message || "";
-    const conversation = Array.isArray(body.conversation)
-      ? body.conversation
-      : [];
-    const source = body.source || "luminanexus-chavruta-page";
-
-    console.log("ChavrutaGPT received:", { message, conversation, source });
-
     if (!message) {
       return jsonResponse(200, {
         reply:
@@ -40,7 +59,6 @@ exports.handler = async (event, context) => {
       });
     }
 
-    // Build messages for OpenAI
     const systemPrompt = `
 You are **ChavrutaGPT**, a gentle, thoughtful chavruta (study partner) for Torah, Tanakh, Midrash, and classical Jewish and mystical texts.
 
@@ -62,9 +80,9 @@ When answering:
 3. End with a question that invites them deeper into the learning.
 `.trim();
 
-    // Map our simple conversation format to OpenAI format
-    const historyMessages = conversation
-      .slice(-8) // last few turns to keep it light
+    // Map conversation into OpenAI format (last few turns to keep it short)
+    const historyMessages = (conversation || [])
+      .slice(-8)
       .map((c) => ({
         role: c.role === "assistant" ? "assistant" : "user",
         content: c.content || "",
@@ -77,7 +95,6 @@ When answering:
       { role: "user", content: message },
     ];
 
-    // Call OpenAI Chat Completions API
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -85,7 +102,7 @@ When answering:
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini", // lightweight, capable model; adjust if you prefer another
+        model: "gpt-4o-mini",
         messages: openAiMessages,
         temperature: 0.6,
         max_tokens: 600,
@@ -121,15 +138,3 @@ When answering:
     });
   }
 };
-
-// Helper to build JSON responses
-function jsonResponse(statusCode, body, extraHeaders = {}) {
-  return {
-    statusCode,
-    headers: {
-      "Content-Type": "application/json",
-      ...extraHeaders,
-    },
-    body: JSON.stringify(body),
-  };
-}
