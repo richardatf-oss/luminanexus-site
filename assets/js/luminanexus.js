@@ -67,18 +67,26 @@
           source: "luminanexus-chavruta-page",
         });
 
-        const response = await fetch(`/.netlify/functions/chavruta-gpt?${params.toString()}`, {
-          method: "GET",
-        });
+        const response = await fetch(
+          `/.netlify/functions/chavruta-gpt?${params.toString()}`,
+          { method: "GET" }
+        );
 
         console.log("Chavruta response status:", response.status);
 
         if (!response.ok) {
-          const bodyText = await response.text();
-          console.error("Non-OK response:", response.status, bodyText);
+          // NEW: show the server's error text in the chat
+          let bodyInfo = "";
+          try {
+            const data = await response.json();
+            bodyInfo = data.reply || JSON.stringify(data);
+          } catch (e) {
+            bodyInfo = await response.text();
+          }
+          console.error("Non-OK response body:", bodyInfo);
           appendMessage(
             "assistant",
-            `I tried to reach the Chavruta function, but got status ${response.status}.`
+            `Server error (${response.status}): ${bodyInfo}`
           );
           return;
         }
