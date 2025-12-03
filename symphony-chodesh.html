@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Symphony Chodesh • LuminaNexus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/luminanexus.css" />
+</head>
+<body>
+  <div class="ln-shell">
+    <header class="ln-header">
+      <div class="ln-brand">
+        <div class="ln-brand-icon">חד</div>
+        <div class="ln-brand-text">
+          <div class="ln-brand-title">Symphony Chodesh</div>
+          <div class="ln-brand-sub">Lunar Song • LuminaNexus</div>
+        </div>
+      </div>
+      <nav class="ln-nav">
+        <a href="index.html" class="ln-nav-link">Home</a>
+        <a href="sephoria-library.html" class="ln-nav-link">Sephoria</a>
+        <a href="sefaria-library.html" class="ln-nav-link">Sefaria</a>
+        <a href="chavruta-gpt.html" class="ln-nav-link">ChavrutaGPT</a>
+      </nav>
+    </header>
+
+    <main class="ln-main">
+      <section class="ln-section">
+        <div class="ln-section-header">
+          <h1 class="ln-section-title">Symphony Chodesh</h1>
+          <p class="ln-section-sub">
+            A monthly musical meditation woven around the Hebrew calendar and its letters.
+          </p>
+        </div>
+
+        <div class="ln-two-col ln-gap-lg">
+          <div class="ln-section-half">
+            <h2 class="ln-mini-title">The Idea</h2>
+            <p class="ln-text">
+              Each Hebrew month carries a different flavor — a letter, a tribe, a constellation,
+              a subtle invitation in the heart. <strong>Symphony Chodesh</strong> is a way of listening
+              to that invitation through sound: a monthly “track” that reflects the energies of the time.
+            </p>
+            <p class="ln-text">
+              This page can link to playlists, generated music, recorded niggunim, or your own compositions.
+            </p>
+          </div>
+
+          <div class="ln-section-half ln-section-box">
+            <h2 class="ln-mini-title">Prototype Player</h2>
+            <p class="ln-text">
+              In the future, this could be wired to a real audio player or generator. For now, treat it
+              as a ritual: when you press “Play,” take a breath, say a blessing for the new month, and
+              imagine the music you would like to hear.
+            </p>
+            <button class="ln-btn ln-btn-primary" type="button">
+              ✦ Play Symphony for This Month (symbolic)
+            </button>
+            <p class="ln-note">
+              Under the hood, you can later attach an actual <code>&lt;audio&gt;</code> element, streaming
+              URL, or generative music API.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="ln-footer">
+    <div class="ln-footer-inner">
+      <div class="ln-footer-left">
+        © <span id="year"></span> LuminaNexus • Symphony Chodesh
+      </div>
+      <div class="ln-footer-right">
+        <a href="index.html" class="ln-footer-link">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/luminanexus.js"></script>
+</body>
+</html>
