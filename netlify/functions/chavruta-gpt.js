@@ -1,55 +1,135 @@
 // netlify/functions/chavruta-gpt.js
 
-// This is a simple Netlify Function that responds in a chavruta style.
-// It expects a POST request with JSON like:
-// { "message": "your question or text", "conversation": [ ... ] }
+// ChavrutaGPT Netlify Function
+// Expects POST JSON: { message: string, conversation?: [{ role, content }], source?: string }
+// Uses OPENAI_API_KEY from Netlify environment variables to call OpenAI's chat API.
+
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 exports.handler = async (event, context) => {
   try {
     if (event.httpMethod !== "POST") {
-      return {
-        statusCode: 405,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ reply: "Please use POST for ChavrutaGPT." }),
-      };
+      return jsonResponse(
+        405,
+        { reply: "Please use POST for ChavrutaGPT." },
+        { allow: "POST" }
+      );
+    }
+
+    if (!OPENAI_API_KEY) {
+      console.error("Missing OPENAI_API_KEY environment variable.");
+      return jsonResponse(500, {
+        reply:
+          "ChavrutaGPT is not fully configured yet (missing API key on the server). Please let the builder know.",
+      });
     }
 
     const body = JSON.parse(event.body || "{}");
     const message = body.message || "";
-    const conversation = body.conversation || [];
+    const conversation = Array.isArray(body.conversation)
+      ? body.conversation
+      : [];
+    const source = body.source || "luminanexus-chavruta-page";
 
-    console.log("Chavruta function received:", { message, conversation });
-
-    let reply;
+    console.log("ChavrutaGPT received:", { message, conversation, source });
 
     if (!message) {
-      reply =
-        "Shalom. Bring me a verse, a question, or a thought, and we’ll begin learning together.";
-    } else {
-      reply =
-        `You brought: "${message}". ` +
-        "If we sit with these words for a moment, what stands out to you most — a single word, an image, or a feeling?";
+      return jsonResponse(200, {
+        reply:
+          "Shalom. Bring me a verse, a question, or a thought, and we’ll begin learning together.",
+      });
     }
 
-    return {
-      statusCode: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ reply }),
-    };
-  } catch (err) {
-    console.error("Chavruta function error:", err);
+    // Build messages for OpenAI
+    const systemPrompt = `
+You are **ChavrutaGPT**, a gentle, thoughtful chavruta (study partner) for Torah, Tanakh, Midrash, and classical Jewish and mystical texts.
 
-    return {
-      statusCode: 500,
+Your job is:
+- To ask good questions, not just give answers.
+- To help the learner notice patterns, words, and themes.
+- To suggest relevant classical sources (Tanakh, Mishnah, Talmud, Midrash, Rambam, etc.) when appropriate.
+- To keep a warm, respectful tone.
+
+Guidelines:
+- Do NOT give halachic rulings or psak. For any halachic questions, gently suggest they ask a trusted rabbi or posek.
+- If the user shares something personal or painful, respond with care and validation before analysis.
+- Prefer short paragraphs and lists over huge walls of text.
+- Occasionally ask: "What stands out to you most in this text?" or a similar reflective question.
+
+When answering:
+1. Briefly reflect what they brought (one or two sentences).
+2. Offer 1–3 insights, questions, or source suggestions.
+3. End with a question that invites them deeper into the learning.
+`.trim();
+
+    // Map our simple conversation format to OpenAI format
+    const historyMessages = conversation
+      .slice(-8) // last few turns to keep it light
+      .map((c) => ({
+        role: c.role === "assistant" ? "assistant" : "user",
+        content: c.content || "",
+      }))
+      .filter((m) => m.content);
+
+    const openAiMessages = [
+      { role: "system", content: systemPrompt },
+      ...historyMessages,
+      { role: "user", content: message },
+    ];
+
+    // Call OpenAI Chat Completions API
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
       headers: {
+        Authorization: `Bearer ${OPENAI_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        reply:
-          "There was a server error in the Chavruta function. Please try again in a little while.",
+        model: "gpt-4o-mini", // lightweight, capable model; adjust if you prefer another
+        messages: openAiMessages,
+        temperature: 0.6,
+        max_tokens: 600,
       }),
-    };
+    });
+
+    console.log("OpenAI status:", response.status);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("OpenAI error:", response.status, errorText);
+      return jsonResponse(500, {
+        reply:
+          "ChavrutaGPT had trouble reaching the learning engine just now. Please try again in a moment.",
+      });
+    }
+
+    const data = await response.json();
+    const reply =
+      data.choices &&
+      data.choices[0] &&
+      data.choices[0].message &&
+      data.choices[0].message.content
+        ? data.choices[0].message.content.trim()
+        : "I received a response from the learning engine, but I couldn’t parse it. Please try again.";
+
+    return jsonResponse(200, { reply });
+  } catch (err) {
+    console.error("ChavrutaGPT server error:", err);
+    return jsonResponse(500, {
+      reply:
+        "There was an internal server error in ChavrutaGPT. Please try again soon.",
+    });
   }
 };
+
+// Helper to build JSON responses
+function jsonResponse(statusCode, body, extraHeaders = {}) {
+  return {
+    statusCode,
+    headers: {
+      "Content-Type": "application/json",
+      ...extraHeaders,
+    },
+    body: JSON.stringify(body),
+  };
+}
