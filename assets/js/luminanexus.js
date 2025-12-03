@@ -1,4 +1,4 @@
-// luminanexus/assets/js/luminanexus.js
+// assets/js/luminanexus.js
 (function () {
   // Set footer year(s)
   const yearSpanList = document.querySelectorAll("#year");
@@ -11,7 +11,6 @@
   const chatTextarea = document.querySelector(".ln-input-textarea");
   const chatButton = chatForm ? chatForm.querySelector("button[type='submit']") : null;
 
-  // Keep a simple conversation history in memory (optional)
   const convo = [];
 
   function appendMessage(role, text) {
@@ -52,41 +51,46 @@
       const text = chatTextarea.value.trim();
       if (!text) return;
 
-      // Show user message in UI
       appendMessage("user", text);
       convo.push({ role: "user", content: text });
 
-      // Clear input
       chatTextarea.value = "";
       chatTextarea.focus();
-
-      // Call Netlify function
       setLoading(true);
 
       try {
-        const response = await fetch("/.netlify/functions/chavruta-gpt", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            message: text,
-            conversation: convo,
-            source: "luminanexus-chavruta-page",
-          }),
+        console.log("Calling Chavruta function with:", { text, convo });
+
+        const params = new URLSearchParams({
+          message: text,
+          conversation: JSON.stringify(convo),
+          source: "luminanexus-chavruta-page",
         });
 
+        const response = await fetch(`/.netlify/functions/chavruta-gpt?${params.toString()}`, {
+          method: "GET",
+        });
+
+        console.log("Chavruta response status:", response.status);
+
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          const bodyText = await response.text();
+          console.error("Non-OK response:", response.status, bodyText);
+          appendMessage(
+            "assistant",
+            `I tried to reach the Chavruta function, but got status ${response.status}.`
+          );
+          return;
         }
 
         const data = await response.json();
+        console.log("Chavruta response JSON:", data);
 
-        // Adjust this line if your function uses a different field name
         const replyText =
           data.reply ||
           data.message ||
-          "I received your question, but something went wrong parsing the reply.";
+          data.text ||
+          "I received a response from the server, but I couldn’t find a 'reply' field in it.";
 
         appendMessage("assistant", replyText);
         convo.push({ role: "assistant", content: replyText });
