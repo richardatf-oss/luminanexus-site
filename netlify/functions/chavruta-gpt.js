@@ -22,7 +22,6 @@ exports.handler = async (event, context) => {
     let source = "luminanexus-chavruta-page";
 
     if (method === "GET") {
-      // Read from query string for GET
       const params = event.queryStringParameters || {};
       message = params.message || "";
       source = params.source || source;
@@ -35,14 +34,18 @@ exports.handler = async (event, context) => {
         }
       }
     } else if (method === "POST") {
-      // Read from JSON body for POST
       const body = JSON.parse(event.body || "{}");
       message = body.message || "";
       conversation = Array.isArray(body.conversation) ? body.conversation : [];
       source = body.source || source;
     }
 
-    console.log("ChavrutaGPT received:", { method, message, source, conversationLength: conversation.length });
+    console.log("ChavrutaGPT received:", {
+      method,
+      messageSnippet: message.slice(0, 80),
+      source,
+      conversationLength: conversation.length,
+    });
 
     if (!OPENAI_API_KEY) {
       console.error("Missing OPENAI_API_KEY environment variable.");
@@ -80,7 +83,6 @@ When answering:
 3. End with a question that invites them deeper into the learning.
 `.trim();
 
-    // Map conversation into OpenAI format (last few turns to keep it short)
     const historyMessages = (conversation || [])
       .slice(-8)
       .map((c) => ({
@@ -95,6 +97,7 @@ When answering:
       { role: "user", content: message },
     ];
 
+    // --- OpenAI call ---
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -114,9 +117,9 @@ When answering:
     if (!response.ok) {
       const errorText = await response.text();
       console.error("OpenAI error:", response.status, errorText);
+      // Return the raw error text so we can see exactly what's wrong
       return jsonResponse(500, {
-        reply:
-          "ChavrutaGPT had trouble reaching the learning engine just now. Please try again in a moment.",
+        reply: `OpenAI error (status ${response.status}): ${errorText}`,
       });
     }
 
