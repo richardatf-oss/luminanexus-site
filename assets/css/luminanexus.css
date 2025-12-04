@@ -652,3 +652,93 @@ a:hover {
     justify-content: center;
   }
 }
+/* === Chavruta Chat Enhancements === */
+
+.ln-chat-shell {
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.4), transparent 60%),
+              radial-gradient(circle at bottom right, rgba(255, 255, 240, 0.7), transparent 60%),
+              #fdfaf3;
+  border-radius: 18px;
+  padding: 1.25rem;
+  box-shadow: 0 18px 40px rgba(15, 10, 5, 0.22);
+  border: 1px solid rgba(180, 140, 90, 0.3);
+}
+
+.ln-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.ln-chat-status {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ln-chat-window {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  padding: 0.75rem;
+  max-height: 380px;
+  overflow-y: auto;
+  border: 1px solid rgba(210, 190, 150, 0.5);
+  backdrop-filter: blur(3px);
+}
+
+.ln-chat-message {
+  margin-bottom: 0.75rem;
+}
+
+.ln-chat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.15rem;
+  opacity: 0.7;
+}
+
+.ln-chat-bubble {
+  display: inline-block;
+  padding: 0.6rem 0.85rem;
+  border-radius: 12px;
+  line-height: 1.4;
+  font-size: 0.9rem;
+}
+
+.ln-chat-message-ai .ln-chat-bubble {
+  background: linear-gradient(135deg, #fdf5dd, #f9ecd0);
+  border: 1px solid rgba(210, 175, 110, 0.7);
+  box-shadow: 0 10px 20px rgba(200, 160, 90, 0.35);
+}
+
+.ln-chat-message-user {
+  text-align: right;
+}
+
+.ln-chat-message-user .ln-chat-bubble {
+  background: linear-gradient(135deg, #e6f1ff, #f1f7ff);
+  border: 1px solid rgba(120, 160, 210, 0.7);
+  box-shadow: 0 10px 20px rgba(90, 120, 180, 0.25);
+}
+
+.ln-chat-form {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ln-input-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.ln-chat-footnote {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  opacity: 0.75;
+  line-height: 1.4;
+}
