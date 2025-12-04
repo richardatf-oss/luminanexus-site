@@ -26,6 +26,71 @@
     }
 
     * { box-sizing: border-box; }
+<script>
+  // Simple front-end chat logic for ChavrutaGPT
+  const chatLog   = document.getElementById("chat-log");
+  const chatForm  = document.getElementById("chat-form");
+  const chatInput = document.getElementById("chat-input");
+  const chatStatus = document.getElementById("chat-status");
+
+  // We keep the conversation history in the browser
+  const convo = [
+    {
+      role: "assistant",
+      content: "Shalom, havruta. What would you like to learn or explore today?"
+    }
+  ];
+
+  function appendMessage(from, text) {
+    if (!chatLog) return;
+    const div = document.createElement("div");
+    div.style.marginBottom = "0.4rem";
+    div.innerHTML =
+      "<strong>" + from + "</strong>: " +
+      text.replace(/\n/g, "<br />");
+    chatLog.appendChild(div);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  if (chatForm) {
+    chatForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const text = (chatInput.value || "").trim();
+      if (!text) return;
+
+      // show user message
+      appendMessage("You", text);
+      convo.push({ role: "user", content: text });
+      chatInput.value = "";
+      chatStatus.textContent = "Thinking with you…";
+
+      try {
+        const res = await fetch("/.netlify/functions/chavruta-chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: convo })
+        });
+
+        if (!res.ok) {
+          throw new Error("HTTP " + res.status);
+        }
+
+        const data = await res.json();
+        const msg = data && data.message && data.message.content
+          ? data.message.content
+          : "(No response received.)";
+
+        convo.push({ role: "assistant", content: msg });
+        appendMessage("ChavrutaGPT", msg);
+        chatStatus.textContent = "Ready.";
+      } catch (err) {
+        console.error(err);
+        chatStatus.textContent = "There was an error talking to ChavrutaGPT.";
+        appendMessage("ChavrutaGPT", "I’m having trouble reaching the server right now.");
+      }
+    });
+  }
+</script>
 
     body {
       margin: 0;
