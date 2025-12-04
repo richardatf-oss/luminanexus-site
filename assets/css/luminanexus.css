@@ -904,3 +904,6 @@ a:hover {
 .ln-input-textarea::placeholder {
   color: rgba(55, 65, 81, 0.7);
 }
+.ln-chat-shell {
+  background: #e6dfd1; /* a bit deeper than before */
+}
