@@ -26,71 +26,6 @@
     }
 
     * { box-sizing: border-box; }
-<script>
-  // Simple front-end chat logic for ChavrutaGPT
-  const chatLog   = document.getElementById("chat-log");
-  const chatForm  = document.getElementById("chat-form");
-  const chatInput = document.getElementById("chat-input");
-  const chatStatus = document.getElementById("chat-status");
-
-  // We keep the conversation history in the browser
-  const convo = [
-    {
-      role: "assistant",
-      content: "Shalom, havruta. What would you like to learn or explore today?"
-    }
-  ];
-
-  function appendMessage(from, text) {
-    if (!chatLog) return;
-    const div = document.createElement("div");
-    div.style.marginBottom = "0.4rem";
-    div.innerHTML =
-      "<strong>" + from + "</strong>: " +
-      text.replace(/\n/g, "<br />");
-    chatLog.appendChild(div);
-    chatLog.scrollTop = chatLog.scrollHeight;
-  }
-
-  if (chatForm) {
-    chatForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const text = (chatInput.value || "").trim();
-      if (!text) return;
-
-      // show user message
-      appendMessage("You", text);
-      convo.push({ role: "user", content: text });
-      chatInput.value = "";
-      chatStatus.textContent = "Thinking with you…";
-
-      try {
-        const res = await fetch("/.netlify/functions/chavruta-chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: convo })
-        });
-
-        if (!res.ok) {
-          throw new Error("HTTP " + res.status);
-        }
-
-        const data = await res.json();
-        const msg = data && data.message && data.message.content
-          ? data.message.content
-          : "(No response received.)";
-
-        convo.push({ role: "assistant", content: msg });
-        appendMessage("ChavrutaGPT", msg);
-        chatStatus.textContent = "Ready.";
-      } catch (err) {
-        console.error(err);
-        chatStatus.textContent = "There was an error talking to ChavrutaGPT.";
-        appendMessage("ChavrutaGPT", "I’m having trouble reaching the server right now.");
-      }
-    });
-  }
-</script>
 
     body {
       margin: 0;
@@ -236,7 +171,7 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
       margin-top: 1.2rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.6rem;
     }
 
     @media (max-width: 960px) {
@@ -346,7 +281,7 @@
     }
 
     .sefaria-embed {
-      margin-top: 1.6rem;
+      margin-top: 1.8rem;
       border-radius: var(--radius-xl);
       border: 1px solid var(--border-soft);
       background: #050716;
@@ -488,7 +423,73 @@
           </article>
         </div>
 
-        <!-- Sefaria inline panel -->
+        <!-- LIVE CHAVRUTA CHAT (prominent, with anchor) -->
+        <section>
+          <div class="section-kicker">Live Chavruta</div>
+          <h2 style="margin: 0 0 0.5rem;">Talk with ChavrutaGPT</h2>
+          <p style="margin: 0 0 0.8rem; font-size: 0.9rem; color: var(--text-muted); max-width: 40rem;">
+            This is your conversational study space with ChavrutaGPT. Ask questions, share reflections,
+            and explore connections between what you’re reading on Sefaria and the Celestial Library of 231 Gates.
+          </p>
+
+          <div id="chavruta-chat" style="
+              border-radius: 18px;
+              background: rgba(7, 10, 26, 0.98);
+              border: 1px solid rgba(255,255,255,0.08);
+              box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+              padding: 1rem;
+              max-width: 720px;
+            ">
+            <div id="chat-log" style="
+                height: 260px;
+                overflow-y: auto;
+                padding: 0.5rem;
+                margin-bottom: 0.7rem;
+                background: rgba(4,6,20,0.95);
+                border-radius: 12px;
+                border: 1px solid rgba(255,255,255,0.05);
+                font-size: 0.88rem;
+                color: var(--text-muted);
+              ">
+              <div style="margin-bottom: 0.4rem; color: var(--text-soft);">
+                <strong>ChavrutaGPT</strong>: Shalom, havruta. What would you like to learn or explore today?
+              </div>
+            </div>
+
+            <form id="chat-form" style="display: flex; gap: 0.5rem; align-items: flex-end;">
+              <textarea
+                id="chat-input"
+                rows="2"
+                placeholder="Ask a question, share a thought, or paste a line from Sefaria…"
+                style="
+                  flex: 1;
+                  resize: vertical;
+                  border-radius: 10px;
+                  border: 1px solid rgba(255,255,255,0.12);
+                  padding: 0.5rem 0.6rem;
+                  background: rgba(3,4,16,0.96);
+                  color: var(--text-main);
+                  font-family: inherit;
+                  font-size: 0.9rem;
+                "
+              ></textarea>
+              <button
+                type="submit"
+                id="chat-submit"
+                class="btn btn-primary"
+                style="white-space: nowrap;"
+              >
+                Send
+              </button>
+            </form>
+
+            <div id="chat-status" style="margin-top: 0.4rem; font-size: 0.8rem; color: var(--text-soft);">
+              ChavrutaGPT is powered by the OpenAI API via a secure Netlify Function.
+            </div>
+          </div>
+        </section>
+
+        <!-- Sefaria inline panel BELOW the chat -->
         <div class="sefaria-embed">
           <div class="sefaria-embed-header">
             <div>
@@ -507,73 +508,6 @@
         </div>
       </div>
     </main>
-<!-- ChavrutaGPT chat window -->
-<section style="margin-top: 2rem;">
-  <div class="section-kicker">Live Chavruta</div>
-  <h2 style="margin: 0 0 0.5rem;">Talk with ChavrutaGPT</h2>
-  <p style="margin: 0 0 0.8rem; font-size: 0.9rem; color: var(--text-muted); max-width: 40rem;">
-    This is your conversational study space with ChavrutaGPT. Ask questions, share reflections,
-    and explore connections between what you’re reading on Sefaria and the Celestial Library of
-    231 Gates.
-  </p>
-
-  <div id="chavruta-chat" style="
-      border-radius: 18px;
-      background: rgba(7, 10, 26, 0.98);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.6);
-      padding: 1rem;
-      max-width: 720px;
-    ">
-    <div id="chat-log" style="
-        height: 260px;
-        overflow-y: auto;
-        padding: 0.5rem;
-        margin-bottom: 0.7rem;
-        background: rgba(4,6,20,0.95);
-        border-radius: 12px;
-        border: 1px solid rgba(255,255,255,0.05);
-        font-size: 0.88rem;
-        color: var(--text-muted);
-      ">
-      <!-- messages will appear here -->
-      <div style="margin-bottom: 0.4rem; color: var(--text-soft);">
-        <strong>ChavrutaGPT</strong>: Shalom, havruta. What would you like to learn or explore today?
-      </div>
-    </div>
-
-    <form id="chat-form" style="display: flex; gap: 0.5rem; align-items: flex-end;">
-      <textarea
-        id="chat-input"
-        rows="2"
-        placeholder="Ask a question, share a thought, or paste a line from Sefaria…"
-        style="
-          flex: 1;
-          resize: vertical;
-          border-radius: 10px;
-          border: 1px solid rgba(255,255,255,0.12);
-          padding: 0.5rem 0.6rem;
-          background: rgba(3,4,16,0.96);
-          color: var(--text-main);
-          font-family: inherit;
-          font-size: 0.9rem;
-        "
-      ></textarea>
-      <button
-        type="submit"
-        id="chat-submit"
-        class="btn btn-primary"
-        style="white-space: nowrap;"
-      >
-        Send
-      </button>
-    </form>
-
-    <div id="chat-status" style="margin-top: 0.4rem; font-size: 0.8rem; color: var(--text-soft);">
-      ChavrutaGPT is powered by the OpenAI API via a secure Netlify Function.
-    </div>
-  </div>
-</section>
 
     <footer>
       <div class="footer-inner">
@@ -582,5 +516,69 @@
       </div>
     </footer>
   </div>
+
+  <!-- Simple front-end chat logic for ChavrutaGPT -->
+  <script>
+    const chatLog   = document.getElementById("chat-log");
+    const chatForm  = document.getElementById("chat-form");
+    const chatInput = document.getElementById("chat-input");
+    const chatStatus = document.getElementById("chat-status");
+
+    const convo = [
+      {
+        role: "assistant",
+        content: "Shalom, havruta. What would you like to learn or explore today?"
+      }
+    ];
+
+    function appendMessage(from, text) {
+      if (!chatLog) return;
+      const div = document.createElement("div");
+      div.style.marginBottom = "0.4rem";
+      div.innerHTML =
+        "<strong>" + from + "</strong>: " +
+        text.replace(/\n/g, "<br />");
+      chatLog.appendChild(div);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    if (chatForm) {
+      chatForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const text = (chatInput.value || "").trim();
+        if (!text) return;
+
+        appendMessage("You", text);
+        convo.push({ role: "user", content: text });
+        chatInput.value = "";
+        chatStatus.textContent = "Thinking with you…";
+
+        try {
+          const res = await fetch("/.netlify/functions/chavruta-chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ messages: convo })
+          });
+
+          if (!res.ok) {
+            throw new Error("HTTP " + res.status);
+          }
+
+          const data = await res.json();
+          const msg = data && data.message && data.message.content
+            ? data.message.content
+            : "(No response received.)";
+
+          convo.push({ role: "assistant", content: msg });
+          appendMessage("ChavrutaGPT", msg);
+          chatStatus.textContent = "Ready.";
+        } catch (err) {
+          console.error(err);
+          chatStatus.textContent = "There was an error talking to ChavrutaGPT.";
+          appendMessage("ChavrutaGPT", "I’m having trouble reaching the server right now.");
+        }
+      });
+    }
+  </script>
 </body>
 </html>
