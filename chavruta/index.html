@@ -442,6 +442,73 @@
         </div>
       </div>
     </main>
+<!-- ChavrutaGPT chat window -->
+<section style="margin-top: 2rem;">
+  <div class="section-kicker">Live Chavruta</div>
+  <h2 style="margin: 0 0 0.5rem;">Talk with ChavrutaGPT</h2>
+  <p style="margin: 0 0 0.8rem; font-size: 0.9rem; color: var(--text-muted); max-width: 40rem;">
+    This is your conversational study space with ChavrutaGPT. Ask questions, share reflections,
+    and explore connections between what you’re reading on Sefaria and the Celestial Library of
+    231 Gates.
+  </p>
+
+  <div id="chavruta-chat" style="
+      border-radius: 18px;
+      background: rgba(7, 10, 26, 0.98);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+      padding: 1rem;
+      max-width: 720px;
+    ">
+    <div id="chat-log" style="
+        height: 260px;
+        overflow-y: auto;
+        padding: 0.5rem;
+        margin-bottom: 0.7rem;
+        background: rgba(4,6,20,0.95);
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.05);
+        font-size: 0.88rem;
+        color: var(--text-muted);
+      ">
+      <!-- messages will appear here -->
+      <div style="margin-bottom: 0.4rem; color: var(--text-soft);">
+        <strong>ChavrutaGPT</strong>: Shalom, havruta. What would you like to learn or explore today?
+      </div>
+    </div>
+
+    <form id="chat-form" style="display: flex; gap: 0.5rem; align-items: flex-end;">
+      <textarea
+        id="chat-input"
+        rows="2"
+        placeholder="Ask a question, share a thought, or paste a line from Sefaria…"
+        style="
+          flex: 1;
+          resize: vertical;
+          border-radius: 10px;
+          border: 1px solid rgba(255,255,255,0.12);
+          padding: 0.5rem 0.6rem;
+          background: rgba(3,4,16,0.96);
+          color: var(--text-main);
+          font-family: inherit;
+          font-size: 0.9rem;
+        "
+      ></textarea>
+      <button
+        type="submit"
+        id="chat-submit"
+        class="btn btn-primary"
+        style="white-space: nowrap;"
+      >
+        Send
+      </button>
+    </form>
+
+    <div id="chat-status" style="margin-top: 0.4rem; font-size: 0.8rem; color: var(--text-soft);">
+      ChavrutaGPT is powered by the OpenAI API via a secure Netlify Function.
+    </div>
+  </div>
+</section>
 
     <footer>
       <div class="footer-inner">
