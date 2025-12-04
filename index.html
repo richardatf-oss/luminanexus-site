@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>LuminaNexus – Celestial Library of 231 Gates</title>
+  <title>LuminaNexus – Chavruta, Celestial Gates, and Sefaria</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="LuminaNexus – a nexus for Torah, learning, and light, featuring ChavrutaGPT, the Celestial Library of 231 Gates, and Sefaria's online study library."
+    content="LuminaNexus – a nexus for Torah, learning, and light, featuring ChavrutaGPT, the Celestial Library of 231 Gates, and the Sefaria online study library."
   />
 
   <style>
@@ -333,11 +333,6 @@
       color: var(--text-muted);
     }
 
-    .gate-card.highlight {
-      border-color: rgba(228, 180, 90, 0.7);
-      background: radial-gradient(circle at top, rgba(228, 180, 90, 0.16), rgba(7, 10, 26, 0.98));
-    }
-
     .hero-panel-footer {
       margin-top: 1.1rem;
       padding-top: 0.9rem;
@@ -367,6 +362,7 @@
       align-items: baseline;
       gap: 1rem;
       margin-bottom: 1.1rem;
+      flex-wrap: wrap;
     }
 
     .section-title {
@@ -471,8 +467,8 @@
     }
 
     .sefaria-embed {
-      margin-top: 1rem;
-      border-radius: var(--radius-lg);
+      margin-top: 1.6rem;
+      border-radius: var(--radius-xl);
       border: 1px solid var(--border-soft);
       background: #050716;
       overflow: hidden;
@@ -528,12 +524,11 @@
             <span class="brand-sub">A nexus of Torah, light, and learning</span>
           </div>
         </div>
-       <nav>
-  <a href="/chavruta">ChavrutaGPT</a>
-  <a href="#celestial-library">Celestial Library</a>
-  <a href="#sefaria-library">Sefaria Study Library</a>
-</nav>
-
+        <nav>
+          <a href="/chavruta#chavruta-chat">ChavrutaGPT</a>
+          <a href="/library">Celestial Library</a>
+          <a href="#sefaria-library">Sefaria Study Library</a>
+        </nav>
       </div>
     </header>
 
@@ -557,11 +552,10 @@
             Jewish sources.
           </p>
           <div class="hero-actions">
-           <a href="/chavruta" class="btn btn-primary">
-  Study with ChavrutaGPT
-</a>
-
-            <a href="#celestial-library" class="btn btn-ghost">
+            <a href="/chavruta#chavruta-chat" class="btn btn-primary">
+              Study with ChavrutaGPT
+            </a>
+            <a href="/library" class="btn btn-ghost">
               Enter the 231 Gates
             </a>
             <a href="#sefaria-library" class="btn btn-soft">
@@ -574,7 +568,7 @@
           </div>
         </div>
 
-        <!-- Visual: 231 Gates panel -->
+        <!-- Celestial Library teaser -->
         <div class="hero-visual">
           <div class="hero-panel">
             <div class="hero-panel-header">
@@ -588,7 +582,7 @@
             </div>
 
             <div class="gate-grid">
-              <div class="gate-card highlight">
+              <div class="gate-card">
                 <div class="gate-label">Gate א–ב</div>
                 <div class="gate-pair"><span>אב</span> · First Shelter</div>
                 <div class="gate-desc">
@@ -673,8 +667,7 @@
               <span class="emph">Guided, gentle, non-polemical.</span>
             </div>
             <div class="feature-actions">
-              <!-- TODO: update href to your actual ChavrutaGPT page -->
-              <a href="/chavruta" class="btn btn-soft">Open ChavrutaGPT</a>
+              <a href="/chavruta#chavruta-chat" class="btn btn-soft">Open ChavrutaGPT</a>
             </div>
           </article>
 
@@ -692,7 +685,6 @@
               <span class="emph">Star-map & guided journeys coming soon.</span>
             </div>
             <div class="feature-actions">
-              <!-- TODO: update href to your actual Library page -->
               <a href="/library" class="btn btn-ghost">Enter the Library</a>
             </div>
           </article>
@@ -712,7 +704,6 @@
               <span class="emph">Free, open, and ever-expanding.</span>
             </div>
             <div class="feature-actions">
-              <!-- Direct links into Sefaria -->
               <a href="https://www.sefaria.org/texts" target="_blank" rel="noopener" class="btn btn-primary">
                 Open Sefaria Texts
               </a>
@@ -731,8 +722,6 @@
               If this panel doesn’t load, use the button above to open Sefaria in a new tab.
             </div>
           </div>
-          <!-- NOTE: This uses a simple iframe to Sefaria; if your browser or Sefaria's settings
-               disallow embedding, users can still use the direct link above. -->
           <iframe
             class="sefaria-embed-iframe"
             src="https://www.sefaria.org/texts"
@@ -754,8 +743,6 @@
   </div>
 
   <!-- SEFARIA LINKER v3 -->
-  <!-- This script automatically finds references like “Berakhot 2a” on your page and
-       turns them into hoverable links with Sefaria popups. -->
   <script
     type="text/javascript"
     charset="utf-8"
