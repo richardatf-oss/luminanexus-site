@@ -12,8 +12,34 @@
   const chatButton = chatForm ? chatForm.querySelector("button[type='submit']") : null;
   const modeSelect = document.querySelector(".ln-mode-select");
   const saveButton = document.querySelector(".ln-session-save");
+  const newButton = document.querySelector(".ln-session-new");
+  const pinButton = document.querySelector(".ln-session-pin");
+  const pinnedList = document.querySelector(".ln-pinned-list");
+  const sefariaInput = document.querySelector(".ln-sefaria-input");
+  const sefariaInsert = document.querySelector(".ln-sefaria-insert");
 
   const convo = [];
+  const pinnedInsights = [];
+
+  // --- Simple chime using Web Audio (if available) ---
+  function playChime() {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.value = 880; // A5
+      gain.gain.value = 0.08;
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.18);
+    } catch (e) {
+      // fail silently
+    }
+  }
 
   function appendMessage(role, text) {
     if (!chatWindow) return;
@@ -21,6 +47,7 @@
     const msg = document.createElement("div");
     msg.classList.add("ln-chat-message");
     msg.classList.add(role === "assistant" ? "ln-chat-message-ai" : "ln-chat-message-user");
+    msg.setAttribute("data-role", role);
 
     const label = document.createElement("div");
     label.classList.add("ln-chat-label");
@@ -35,7 +62,6 @@
     chatWindow.appendChild(msg);
     chatWindow.scrollTop = chatWindow.scrollHeight;
 
-    // trigger enter animation
     requestAnimationFrame(() => {
       msg.classList.add("ln-chat-message-enter");
     });
@@ -67,8 +93,6 @@
     try {
       const mode = modeSelect ? modeSelect.value : "questions";
 
-      console.log("Calling Chavruta function with:", { text, convo, mode });
-
       const params = new URLSearchParams({
         message: text,
         conversation: JSON.stringify(convo),
@@ -81,8 +105,6 @@
         { method: "GET" }
       );
 
-      console.log("Chavruta response status:", response.status);
-
       if (!response.ok) {
         let bodyInfo = "";
         try {
@@ -91,17 +113,15 @@
         } catch (e) {
           bodyInfo = await response.text();
         }
-        console.error("Non-OK response body:", bodyInfo);
         appendMessage(
           "assistant",
           `Server error (${response.status}): ${bodyInfo}`
         );
+        convo.push({ role: "assistant", content: bodyInfo });
         return;
       }
 
       const data = await response.json();
-      console.log("Chavruta response JSON:", data);
-
       const replyText =
         data.reply ||
         data.message ||
@@ -110,12 +130,18 @@
 
       appendMessage("assistant", replyText);
       convo.push({ role: "assistant", content: replyText });
+      playChime();
     } catch (err) {
       console.error("ChavrutaGPT error:", err);
       appendMessage(
         "assistant",
         "I’m sorry — I couldn’t reach the ChavrutaGPT function right now. Please try again in a moment."
       );
+      convo.push({
+        role: "assistant",
+        content:
+          "I’m sorry — I couldn’t reach the ChavrutaGPT function right now. Please try again in a moment.",
+      });
     } finally {
       setLoading(false);
     }
@@ -140,7 +166,6 @@
         await navigator.clipboard.writeText(text);
         alert("Chavruta session copied to your clipboard.");
       } else {
-        // Fallback – open prompt for manual copy
         window.prompt("Copy your chavruta session:", text);
       }
     } catch (err) {
@@ -149,11 +174,72 @@
     }
   }
 
+  function handleNewSession() {
+    convo.length = 0;
+    if (chatWindow) {
+      chatWindow.innerHTML = "";
+      appendMessage(
+        "assistant",
+        "Shalom. We are beginning a new session. What would you like to learn together now?"
+      );
+    }
+  }
+
+  function renderPinnedInsights() {
+    if (!pinnedList) return;
+    pinnedList.innerHTML = "";
+    pinnedInsights.forEach((text, index) => {
+      const li = document.createElement("li");
+      li.textContent = text;
+      li.title = "Pinned insight " + (index + 1);
+      pinnedList.appendChild(li);
+    });
+  }
+
+  function handlePinLastInsight() {
+    // Find last assistant turn
+    for (let i = convo.length - 1; i >= 0; i--) {
+      if (convo[i].role === "assistant") {
+        pinnedInsights.push(convo[i].content);
+        renderPinnedInsights();
+        return;
+      }
+    }
+    alert("No assistant insight to pin yet.");
+  }
+
+  function handleSefariaInsert() {
+    if (!sefariaInput || !chatTextarea) return;
+    const ref = sefariaInput.value.trim();
+    if (!ref) return;
+
+    // Simple Sefaria link builder (underscores instead of spaces)
+    const slug = ref.replace(/\s+/g, "_");
+    const link = `https://www.sefaria.org/${encodeURIComponent(slug)}`;
+
+    const existing = chatTextarea.value.trim();
+    const insertText = `${ref} — you can open it on Sefaria here: ${link}`;
+
+    chatTextarea.value = existing
+      ? existing + "\n\n" + insertText
+      : insertText;
+
+    chatTextarea.focus();
+  }
+
   if (chatForm && chatWindow && chatTextarea) {
     chatForm.addEventListener("submit", handleSubmit);
   }
-
   if (saveButton) {
     saveButton.addEventListener("click", handleSaveClick);
+  }
+  if (newButton) {
+    newButton.addEventListener("click", handleNewSession);
+  }
+  if (pinButton) {
+    pinButton.addEventListener("click", handlePinLastInsight);
+  }
+  if (sefariaInsert) {
+    sefariaInsert.addEventListener("click", handleSefariaInsert);
   }
 })();
