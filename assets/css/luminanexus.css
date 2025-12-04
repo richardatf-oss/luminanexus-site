@@ -880,3 +880,27 @@ a:hover {
   opacity: 0.78;
   line-height: 1.4;
 }
+/* === Chavruta readability tweaks === */
+
+/* Chat bubbles: darker text for better contrast */
+.ln-chat-bubble {
+  color: #1f2933; /* deep gray, very readable */
+}
+
+/* User bubble text slightly darker still */
+.ln-chat-message-user .ln-chat-bubble {
+  color: #111827;
+}
+
+/* Input box: light parchment instead of dark gray */
+.ln-input-textarea {
+  background: #faf5e9;            /* soft parchment */
+  color: #111827;                 /* dark text */
+  border: 1px solid rgba(130, 100, 70, 0.7);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+/* Placeholder text also readable */
+.ln-input-textarea::placeholder {
+  color: rgba(55, 65, 81, 0.7);
+}
