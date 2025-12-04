@@ -1,8 +1,10 @@
 // netlify/functions/chavruta-gpt.js
+//
+// "Offline" ChavrutaGPT — no OpenAI needed.
+// Works with both GET and POST, and matches the frontend's expectations:
+//   - GET / .netlify/functions/chavruta-gpt?message=...&conversation=[...]
+//   - Returns JSON: { reply: "..." }
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-
-// Helper to build JSON responses
 function jsonResponse(statusCode, body, extraHeaders = {}) {
   return {
     statusCode,
@@ -40,104 +42,55 @@ exports.handler = async (event, context) => {
       source = body.source || source;
     }
 
-    console.log("ChavrutaGPT received:", {
+    console.log("Offline ChavrutaGPT received:", {
       method,
       messageSnippet: message.slice(0, 80),
       source,
       conversationLength: conversation.length,
     });
 
-    if (!OPENAI_API_KEY) {
-      console.error("Missing OPENAI_API_KEY environment variable.");
-      return jsonResponse(500, {
-        reply:
-          "ChavrutaGPT is not fully configured yet (missing API key on the server). Please let the builder know.",
-      });
-    }
-
+    // No text? Greet gently.
     if (!message) {
       return jsonResponse(200, {
         reply:
-          "Shalom. Bring me a verse, a question, or a thought, and we’ll begin learning together.",
+          "Shalom. Bring me a verse, a line of Torah, or even just a feeling, and we’ll begin learning together.",
       });
     }
 
-    const systemPrompt = `
-You are **ChavrutaGPT**, a gentle, thoughtful chavruta (study partner) for Torah, Tanakh, Midrash, and classical Jewish and mystical texts.
+    // Build a small "context" from the last user message in the convo
+    const lastTurn = [...conversation].reverse().find((c) => c.role === "user");
+    const lastMessage = lastTurn ? lastTurn.content : null;
 
-Your job is:
-- To ask good questions, not just give answers.
-- To help the learner notice patterns, words, and themes.
-- To suggest relevant classical sources (Tanakh, Mishnah, Talmud, Midrash, Rambam, etc.) when appropriate.
-- To keep a warm, respectful tone.
+    // Simple chavruta-style reply (hand-crafted, no external API)
+    let reply = "";
 
-Guidelines:
-- Do NOT give halachic rulings or psak. For any halachic questions, gently suggest they ask a trusted rabbi or posek.
-- If the user shares something personal or painful, respond with care and validation before analysis.
-- Prefer short paragraphs and lists over huge walls of text.
-- Occasionally ask: "What stands out to you most in this text?" or a similar reflective question.
+    reply += `You brought: "${message}".\n\n`;
 
-When answering:
-1. Briefly reflect what they brought (one or two sentences).
-2. Offer 1–3 insights, questions, or source suggestions.
-3. End with a question that invites them deeper into the learning.
-`.trim();
-
-    const historyMessages = (conversation || [])
-      .slice(-8)
-      .map((c) => ({
-        role: c.role === "assistant" ? "assistant" : "user",
-        content: c.content || "",
-      }))
-      .filter((m) => m.content);
-
-    const openAiMessages = [
-      { role: "system", content: systemPrompt },
-      ...historyMessages,
-      { role: "user", content: message },
-    ];
-
-    // --- OpenAI call ---
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: openAiMessages,
-        temperature: 0.6,
-        max_tokens: 600,
-      }),
-    });
-
-    console.log("OpenAI status:", response.status);
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("OpenAI error:", response.status, errorText);
-      // Return the raw error text so we can see exactly what's wrong
-      return jsonResponse(500, {
-        reply: `OpenAI error (status ${response.status}): ${errorText}`,
-      });
+    if (lastMessage && lastMessage !== message) {
+      reply += `Previously you said: "${lastMessage}". I’m holding that together with what you just shared.\n\n`;
     }
 
-    const data = await response.json();
-    const reply =
-      data.choices &&
-      data.choices[0] &&
-      data.choices[0].message &&
-      data.choices[0].message.content
-        ? data.choices[0].message.content.trim()
-        : "I received a response from the learning engine, but I couldn’t parse it. Please try again.";
+    reply +=
+      "Let’s treat this like we’re sitting over an open sefer together:\n\n";
+
+    reply +=
+      "1. **Notice a word or phrase** that pulls at you. What is it, and why do you think it stands out?\n";
+    reply +=
+      "2. **Where have you seen something like this before?** Another verse, a teaching, or a moment in your own life?\n";
+    reply +=
+      "3. **What is the question behind your question?** If you had to name the deeper thing you’re really asking, what would it be?\n\n";
+
+    reply +=
+      "If you’d like, tell me:\n- The exact pasuk (book / chapter / verse), or\n- Whether this feels more like a question of pshat (simple meaning), drash (interpretation), sod (mystery), or your own life right now.\n\n";
+
+    reply += "What stands out to you most in what you just brought?";
 
     return jsonResponse(200, { reply });
   } catch (err) {
-    console.error("ChavrutaGPT server error:", err);
+    console.error("Offline ChavrutaGPT server error:", err);
     return jsonResponse(500, {
       reply:
-        "There was an internal server error in ChavrutaGPT. Please try again soon.",
+        "There was an internal error in the chavruta function. Please try again in a little while.",
     });
   }
 };
