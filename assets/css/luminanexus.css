@@ -215,3 +215,11 @@
     justify-content: flex-start;
   }
 }
+/* === Layout: widen main content container === */
+.inner {
+  width: 100%;
+  max-width: 1400px;      /* wider content area */
+  margin: 0 auto;         /* keep it centered */
+  padding: 2.5rem 2.5rem; /* more breathing room at edges */
+  box-sizing: border-box;
+}
