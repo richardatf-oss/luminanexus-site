@@ -1,225 +1,716 @@
+/* =========================================================
+   Luminanexus · Shared site styles
+   This file controls the look of Home, Chavruta, Library,
+   Sefaria gateway, and Flipbooks.
+   ========================================================= */
+
+/* ---- Base reset -------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background:
+    radial-gradient(circle at top left, #1f2937 0, #020617 55%, #000 100%);
+  color: #e5e7eb;
+  text-rendering: optimizeLegibility;
+}
+
+/* Links */
+
+a {
+  color: #f97316;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---- Layout containers ------------------------------------------------- */
+
+/* Main page wrapper (used on <main class="page">) */
+
+.page {
+  min-height: calc(100vh - 140px); /* header + footer space */
+  padding: 3rem 0 3rem;
+}
+
+/* Shared inner content container
+   WIDENED so the site uses most of the screen */
+
+.inner {
+  width: 100%;
+  max-width: 1400px;      /* wider content area */
+  margin: 0 auto;         /* centered */
+  padding: 0 2.5rem;      /* side padding */
+}
+
+/* Slightly tighter padding on small screens */
+@media (max-width: 768px) {
+  .page {
+    padding: 2rem 0 2.5rem;
+  }
+  .inner {
+    padding: 0 1.25rem;
+  }
+}
+
+/* ---- Site header / navigation ----------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0.96),
+    rgba(30, 64, 175, 0.92),
+    rgba(15, 23, 42, 0.96)
+  );
+  border-bottom: 1px solid rgba(148, 163, 184, 0.5);
+  backdrop-filter: blur(16px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 2.5rem;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.brand-mark {
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: #f9fafb;
+}
+
+.brand-tagline {
+  font-size: 0.75rem;
+  opacity: 0.75;
+  color: #e5e7eb;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.main-nav a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  color: #e5e7eb;
+  border: 1px solid transparent;
+}
+
+.main-nav a:hover {
+  border-color: rgba(248, 250, 252, 0.35);
+  text-decoration: none;
+}
+
+.main-nav a.is-active {
+  background: linear-gradient(to right, #f97316, #fb923c);
+  color: #111827;
+  border-color: transparent;
+}
+
+/* Mobile nav stacking */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding-inline: 1.25rem;
+  }
+  .main-nav {
+    flex-wrap: wrap;
+  }
+}
+
+/* ---- Home page hero ---------------------------------------------------- */
+
+.hero-grid {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.hero-main {
+  padding: 1.75rem 2rem;
+  border-radius: 1.25rem;
+  background: radial-gradient(circle at top left, #1e293b, #020617);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+.hero-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #facc6b;
+  margin-bottom: 0.4rem;
+}
+
+.hero-main h1 {
+  font-size: clamp(2rem, 2.7vw, 2.6rem);
+  margin: 0.25rem 0 0.75rem;
+  color: #f9fafb;
+}
+
+.hero-main h1 span {
+  color: #fb923c;
+}
+
+.hero-main p {
+  margin: 0.35rem 0;
+  line-height: 1.65;
+  color: #e5e7eb;
+  max-width: 720px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+}
+
+.hero-btn {
+  border-radius: 999px;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-btn-primary {
+  background: linear-gradient(to right, #fb923c, #f97316);
+  color: #111827;
+  box-shadow: 0 14px 30px rgba(249, 115, 22, 0.55);
+}
+
+.hero-btn-secondary {
+  background: transparent;
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.9);
+}
+
+/* Right-hand cards on home */
+
+.home-card-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.home-card {
+  padding: 1.1rem 1.25rem;
+  border-radius: 0.9rem;
+  background: radial-gradient(circle at top left, #111827, #020617);
+  border: 1px solid rgba(148, 163, 184, 0.65);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.9);
+}
+
+.home-card h2 {
+  font-size: 0.95rem;
+  margin: 0 0 0.4rem;
+  color: #f9fafb;
+}
+
+.home-card p {
+  font-size: 0.8rem;
+  margin: 0.25rem 0;
+  color: #e5e7eb;
+}
+
+.home-card a {
+  font-size: 0.8rem;
+}
+
+/* Today’s learning strip */
+
+.learning-strip {
+  margin-top: 2.4rem;
+  padding: 1rem 1.25rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    rgba(30, 64, 175, 0.95),
+    rgba(249, 115, 22, 0.96)
+  );
+  color: #f9fafb;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+}
+
+.learning-strip-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.learning-strip-main {
+  flex: 1 1 260px;
+  font-size: 0.85rem;
+}
+
+.learning-strip-main strong {
+  display: block;
+}
+
+.learning-strip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.learning-strip button,
+.learning-strip a {
+  border-radius: 999px;
+  border: 1px solid rgba(249, 250, 251, 0.85);
+  background: rgba(15, 23, 42, 0.15);
+  color: #0f172a;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ---- Footer ------------------------------------------------------------ */
+
+.site-footer {
+  padding: 1.2rem 0 1.6rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.5);
+  background: radial-gradient(circle at top, #020617, #020617 70%, #000 100%);
+}
+
+.footer-line {
+  font-size: 0.78rem;
+  opacity: 0.75;
+  text-align: center;
+}
+
+/* ---- ChavrutaGPT page styles ------------------------------------------- */
+
+/* Layout shell */
+
+.chavruta-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.6fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1000px) {
+  .chavruta-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Left chat column */
+
+.ln-chat-shell {
+  border-radius: 1rem;
+  background: radial-gradient(circle at top left, #111827, #020617);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 420px;
+}
+
+.ln-chat-window {
+  background: #020617;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(15, 23, 42, 0.95);
+  padding: 0.85rem;
+  min-height: 220px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
 /* === Chavruta readability tweaks === */
 
 .ln-chat-bubble {
-  color: #1f2933;
+  color: #f1f5f9;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
 }
 
 .ln-chat-message-user .ln-chat-bubble {
-  color: #111827;
+  color: #11b27f;
 }
 
-/* Input box: light parchment */
+/* Input box */
+
 .ln-input-textarea {
-  background: #faf5e9;
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  border-radius: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  background: #f4f4f5;
   color: #111827;
-  border: 1px solid rgba(130, 100, 70, 0.7);
+  border: 1px solid rgba(59, 130, 246, 0.7);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+  font-size: 0.85rem;
 }
 
 .ln-input-textarea::placeholder {
   color: rgba(55, 65, 81, 0.7);
 }
 
-/* Chat card: night-mode parchment with subtle glow */
-.ln-chat-shell {
-  background: #e6dfd1;
-  border-radius: 18px;
-  padding: 1.1rem;
-  box-shadow: 0 16px 32px rgba(35, 25, 15, 0.22);
-  border: 1px solid rgba(160, 130, 90, 0.45);
-}
-
-/* Soft breathing glow around chat */
-.ln-chat-shell-glow {
-  position: relative;
-}
-
-.ln-chat-shell-glow::before {
-  content: "";
-  position: absolute;
-  inset: -12px;
-  border-radius: 24px;
-  background: radial-gradient(circle at top, rgba(255, 255, 230, 0.12), transparent 60%);
-  opacity: 0;
-  pointer-events: none;
-  animation: lnGlowBreath 4.5s ease-in-out infinite;
-}
-
-@keyframes lnGlowBreath {
-  0%,
-  100% {
-    opacity: 0.1;
-  }
-  50% {
-    opacity: 0.4;
-  }
-}
-
-/* Chat controls & buttons */
-
-.ln-chat-header {
+.ln-input-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
 }
 
-.ln-chat-status {
+.ln-send-btn {
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(to right, #fb923c, #f97316);
+  color: #111827;
+  box-shadow: 0 10px 25px rgba(249, 115, 22, 0.6);
+}
+
+/* Voice controls */
+
+.ln-voice-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.75rem;
-  opacity: 0.7;
-  letter-spacing: 0.06em;
+  color: #e5e7eb;
+}
+
+.ln-voice-toggle input {
+  accent-color: #fb923c;
+}
+
+/* Right column: “how to use” card */
+
+.chavruta-right-card {
+  border-radius: 1rem;
+  background: radial-gradient(circle at top right, #1e293b, #020617);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+  padding: 1.2rem 1.35rem;
+  font-size: 0.85rem;
+}
+
+.chavruta-right-card h2 {
+  margin-top: 0;
+  font-size: 0.95rem;
+  color: #f9fafb;
+}
+
+/* ---- Sefaria inline embed ---------------------------------------------- */
+
+.sefaria-embed {
+  margin-top: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  overflow: hidden;
+  background: #020617;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+}
+
+.sefaria-embed-header {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: radial-gradient(circle at top left, #0f172a, #020617);
+  color: #e5e7eb;
+}
+
+.sefaria-embed-iframe {
+  width: 100%;
+  height: 460px;
+  border: none;
+}
+
+/* ---- Celestial Library (231 gates) ------------------------------------- */
+
+.celestial-hero-grid {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .celestial-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.hero-panel {
+  padding: 1.75rem 2rem;
+  border-radius: 1rem;
+  background: radial-gradient(circle at top left, #262f6b, #111827);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f9fafb;
+}
+
+.hero-panel h1 {
+  font-size: clamp(1.9rem, 2.4vw, 2.3rem);
+  margin-bottom: 0.75rem;
+}
+
+.hero-panel p {
+  margin: 0.25rem 0;
+  line-height: 1.6;
+}
+
+.hero-panel.secondary {
+  background: radial-gradient(circle at top right, #3b256b, #111827);
+}
+
+.hero-badge {
+  font-size: 0.75rem;
+  margin-bottom: 0.4rem;
+  opacity: 0.9;
+  color: #facc6b;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-.ln-chat-controls {
+.eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-bottom: 0.35rem;
+  color: #facc6b;
+}
+
+.hero-chip-row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
   flex-wrap: wrap;
-}
-
-.ln-chat-controls-right {
-  display: flex;
   gap: 0.4rem;
-  flex-wrap: wrap;
+  margin-top: 0.6rem;
 }
 
-.ln-mode-label {
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.ln-mode-select {
-  font-size: 0.8rem;
-  padding: 0.25rem 0.4rem;
-  border-radius: 6px;
-  border: 1px solid rgba(130, 100, 70, 0.5);
-  background: #f7f3ea;
-}
-
-.ln-btn-ghost {
-  background: transparent;
-  border: 1px solid rgba(130, 100, 70, 0.5);
-  color: #4b3925;
-  font-size: 0.8rem;
-  padding: 0.3rem 0.6rem;
+.hero-chip {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.55rem;
   border-radius: 999px;
-  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  opacity: 0.95;
+  background: radial-gradient(circle at top, rgba(251, 191, 36, 0.22), transparent);
+  color: #fef9c3;
 }
 
-.ln-btn-ghost:hover {
-  background: rgba(120, 90, 60, 0.08);
-}
+/* Gate filters & grid */
 
-/* Chat window & animations */
-
-.ln-chat-window {
-  background: rgba(248, 244, 236, 0.9);
-  border-radius: 14px;
-  padding: 0.65rem;
-  max-height: 360px;
-  overflow-y: auto;
-  border: 1px solid rgba(190, 165, 120, 0.6);
-  backdrop-filter: blur(2px);
-}
-
-.ln-chat-message {
-  margin-bottom: 0.7rem;
-  opacity: 0;
-  transform: translateY(6px);
-}
-
-.ln-chat-message-enter {
-  animation: lnFadeSlideIn 0.22s ease-out forwards;
-}
-
-@keyframes lnFadeSlideIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Pinned insights */
-
-.ln-pinned {
-  margin-top: 1.5rem;
-}
-
-.ln-body-sm {
-  font-size: 0.85rem;
-}
-
-.ln-pinned-list {
-  list-style: disc;
-  padding-left: 1.1rem;
-  margin-top: 0.4rem;
-  max-height: 180px;
-  overflow-y: auto;
-  font-size: 0.85rem;
-}
-
-.ln-pinned-list li {
-  margin-bottom: 0.25rem;
-}
-
-/* Sefaria bar */
-
-.ln-sefaria-bar {
+.gate-toolbar {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2rem 0 0.75rem;
+}
+
+.gate-toolbar-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.gate-count {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  color: #e5e7eb;
+}
+
+.gate-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #e5e7eb;
+}
+
+.gate-filter select {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  border-radius: 999px;
+  color: #f9fafb;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.gate-filter select:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(248, 250, 252, 0.7);
+}
+
+.gate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 2.5rem;
+}
+
+.gate-card {
+  position: relative;
+  padding: 0.95rem 1rem;
+  border-radius: 0.9rem;
+  background: linear-gradient(145deg, #111827, #1f2937);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.75);
+  display: flex;
+  flex-direction: column;
   gap: 0.4rem;
+  color: #e5e7eb;
+}
+
+.gate-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.gate-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.gate-key-hebrew {
+  font-size: 0.92rem;
+  opacity: 0.95;
+  color: #e5e7eb;
+}
+
+.gate-key-latin {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  opacity: 0.9;
+  color: #c7d2fe;
+}
+
+.gate-theme {
+  font-size: 0.8rem;
+  opacity: 0.95;
+  color: #e5e7eb;
+}
+
+.gate-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 0.35rem;
+  gap: 0.5rem;
 }
 
-.ln-sefaria-input {
-  flex: 1;
+.gate-tag {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  color: #cbd5f5;
 }
 
-/* Fade-in for the whole section */
-
-.ln-fade-in {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: lnSectionFade 0.45s ease-out forwards;
+.gate-link {
+  font-size: 0.75rem;
+  text-decoration: none;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 250, 252, 0.8);
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), rgba(37, 99, 235, 0.3));
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  color: #0f172a;
 }
 
-@keyframes lnSectionFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.gate-link svg {
+  width: 0.7rem;
+  height: 0.7rem;
 }
 
-/* Mobile responsive layout */
-
-@media (max-width: 900px) {
-  .ln-two-col-responsive {
-    flex-direction: column;
-  }
-
-  .ln-chat-shell {
-    margin-top: 1.25rem;
-  }
-
-  .ln-chat-controls {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .ln-chat-controls-right {
-    align-self: stretch;
-    justify-content: flex-start;
-  }
+.gate-link:hover {
+  filter: brightness(1.08);
 }
-/* === Layout: widen main content container === */
-.inner {
-  width: 100%;
-  max-width: 1400px;      /* wider content area */
-  margin: 0 auto;         /* keep it centered */
-  padding: 2.5rem 2.5rem; /* more breathing room at edges */
-  box-sizing: border-box;
+
+/* ---- Flipbooks page ---------------------------------------------------- */
+
+.flipbooks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.flipbook-card {
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  background: radial-gradient(circle at top left, #111827, #020617);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.9);
+  font-size: 0.85rem;
+}
+
+.flipbook-card h2 {
+  margin-top: 0;
+  font-size: 0.95rem;
+  color: #f9fafb;
+}
+
+.flipbook-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
 }
