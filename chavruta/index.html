@@ -166,11 +166,29 @@
       .notice {
         font-size: 0.78rem;
         color: #b7b6ff;
-        margin-top: 1.4rem;
+        margin-top: 1.2rem;
+        margin-bottom: 0.7rem;
       }
 
       .notice strong {
         color: #ffdba5;
+      }
+
+      .voice-test-button {
+        margin-top: 0.3rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: transparent;
+        color: #f4f4ff;
+        padding: 0.45rem 1.1rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      .voice-test-button:hover {
+        background: rgba(255, 255, 255, 0.06);
       }
 
       /* Chat panel */
@@ -364,7 +382,7 @@
       <!-- Main -->
       <main class="inner">
         <div class="layout">
-          <!-- Left: explanation and sample prompts -->
+          <!-- Left: explanation -->
           <section>
             <div class="hero-kicker">ChavrutaGPT</div>
             <h1 class="hero-title">
@@ -391,10 +409,14 @@
             </ul>
 
             <p class="notice">
-              <strong>Voice:</strong> You can speak to Chavruta with the 🎙️
-              button (in supported browsers), and toggle his spoken voice with
-              the 🔈 / 🔇 button.
+              <strong>Voice:</strong> Use 🎙️ to speak to Chavruta (in supported
+              browsers). Use 🔈 / 🔇 to turn his voice on or off, and ♀ / ♂ to
+              choose a softer or deeper tone.
             </p>
+
+            <button id="voice-test" type="button" class="voice-test-button">
+              Test Chavruta's voice
+            </button>
           </section>
 
           <!-- Right: chat panel -->
@@ -442,6 +464,14 @@
                     🔈
                   </button>
                   <button
+                    id="chavruta-voice-mode"
+                    type="button"
+                    class="icon-button"
+                    title="Switch between softer (female) or deeper (male) tone"
+                  >
+                    ♀
+                  </button>
+                  <button
                     id="chavruta-send"
                     type="button"
                     class="send-button"
@@ -478,12 +508,17 @@
 
       const micButton = document.getElementById("chavruta-mic");
       const voiceToggleButton = document.getElementById("chavruta-voice-toggle");
+      const voiceModeButton = document.getElementById("chavruta-voice-mode");
+      const voiceTestButton = document.getElementById("voice-test");
 
       let isSending = false;
-      let conversation = []; // {role, content} messages sent to the server
+      let conversation = []; // {role, content}
       let recognition = null;
       let isListening = false;
+
       let voiceEnabled = true;
+      let selectedVoice = null;
+      let voiceMode = "female"; // "female" or "male"
 
       function addMessage(role, text) {
         const div = document.createElement("div");
@@ -496,7 +531,8 @@
         }
         div.textContent = text;
         messagesEl.appendChild(div);
-        messagesEl.parentElement.scrollTop = messagesEl.parentElement.scrollHeight;
+        messagesEl.parentElement.scrollTop =
+          messagesEl.parentElement.scrollHeight;
       }
 
       async function sendMessage() {
@@ -509,7 +545,6 @@
         sendBtn.disabled = true;
         statusText.textContent = "Asking Chavruta…";
 
-        // Show user message
         addMessage("user", text);
         conversation.push({ role: "user", content: text });
 
@@ -575,7 +610,7 @@
 
       if (SpeechRecognition) {
         recognition = new SpeechRecognition();
-        recognition.lang = "en-US"; // adjust later if desired
+        recognition.lang = "en-US";
         recognition.continuous = false;
         recognition.interimResults = false;
 
@@ -618,6 +653,54 @@
         micButton.title = "Speech recognition not supported in this browser";
       }
 
+      // --- Text-to-Speech: voice loading ---
+      function loadVoices() {
+        if (!("speechSynthesis" in window)) {
+          console.warn("speechSynthesis not available in this browser.");
+          statusText.textContent = "Voice not available on this device.";
+          voiceEnabled = false;
+          voiceToggleButton.textContent = "🔇";
+          voiceToggleButton.disabled = true;
+          voiceModeButton.disabled = true;
+          voiceTestButton.disabled = true;
+          return;
+        }
+
+        const voices = window.speechSynthesis.getVoices();
+        console.log("Available TTS voices:", voices);
+
+        if (!voices || voices.length === 0) {
+          statusText.textContent = "Voice not available on this device.";
+          voiceEnabled = false;
+          voiceToggleButton.textContent = "🔇";
+          // leave buttons enabled in case voices load later
+          return;
+        }
+
+        selectedVoice =
+          voices.find((v) => v.lang && v.lang.startsWith("en")) || voices[0];
+
+        console.log("Selected voice:", selectedVoice);
+        statusText.textContent = "Voice ready.";
+      }
+
+      if ("speechSynthesis" in window) {
+        loadVoices();
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+      }
+
+      // Clean text for speech (remove hashtags etc.)
+      function cleanForSpeech(text) {
+        if (!text) return text;
+        // Remove #hashtags
+        let cleaned = text.replace(/#\S+/g, "");
+        // Remove stray '#' characters
+        cleaned = cleaned.replace(/#/g, "");
+        // Collapse extra whitespace
+        cleaned = cleaned.replace(/\s{2,}/g, " ").trim();
+        return cleaned;
+      }
+
       // --- Text-to-Speech (Chavruta speaks back) ---
       function speakChavruta(text) {
         if (!voiceEnabled) return;
@@ -625,18 +708,26 @@
           console.warn("Text-to-speech not supported in this browser.");
           return;
         }
-        if (!text) return;
+
+        const cleaned = cleanForSpeech(text);
+        if (!cleaned) return;
 
         window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
+
+        const utterance = new SpeechSynthesisUtterance(cleaned);
         utterance.rate = 1.0;
-        utterance.pitch = 1.0;
         utterance.volume = 1.0;
 
-        // Optional: choose voice by language
-        // const voices = window.speechSynthesis.getVoices();
-        // const match = voices.find((v) => v.lang.startsWith("en"));
-        // if (match) utterance.voice = match;
+        // Softer / deeper tone based on mode
+        if (voiceMode === "female") {
+          utterance.pitch = 1.15;
+        } else {
+          utterance.pitch = 0.9;
+        }
+
+        if (selectedVoice) {
+          utterance.voice = selectedVoice;
+        }
 
         window.speechSynthesis.speak(utterance);
       }
@@ -647,6 +738,22 @@
         statusText.textContent = voiceEnabled
           ? "Voice enabled."
           : "Voice muted.";
+      });
+
+      voiceModeButton.addEventListener("click", () => {
+        voiceMode = voiceMode === "female" ? "male" : "female";
+        voiceModeButton.textContent = voiceMode === "female" ? "♀" : "♂";
+        statusText.textContent =
+          voiceMode === "female"
+            ? "Softer (female) tone selected."
+            : "Deeper (male) tone selected.";
+      });
+
+      voiceTestButton.addEventListener("click", () => {
+        statusError.textContent = "";
+        speakChavruta(
+          "Shalom, this is ChavrutaGPT. If you can hear this, my voice is working."
+        );
       });
     </script>
   </body>
