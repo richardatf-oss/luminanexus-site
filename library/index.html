@@ -2,573 +2,586 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>The Celestial Library of 231 Gates · LuminaNexus</title>
+    <title>Celestial Library of 231 Gates · LuminaNexus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Shared site styles -->
     <link rel="stylesheet" href="../assets/luminanexus.css" />
 
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background: #050716;
-        color: #f7f7ff;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
-      }
+      /* Page-specific polish (uses your shared palette) */
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .page {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .inner {
-        max-width: 1080px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-      }
-
-      /* Header / Nav */
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        background: radial-gradient(circle at top, #151937, #050716);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .header-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.9rem 1.5rem;
-      }
-
-      .logo {
-        font-size: 0.8rem;
-        letter-spacing: 0.26em;
-        text-transform: uppercase;
-        opacity: 0.92;
-      }
-
-      nav {
-        display: flex;
-        gap: 1.4rem;
-        font-size: 0.78rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-      }
-
-      nav a {
-        opacity: 0.7;
-        position: relative;
-      }
-
-      nav a:hover,
-      nav a.is-active {
-        opacity: 1;
-      }
-
-      nav a.is-active::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -0.4rem;
-        height: 2px;
-        border-radius: 999px;
-        background: linear-gradient(90deg, #ffb347, #ff5f6d);
-      }
-
-      @media (max-width: 720px) {
-        .header-inner {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.6rem;
-        }
-
-        nav {
-          flex-wrap: wrap;
-          gap: 0.9rem;
-        }
-      }
-
-      /* Hero / intro */
-      main {
-        padding: 3rem 0 3.5rem;
-      }
-
-      .hero-layout {
+      .celestial-hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.9fr);
-        gap: 2.4rem;
-        align-items: flex-start;
-        margin-bottom: 2.5rem;
+        gap: 1.75rem;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+        align-items: stretch;
       }
 
-      @media (max-width: 960px) {
-        .hero-layout {
+      @media (max-width: 900px) {
+        .celestial-hero-grid {
           grid-template-columns: minmax(0, 1fr);
         }
       }
 
-      .hero-kicker {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.24em;
-        color: #ffcfa2;
+      .hero-panel {
+        padding: 1.75rem 2rem;
+        border-radius: 1rem;
+        background: radial-gradient(circle at top left, #1b2140, #050812);
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+      }
+
+      .hero-panel h1 {
+        font-size: clamp(1.9rem, 2.4vw, 2.3rem);
         margin-bottom: 0.75rem;
       }
 
-      .hero-title {
-        font-size: 2rem;
-        line-height: 1.2;
-        margin-bottom: 0.5rem;
+      .hero-panel p {
+        margin: 0.25rem 0;
+        line-height: 1.6;
       }
 
-      .hero-title span {
-        background: linear-gradient(120deg, #ffd082, #ff7b9c);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      .hero-text {
-        font-size: 0.95rem;
-        line-height: 1.7;
-        color: #ceceff;
-        margin-bottom: 1.1rem;
-      }
-
-      .hero-note {
-        font-size: 0.85rem;
-        color: #a9a8ff;
-      }
-
-      .how-card {
-        border-radius: 1.2rem;
-        padding: 1.1rem 1.2rem;
-        background: radial-gradient(circle at top left, #181b3a, #050716);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        font-size: 0.86rem;
-      }
-
-      .how-label {
+      .eyebrow {
         font-size: 0.8rem;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        letter-spacing: 0.18em;
-        color: #ffcfa2;
-        margin-bottom: 0.5rem;
-      }
-
-      .how-steps {
-        font-size: 0.85rem;
-        color: #d1d0ff;
-      }
-
-      .how-steps li {
+        opacity: 0.7;
         margin-bottom: 0.35rem;
       }
 
-      .how-tagline {
-        margin-top: 0.7rem;
-        font-size: 0.82rem;
-        color: #c5c4ff;
-      }
-
-      /* Filter + gates grid */
-      .toolbar {
+      .hero-chip-row {
         display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        gap: 1rem;
-        margin-bottom: 1rem;
         flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.6rem;
       }
 
-      .toolbar-left {
-        font-size: 0.8rem;
-        color: #c2c1ff;
+      .hero-chip {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.55rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        opacity: 0.85;
       }
 
-      .toolbar-right {
+      .hero-panel.secondary {
+        background: radial-gradient(circle at top right, #26163b, #070913);
+      }
+
+      .hero-panel.secondary h2 {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .hero-panel.secondary ol {
+        margin-left: 1rem;
+        padding-left: 0.4rem;
+      }
+
+      .hero-panel.secondary li {
+        margin: 0.2rem 0 0.35rem;
+        line-height: 1.5;
+      }
+
+      .hero-badge {
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
+        opacity: 0.8;
+      }
+
+      .gate-toolbar {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+        margin: 2rem 0 0.75rem;
+      }
+
+      .gate-toolbar-left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .gate-count {
+        font-size: 0.8rem;
+        opacity: 0.75;
+      }
+
+      .gate-filter {
+        display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
       }
 
-      .toolbar-select {
+      .gate-filter select {
+        background: rgba(3, 6, 23, 0.85);
+        border: 1px solid rgba(148, 163, 184, 0.5);
         border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        background: rgba(5, 7, 30, 0.9);
-        color: #f3f3ff;
-        padding: 0.35rem 0.8rem;
-        font-size: 0.8rem;
+        color: #e5e7eb;
+        padding: 0.35rem 0.9rem;
+        font-size: 0.85rem;
       }
 
-      .grid {
+      .gate-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-        gap: 0.8rem;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 0.9rem;
+        margin-bottom: 2.5rem;
       }
 
       .gate-card {
-        border-radius: 1rem;
-        padding: 0.7rem 0.9rem 0.8rem;
-        background: radial-gradient(circle at top left, #151938, #040519);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        font-size: 0.86rem;
+        position: relative;
+        padding: 0.95rem 1rem;
+        border-radius: 0.9rem;
+        background: radial-gradient(circle at top left, #0b1022, #020617);
+        border: 1px solid rgba(148, 163, 184, 0.22);
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.75);
         display: flex;
         flex-direction: column;
-        gap: 0.15rem;
+        gap: 0.4rem;
       }
 
-      .gate-card--highlight {
-        border-color: #ffb347;
-        box-shadow: 0 0 0 1px rgba(255, 179, 71, 0.4),
-          0 16px 34px rgba(0, 0, 0, 0.7);
-      }
-
-      .gate-row-top {
+      .gate-card-header {
         display: flex;
         justify-content: space-between;
+        gap: 0.5rem;
         align-items: baseline;
-        gap: 0.35rem;
       }
 
-      .gate-code {
-        font-size: 0.8rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: #ffcfa2;
-      }
-
-      .gate-name {
-        font-size: 0.86rem;
+      .gate-title {
+        font-size: 0.98rem;
         font-weight: 600;
+      }
+
+      .gate-key-hebrew {
+        font-size: 0.92rem;
+        opacity: 0.9;
+      }
+
+      .gate-key-latin {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        opacity: 0.6;
       }
 
       .gate-theme {
         font-size: 0.8rem;
-        color: #c8c7ff;
+        opacity: 0.9;
       }
 
       .gate-meta {
-        margin-top: 0.2rem;
-        font-size: 0.78rem;
-        color: #9d9cf5;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0.35rem;
+        gap: 0.5rem;
       }
 
-      .gate-sefaria {
-        margin-top: 0.25rem;
-        font-size: 0.78rem;
-        color: #ffdba5;
-      }
-
-      .gate-sefaria a {
-        color: #ffdba5;
-        text-decoration: underline;
-      }
-
-      /* Footer */
-      footer {
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        padding: 1.2rem 0 1.6rem;
+      .gate-tag {
         font-size: 0.75rem;
-        color: #a6a6cf;
+        opacity: 0.7;
+      }
+
+      .gate-link {
+        font-size: 0.75rem;
+        text-decoration: none;
+        padding: 0.22rem 0.6rem;
+        border-radius: 999px;
+        border: 1px solid rgba(248, 250, 252, 0.3);
+        background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        white-space: nowrap;
+      }
+
+      .gate-link span {
+        opacity: 0.85;
+      }
+
+      .gate-link svg {
+        width: 0.7rem;
+        height: 0.7rem;
       }
     </style>
   </head>
-
   <body>
-    <div class="page">
-      <!-- Header -->
-      <header>
-        <div class="inner header-inner">
-          <div class="logo">
-            LUMINANEXUS · A NEXUS OF TORAH, LIGHT, AND LEARNING
-          </div>
-          <nav>
-            <a href="../index.html">Home</a>
-            <a href="../chavruta/index.html">ChavrutaGPT</a>
-            <a href="index.html" class="is-active">Celestial Library</a>
-            <a href="../sefaria-library.html">Sefaria</a>
-            <a href="../flipbooks.html">Flip&nbsp;Books</a>
-          </nav>
+    <header class="site-header">
+      <div class="inner header-inner">
+        <div class="brand">
+          <a href="/" class="brand-mark">Luminanexus</a>
+          <span class="brand-tagline">A nexus of Torah, light, and learning</span>
         </div>
-      </header>
+        <nav class="main-nav">
+          <a href="/">Home</a>
+          <a href="/chavruta/">ChavrutaGPT</a>
+          <a href="/library/" class="is-active">Celestial Library</a>
+          <a href="/sefaria-library.html">Sefaria</a>
+          <a href="/flipbooks.html">Flip Books</a>
+        </nav>
+      </div>
+    </header>
 
-      <!-- Main -->
-      <main class="inner">
-        <section class="hero-layout">
-          <div>
-            <div class="hero-kicker">The Celestial Library of 231 Gates</div>
-            <h1 class="hero-title">
-              A living archive of <span>letter-gates</span>.
-            </h1>
-            <p class="hero-text">
-              Within this Library, the 22 Hebrew letters are treated as living
-              lights. Every unique pairing of two letters forms a gate — one of
-              the <strong>231 gates</strong> through which meaning, story, and
-              consciousness can flow.
+    <main class="page">
+      <div class="inner">
+        <section class="celestial-hero-grid">
+          <div class="hero-panel">
+            <div class="eyebrow">The Celestial Library of 231 Gates</div>
+            <h1>A living archive of letter-gates</h1>
+            <p>
+              Within this Library, the 22 Hebrew letters are treated as living lights.
+              Every unique pairing of two letters forms a gate — one of the
+              <strong>231 gates (שערי אל״ף־בי״ת)</strong> through which meaning, story,
+              and consciousness can flow.
             </p>
-            <p class="hero-note">
-              Here you can browse all 231 gates, filter them by the first
-              letter, and begin to feel how the alphabet becomes a
-              constellation of paths. Some gates already carry whispered
-              themes and suggested Sefaria sources; others are patiently
+            <p>
+              Here you can browse all 231 gates, filter them by the first letter, and
+              begin to feel how the alphabet becomes a constellation of paths.
+              Some gates already carry whispered themes; others are patiently
               waiting to be written.
             </p>
+            <p>
+              As the Celestial Library grows, each gate will gather its own essays,
+              meditations, study sheets, and links out to classic sources on
+              <strong>Sefaria</strong>. For now, the named gates below offer a first
+              weaving of Tanakh, Midrash, and letter-midrash.
+            </p>
+            <div class="hero-chip-row">
+              <span class="hero-chip">22 letters</span>
+              <span class="hero-chip">231 gates</span>
+              <span class="hero-chip">Growing themes</span>
+            </div>
           </div>
 
-          <aside>
-            <div class="how-card">
-              <div class="how-label">How to walk this library</div>
-              <ol class="how-steps">
-                <li>Choose a letter-gate that calls to you.</li>
-                <li>
-                  Sit with the letters, their sounding, and the theme that is
-                  beginning to emerge.
-                </li>
-                <li>
-                  When you are ready to go deeper, follow the suggested Sefaria
-                  source (where present) and let the texts speak into the gate.
-                </li>
-                <li>
-                  Return to ChavrutaGPT if you want a voice to explore what you
-                  are finding.
-                </li>
-              </ol>
-              <div class="how-tagline">
-                This Library is a <em>living</em> archive. Notes, sheet-music,
-                and narratives will gather around each gate over time.
-              </div>
-            </div>
+          <aside class="hero-panel secondary">
+            <div class="hero-badge">How to walk this Library</div>
+            <h2>Choose a gate · Follow a source · Let a theme open</h2>
+            <ol>
+              <li>
+                <strong>Filter by first letter</strong> or leave it on “All 231 gates”.
+              </li>
+              <li>
+                <strong>Click on any gate title</strong> in your mind and notice the
+                letters, their sound, and any feeling the theme awakens.
+              </li>
+              <li>
+                For named gates, use the
+                <strong>“Open on Sefaria”</strong> button to jump to a suggested
+                text — a first companion for that gate.
+              </li>
+              <li>
+                Bring your own Torah: notes, reflections, questions, and
+                connections that arise as you learn. This Library is a
+                <strong>living Beit Midrash of letters</strong>.
+              </li>
+            </ol>
           </aside>
         </section>
 
-        <!-- Toolbar -->
-        <section class="toolbar">
-          <div class="toolbar-left">
-            <strong id="gate-count-label">231 gates</strong> · Filter, wander,
-            or jump directly from the home page’s “Today’s Path”.
+        <section class="gate-toolbar" aria-label="Gate filters">
+          <div class="gate-toolbar-left">
+            <div class="gate-count" id="gate-count"></div>
+            <div class="gate-count">
+              Some gates are already named with themes and Sefaria links; the
+              rest are waiting for future learning.
+            </div>
           </div>
-          <div class="toolbar-right">
-            <span>Filter by first letter:</span>
-            <select id="first-letter-filter" class="toolbar-select">
-              <option value="all">All letters</option>
+
+          <div class="gate-filter">
+            <label for="filter-letter">Filter by first letter:</label>
+            <select id="filter-letter">
+              <option value="all">All 231 gates</option>
             </select>
           </div>
         </section>
 
-        <!-- Gates grid -->
-        <section class="grid" id="gate-grid" aria-label="Letter gates"></section>
-      </main>
+        <section
+          class="gate-grid"
+          id="gate-grid"
+          aria-live="polite"
+          aria-label="Celestial Library gates"
+        ></section>
+      </div>
+    </main>
 
-      <!-- Footer -->
-      <footer>
-        <div class="inner">
-          LuminaNexus.org — The Celestial Library of 231 Gates, linked with
-          Sefaria for deeper study.
-        </div>
-      </footer>
-    </div>
+    <footer class="site-footer">
+      <div class="inner">
+        <p class="footer-line">
+          LuminaNexus.org — ChavrutaGPT, the Celestial Library of 231 Gates,
+          and the Sefaria online study library, learning together.
+        </p>
+      </div>
+    </footer>
 
     <script>
-      // 22 letters with ids for coding
-      const letters = [
-        { id: "aleph", name: "Aleph", heb: "א" },
-        { id: "bet", name: "Bet", heb: "ב" },
-        { id: "gimel", name: "Gimel", heb: "ג" },
-        { id: "dalet", name: "Dalet", heb: "ד" },
-        { id: "he", name: "He", heb: "ה" },
-        { id: "vav", name: "Vav", heb: "ו" },
-        { id: "zayin", name: "Zayin", heb: "ז" },
-        { id: "chet", name: "Chet", heb: "ח" },
-        { id: "tet", name: "Tet", heb: "ט" },
-        { id: "yod", name: "Yod", heb: "י" },
-        { id: "kaf", name: "Kaf", heb: "כ" },
-        { id: "lamed", name: "Lamed", heb: "ל" },
-        { id: "mem", name: "Mem", heb: "מ" },
-        { id: "nun", name: "Nun", heb: "נ" },
-        { id: "samekh", name: "Samekh", heb: "ס" },
-        { id: "ayin", name: "Ayin", heb: "ע" },
-        { id: "pe", name: "Pe", heb: "פ" },
-        { id: "tzadi", name: "Tzadi", heb: "צ" },
-        { id: "qof", name: "Qof", heb: "ק" },
-        { id: "resh", name: "Resh", heb: "ר" },
-        { id: "shin", name: "Shin", heb: "ש" },
-        { id: "tav", name: "Tav", heb: "ת" },
+      // --- Letter definitions -------------------------------------------------
+
+      const LETTERS = [
+        { code: "aleph", latin: "Aleph", hebrew: "א" },
+        { code: "bet", latin: "Bet", hebrew: "ב" },
+        { code: "gimel", latin: "Gimel", hebrew: "ג" },
+        { code: "dalet", latin: "Dalet", hebrew: "ד" },
+        { code: "he", latin: "He", hebrew: "ה" },
+        { code: "vav", latin: "Vav", hebrew: "ו" },
+        { code: "zayin", latin: "Zayin", hebrew: "ז" },
+        { code: "chet", latin: "Chet", hebrew: "ח" },
+        { code: "tet", latin: "Tet", hebrew: "ט" },
+        { code: "yod", latin: "Yod", hebrew: "י" },
+        { code: "kaf", latin: "Kaf", hebrew: "כ" },
+        { code: "lamed", latin: "Lamed", hebrew: "ל" },
+        { code: "mem", latin: "Mem", hebrew: "מ" },
+        { code: "nun", latin: "Nun", hebrew: "נ" },
+        { code: "samekh", latin: "Samekh", hebrew: "ס" },
+        { code: "ayin", latin: "Ayin", hebrew: "ע" },
+        { code: "pe", latin: "Pe", hebrew: "פ" },
+        { code: "tzadi", latin: "Tzadi", hebrew: "צ" },
+        { code: "qof", latin: "Qof", hebrew: "ק" },
+        { code: "resh", latin: "Resh", hebrew: "ר" },
+        { code: "shin", latin: "Shin", hebrew: "ש" },
+        { code: "tav", latin: "Tav", hebrew: "ת" }
       ];
 
-      // Named gates + Sefaria suggestions for specific paths.
-      // (Codes must match the ?gate=... query and home-page config.)
+      // --- Named gates: expanded list ----------------------------------------
+      // Key format: "<first>-<second>" using the codes above.
+
       const namedGates = {
         "aleph-bet": {
-          title: "First Shelter",
-          theme: "A first home for light; the world’s earliest cradle.",
-          sefariaLabel: "Bereshit 1:1–5",
+          heading: "א־ב · First Shelter",
+          theme:
+            "Foundations of blessing — the first doorway where light begins to feel like home.",
+          tag: "Creation of light, first home for blessing",
           sefariaUrl: "https://www.sefaria.org/Genesis.1.1-5",
+          sefariaLabel: "Bereshit 1:1–5 · First Light"
         },
         "aleph-gimel": {
-          title: "Bridge of Flow",
-          theme: "Where blessing begins to move like water through the world.",
-          sefariaLabel: "Bereshit 2:10–14",
+          heading: "א־ג · River of Giving",
+          theme:
+            "Where source overflows into streams, and giving becomes the shape of the land.",
+          tag: "A river flowing from Eden",
           sefariaUrl: "https://www.sefaria.org/Genesis.2.10-14",
+          sefariaLabel: "Bereshit 2:10–14 · The Four Rivers"
         },
         "bet-gimel": {
-          title: "Hidden Learning",
-          theme: "Wisdom stored away for the one who searches gently.",
-          sefariaLabel: "Mishlei 2:1–6",
+          heading: "ב־ג · Hidden Understanding",
+          theme:
+            "Blessing wrapped around wisdom, like a house that secretly contains a library.",
+          tag: "Seeking wisdom as hidden treasure",
           sefariaUrl: "https://www.sefaria.org/Proverbs.2.1-6",
+          sefariaLabel: "Mishlei 2:1–6 · Treasures of Wisdom"
         },
         "bet-dalet": {
-          title: "Whisper of Completion",
+          heading: "ב־ד · Kadosh Axis",
           theme:
-            "Echoes of “kadosh” that fill the whole earth with a hushed fullness.",
-          sefariaLabel: "Yeshayahu 6:1–3",
+            "The house that opens into a doorway of awe, where holiness stands upright.",
+          tag: "Vision of the Throne, turning toward holiness",
           sefariaUrl: "https://www.sefaria.org/Isaiah.6.1-3",
+          sefariaLabel: "Yeshayahu 6:1–3 · Holy, Holy, Holy"
         },
         "gimel-dalet": {
-          title: "Path of Da’at",
+          heading: "ג־ד · Whisper of Completion",
           theme:
-            "Knowing HaShem in all your ways, until the paths themselves grow straight.",
-          sefariaLabel: "Mishlei 3:5–6",
+            "The generous step that brings a journey to its quiet middle, never quite finished.",
+          tag: "Trusting the path as it unfolds",
           sefariaUrl: "https://www.sefaria.org/Proverbs.3.5-6",
+          sefariaLabel: "Mishlei 3:5–6 · Paths Made Straight"
         },
+        "aleph-he": {
+          heading: "א־ה · Breath Between Worlds",
+          theme:
+            "From silent point to soft breath — the moment when dust remembers it can live.",
+          tag: "Breath of life given to Adam",
+          sefariaUrl: "https://www.sefaria.org/Genesis.2.7",
+          sefariaLabel: "Bereshit 2:7 · Breath of Life"
+        },
+        "aleph-vav": {
+          heading: "א־ו · Ladder of Connection",
+          theme:
+            "A single letter of attachment, stretching like a ladder between earth-dreams and heaven.",
+          tag: "Dream of a ladder joining realms",
+          sefariaUrl: "https://www.sefaria.org/Genesis.28.12",
+          sefariaLabel: "Bereshit 28:12 · Yaakov’s Ladder"
+        },
+        "dalet-he": {
+          heading: "ד־ה · Door of Compassion",
+          theme:
+            "The doorway that opens not by force, but because compassion asks to come through.",
+          tag: "Gates of righteousness, entering in song",
+          sefariaUrl: "https://www.sefaria.org/Psalms.118.19-20",
+          sefariaLabel: "Tehillim 118:19–20 · Open for Me the Gates"
+        },
+        "he-vav": {
+          heading: "ה־ו · Small Word of Binding",
+          theme:
+            "A little letter that means ‘and’, teaching that holiness is always this-and-that together.",
+          tag: "Oneness proclaimed, words bound together",
+          sefariaUrl: "https://www.sefaria.org/Deuteronomy.6.4-9",
+          sefariaLabel: "Devarim 6:4–9 · Shema Yisrael"
+        },
+        "vav-zayin": {
+          heading: "ו־ז · Song Between Days",
+          theme:
+            "A bridge of sound where weekday and Shabbat lean toward each other and begin to sing.",
+          tag: "Song for the day of Shabbat",
+          sefariaUrl: "https://www.sefaria.org/Psalms.92.2-4",
+          sefariaLabel: "Tehillim 92 · A Psalm for Shabbat"
+        },
+        "yod-kaf": {
+          heading: "י־כ · Palm of Action",
+          theme:
+            "The smallest point reaching out into a palm, where intention becomes a hand that can help.",
+          tag: "A hand that descends to redeem",
+          sefariaUrl: "https://www.sefaria.org/Exodus.3.7-8",
+          sefariaLabel: "Shemot 3:7–8 · I Have Seen Their Suffering"
+        },
+        "mem-nun": {
+          heading: "מ־נ · Hidden River",
+          theme:
+            "Waters that begin in secrecy and widen into a flow that heals the edges of the world.",
+          tag: "River flowing out from the Temple",
+          sefariaUrl: "https://www.sefaria.org/Ezekiel.47.1-5",
+          sefariaLabel: "Yechezkel 47:1–5 · The Deepening Waters"
+        },
+        "samekh-ayin": {
+          heading: "ס־ע · Circle of Seeing",
+          theme:
+            "A gentle support around the eye, teaching us to stand still long enough to truly see.",
+          tag: "Tasting and seeing that goodness is present",
+          sefariaUrl: "https://www.sefaria.org/Psalms.34.9",
+          sefariaLabel: "Tehillim 34:9 · Taste and See"
+        },
+        "shin-tav": {
+          heading: "ש־ת · Seal of Flame",
+          theme:
+            "From first spark to final mark, love burns itself into the heart as an unbreakable seal.",
+          tag: "Love as a flame of Hashem",
+          sefariaUrl: "https://www.sefaria.org/Song_of_Songs.8.6",
+          sefariaLabel: "Shir HaShirim 8:6 · A Flame of Y-H"
+        }
       };
 
-      // Build full list of 231 gates (22 choose 2)
-      const gates = [];
-      for (let i = 0; i < letters.length; i++) {
-        for (let j = i + 1; j < letters.length; j++) {
-          const a = letters[i];
-          const b = letters[j];
-          const code = `${a.id}-${b.id}`;
-          const named = namedGates[code];
-          gates.push({
-            code,
-            from: a,
-            to: b,
-            title: named ? named.title : "Gate name coming soon",
-            theme: named
-              ? named.theme
-              : "Gate theme coming soon.",
-            sefariaLabel: named && named.sefariaLabel,
-            sefariaUrl: named && named.sefariaUrl,
-          });
+      // --- Build the 231 gates ------------------------------------------------
+
+      function buildAllGates() {
+        const gates = [];
+
+        for (let i = 0; i < LETTERS.length; i++) {
+          for (let j = i + 1; j < LETTERS.length; j++) {
+            const a = LETTERS[i];
+            const b = LETTERS[j];
+            const key = `${a.code}-${b.code}`;
+            const named = namedGates[key];
+
+            gates.push({
+              key,
+              first: a,
+              second: b,
+              displayTitle:
+                named?.heading || `${a.latin} → ${b.latin}`,
+              hebrewPair: `${a.hebrew} → ${b.hebrew}`,
+              theme:
+                named?.theme ||
+                "Gate theme coming soon — this path is waiting for learning.",
+              tag:
+                named?.tag ||
+                "Unnamed gate · Add your own Torah as you learn.",
+              sefariaUrl: named?.sefariaUrl || null,
+              sefariaLabel: named?.sefariaLabel || ""
+            });
+          }
         }
+
+        return gates;
       }
 
-      // Populate filter dropdown
-      const filterSelect = document.getElementById("first-letter-filter");
-      letters.forEach((letter) => {
+      const ALL_GATES = buildAllGates();
+
+      // --- Render helpers -----------------------------------------------------
+
+      const gateGrid = document.getElementById("gate-grid");
+      const gateCount = document.getElementById("gate-count");
+      const filterSelect = document.getElementById("filter-letter");
+
+      // Populate filter dropdown with letters
+      LETTERS.forEach((letter) => {
         const opt = document.createElement("option");
-        opt.value = letter.id;
-        opt.textContent = `${letter.heb} · ${letter.name}`;
+        opt.value = letter.code;
+        opt.textContent = `${letter.latin} · ${letter.hebrew}`;
         filterSelect.appendChild(opt);
       });
 
-      const grid = document.getElementById("gate-grid");
+      function renderGates(firstLetterCode = "all") {
+        const filtered =
+          firstLetterCode === "all"
+            ? ALL_GATES
+            : ALL_GATES.filter((g) => g.first.code === firstLetterCode);
 
-      function renderGates(activeFirstLetter, highlightCode) {
-        grid.innerHTML = "";
-        let visibleCount = 0;
+        gateGrid.innerHTML = "";
 
-        gates.forEach((gate) => {
-          if (activeFirstLetter && activeFirstLetter !== "all") {
-            if (gate.from.id !== activeFirstLetter) return;
-          }
-
-          visibleCount++;
-
+        filtered.forEach((gate) => {
           const card = document.createElement("article");
           card.className = "gate-card";
-          card.dataset.firstLetter = gate.from.id;
-          card.dataset.gateCode = gate.code;
 
-          if (highlightCode && gate.code === highlightCode) {
-            card.classList.add("gate-card--highlight");
-          }
+          card.innerHTML = `
+            <div class="gate-card-header">
+              <div>
+                <div class="gate-title">${gate.displayTitle}</div>
+                <div class="gate-key-hebrew">${gate.hebrewPair}</div>
+              </div>
+              <div class="gate-key-latin">${gate.first.latin} → ${gate.second.latin}</div>
+            </div>
+            <div class="gate-theme">${gate.theme}</div>
+          `;
 
-          const topRow = document.createElement("div");
-          topRow.className = "gate-row-top";
+          const meta = document.createElement("div");
+          meta.className = "gate-meta";
 
-          const codeEl = document.createElement("div");
-          codeEl.className = "gate-code";
-          codeEl.textContent = `${gate.from.name} → ${gate.to.name}`;
-
-          const hebEl = document.createElement("div");
-          hebEl.className = "gate-meta";
-          hebEl.textContent = `${gate.from.heb} · ${gate.to.heb}`;
-
-          topRow.appendChild(codeEl);
-          topRow.appendChild(hebEl);
-
-          const nameEl = document.createElement("div");
-          nameEl.className = "gate-name";
-          nameEl.textContent = gate.title;
-
-          const themeEl = document.createElement("div");
-          themeEl.className = "gate-theme";
-          themeEl.textContent = gate.theme;
-
-          card.appendChild(topRow);
-          card.appendChild(nameEl);
-          card.appendChild(themeEl);
+          const tag = document.createElement("div");
+          tag.className = "gate-tag";
+          tag.textContent = gate.tag;
+          meta.appendChild(tag);
 
           if (gate.sefariaUrl) {
-            const sefariaEl = document.createElement("div");
-            sefariaEl.className = "gate-sefaria";
-            sefariaEl.innerHTML =
-              'Suggested Sefaria: <a href="' +
-              gate.sefariaUrl +
-              '" target="_blank" rel="noopener noreferrer">' +
-              gate.sefariaLabel +
-              "</a>";
-            card.appendChild(sefariaEl);
+            const link = document.createElement("a");
+            link.className = "gate-link";
+            link.href = gate.sefariaUrl;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.innerHTML = `
+              <span>Open on Sefaria</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M5 10.5l1.4 1.4L9 9.3V15h2V9.3l2.6 2.6L15 10.5 10 5.5l-5 5z" fill="currentColor"></path>
+              </svg>
+            `;
+            link.title = gate.sefariaLabel || "Open suggested source on Sefaria";
+
+            meta.appendChild(link);
           }
 
-          grid.appendChild(card);
+          card.appendChild(meta);
+          gateGrid.appendChild(card);
         });
 
-        const countLabel = document.getElementById("gate-count-label");
-        countLabel.textContent =
-          activeFirstLetter && activeFirstLetter !== "all"
-            ? `${visibleCount} gates`
-            : "231 gates";
+        const total = ALL_GATES.length;
+        const shown = filtered.length;
+
+        if (firstLetterCode === "all") {
+          gateCount.textContent = `Showing all ${shown} of ${total} gates.`;
+        } else {
+          const letter = LETTERS.find((l) => l.code === firstLetterCode);
+          gateCount.textContent = `Showing ${shown} gates that begin with ${letter.latin} (${letter.hebrew}).`;
+        }
       }
 
-      // Read ?gate=... from URL for highlighting
-      const params = new URLSearchParams(window.location.search);
-      const activeGateCode = params.get("gate");
+      filterSelect.addEventListener("change", (e) => {
+        renderGates(e.target.value);
+      });
 
       // Initial render
-      renderGates("all", activeGateCode);
-
-      // Scroll the highlighted gate into view after first render
-      if (activeGateCode) {
-        setTimeout(() => {
-          const el = document.querySelector(
-            `[data-gate-code="${activeGateCode}"]`
-          );
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
-        }, 300);
-      }
-
-      // Filter change
-      filterSelect.addEventListener("change", () => {
-        renderGates(filterSelect.value, activeGateCode);
-      });
+      renderGates("all");
     </script>
   </body>
 </html>
