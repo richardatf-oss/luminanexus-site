@@ -27,26 +27,31 @@
       .hero-panel {
         padding: 1.75rem 2rem;
         border-radius: 1rem;
-        background: radial-gradient(circle at top left, #1b2140, #050812);
+        background: radial-gradient(circle at top left, #262f6b, #111827);
         box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #f9fafb;
       }
 
       .hero-panel h1 {
         font-size: clamp(1.9rem, 2.4vw, 2.3rem);
         margin-bottom: 0.75rem;
+        color: #ffffff;
       }
 
       .hero-panel p {
         margin: 0.25rem 0;
         line-height: 1.6;
+        color: #e5e7eb;
       }
 
       .eyebrow {
         font-size: 0.8rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        opacity: 0.7;
+        opacity: 0.9;
         margin-bottom: 0.35rem;
+        color: #facc6b;
       }
 
       .hero-chip-row {
@@ -60,17 +65,21 @@
         font-size: 0.7rem;
         padding: 0.2rem 0.55rem;
         border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        opacity: 0.85;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        opacity: 0.95;
+        background: radial-gradient(circle at top, rgba(251, 191, 36, 0.22), transparent);
+        color: #fef9c3;
       }
 
       .hero-panel.secondary {
-        background: radial-gradient(circle at top right, #26163b, #070913);
+        background: radial-gradient(circle at top right, #3b256b, #111827);
+        color: #f9fafb;
       }
 
       .hero-panel.secondary h2 {
         font-size: 1rem;
         margin-bottom: 0.6rem;
+        color: #ffffff;
       }
 
       .hero-panel.secondary ol {
@@ -81,12 +90,16 @@
       .hero-panel.secondary li {
         margin: 0.2rem 0 0.35rem;
         line-height: 1.5;
+        color: #e5e7eb;
       }
 
       .hero-badge {
         font-size: 0.75rem;
         margin-bottom: 0.4rem;
-        opacity: 0.8;
+        opacity: 0.9;
+        color: #facc6b;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
       }
 
       .gate-toolbar {
@@ -106,7 +119,8 @@
 
       .gate-count {
         font-size: 0.8rem;
-        opacity: 0.75;
+        opacity: 0.9;
+        color: #e5e7eb;
       }
 
       .gate-filter {
@@ -114,15 +128,21 @@
         align-items: center;
         gap: 0.5rem;
         font-size: 0.85rem;
+        color: #e5e7eb;
       }
 
       .gate-filter select {
-        background: rgba(3, 6, 23, 0.85);
-        border: 1px solid rgba(148, 163, 184, 0.5);
+        background: rgba(15, 23, 42, 0.95);
+        border: 1px solid rgba(148, 163, 184, 0.9);
         border-radius: 999px;
-        color: #e5e7eb;
+        color: #f9fafb;
         padding: 0.35rem 0.9rem;
         font-size: 0.85rem;
+      }
+
+      .gate-filter select:focus {
+        outline: none;
+        box-shadow: 0 0 0 1px rgba(248, 250, 252, 0.7);
       }
 
       .gate-grid {
@@ -136,12 +156,13 @@
         position: relative;
         padding: 0.95rem 1rem;
         border-radius: 0.9rem;
-        background: radial-gradient(circle at top left, #0b1022, #020617);
-        border: 1px solid rgba(148, 163, 184, 0.22);
+        background: linear-gradient(145deg, #111827, #1f2937);
+        border: 1px solid rgba(148, 163, 184, 0.7);
         box-shadow: 0 12px 30px rgba(15, 23, 42, 0.75);
         display: flex;
         flex-direction: column;
         gap: 0.4rem;
+        color: #e5e7eb;
       }
 
       .gate-card-header {
@@ -154,23 +175,27 @@
       .gate-title {
         font-size: 0.98rem;
         font-weight: 600;
+        color: #f9fafb;
       }
 
       .gate-key-hebrew {
         font-size: 0.92rem;
-        opacity: 0.9;
+        opacity: 0.95;
+        color: #e5e7eb;
       }
 
       .gate-key-latin {
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.16em;
-        opacity: 0.6;
+        opacity: 0.9;
+        color: #c7d2fe;
       }
 
       .gate-theme {
         font-size: 0.8rem;
-        opacity: 0.9;
+        opacity: 0.95;
+        color: #e5e7eb;
       }
 
       .gate-meta {
@@ -183,7 +208,8 @@
 
       .gate-tag {
         font-size: 0.75rem;
-        opacity: 0.7;
+        opacity: 0.9;
+        color: #cbd5f5;
       }
 
       .gate-link {
@@ -191,21 +217,26 @@
         text-decoration: none;
         padding: 0.22rem 0.6rem;
         border-radius: 999px;
-        border: 1px solid rgba(248, 250, 252, 0.3);
-        background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent);
+        border: 1px solid rgba(248, 250, 252, 0.8);
+        background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), rgba(37, 99, 235, 0.3));
         display: inline-flex;
         align-items: center;
         gap: 0.35rem;
         white-space: nowrap;
+        color: #0f172a;
       }
 
       .gate-link span {
-        opacity: 0.85;
+        opacity: 0.95;
       }
 
       .gate-link svg {
         width: 0.7rem;
         height: 0.7rem;
+      }
+
+      .gate-link:hover {
+        filter: brightness(1.08);
       }
     </style>
   </head>
@@ -346,8 +377,6 @@
       ];
 
       // --- Named gates: expanded list ----------------------------------------
-      // Key format: "<first>-<second>" using the codes above.
-
       const namedGates = {
         "aleph-bet": {
           heading: "א־ב · First Shelter",
@@ -464,7 +493,6 @@
       };
 
       // --- Build the 231 gates ------------------------------------------------
-
       function buildAllGates() {
         const gates = [];
 
@@ -479,8 +507,7 @@
               key,
               first: a,
               second: b,
-              displayTitle:
-                named?.heading || `${a.latin} → ${b.latin}`,
+              displayTitle: named?.heading || `${a.latin} → ${b.latin}`,
               hebrewPair: `${a.hebrew} → ${b.hebrew}`,
               theme:
                 named?.theme ||
@@ -500,7 +527,6 @@
       const ALL_GATES = buildAllGates();
 
       // --- Render helpers -----------------------------------------------------
-
       const gateGrid = document.getElementById("gate-grid");
       const gateCount = document.getElementById("gate-count");
       const filterSelect = document.getElementById("filter-letter");
