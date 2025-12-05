@@ -46,17 +46,18 @@
 
     <main class="page">
       <div class="inner">
-        <!-- Small heading above chat (still very compact) -->
+        <!-- Compact heading above chat -->
         <section style="margin-bottom: 0.75rem;">
           <div class="hero-eyebrow">LEARNING TOGETHER</div>
           <h1 style="margin: 0; font-size: 1.35rem; color: #f9fafb;">
-            ChavrutaGPT &nbsp;<span style="font-size: 0.9rem; opacity: 0.85;">
+            ChavrutaGPT
+            <span style="font-size: 0.9rem; opacity: 0.85;">
               · your always-awake study partner
             </span>
           </h1>
         </section>
 
-        <!-- MAIN CHAT AREA – kept high on the page -->
+        <!-- MAIN CHAT AREA – high on the page -->
         <section class="chavruta-layout" id="chavruta-chat">
           <!-- Left: live chat -->
           <div class="ln-chat-shell" aria-label="ChavrutaGPT chat">
@@ -160,7 +161,8 @@
                 text-align: right;
               "
             >
-              ChavrutaGPT is powered by the OpenAI API via a secure Netlify Function.
+              ChavrutaGPT is powered by the OpenAI API via a secure Netlify
+              Function.
             </div>
           </div>
 
@@ -172,13 +174,19 @@
               Bring texts from Sefaria, questions from the 231 Gates, or anything
               that’s on your heart.
             </p>
-            <ul style="padding-left: 1.1rem; margin: 0.5rem 0 0.75rem; font-size: 0.8rem;">
+            <ul
+              style="
+                padding-left: 1.1rem;
+                margin: 0.5rem 0 0.75rem;
+                font-size: 0.8rem;
+              "
+            >
               <li>Paste a verse or passage you’re learning.</li>
               <li>Ask for background, commentary, or connections.</li>
               <li>Ask for gentle questions to deepen your own thinking.</li>
               <li>
                 Use the microphone button if speaking is easier than typing
-                (desktop & some mobile browsers).
+                (desktop &amp; some mobile browsers).
               </li>
               <li>
                 Choose a male or female reading voice — hashtags in text are
@@ -199,8 +207,8 @@
               <strong>Sefaria Inline View</strong> · Tanakh &amp; classic sources
             </div>
             <div>
-              If this panel doesn’t load, use the button above to open Sefaria in a
-              new tab.
+              If this panel doesn’t load, use the button above to open Sefaria in
+              a new tab.
             </div>
           </div>
           <iframe
@@ -253,6 +261,41 @@
         "Shalom, havruta. What would you like to learn or explore today?"
       );
 
+      // Helper to extract a clean reply string from any shape of data
+      function extractReplyText(data) {
+        if (!data) return "";
+
+        // If backend just returns a string
+        if (typeof data === "string") return data;
+
+        // Prefer a simple string reply property
+        if (typeof data.reply === "string") return data.reply;
+
+        // Sometimes reply might be an object with .content
+        if (data.reply && typeof data.reply.content === "string")
+          return data.reply.content;
+
+        // If OpenAI raw response is sent back
+        if (
+          Array.isArray(data.choices) &&
+          data.choices[0] &&
+          data.choices[0].message &&
+          typeof data.choices[0].message.content === "string"
+        ) {
+          return data.choices[0].message.content;
+        }
+
+        // message as string
+        if (typeof data.message === "string") return data.message;
+
+        // Fallback: try to stringify safely
+        try {
+          return JSON.stringify(data);
+        } catch {
+          return "";
+        }
+      }
+
       async function sendMessage() {
         const text = userInput.value.trim();
         if (!text) return;
@@ -276,20 +319,18 @@
           });
 
           if (!response.ok) {
-            throw new Error("Network error");
+            throw new Error("Network error: " + response.status);
           }
 
           const data = await response.json();
-          const reply =
-            data.reply ||
-            data.message ||
-            data.content ||
-            "I’m having trouble reaching the server right now.";
+          const replyText =
+            extractReplyText(data) ||
+            "I received a response from the server, but I’m not sure how to read it.";
 
-          appendMessage("assistant", reply);
-          history.push({ role: "assistant", content: reply });
+          appendMessage("assistant", replyText);
+          history.push({ role: "assistant", content: replyText });
           statusEl.textContent = "Ready.";
-          speakReply(reply);
+          speakReply(replyText);
         } catch (err) {
           console.error(err);
           appendMessage(
@@ -309,6 +350,16 @@
         if (event.key === "Enter" && !event.shiftKey) {
           event.preventDefault();
           sendMessage();
+        }
+      });
+
+      // === Ensure chat is visible when coming from #chavruta-chat ==========
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.location.hash === "#chavruta-chat") {
+          const el = document.getElementById("chavruta-chat");
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
         }
       });
 
