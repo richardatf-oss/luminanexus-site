@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tower of Da’at · Flip Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="assets/luminanexus.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/page-flip/dist/css/page-flip.min.css"
+    />
+
+    <style>
+      body {
+        background: #050716;
+        color: #f5f5ff;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem 4rem;
+      }
+
+      .crumbs {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .crumbs a {
+        color: #b9b9ff;
+        text-decoration: none;
+      }
+
+      .crumbs a:hover {
+        text-decoration: underline;
+      }
+
+      .flip-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        gap: 2rem;
+        align-items: flex-start;
+      }
+
+      @media (max-width: 900px) {
+        .flip-layout {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+
+      .flip-meta h1 {
+        font-size: 1.9rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .flip-meta p {
+        color: #c8c8ff;
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      .flip-book-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Container for StPageFlip */
+      #book {
+        width: 550px;
+        height: 420px;
+      }
+
+      @media (max-width: 700px) {
+        #book {
+          width: 320px;
+          height: 420px;
+        }
+      }
+
+      /* Simple page styling */
+      .page {
+        background: #fefaf5;
+        color: #222;
+      }
+
+      .page-cover {
+        background: radial-gradient(circle at top left, #2b2247, #080310);
+        color: #fef2da;
+      }
+
+      .page-content {
+        padding: 1.4rem 1.6rem;
+        height: 100%;
+        box-sizing: border-box;
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .page-header {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        margin-bottom: 0.4rem;
+        color: #ffb96e;
+      }
+
+      .page-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .page-footer {
+        margin-top: 1rem;
+        font-size: 0.75rem;
+        text-align: right;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="crumbs">
+        <a href="index.html">Home</a> ·
+        <a href="flipbooks.html">Flip Books</a> · Tower of Da’at
+      </div>
+
+      <div class="flip-layout">
+        <section class="flip-book-wrapper">
+          <!-- This element becomes the flip book -->
+          <div id="book">
+            <!-- Cover -->
+            <div class="page page-cover page-cover-top" data-density="hard">
+              <div class="page-content">
+                <div class="page-header">Flip book · Free</div>
+                <div class="page-title">Tower of Da’at</div>
+                <p>
+                  A luminous ascent through chambers of wisdom, where every
+                  level holds another shard of knowing.
+                </p>
+                <div class="page-footer">Cover</div>
+              </div>
+            </div>
+
+            <!-- Page 1 -->
+            <div class="page">
+              <div class="page-content">
+                <div class="page-header">Chapter 1</div>
+                <div class="page-title">The First Step</div>
+                <p>
+                  At the edge of the desert, where the night sky lowered like a
+                  curtain of ink, the Tower of Da’at rose from the sand. It was
+                  not built of stone, but of letters—Aleph to Tav—stacked and
+                  woven into a single, shimmering pillar.
+                </p>
+                <p>
+                  Each letter burned softly, pulsing like a heartbeat. Anyone
+                  who drew near could feel them thrumming under the skin, as if
+                  the alphabet remembered the person before the person
+                  remembered themselves.
+                </p>
+                <div class="page-footer">2</div>
+              </div>
+            </div>
+
+            <!-- Page 2 -->
+            <div class="page">
+              <div class="page-content">
+                <p>
+                  He placed his hand upon the lowest gate—Aleph joined with Bet— 
+                  and the letters brightened in welcome. Somewhere within the
+                  spine of the tower, a bell made only of light rang once.
+                </p>
+                <p>
+                  “Every step is a question,” the tower seemed to whisper.
+                  “Every answer is another step.” And so he began to climb.
+                </p>
+                <div class="page-footer">3</div>
+              </div>
+            </div>
+
+            <!-- Back cover -->
+            <div class="page page-cover page-cover-bottom" data-density="hard">
+              <div class="page-content">
+                <div class="page-title">To be continued…</div>
+                <p>
+                  This is a sample flip book. The full text can be added page by
+                  page, or connected to a downloadable PDF.
+                </p>
+                <div class="page-footer">Back cover</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="flip-meta">
+          <h1>Tower of Da’at – Flip Edition</h1>
+          <p>
+            Turn the pages with your mouse or touch, or tap the corners on
+            mobile. This flip book is powered by a small JavaScript library
+            called <em>StPageFlip</em> and loaded from simple HTML blocks, so we
+            can expand or edit it any time.
+          </p>
+          <p>
+            When you’re ready, we can add more chapters, or create additional
+            flip books for other works and link them from the shelf.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <!-- Flipbook engine -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const bookElement = document.getElementById("book");
+
+        const pageFlip = new St.PageFlip(bookElement, {
+          width: 275, // single page width
+          height: 420, // single page height
+          size: "stretch",
+          maxShadowOpacity: 0.4,
+          showCover: true,
+          mobileScrollSupport: true,
+        });
+
+        // Load pages from the HTML elements with class "page"
+        pageFlip.loadFromHTML(document.querySelectorAll("#book .page"));
+      });
+    </script>
+  </body>
+</html>
