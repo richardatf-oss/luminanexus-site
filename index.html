@@ -5,11 +5,11 @@
     <title>LuminaNexus · A nexus of Torah, light, and learning</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Existing shared styles -->
+    <!-- Shared site styles -->
     <link rel="stylesheet" href="assets/luminanexus.css" />
 
     <style>
-      /* Base */
+      /* Basic layout */
       body {
         margin: 0;
         padding: 0;
@@ -102,21 +102,12 @@
       }
 
       /* Hero */
+      main {
+        padding: 3rem 0 3.5rem;
+      }
+
       .hero {
-        padding: 3.5rem 0 2.5rem;
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-        gap: 2.5rem;
-        align-items: center;
-      }
-
-      @media (max-width: 900px) {
-        .hero-grid {
-          grid-template-columns: minmax(0, 1fr);
-        }
+        margin-bottom: 3rem;
       }
 
       .hero-kicker {
@@ -128,8 +119,8 @@
       }
 
       .hero-title {
-        font-size: 2.4rem;
-        line-height: 1.1;
+        font-size: 2.3rem;
+        line-height: 1.15;
         margin-bottom: 0.75rem;
       }
 
@@ -144,8 +135,8 @@
         font-size: 0.98rem;
         line-height: 1.7;
         color: #ceceff;
-        max-width: 520px;
-        margin-bottom: 1.6rem;
+        max-width: 640px;
+        margin-bottom: 1.8rem;
       }
 
       .hero-actions {
@@ -191,188 +182,67 @@
         background: rgba(255, 255, 255, 0.05);
       }
 
-      .hero-panel {
-        border-radius: 1.4rem;
-        background: radial-gradient(circle at top left, #1c1d4b, #050716);
-        padding: 1.5rem 1.6rem;
-        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.04);
+      /* Quick paths section */
+      .paths {
+        padding-top: 0.5rem;
       }
 
-      .hero-panel-title {
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 0.19em;
-        margin-bottom: 0.35rem;
-        color: #ffdf9e;
-      }
-
-      .hero-panel-sub {
-        font-size: 0.82rem;
-        color: #d5d4ff;
-        margin-bottom: 0.9rem;
-      }
-
-      .hero-panel-list {
-        font-size: 0.82rem;
-        color: #bfbfff;
-        line-height: 1.7;
-      }
-
-      /* Three pillars section */
-      .pillars {
-        padding: 1rem 0 3rem;
-      }
-
-      .pillars-kicker {
-        font-size: 0.75rem;
+      .paths-kicker {
+        font-size: 0.78rem;
         text-transform: uppercase;
         letter-spacing: 0.22em;
         color: #ffdba5;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
       }
 
-      .pillars-title {
-        font-size: 1.3rem;
+      .paths-title {
+        font-size: 1.35rem;
         margin-bottom: 1.8rem;
         color: #f5f5ff;
       }
 
-      .pillar-grid {
+      .paths-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         gap: 1.6rem;
       }
 
-      .pillar-card {
+      .path-card {
         border-radius: 1.2rem;
         background: radial-gradient(circle at top left, #181b3a, #050716);
         border: 1px solid rgba(255, 255, 255, 0.04);
-        padding: 1.3rem 1.4rem 1.4rem;
+        padding: 1.4rem 1.5rem 1.5rem;
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
         font-size: 0.9rem;
       }
 
-      .pillar-label {
+      .path-label {
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.2em;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.5rem;
         color: #ffb88a;
       }
 
-      .pillar-name {
-        font-size: 1rem;
+      .path-name {
+        font-size: 1.05rem;
         margin-bottom: 0.4rem;
       }
 
-      .pillar-text {
+      .path-text {
         color: #d2d1ff;
         line-height: 1.6;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.9rem;
       }
 
-      .pillar-link {
+      .path-link {
         font-size: 0.8rem;
         color: #ffcf9e;
         text-decoration: none;
       }
 
-      .pillar-link:hover {
+      .path-link:hover {
         text-decoration: underline;
-      }
-
-      /* Flip Books section */
-      .flipbooks {
-        padding: 2rem 0 4rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-      }
-
-      .flipbooks-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        gap: 1rem;
-        margin-bottom: 1.8rem;
-      }
-
-      .flipbooks-title {
-        font-size: 1.4rem;
-      }
-
-      .flipbooks-sub {
-        font-size: 0.9rem;
-        color: #caccff;
-        max-width: 420px;
-      }
-
-      .flip-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 1.6rem;
-      }
-
-      .flip-card {
-        border-radius: 1.2rem;
-        background: radial-gradient(circle at top left, #191b3a, #050716);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        padding: 1.4rem 1.5rem 1.5rem;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
-      }
-
-      .flip-tag {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-        color: #ffdf9e;
-        margin-bottom: 0.5rem;
-      }
-
-      .flip-name {
-        font-size: 1.05rem;
-        margin-bottom: 0.35rem;
-      }
-
-      .flip-line {
-        font-size: 0.8rem;
-        color: #cbcbff;
-        margin-bottom: 0.9rem;
-      }
-
-      .flip-desc {
-        font-size: 0.9rem;
-        color: #dad9ff;
-        line-height: 1.6;
-        margin-bottom: 1.1rem;
-      }
-
-      .flip-actions {
-        display: flex;
-        gap: 0.6rem;
-        align-items: center;
-      }
-
-      .flip-open {
-        border-radius: 999px;
-        padding: 0.45rem 1.05rem;
-        font-size: 0.78rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        background: linear-gradient(135deg, #ffb347, #ff5f6d);
-        color: #050716;
-        border: none;
-        cursor: pointer;
-        font-weight: 600;
-      }
-
-      .flip-open:hover {
-        filter: brightness(1.08);
-        transform: translateY(-1px);
-      }
-
-      .flip-note {
-        font-size: 0.78rem;
-        color: #b9b8ff;
       }
 
       /* Footer */
@@ -387,189 +257,109 @@
 
   <body>
     <div class="page">
-      <!-- Header -->
+      <!-- Header / Nav -->
       <header>
         <div class="inner header-inner">
-          <div class="logo">LUMINANEXUS · A nexus of Torah, light, and learning</div>
+          <div class="logo">
+            LUMINANEXUS · A NEXUS OF TORAH, LIGHT, AND LEARNING
+          </div>
           <nav>
             <a href="index.html" class="is-active">Home</a>
             <a href="chavruta/index.html">ChavrutaGPT</a>
             <a href="library/index.html">Celestial Library</a>
             <a href="sefaria-library.html">Sefaria</a>
-            <a href="#flipbooks">Flip&nbsp;Books</a>
+            <a href="flipbooks.html">Flip&nbsp;Books</a>
           </nav>
         </div>
       </header>
 
-      <!-- Main content -->
+      <!-- Main -->
       <main class="inner">
-        <!-- Hero -->
+        <!-- Hero section -->
         <section class="hero">
-          <div class="hero-grid">
-            <div>
-              <div class="hero-kicker">לומדים יחד · Learning together</div>
-              <h1 class="hero-title">
-                A living nexus of <span>Chavruta, Celestial Gates, and Sefaria</span>
-              </h1>
-              <p class="hero-text">
-                LuminaNexus.org is your online Beit Midrash: ChavrutaGPT as your
-                study partner, the Celestial Library of 231 Gates as your inner
-                archive, and the Sefaria online library as your direct link to
-                classic Jewish sources.
-              </p>
-              <div class="hero-actions">
-                <a href="chavruta/index.html#chavruta-chat" class="btn-primary"
-                  >Study with ChavrutaGPT</a
-                >
-                <a href="library/index.html" class="btn-ghost"
-                  >Enter the 231 Gates</a
-                >
-              </div>
-            </div>
-
-            <aside class="hero-panel">
-              <div class="hero-panel-title">Three pillars of LuminaNexus</div>
-              <div class="hero-panel-sub">
-                Torah learning as a luminous conversation between you, the texts,
-                and a patient AI chavruta.
-              </div>
-              <ul class="hero-panel-list">
-                <li>ChavrutaGPT · a gentle AI study partner</li>
-                <li>Celestial Library of 231 Gates · letter-pairs as paths</li>
-                <li>Sefaria · the full open Jewish library inline</li>
-              </ul>
-            </aside>
+          <div class="hero-kicker">לומדים יחד · Learning together</div>
+          <h1 class="hero-title">
+            LuminaNexus —
+            <span>Chavruta, the Celestial Library of 231 Gates, and Sefaria</span>
+            in one place.
+          </h1>
+          <p class="hero-text">
+            This is your online Beit Midrash: a gentle AI chavruta to study with,
+            a Celestial Library where the 231 Hebrew letter-gates open into
+            teachings and stories, and a direct path into the Sefaria online
+            study library. All offered freely, for the sake of Torah and light.
+          </p>
+          <div class="hero-actions">
+            <a href="chavruta/index.html#chavruta-chat" class="btn-primary">
+              Study with ChavrutaGPT
+            </a>
+            <a href="library/index.html" class="btn-ghost">
+              Enter the 231 Gates
+            </a>
           </div>
         </section>
 
-        <!-- Pillars -->
-        <section class="pillars">
-          <div class="pillars-kicker">Three pillars of LuminaNexus</div>
-          <h2 class="pillars-title">
-            Chavruta, Celestial Gates, and Sefaria — learning as one flow.
+        <!-- Quick paths -->
+        <section class="paths">
+          <div class="paths-kicker">Start here</div>
+          <h2 class="paths-title">
+            Four clear paths into the nexus.
           </h2>
 
-          <div class="pillar-grid">
-            <article class="pillar-card">
-              <div class="pillar-label">ChavrutaGPT</div>
-              <h3 class="pillar-name">Your AI Study Partner</h3>
-              <p class="pillar-text">
-                Ask questions, explore sources, and develop your own Torah with
-                a patient, always-awake chavruta. Conversations remain gentle,
-                non-polemical, and rooted in classic and modern Torah learning.
+          <div class="paths-grid">
+            <!-- Path 1: ChavrutaGPT -->
+            <article class="path-card">
+              <div class="path-label">ChavrutaGPT</div>
+              <h3 class="path-name">Your AI Study Partner</h3>
+              <p class="path-text">
+                Ask questions, explore parashah, midrash, or halakhah, and let a
+                patient chavruta help you think, not tell you what to think.
+                Conversations stay gentle and non-polemical.
               </p>
-              <a
-                class="pillar-link"
-                href="chavruta/index.html#chavruta-chat"
-              >
-                Study with ChavrutaGPT →
+              <a class="path-link" href="chavruta/index.html#chavruta-chat">
+                Open ChavrutaGPT →
               </a>
             </article>
 
-            <article class="pillar-card">
-              <div class="pillar-label">Celestial Library</div>
-              <h3 class="pillar-name">The 231 Gates of Light</h3>
-              <p class="pillar-text">
-                Explore the Celestial Library of 231 Gates — an inner archive
-                where each pair of Hebrew letters forms a path of meaning. Read
-                essays, meditations, and narratives tied to each gate as the
-                Library grows.
+            <!-- Path 2: Celestial Library -->
+            <article class="path-card">
+              <div class="path-label">Celestial Library</div>
+              <h3 class="path-name">The 231 Gates of Light</h3>
+              <p class="path-text">
+                Explore the Celestial Library of 231 Gates, where each Hebrew
+                letter-pair is a doorway into a theme, a meditation, or a story.
+                New gates and writings will be added over time.
               </p>
-              <a class="pillar-link" href="library/index.html">
+              <a class="path-link" href="library/index.html">
                 Enter the Celestial Library →
               </a>
             </article>
 
-            <article class="pillar-card">
-              <div class="pillar-label">Sefaria</div>
-              <h3 class="pillar-name">Online Study Library</h3>
-              <p class="pillar-text">
-                Access the full open-library of Jewish texts at Sefaria:
-                Tanakh, Mishnah, Talmud, Midrash, halakhah, and more — all
-                cross-linked and searchable. LuminaNexus connects your learning
-                directly to these primary sources.
+            <!-- Path 3: Sefaria -->
+            <article class="path-card">
+              <div class="path-label">Sefaria</div>
+              <h3 class="path-name">Online Study Library</h3>
+              <p class="path-text">
+                Open Sefaria in a dedicated page, with Tanakh, Mishnah, Talmud,
+                Midrash, halakhah, and more. Use it side by side with
+                ChavrutaGPT and the Celestial Library.
               </p>
-              <a class="pillar-link" href="sefaria-library.html">
+              <a class="path-link" href="sefaria-library.html">
                 Open Sefaria Study Library →
               </a>
             </article>
-          </div>
-        </section>
 
-        <!-- Flip Books -->
-        <section id="flipbooks" class="flipbooks">
-          <div class="flipbooks-header">
-            <div>
-              <h2 class="flipbooks-title">Free Flip Books</h2>
-            </div>
-            <p class="flipbooks-sub">
-              Browse a small shelf of my writings, offered freely as interactive
-              flip books hosted on Heyzine. Each opens in a new tab.
-            </p>
-          </div>
-
-          <div class="flip-grid">
-            <!-- Book 1 -->
-            <article class="flip-card">
-              <div class="flip-tag">Flip book · Free</div>
-              <h3 class="flip-name">Flip Book 1</h3>
-              <div class="flip-line">Heyzine edition</div>
-              <p class="flip-desc">
-                An interactive edition of one of my works, presented as a
-                turn-the-page flip book experience.
+            <!-- Path 4: Flip Books -->
+            <article class="path-card">
+              <div class="path-label">Flip Books</div>
+              <h3 class="path-name">Free Interactive Books</h3>
+              <p class="path-text">
+                Read free interactive flip books of my work, hosted on Heyzine:
+                turn the pages, linger with the words, and share them freely.
               </p>
-              <div class="flip-actions">
-                <a
-                  class="flip-open"
-                  href="https://heyzine.com/flip-book/dc363923b5.html#page/1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Open flip book</a
-                >
-                <span class="flip-note">Opens in a new tab</span>
-              </div>
-            </article>
-
-            <!-- Book 2 -->
-            <article class="flip-card">
-              <div class="flip-tag">Flip book · Free</div>
-              <h3 class="flip-name">Flip Book 2</h3>
-              <div class="flip-line">Heyzine edition</div>
-              <p class="flip-desc">
-                Another work brought to life as a digital flip book. Explore,
-                read, and share at your own pace.
-              </p>
-              <div class="flip-actions">
-                <a
-                  class="flip-open"
-                  href="https://heyzine.com/flip-book/640b8fef70.html#page/1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Open flip book</a
-                >
-                <span class="flip-note">Opens in a new tab</span>
-              </div>
-            </article>
-
-            <!-- Book 3 -->
-            <article class="flip-card">
-              <div class="flip-tag">Flip book · Free</div>
-              <h3 class="flip-name">Flip Book 3</h3>
-              <div class="flip-line">Heyzine edition</div>
-              <p class="flip-desc">
-                A third volume available to read online as a beautifully
-                rendered flip book, freely accessible.
-              </p>
-              <div class="flip-actions">
-                <a
-                  class="flip-open"
-                  href="https://heyzine.com/flip-book/039651cbd0.html#page/1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Open flip book</a
-                >
-                <span class="flip-note">Opens in a new tab</span>
-              </div>
+              <a class="path-link" href="flipbooks.html">
+                Browse free Flip Books →
+              </a>
             </article>
           </div>
         </section>
@@ -578,8 +368,9 @@
       <!-- Footer -->
       <footer>
         <div class="inner">
-          LuminaNexus.org — ChavrutaGPT, the Celestial Library of 231 Gates, and
-          the Sefaria online study library, learning together.
+          LuminaNexus.org — ChavrutaGPT, the Celestial Library of 231 Gates,
+          free flip books, and the Sefaria online study library, learning
+          together.
         </div>
       </footer>
     </div>
