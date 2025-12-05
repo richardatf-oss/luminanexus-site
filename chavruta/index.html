@@ -268,14 +268,20 @@
         // If backend just returns a string
         if (typeof data === "string") return data;
 
-        // Prefer a simple string reply property
+        // Simple reply string
         if (typeof data.reply === "string") return data.reply;
 
-        // Sometimes reply might be an object with .content
-        if (data.reply && typeof data.reply.content === "string")
+        // reply as object with .content
+        if (data.reply && typeof data.reply.content === "string") {
           return data.reply.content;
+        }
 
-        // If OpenAI raw response is sent back
+        // responses API style: { message: { role, content, ... } }
+        if (data.message && typeof data.message.content === "string") {
+          return data.message.content;
+        }
+
+        // legacy ChatCompletion: choices[0].message.content
         if (
           Array.isArray(data.choices) &&
           data.choices[0] &&
@@ -285,10 +291,9 @@
           return data.choices[0].message.content;
         }
 
-        // message as string
         if (typeof data.message === "string") return data.message;
 
-        // Fallback: try to stringify safely
+        // Fallback: stringify so we at least see something
         try {
           return JSON.stringify(data);
         } catch {
@@ -353,7 +358,7 @@
         }
       });
 
-      // === Ensure chat is visible when coming from #chavruta-chat ==========
+      // Ensure chat is visible when coming from #chavruta-chat
       document.addEventListener("DOMContentLoaded", () => {
         if (window.location.hash === "#chavruta-chat") {
           const el = document.getElementById("chavruta-chat");
