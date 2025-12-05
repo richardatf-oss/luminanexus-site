@@ -1,895 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>The Celestial Library of 231 Gates – LuminaNexus</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="The Celestial Library of 231 Gates — a living archive of 22 Hebrew letters and their 231 gates, within LuminaNexus."
-  />
-  <style>
-    :root {
-      --bg: #050716;
-      --bg-alt: #0b0f20;
-      --card: #111627;
-      --card-alt: #1a2138;
-      --accent: #e4b45a;
-      --accent-soft: rgba(228, 180, 90, 0.18);
-      --border-soft: rgba(255, 255, 255, 0.08);
-      --text-main: #fdfdfd;
-      --text-muted: #c3c7e0;
-      --text-soft: #8c92b5;
-      --radius-lg: 18px;
-      --radius-xl: 26px;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.6);
-      --shadow-subtle: 0 10px 24px rgba(0, 0, 0, 0.45);
-      --max-width: 1120px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>Celestial Library · 231 Gates of Light</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    * {
-      box-sizing: border-box;
-    }
+    <!-- Shared site styles -->
+    <link rel="stylesheet" href="../assets/luminanexus.css" />
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top, #1b2440 0, #050716 52%, #02030a 100%);
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      border-bottom: 1px solid var(--border-soft);
-      padding: 0.7rem 1.25rem;
-      background: linear-gradient(
-        to right,
-        rgba(5, 7, 22, 0.95),
-        rgba(5, 7, 22, 0.9)
-      );
-      backdrop-filter: blur(16px);
-      position: sticky;
-      top: 0;
-      z-index: 40;
-    }
-
-    .header-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .crumbs {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-
-    .crumbs a {
-      color: var(--text-soft);
-    }
-
-    .crumbs span {
-      opacity: 0.8;
-    }
-.mini-links {
-  margin-top: 0.2rem;
-  font-size: 0.8rem;
-  color: var(--text-soft);
-  display: flex;
-  gap: 0.3rem;
-  align-items: center;
-}
-
-.mini-links a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.mini-links a:hover {
-  text-decoration: underline;
-}
-
-    .title-block {
-      text-align: right;
-    }
-
-    .title-block h1 {
-      margin: 0;
-      font-size: 1.4rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .title-block .sub {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-
-    main {
-      flex: 1;
-      padding: 2.2rem 1.25rem 2.5rem;
-    }
-
-    .shell {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    .intro {
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.7fr);
-      gap: 1.8rem;
-      align-items: flex-start;
-      margin-bottom: 2rem;
-    }
-
-    @media (max-width: 840px) {
-      .intro {
-        grid-template-columns: minmax(0, 1fr);
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #050716;
+        color: #f7f7ff;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
       }
-      .title-block {
-        text-align: left;
+
+      a {
+        color: inherit;
+        text-decoration: none;
       }
-    }
 
-    .intro-main h2 {
-      margin: 0 0 0.5rem;
-      font-size: 1.4rem;
-    }
-
-    .intro-main p {
-      font-size: 0.94rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin: 0.2rem 0;
-    }
-
-    .intro-main p em {
-      font-style: normal;
-      color: var(--accent);
-    }
-
-    .intro-side {
-      border-radius: var(--radius-xl);
-      background: radial-gradient(circle at top left, rgba(228, 180, 90, 0.14), transparent 60%),
-        linear-gradient(150deg, #050716, #070b1f);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: var(--shadow-soft);
-      padding: 1.3rem 1.5rem;
-      font-size: 0.86rem;
-      color: var(--text-soft);
-    }
-
-    .intro-side h3 {
-      margin-top: 0;
-      font-size: 0.98rem;
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .intro-side p {
-      margin: 0.4rem 0;
-      line-height: 1.6;
-    }
-
-    .intro-side .count-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.2rem 0.65rem;
-      border-radius: 999px;
-      border: 1px solid rgba(228, 180, 90, 0.7);
-      background: rgba(228, 180, 90, 0.08);
-      font-size: 0.78rem;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-    }
-
-    .controls {
-      margin-bottom: 1.1rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .controls-left {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      align-items: center;
-    }
-
-    .controls-label {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-    }
-
-    .select-wrap {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    select {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background: rgba(12, 16, 40, 0.98);
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 0.35rem 2.3rem 0.35rem 0.8rem;
-      color: var(--text-muted);
-      font-size: 0.86rem;
-      cursor: pointer;
-    }
-
-    .select-wrap::after {
-      content: "▾";
-      position: absolute;
-      right: 0.75rem;
-      font-size: 0.7rem;
-      color: var(--text-soft);
-      pointer-events: none;
-    }
-
-    .count-info {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-
-    .count-info strong {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .grid {
-      border-radius: var(--radius-xl);
-      background: linear-gradient(
-        145deg,
-        rgba(11, 14, 35, 0.98),
-        rgba(5, 6, 22, 0.98)
-      );
-      border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-subtle);
-      padding: 1.2rem 1.1rem 1.4rem;
-    }
-
-    .grid-title {
-      font-size: 0.9rem;
-      color: var(--text-soft);
-      margin-bottom: 0.8rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.7rem;
-      flex-wrap: wrap;
-    }
-
-    .grid-title strong {
-      color: var(--text-main);
-    }
-
-    .grid-title span {
-      font-size: 0.8rem;
-    }
-
-    .gate-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.65rem;
-    }
-
-    @media (max-width: 960px) {
-      .gate-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
-    }
 
-    @media (max-width: 720px) {
-      .gate-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
       }
-    }
 
-    .gate-card {
-      border-radius: 15px;
-      background: rgba(11, 14, 35, 0.98);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0.55rem 0.6rem 0.5rem;
-      text-align: left;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
-      transition: transform 0.12s ease, box-shadow 0.12s ease,
-        border-color 0.12s ease, background 0.12s ease;
-    }
+      /* Header / Nav (paths relative from /library/) */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: radial-gradient(circle at top, #151937, #050716);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
 
-    .gate-card:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 7px 20px rgba(0, 0, 0, 0.7);
-      border-color: rgba(228, 180, 90, 0.8);
-      background: radial-gradient(circle at top left, rgba(228, 180, 90, 0.16), rgba(11, 14, 35, 0.98));
-    }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.9rem 1.5rem;
+      }
 
-    .gate-he {
-      font-size: 1.6rem;
-      line-height: 1;
-      margin-bottom: 0.15rem;
-      text-align: right;
-    }
+      .logo {
+        font-size: 0.8rem;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        opacity: 0.92;
+      }
 
-    .gate-he span {
-      font-family: "Times New Roman", "SBL Hebrew", serif;
-      font-weight: 600;
-    }
+      nav {
+        display: flex;
+        gap: 1.4rem;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
 
-    .gate-name {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 0.3rem;
-      align-items: baseline;
-    }
+      nav a {
+        opacity: 0.7;
+        position: relative;
+      }
 
-    .gate-name span.label {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.7rem;
-      color: var(--text-soft);
-    }
+      nav a:hover,
+      nav a.is-active {
+        opacity: 1;
+      }
 
-    .gate-theme {
-      margin-top: 0.15rem;
-      font-size: 0.76rem;
-      color: var(--text-soft);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+      nav a.is-active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -0.4rem;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #ffb347, #ff5f6d);
+      }
 
-    .gate-card.featured::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, rgba(228, 180, 90, 0.24), transparent 60%);
-      opacity: 0.9;
-      pointer-events: none;
-    }
+      @media (max-width: 720px) {
+        .header-inner {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.6rem;
+        }
 
-    footer {
-      border-top: 1px solid var(--border-soft);
-      margin-top: 2.2rem;
-      padding-top: 1.2rem;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      text-align: center;
-    }
+        nav {
+          flex-wrap: wrap;
+          gap: 0.9rem;
+        }
+      }
 
-    footer a {
-      color: var(--accent);
-    }
+      /* Main layout */
+      main {
+        padding: 3rem 0 3.5rem;
+      }
 
-    /* Modal */
+      /* Hero */
+      .hero {
+        margin-bottom: 3rem;
+      }
 
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(2, 3, 10, 0.78);
-      backdrop-filter: blur(10px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 80;
-    }
+      .hero-kicker {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        color: #ffcfa2;
+        margin-bottom: 0.75rem;
+      }
 
-    .hidden {
-      display: none !important;
-    }
+      .hero-title {
+        font-size: 2.1rem;
+        line-height: 1.2;
+        margin-bottom: 0.6rem;
+      }
 
-    .modal-card {
-      max-width: 560px;
-      width: calc(100% - 2.5rem);
-      border-radius: var(--radius-xl);
-      background: linear-gradient(
-        145deg,
-        rgba(11, 14, 35, 0.98),
-        rgba(5, 6, 22, 0.99)
-      );
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
-      padding: 1.5rem 1.6rem 1.4rem;
-      position: relative;
-    }
+      .hero-title span {
+        background: linear-gradient(120deg, #ffd082, #ff7b9c);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
 
-    .modal-close {
-      position: absolute;
-      top: 0.6rem;
-      right: 0.7rem;
-      border: none;
-      background: transparent;
-      color: var(--text-soft);
-      font-size: 1rem;
-      cursor: pointer;
-    }
+      .hero-text {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #ceceff;
+        max-width: 680px;
+        margin-bottom: 1.6rem;
+      }
 
-    .modal-heading {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.8rem;
-      align-items: baseline;
-      margin-bottom: 0.4rem;
-    }
+      .hero-note {
+        font-size: 0.82rem;
+        color: #a9a8ff;
+        max-width: 580px;
+      }
 
-    .modal-he {
-      font-size: 2rem;
-      text-align: right;
-    }
+      /* Letter grid */
+      .letters-section {
+        margin-bottom: 3rem;
+      }
 
-    .modal-he span {
-      font-family: "Times New Roman", "SBL Hebrew", serif;
-      font-weight: 600;
-    }
+      .section-kicker {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: #ffdba5;
+        margin-bottom: 0.4rem;
+      }
 
-    .modal-meta {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
+      .section-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
 
-    .modal-meta .label {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-soft);
-      display: block;
-    }
+      .letters-grid {
+        display: grid;
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+        gap: 0.4rem;
+        max-width: 520px;
+      }
 
-    .modal-theme {
-      margin-top: 0.6rem;
-      font-size: 0.9rem;
-      color: var(--accent);
-      font-weight: 500;
-    }
+      @media (max-width: 640px) {
+        .letters-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
 
-    .modal-text {
-      margin-top: 0.4rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
+      .letter-pill {
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 0.3rem 0.2rem;
+        font-size: 1rem;
+        text-align: center;
+        background: radial-gradient(circle at top, #181b3a, #050716);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      }
 
-    .modal-footer {
-      margin-top: 0.9rem;
-      padding-top: 0.7rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
+      .letters-caption {
+        font-size: 0.8rem;
+        color: #bdbdff;
+        margin-top: 0.5rem;
+        max-width: 520px;
+      }
 
-    .modal-actions {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
+      /* Featured gates */
+      .gates-section {
+        margin-bottom: 2.5rem;
+      }
 
-    .btn {
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(10, 12, 32, 0.98);
-      padding: 0.45rem 0.9rem;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.35rem;
-      text-decoration: none;
-      transition: background 0.12s ease, border-color 0.12s ease,
-        color 0.12s ease, transform 0.12s ease;
-    }
+      .gates-title {
+        font-size: 1.35rem;
+        margin-bottom: 1rem;
+      }
 
-    .btn:hover {
-      background: rgba(16, 18, 46, 0.98);
-      border-color: rgba(228, 180, 90, 0.8);
-      color: var(--text-main);
-      transform: translateY(-0.5px);
-    }
+      .gates-sub {
+        font-size: 0.9rem;
+        color: #c9c9ff;
+        max-width: 640px;
+        margin-bottom: 1.8rem;
+      }
 
-    .btn-primary {
-      background: radial-gradient(
-        circle at 20% 0,
-        #ffe9b3 0,
-        #f1c76c 22%,
-        #e1974e 52%,
-        #7d5cf0 100%
-      );
-      border-color: rgba(0, 0, 0, 0.6);
-      color: #130b05;
-    }
+      .gates-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.6rem;
+      }
 
-    .btn-primary:hover {
-      border-color: rgba(0, 0, 0, 0.75);
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-   <header>
-  <div class="header-inner">
-    <div>
-      <div class="crumbs">
-        <a href="/">LuminaNexus</a>
-        <span> · The Celestial Library of 231 Gates</span>
-      </div>
-      <div class="mini-links">
-        <a href="/chavruta">ChavrutaGPT</a>
-        <span>·</span>
-        <a href="https://www.sefaria.org/texts" target="_blank" rel="noopener">Sefaria Gateway</a>
-      </div>
-    </div>
-    <div class="title-block">
-      <h1>The Celestial Library of 231 Gates</h1>
-      <div class="sub">ספריית השמים של רל״א שערים</div>
-    </div>
-  </div>
-</header>
+      .gate-card {
+        border-radius: 1.2rem;
+        background: radial-gradient(circle at top left, #181b3a, #050716);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 1.3rem 1.5rem 1.5rem;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
+        font-size: 0.9rem;
+      }
 
-    <main>
-      <div class="shell">
-        <section class="intro">
-          <div class="intro-main">
-            <h2>A living archive of letter-gates</h2>
-            <p>
-              Within this Library, the
-              <em>22 Hebrew letters</em> are treated as living lights. Every
-              unique pairing of two letters forms a <em>gate</em> —
-              one of the <strong>231 gates (רל״א שערים)</strong> through which
-              meaning, story, and consciousness can flow.
-            </p>
-            <p>
-              Here you can browse all 231 gates, filter them by the first
-              letter, and begin to feel how the alphabet becomes a
-              <em>constellation of paths</em>. Some gates already carry
-              whispered themes; others are patiently waiting to be written.
-            </p>
-            <p>
-              As the Celestial Library grows, each gate will gather its own
-              essays, meditations, study sheets, and links out to classic
-              sources on <strong>Sefaria</strong>, so that the mystical
-              pathways remain rooted in the traditional Beit Midrash.
-            </p>
+      .gate-label {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        color: #ffdf9e;
+        margin-bottom: 0.4rem;
+      }
+
+      .gate-name {
+        font-size: 1.05rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .gate-theme {
+        font-size: 0.85rem;
+        color: #cbcbff;
+        margin-bottom: 0.7rem;
+      }
+
+      .gate-text {
+        font-size: 0.9rem;
+        color: #dad9ff;
+        line-height: 1.6;
+        margin-bottom: 0.9rem;
+      }
+
+      .gate-link {
+        font-size: 0.8rem;
+        color: #ffcf9e;
+        text-decoration: none;
+      }
+
+      .gate-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 1.2rem 0 1.6rem;
+        font-size: 0.75rem;
+        color: #a6a6cf;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- Header -->
+      <header>
+        <div class="inner header-inner">
+          <div class="logo">
+            LUMINANEXUS · A NEXUS OF TORAH, LIGHT, AND LEARNING
           </div>
+          <nav>
+            <a href="../index.html">Home</a>
+            <a href="../chavruta/index.html">ChavrutaGPT</a>
+            <a href="index.html" class="is-active">Celestial Library</a>
+            <a href="../sefaria-library.html">Sefaria</a>
+            <a href="../flipbooks.html">Flip&nbsp;Books</a>
+          </nav>
+        </div>
+      </header>
 
-          <aside class="intro-side">
-            <div class="count-pill">
-              <span>22</span> letters · <span>231</span> gates
-            </div>
-            <h3>How to walk this Library</h3>
-            <p>
-              1. Choose a filter below, or leave it on
-              <strong>All 231 Gates</strong>.<br />
-              2. Click on any gate tile to open its detail window.<br />
-              3. Sit with the letters, their sounding, and the theme that is
-              beginning to emerge.
-            </p>
-            <p>
-              When you want to dive into classic sources, you can open
-              <strong>Sefaria</strong> directly, and then return here to let
-              the letter-gates suggest connections.
-            </p>
-            <p>
-              You are welcome to bring your own Torah to these gates:
-              reflections, sheets, stories, and questions. This Library is a
-              <em>living</em> archive.
-            </p>
-          </aside>
+      <!-- Main -->
+      <main class="inner">
+        <!-- Hero: what is the Celestial Library? -->
+        <section class="hero">
+          <div class="hero-kicker">Celestial Library</div>
+          <h1 class="hero-title">
+            The <span>231 Gates</span> — Hebrew letter paths of light.
+          </h1>
+          <p class="hero-text">
+            The Celestial Library is an inner archive built from the
+            <strong>231 Gates</strong> — all pairings of the 22 Hebrew letters.
+            Each gate (like Aleph–Bet, Aleph–Gimel…) is a small path of meaning:
+            a theme, a teaching, a story, or a meditation that grows over time.
+          </p>
+          <p class="hero-note">
+            This page is a simple map. As we write, gates will open with full
+            teachings and sources. You can already study the first Aleph-gates
+            with ChavrutaGPT.
+          </p>
         </section>
 
-        <section aria-label="231 Gates">
-          <div class="controls">
-            <div class="controls-left">
-              <div class="controls-label">Filter by first letter</div>
-              <div class="select-wrap">
-                <select id="filter-select">
-                  <option value="all">All 231 gates</option>
-                  <option value="aleph">Aleph (א)</option>
-                  <option value="bet">Bet (ב)</option>
-                  <option value="gimel">Gimel (ג)</option>
-                  <option value="dalet">Dalet (ד)</option>
-                  <option value="he">He (ה)</option>
-                  <option value="vav">Vav (ו)</option>
-                  <option value="zayin">Zayin (ז)</option>
-                  <option value="chet">Chet (ח)</option>
-                  <option value="tet">Tet (ט)</option>
-                  <option value="yod">Yod (י)</option>
-                  <option value="kaf">Kaf (כ)</option>
-                  <option value="lamed">Lamed (ל)</option>
-                  <option value="mem">Mem (מ)</option>
-                  <option value="nun">Nun (נ)</option>
-                  <option value="samekh">Samekh (ס)</option>
-                  <option value="ayin">Ayin (ע)</option>
-                  <option value="pe">Pe (פ)</option>
-                  <option value="tzadi">Tzadi (צ)</option>
-                  <option value="qof">Qof (ק)</option>
-                  <option value="resh">Resh (ר)</option>
-                  <option value="shin">Shin (ש)</option>
-                  <option value="tav">Tav (ת)</option>
-                </select>
+        <!-- Letter grid: Aleph–Tav -->
+        <section class="letters-section">
+          <div class="section-kicker">Aleph–Tav overview</div>
+          <h2 class="section-title">The twenty-two letters</h2>
+
+          <div class="letters-grid" aria-label="Hebrew letters Aleph through Tav">
+            <div class="letter-pill">א</div>
+            <div class="letter-pill">ב</div>
+            <div class="letter-pill">ג</div>
+            <div class="letter-pill">ד</div>
+            <div class="letter-pill">ה</div>
+            <div class="letter-pill">ו</div>
+            <div class="letter-pill">ז</div>
+            <div class="letter-pill">ח</div>
+            <div class="letter-pill">ט</div>
+            <div class="letter-pill">י</div>
+            <div class="letter-pill">כ</div>
+            <div class="letter-pill">ל</div>
+            <div class="letter-pill">מ</div>
+            <div class="letter-pill">נ</div>
+            <div class="letter-pill">ס</div>
+            <div class="letter-pill">ע</div>
+            <div class="letter-pill">פ</div>
+            <div class="letter-pill">צ</div>
+            <div class="letter-pill">ק</div>
+            <div class="letter-pill">ר</div>
+            <div class="letter-pill">ש</div>
+            <div class="letter-pill">ת</div>
+          </div>
+
+          <p class="letters-caption">
+            The 231 Gates are formed by joining every letter with every other
+            letter. This page begins with a few “featured” gates from the Aleph
+            row; more will be added as the Library grows.
+          </p>
+        </section>
+
+        <!-- Featured Aleph gates -->
+        <section class="gates-section">
+          <h2 class="gates-title">Featured gates · Aleph row</h2>
+          <p class="gates-sub">
+            These are short descriptions of several Aleph-gates. You can bring
+            any of them straight into <strong>ChavrutaGPT</strong> and say:
+            “Let’s study Gate Aleph–Bet” — and learn sources, midrashim, and
+            reflections around that theme.
+          </p>
+
+          <div class="gates-grid">
+            <!-- Gate Aleph–Bet -->
+            <article class="gate-card">
+              <div class="gate-label">א–ב · Aleph–Bet</div>
+              <h3 class="gate-name">First Shelter</h3>
+              <div class="gate-theme">
+                The first act of love in creation is to make a place where light
+                can rest.
               </div>
-            </div>
-            <div class="count-info">
-              Showing <strong id="gate-count">231</strong> gates
-            </div>
-          </div>
+              <p class="gate-text">
+                Aleph is the silent breath of beginning; Bet is the house, the
+                inside. Together they speak of the moment the Infinite chooses
+                to dwell somewhere, not everywhere at once. This gate invites
+                you to see every home, room, and quiet corner as a potential
+                Mishkan — a small shelter for presence.
+              </p>
+              <a
+                class="gate-link"
+                href="../chavruta/index.html#chavruta-chat"
+              >
+                Study Gate Aleph–Bet with ChavrutaGPT →
+              </a>
+            </article>
 
-          <div class="grid">
-            <div class="grid-title">
-              <strong>All Gates</strong>
-              <span>
-                Each card is one gate — a pair of letters and a theme that will
-                grow over time.
-              </span>
-            </div>
-            <div class="gate-grid" id="gate-grid" aria-live="polite"></div>
+            <!-- Gate Aleph–Gimel -->
+            <article class="gate-card">
+              <div class="gate-label">א–ג · Aleph–Gimel</div>
+              <h3 class="gate-name">First Gift</h3>
+              <div class="gate-theme">
+                The Source taking its first step outward in generosity.
+              </div>
+              <p class="gate-text">
+                Gimel walks toward the other to give. Joined with Aleph, this
+                gate is about first generosity: compassion that becomes motion.
+                Not just feeling kindness, but letting your feet carry it into
+                the world.
+              </p>
+              <a
+                class="gate-link"
+                href="../chavruta/index.html#chavruta-chat"
+              >
+                Ask ChavrutaGPT about acts of giving in this gate →
+              </a>
+            </article>
+
+            <!-- Gate Aleph–Dalet -->
+            <article class="gate-card">
+              <div class="gate-label">א–ד · Aleph–Dalet</div>
+              <h3 class="gate-name">Threshold of the Poor Door</h3>
+              <div class="gate-theme">
+                Beginning breath meeting vulnerability at the doorway.
+              </div>
+              <p class="gate-text">
+                Dalet is both “dal” (poor) and a door. Aleph–Dalet is the moment
+                the Infinite stands at the threshold of lack — in you, or in
+                someone else — and chooses not to overpower it, but to meet it
+                gently. This gate teaches how to stand at doors in kindness.
+              </p>
+              <a
+                class="gate-link"
+                href="../chavruta/index.html#chavruta-chat"
+              >
+                Learn sources on doorways, poverty, and kindness →
+              </a>
+            </article>
+
+            <!-- Gate Aleph–He -->
+            <article class="gate-card">
+              <div class="gate-label">א–ה · Aleph–He</div>
+              <h3 class="gate-name">Breath of Revelation</h3>
+              <div class="gate-theme">
+                Silent awareness becoming spoken “Hineni”.
+              </div>
+              <p class="gate-text">
+                He is the breath that becomes sound. Aleph–He is the path from
+                silent knowing to voiced truth. It is the courage to let a quiet
+                inner “I am” become words, prayer, or Torah you actually share.
+              </p>
+              <a
+                class="gate-link"
+                href="../chavruta/index.html#chavruta-chat"
+              >
+                Explore this gate through stories of revelation and speech →
+              </a>
+            </article>
+
+            <!-- Gate Aleph–Vav -->
+            <article class="gate-card">
+              <div class="gate-label">א–ו · Aleph–Vav</div>
+              <h3 class="gate-name">Thread of Continuity</h3>
+              <div class="gate-theme">
+                Seeing your life as one long sentence, not scattered words.
+              </div>
+              <p class="gate-text">
+                Vav is the hook, the “and” that links moments. Aleph–Vav is the
+                awareness that a single breath runs through all your days. This
+                gate teaches how to notice the connective tissue between events
+                and to read your story with continuity and meaning.
+              </p>
+              <a
+                class="gate-link"
+                href="../chavruta/index.html#chavruta-chat"
+              >
+                Ask ChavrutaGPT for sources on Vav and connection →
+              </a>
+            </article>
+
+            <!-- Gate Aleph–Zayin -->
+            <article class="gate-card">
+              <div class="gate-label">א–ז · Aleph–Zayin</div>
+              <h3 class="gate-name">Sword of Discernment</h3>
+              <div class="gate-theme">
+                The loving “no” that clears space for the One breath.
+              </div>
+              <p class="gate-text">
+                Zayin is a sharp edge, the power to cut away what does not
+                belong. Aleph–Zayin is not violence; it is clarity. Here you
+                learn that saying “no” can be an act of love, making room for
+                what truly needs to live.
+              </p>
+              <a
+                class="gate-link"
+                href="../chavruta/index.html#chavruta-chat"
+              >
+                Study discernment and boundaries through this gate →
+              </a>
+            </article>
           </div>
         </section>
+      </main>
 
-        <footer>
-          Part of <a href="/">LuminaNexus.org</a> · This Celestial Library is
-          meant to sit alongside the open texts of
-          <a href="https://www.sefaria.org/texts" target="_blank" rel="noopener"
-            >Sefaria</a
-          >
-          and the gentle guidance of your Chavruta GPT.
-        </footer>
-      </div>
-    </main>
-  </div>
-
-  <!-- Gate detail modal -->
-  <div class="modal-backdrop hidden" id="gate-modal">
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="modal-close" type="button" id="modal-close" aria-label="Close gate details">
-        ×
-      </button>
-      <div class="modal-heading">
-        <div class="modal-meta">
-          <span class="label">Gate</span>
-          <div id="modal-name"></div>
+      <!-- Footer -->
+      <footer>
+        <div class="inner">
+          Celestial Library of 231 Gates — part of LuminaNexus.org. May each
+          gate open into more Torah, more light, and more kindness.
         </div>
-        <div class="modal-he">
-          <span id="modal-he"></span>
-        </div>
-      </div>
-      <div class="modal-theme" id="modal-theme"></div>
-      <div class="modal-text" id="modal-text"></div>
-      <div class="modal-footer">
-        <div class="modal-actions">
-          <a
-            href="https://www.sefaria.org/texts"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-primary"
-          >
-            Open Sefaria Texts
-          </a>
-          <a href="/chavruta" class="btn">
-            Study this gate with Chavruta GPT
-          </a>
-        </div>
-        <div>
-          You can note down your own Torah and return to this gate often.
-        </div>
-      </div>
+      </footer>
     </div>
-  </div>
-
-  <script>
-    // 22 letters with names and IDs
-    const letters = [
-      { he: "א", name: "Aleph", id: "aleph" },
-      { he: "ב", name: "Bet", id: "bet" },
-      { he: "ג", name: "Gimel", id: "gimel" },
-      { he: "ד", name: "Dalet", id: "dalet" },
-      { he: "ה", name: "He", id: "he" },
-      { he: "ו", name: "Vav", id: "vav" },
-      { he: "ז", name: "Zayin", id: "zayin" },
-      { he: "ח", name: "Chet", id: "chet" },
-      { he: "ט", name: "Tet", id: "tet" },
-      { he: "י", name: "Yod", id: "yod" },
-      { he: "כ", name: "Kaf", id: "kaf" },
-      { he: "ל", name: "Lamed", id: "lamed" },
-      { he: "מ", name: "Mem", id: "mem" },
-      { he: "נ", name: "Nun", id: "nun" },
-      { he: "ס", name: "Samekh", id: "samekh" },
-      { he: "ע", name: "Ayin", id: "ayin" },
-      { he: "פ", name: "Pe", id: "pe" },
-      { he: "צ", name: "Tzadi", id: "tzadi" },
-      { he: "ק", name: "Qof", id: "qof" },
-      { he: "ר", name: "Resh", id: "resh" },
-      { he: "ש", name: "Shin", id: "shin" },
-      { he: "ת", name: "Tav", id: "tav" }
-    ];
-
-    // Featured themes for some gates (you can expand these over time)
-   const featuredThemes = {
-  "aleph-bet": {
-    title: "First Shelter of Light",
-    text:
-      "Aleph is the breath that has not yet chosen a word; Bet is the first house that dares to hold it. This gate invites meditations on beginnings, hospitality, and the way blessing arises when we make room for fragile new light. Any time you become a quiet shelter for another soul, you are walking in Aleph–Bet."
-  },
-  "gimel-shin": {
-    title: "Bridge of Flow",
-    text:
-      "Gimel carries the energy of movement and giving, while Shin burns with change and transformation. Together they form a bridge where generosity sets things in motion and holy fire refines what it touches. This gate is a place to ask how your giving can become a river that renews the world."
-  },
-  "dalet-ayin": {
-    title: "Door of Seeing",
-    text:
-      "Dalet is a doorway, Ayin an eye. Passing through this gate means allowing perception itself to become a threshold. It is for learning to see what was hidden at the edges of your awareness, and to treat each new insight as a step deeper into the house of wisdom."
-  },
-  "lamed-mem": {
-    title: "Hidden Learning",
-    text:
-      "Lamed is the staff of the learner and teacher, Mem the deep waters of hidden understanding. This gate belongs to those who study quietly, who let teachings soak in over time. It is a good place to sit when you feel called to learn beneath the surface of words."
-  },
-  "qof-dalet": {
-    title: "Kadosh Axis",
-    text:
-      "Qof stands at the outer edge, Dalet opens as a door. Here the turn toward holiness happens right at the border of what feels ordinary. This gate invites you to notice the small decisions that become turning points, and to step through them with intention."
-  },
-  "tav-samekh": {
-    title: "Whisper of Completion",
-    text:
-      "Tav closes the circle, Samekh surrounds and supports. This gate is for gentle endings, when a cycle finishes not with a crash but with a soft exhale. It reminds you that completion can be held in kindness, and that what is finished is still lovingly encircled."
-  }
-};
- 
-
-    let allGates = [];
-
-    function buildGates() {
-      const gates = [];
-      for (let i = 0; i < letters.length; i++) {
-        for (let j = i + 1; j < letters.length; j++) {
-          const from = letters[i];
-          const to = letters[j];
-          const key = from.id + "-" + to.id;
-          const theme = featuredThemes[key] || null;
-
-          gates.push({
-            key,
-            he: from.he + to.he,
-            name: from.name + " – " + to.name,
-            fromId: from.id,
-            fromName: from.name,
-            toId: to.id,
-            toName: to.name,
-            themeTitle: theme ? theme.title : "Gate theme coming soon",
-            themeText: theme
-              ? theme.text
-              : "This gate is waiting for its own Torah to emerge here: essays, stories, meditations, and study sheets. For now, you can sit with the sound and feel of these two letters together."
-          });
-        }
-      }
-      return gates;
-    }
-
-    function renderGates(filterId) {
-      const grid = document.getElementById("gate-grid");
-      grid.innerHTML = "";
-
-      let filtered = allGates;
-      if (filterId && filterId !== "all") {
-        filtered = allGates.filter((g) => g.fromId === filterId);
-      }
-
-      filtered.forEach((gate) => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "gate-card" + (featuredThemes[gate.key] ? " featured" : "");
-        btn.setAttribute("data-key", gate.key);
-        btn.innerHTML = `
-          <div class="gate-he" aria-hidden="true">
-            <span dir="rtl" lang="he">${gate.he}</span>
-          </div>
-          <div class="gate-name">
-            <span>${gate.name}</span>
-            <span class="label">${gate.fromName} → ${gate.toName}</span>
-          </div>
-          <div class="gate-theme">${gate.themeTitle}</div>
-        `;
-        btn.addEventListener("click", () => openGateModal(gate));
-        grid.appendChild(btn);
-      });
-
-      const countEl = document.getElementById("gate-count");
-      if (countEl) countEl.textContent = filtered.length.toString();
-    }
-
-    function openGateModal(gate) {
-      const modal = document.getElementById("gate-modal");
-      const heEl = document.getElementById("modal-he");
-      const nameEl = document.getElementById("modal-name");
-      const themeEl = document.getElementById("modal-theme");
-      const textEl = document.getElementById("modal-text");
-
-      if (heEl) heEl.textContent = gate.he;
-      if (nameEl)
-        nameEl.textContent = `${gate.name} (${gate.fromName} → ${gate.toName})`;
-      if (themeEl) themeEl.textContent = gate.themeTitle;
-      if (textEl) textEl.textContent = gate.themeText;
-
-      if (modal) {
-        modal.classList.remove("hidden");
-      }
-    }
-
-    function closeGateModal() {
-      const modal = document.getElementById("gate-modal");
-      if (modal) {
-        modal.classList.add("hidden");
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      allGates = buildGates();
-      const select = document.getElementById("filter-select");
-      if (select) {
-        select.addEventListener("change", () => {
-          renderGates(select.value);
-        });
-      }
-
-      const closeBtn = document.getElementById("modal-close");
-      if (closeBtn) {
-        closeBtn.addEventListener("click", closeGateModal);
-      }
-
-      const backdrop = document.getElementById("gate-modal");
-      if (backdrop) {
-        backdrop.addEventListener("click", (event) => {
-          if (event.target === backdrop) {
-            closeGateModal();
-          }
-        });
-      }
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          closeGateModal();
-        }
-      });
-
-      renderGates("all");
-    });
-  </script>
-</body>
+  </body>
 </html>
