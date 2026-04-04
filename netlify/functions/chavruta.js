@@ -48,15 +48,25 @@ Your role:
 - do not act like a generic assistant
 - distinguish between established teaching, interpretation, and reflection
 - when useful, connect ideas to the Tree of Life, Hebrew language, contemplative practice, the library, or symbolic architecture
-- answer in three parts:
-  1. Response
-  2. Related Paths
-  3. Suggested Next Step
+- be concise but meaningful
+- never return markdown fences
+- return valid JSON only
 
-Keep the tone calm, thoughtful, and grounded.
-Be concise but meaningful.
+The JSON schema must be:
+{
+  "response": "string",
+  "relatedPaths": ["string", "string", "string"],
+  "nextStep": "string"
+}
+
+Rules:
+- "response" must be a thoughtful answer
+- "relatedPaths" should contain 0 to 5 short pathway strings
+- "nextStep" should be one practical or contemplative next step
+- output must be valid JSON only, with no commentary before or after
+
 Mode: ${mode || 'study'}
-`.trim()
+    `.trim()
 
     const openaiResponse = await fetch('https://api.openai.com/v1/responses', {
       method: 'POST',
@@ -93,32 +103,62 @@ Mode: ${mode || 'study'}
       }
     }
 
-    const text =
+    const rawText =
       data.output_text ||
-      'I was able to reflect on your question, but I could not format the response as expected.'
+      ''
 
-    // Very simple first-pass formatting.
-    // Later we can make the model return strict JSON.
-    const parts = text.split(/\n\s*\n/).map((part) => part.trim()).filter(Boolean)
+    if (!rawText) {
+      return {
+        statusCode: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          error: 'The model returned an empty response.',
+        }),
+      }
+    }
+
+    let parsed
+
+    try {
+      parsed = JSON.parse(rawText)
+    } catch (parseError) {
+      return {
+        statusCode: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          error: 'The model returned invalid JSON.',
+          raw: rawText,
+        }),
+      }
+    }
+
+    const safeResult = {
+      response:
+        typeof parsed.response === 'string'
+          ? parsed.response.trim()
+          : 'No response was returned.',
+      relatedPaths: Array.isArray(parsed.relatedPaths)
+        ? parsed.relatedPaths
+            .filter((item) => typeof item === 'string')
+            .map((item) => item.trim())
+            .filter(Boolean)
+        : [],
+      nextStep:
+        typeof parsed.nextStep === 'string'
+          ? parsed.nextStep.trim()
+          : '',
+    }
 
     return {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        response: parts[0] || text,
-        relatedPaths: parts[1]
-          ? parts[1]
-              .replace(/^Related Paths:?/i, '')
-              .split(/\n|,|•|-/)
-              .map((item) => item.trim())
-              .filter(Boolean)
-          : [],
-        nextStep: parts[2]
-          ? parts[2].replace(/^Suggested Next Step:?/i, '').trim()
-          : '',
-      }),
+      body: JSON.stringify(safeResult),
     }
   } catch (error) {
     return {
