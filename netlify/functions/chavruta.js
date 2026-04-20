@@ -1,15 +1,23 @@
 function extractText(data) {
-  if (typeof data?.output_text === 'string' && data.output_text.trim()) {
+  if (
+    data &&
+    typeof data.output_text === 'string' &&
+    data.output_text.trim()
+  ) {
     return data.output_text.trim()
   }
 
-  if (Array.isArray(data?.output)) {
-    const chunks = []
+  if (data && Array.isArray(data.output)) {
+    var chunks = []
 
-    for (const item of data.output) {
-      if (Array.isArray(item?.content)) {
-        for (const part of item.content) {
-          if (typeof part?.text === 'string' && part.text.trim()) {
+    for (var i = 0; i < data.output.length; i += 1) {
+      var item = data.output[i]
+
+      if (item && Array.isArray(item.content)) {
+        for (var j = 0; j < item.content.length; j += 1) {
+          var part = item.content[j]
+
+          if (part && typeof part.text === 'string' && part.text.trim()) {
             chunks.push(part.text.trim())
           }
         }
@@ -38,7 +46,9 @@ exports.handler = async function (event) {
   }
 
   try {
-    const { question, mode } = JSON.parse(event.body || '{}')
+    var parsedBody = JSON.parse(event.body || '{}')
+    var question = parsedBody.question
+    var mode = parsedBody.mode
 
     if (!question || typeof question !== 'string') {
       return {
@@ -52,7 +62,7 @@ exports.handler = async function (event) {
       }
     }
 
-    const apiKey = process.env.OPENAI_API_KEY
+    var apiKey = process.env.OPENAI_API_KEY
 
     if (!apiKey) {
       return {
@@ -66,61 +76,61 @@ exports.handler = async function (event) {
       }
     }
 
-    const selectedMode = mode || 'study'
+    var selectedMode = mode || 'study'
 
-    const systemPrompt = `
-You are ChavrutaGPT for LuminaNexus.
+    var systemPrompt = [
+      'You are ChavrutaGPT for LuminaNexus.',
+      '',
+      'You are not a generic chatbot. You are a guided study companion within a digital sanctuary shaped by the Tree of Life.',
+      '',
+      'Your tone:',
+      '- calm',
+      '- reverent',
+      '- clear',
+      '- structured',
+      '- companion-like rather than performative',
+      '- thoughtful without being vague',
+      '',
+      'Your method:',
+      '- guide the user as if studying with them, not lecturing at them',
+      '- when relevant, locate the answer within the Tree of Life structure',
+      '- distinguish between established teaching, interpretation, and reflection',
+      '- prefer spiritually grounded clarity over abstraction',
+      '- do not overclaim certainty',
+      '- do not use markdown fences',
+      '- return valid JSON only',
+      '',
+      'The JSON schema must be:',
+      '{',
+      '  "response": "string",',
+      '  "relatedPaths": [',
+      '    { "label": "string", "href": "string" }',
+      '  ],',
+      '  "nextStep": "string"',
+      '}',
+      '',
+      'Rules:',
+      '- "response" should feel like guided chavruta',
+      '- when discussing a sefirah, place it in relation to other sefirot when appropriate',
+      '- "relatedPaths" should contain 0 to 5 meaningful next pathways',
+      '- each related path must include a label and href',
+      '- use site anchors when possible:',
+      '  - #tree',
+      '  - #library',
+      '  - #chavruta',
+      '  - #ivritcode',
+      '  - #support',
+      '- "nextStep" should be one real contemplative or practical next movement',
+      '- output must be valid JSON only, with no commentary before or after',
+      '',
+      'Mode: ' + selectedMode,
+    ].join('\n')
 
-You are not a generic chatbot. You are a guided study companion within a digital sanctuary shaped by the Tree of Life.
-
-Your tone:
-- calm
-- reverent
-- clear
-- structured
-- companion-like rather than performative
-- thoughtful without being vague
-
-Your method:
-- guide the user as if studying with them, not lecturing at them
-- when relevant, locate the answer within the Tree of Life structure
-- distinguish between established teaching, interpretation, and reflection
-- prefer spiritually grounded clarity over abstraction
-- do not overclaim certainty
-- do not use markdown fences
-- return valid JSON only
-
-The JSON schema must be:
-{
-  "response": "string",
-  "relatedPaths": [
-    { "label": "string", "href": "string" }
-  ],
-  "nextStep": "string"
-}
-
-Rules:
-- "response" should feel like guided chavruta
-- when discussing a sefirah, place it in relation to other sefirot when appropriate
-- "relatedPaths" should contain 0 to 5 meaningful next pathways
-- each related path must include a label and href
-- use site anchors when possible:
-  - #tree
-  - #library
-  - #chavruta
-  - #ivritcode
-  - #support
-- "nextStep" should be one real contemplative or practical next movement
-- output must be valid JSON only, with no commentary before or after
-
-Mode: ${selectedMode}
-    `.trim()
-
-    const openaiResponse = await fetch('https://api.openai.com/v1/responses', {
+    var openaiResponse = await fetch('https://api.openai.com/v1/responses', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: \`Bearer \${apiKey}\`,
+        'Authorization': 'Bearer ' + apiKey,
       },
       body: JSON.stringify({
         model: 'gpt-4o-mini',
@@ -147,7 +157,7 @@ Mode: ${selectedMode}
       }),
     })
 
-    const data = await openaiResponse.json()
+    var data = await openaiResponse.json()
 
     if (!openaiResponse.ok) {
       return {
@@ -156,12 +166,17 @@ Mode: ${selectedMode}
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          error: data?.error?.message || 'OpenAI request failed.',
+          error:
+            data &&
+            data.error &&
+            data.error.message
+              ? data.error.message
+              : 'OpenAI request failed.',
         }),
       }
     }
 
-    const rawText = extractText(data)
+    var rawText = extractText(data)
 
     if (!rawText) {
       return {
@@ -175,10 +190,10 @@ Mode: ${selectedMode}
       }
     }
 
-    let parsed
+    var parsedResult
 
     try {
-      parsed = JSON.parse(rawText)
+      parsedResult = JSON.parse(rawText)
     } catch (parseError) {
       return {
         statusCode: 500,
@@ -192,28 +207,38 @@ Mode: ${selectedMode}
       }
     }
 
-    const safeResult = {
+    var safeRelatedPaths = []
+
+    if (Array.isArray(parsedResult.relatedPaths)) {
+      for (var k = 0; k < parsedResult.relatedPaths.length; k += 1) {
+        var item = parsedResult.relatedPaths[k]
+
+        if (
+          item &&
+          typeof item.label === 'string' &&
+          typeof item.href === 'string'
+        ) {
+          var cleanItem = {
+            label: item.label.trim(),
+            href: item.href.trim(),
+          }
+
+          if (cleanItem.label && cleanItem.href) {
+            safeRelatedPaths.push(cleanItem)
+          }
+        }
+      }
+    }
+
+    var safeResult = {
       response:
-        typeof parsed.response === 'string'
-          ? parsed.response.trim()
+        parsedResult && typeof parsedResult.response === 'string'
+          ? parsedResult.response.trim()
           : 'No response was returned.',
-      relatedPaths: Array.isArray(parsed.relatedPaths)
-        ? parsed.relatedPaths
-            .filter(
-              (item) =>
-                item &&
-                typeof item.label === 'string' &&
-                typeof item.href === 'string'
-            )
-            .map((item) => ({
-              label: item.label.trim(),
-              href: item.href.trim(),
-            }))
-            .filter((item) => item.label && item.href)
-        : [],
+      relatedPaths: safeRelatedPaths,
       nextStep:
-        typeof parsed.nextStep === 'string'
-          ? parsed.nextStep.trim()
+        parsedResult && typeof parsedResult.nextStep === 'string'
+          ? parsedResult.nextStep.trim()
           : '',
     }
 
@@ -231,7 +256,7 @@ Mode: ${selectedMode}
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        error: error.message || 'Unexpected server error.',
+        error: error && error.message ? error.message : 'Unexpected server error.',
       }),
     }
   }
