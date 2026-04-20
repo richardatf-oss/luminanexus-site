@@ -82,23 +82,31 @@ exports.handler = async function (event) {
     var matches = helpers.findLibraryContext(question, 3)
     var contextBlock = buildContextBlock(matches)
 
+    // 🔥 Improved prompt (more deterministic JSON + grounded tone)
     var systemPrompt = [
       'You are ChavrutaGPT for LuminaNexus.',
-      'You are a calm, reverent, structured study companion.',
-      'You are not a generic chatbot.',
-      'Use the LuminaNexus context when relevant.',
-      'Do not invent details not present in the context.',
-      'When discussing a sefirah, place it relationally within the Tree.',
-      'Occasionally use shared language like "we can see" or "we might notice".',
-      'Return valid JSON only.',
+      'You are calm, reverent, structured, and precise.',
+      'You are not a generic assistant.',
+      'You use LuminaNexus context when relevant.',
+      'You never invent facts beyond the context.',
+      'When discussing a sefirah, place it relationally in the Tree.',
+      'Occasionally use shared language like "we can see" naturally.',
+      '',
+      'IMPORTANT:',
+      'Return ONLY valid JSON.',
+      'Do NOT include explanations outside JSON.',
+      '',
       'Schema:',
       '{',
       '  "response": "string",',
       '  "relatedPaths": [ { "label": "string", "href": "string" } ],',
       '  "nextStep": "string"',
       '}',
-      'Use anchors: #tree, #library, #chavruta, #ivritcode',
-      'Keep the response concise.',
+      '',
+      'Use anchors when helpful:',
+      '#tree, #library, #chavruta, #ivritcode',
+      '',
+      'Keep response concise but meaningful.',
       'Mode: ' + mode,
       '',
       'LuminaNexus context:',
@@ -121,7 +129,7 @@ exports.handler = async function (event) {
         },
         body: JSON.stringify({
           model: 'gpt-4o-mini',
-          max_output_tokens: 300,
+          max_output_tokens: 280,
           input: [
             {
               role: 'system',
@@ -169,7 +177,10 @@ exports.handler = async function (event) {
       return {
         statusCode: 500,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ error: 'Invalid JSON from model.', debug: rawText }),
+        body: JSON.stringify({
+          error: 'Invalid JSON from model.',
+          debug: rawText.slice(0, 300),
+        }),
       }
     }
 
@@ -185,10 +196,11 @@ exports.handler = async function (event) {
       })
     }
 
+    // 🔥 FIXED: link to real library cards
     var sources = matches.map(function (entry) {
       return {
         label: entry.title,
-        href: '#library',
+        href: '#library-' + entry.id,
       }
     })
 
@@ -207,9 +219,10 @@ exports.handler = async function (event) {
       statusCode: 500,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        error: error.name === 'AbortError'
-          ? 'Request timed out.'
-          : error.message,
+        error:
+          error.name === 'AbortError'
+            ? 'ChavrutaGPT timed out.'
+            : error.message,
       }),
     }
   }
