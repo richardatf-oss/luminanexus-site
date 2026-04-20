@@ -6,9 +6,7 @@ export default function Header() {
           <a href="#top" className="site-brand__title">
             LuminaNexus
           </a>
-          <p className="site-brand__tagline">
-            A quiet digital sanctuary
-          </p>
+          <p className="site-brand__tagline">A quiet digital sanctuary</p>
         </div>
 
         <nav className="site-nav" aria-label="Primary navigation">
