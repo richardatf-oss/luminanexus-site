@@ -1,3 +1,5 @@
+const helpers = require('./lib/findLibraryContext')
+
 function extractText(data) {
   if (
     data &&
@@ -30,6 +32,23 @@ function extractText(data) {
   }
 
   return ''
+}
+
+function buildContextBlock(matches) {
+  if (!matches || !matches.length) {
+    return 'No matching LuminaNexus context was found.'
+  }
+
+  return matches
+    .map(function (entry, index) {
+      return [
+        '[Context ' + (index + 1) + ']',
+        'Title: ' + entry.title,
+        'Tags: ' + entry.tags.join(', '),
+        'Content: ' + entry.content,
+      ].join('\n')
+    })
+    .join('\n\n')
 }
 
 exports.handler = async function (event) {
@@ -77,10 +96,17 @@ exports.handler = async function (event) {
     }
 
     var selectedMode = mode || 'study'
+    var matches = helpers.findLibraryContext(question, 3)
+    var contextBlock = buildContextBlock(matches)
 
     var systemPrompt = [
       'You are ChavrutaGPT for LuminaNexus.',
       'You are a calm, reverent, structured study companion.',
+      'You are not a generic chatbot.',
+      'Use the supplied LuminaNexus context when it is relevant.',
+      'Do not pretend the context says more than it says.',
+      'When speaking about a sefirah, locate it relationally within the Tree when appropriate.',
+      'Occasionally use a shared-study tone such as "we can see" or "we might notice" when natural.',
       'Return valid JSON only.',
       'Schema:',
       '{',
@@ -90,21 +116,19 @@ exports.handler = async function (event) {
       '  ],',
       '  "nextStep": "string"',
       '}',
-      'Use site anchors when helpful: #tree, #library, #chavruta, #ivritcode, #support.',
-      Keep the response concise and meaningful.
-When speaking about a sefirah, situate it relationally (e.g., between Chesed and Gevurah, or within the central pillar).,
+      'Use anchors when helpful: #tree, #library, #chavruta, #ivritcode, #support.',
+      'Keep the response concise and meaningful.',
       'Mode: ' + selectedMode,
+      '',
+      'LuminaNexus context:',
+      contextBlock,
     ].join('\n')
-Related paths should be tied to real site anchors when possible.
-Prefer:
-- Tree of Life → #tree
-- Library → #library
-- IvritCode → #ivritcode
+
     var controller = new AbortController()
     var timeoutId = setTimeout(function () {
       controller.abort()
     }, 18000)
-Occasionally frame insight as shared exploration (e.g., "we can see", "we might notice"), but keep it natural.
+
     var openaiResponse
 
     try {
@@ -116,7 +140,7 @@ Occasionally frame insight as shared exploration (e.g., "we can see", "we might 
         },
         body: JSON.stringify({
           model: 'gpt-4o-mini',
-          max_output_tokens: 250,
+          max_output_tokens: 300,
           input: [
             {
               role: 'system',
@@ -235,11 +259,12 @@ Occasionally frame insight as shared exploration (e.g., "we can see", "we might 
       }),
     }
   } catch (error) {
-    var message = error && error.name === 'AbortError'
-      ? 'ChavrutaGPT timed out while waiting for a response.'
-      : error && error.message
-        ? error.message
-        : 'Unexpected server error.'
+    var message =
+      error && error.name === 'AbortError'
+        ? 'ChavrutaGPT timed out while waiting for a response.'
+        : error && error.message
+          ? error.message
+          : 'Unexpected server error.'
 
     return {
       statusCode: 500,
