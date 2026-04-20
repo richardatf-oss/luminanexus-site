@@ -45,9 +45,7 @@ export default function ChavrutaPanel() {
       const rawText = await response.text()
 
       if (!contentType.includes('application/json')) {
-        throw new Error(
-          `Expected JSON but received: ${rawText.slice(0, 200)}`
-        )
+        throw new Error(\`Expected JSON but received: \${rawText.slice(0, 200)}\`)
       }
 
       const data = JSON.parse(rawText)
@@ -109,7 +107,11 @@ export default function ChavrutaPanel() {
           />
 
           <div className="chavruta-form__actions">
-            <button className="button button--primary" type="submit" disabled={loading}>
+            <button
+              className="button button--primary"
+              type="submit"
+              disabled={loading}
+            >
               {loading ? 'Studying...' : 'Ask ChavrutaGPT'}
             </button>
           </div>
@@ -127,20 +129,22 @@ export default function ChavrutaPanel() {
               <p className="chavruta-response__label">Response</p>
               <p className="chavruta-response__text">{result.response}</p>
             </div>
-{result.relatedPaths?.length ? (
-  <div className="chavruta-response__block">
-    <p className="chavruta-response__label">Related Paths</p>
-    <ul className="chavruta-response__list">
-      {result.relatedPaths.map((item) => (
-        <li key={`${item.label}-${item.href}`}>
-          <a className="chavruta-response__link" href={item.href}>
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-) : null}
+
+            {result.relatedPaths?.length ? (
+              <div className="chavruta-response__block">
+                <p className="chavruta-response__label">Related Paths</p>
+                <ul className="chavruta-response__list">
+                  {result.relatedPaths.map((item) => (
+                    <li key={\`\${item.label}-\${item.href}\`}>
+                      <a className="chavruta-response__link" href={item.href}>
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
             {result.nextStep ? (
               <div className="chavruta-response__block">
                 <p className="chavruta-response__label">Suggested Next Step</p>
