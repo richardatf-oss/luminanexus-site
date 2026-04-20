@@ -40,6 +40,8 @@ exports.handler = async function (event) {
       }
     }
 
+    const selectedMode = mode || 'study'
+
     const systemPrompt = `
 You are ChavrutaGPT for LuminaNexus.
 
@@ -65,7 +67,7 @@ Rules:
 - "nextStep" should be one practical or contemplative next step
 - output must be valid JSON only, with no commentary before or after
 
-Mode: ${mode || 'study'}
+Mode: ${selectedMode}
     `.trim()
 
     const openaiResponse = await fetch('https://api.openai.com/v1/responses', {
@@ -103,9 +105,7 @@ Mode: ${mode || 'study'}
       }
     }
 
-    const rawText =
-      data.output_text ||
-      ''
+    const rawText = data.output_text || ''
 
     if (!rawText) {
       return {
@@ -131,7 +131,6 @@ Mode: ${mode || 'study'}
         },
         body: JSON.stringify({
           error: 'The model returned invalid JSON.',
-          raw: rawText,
         }),
       }
     }
