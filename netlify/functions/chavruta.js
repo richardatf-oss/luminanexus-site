@@ -1,11 +1,7 @@
 const helpers = require('./lib/findLibraryContext')
 
 function extractText(data) {
-  if (
-    data &&
-    typeof data.output_text === 'string' &&
-    data.output_text.trim()
-  ) {
+  if (data && typeof data.output_text === 'string' && data.output_text.trim()) {
     return data.output_text.trim()
   }
 
@@ -55,29 +51,21 @@ exports.handler = async function (event) {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        error: 'Method not allowed.',
-      }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Method not allowed.' }),
     }
   }
 
   try {
     var parsedBody = JSON.parse(event.body || '{}')
     var question = parsedBody.question
-    var mode = parsedBody.mode
+    var mode = parsedBody.mode || 'study'
 
     if (!question || typeof question !== 'string') {
       return {
         statusCode: 400,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          error: 'A valid question is required.',
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ error: 'A valid question is required.' }),
       }
     }
 
@@ -86,16 +74,11 @@ exports.handler = async function (event) {
     if (!apiKey) {
       return {
         statusCode: 500,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          error: 'Missing OPENAI_API_KEY environment variable.',
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ error: 'Missing OPENAI_API_KEY environment variable.' }),
       }
     }
 
-    var selectedMode = mode || 'study'
     var matches = helpers.findLibraryContext(question, 3)
     var contextBlock = buildContextBlock(matches)
 
@@ -103,22 +86,20 @@ exports.handler = async function (event) {
       'You are ChavrutaGPT for LuminaNexus.',
       'You are a calm, reverent, structured study companion.',
       'You are not a generic chatbot.',
-      'Use the supplied LuminaNexus context when it is relevant.',
-      'Do not pretend the context says more than it says.',
-      'When speaking about a sefirah, locate it relationally within the Tree when appropriate.',
-      'Occasionally use a shared-study tone such as "we can see" or "we might notice" when natural.',
+      'Use the LuminaNexus context when relevant.',
+      'Do not invent details not present in the context.',
+      'When discussing a sefirah, place it relationally within the Tree.',
+      'Occasionally use shared language like "we can see" or "we might notice".',
       'Return valid JSON only.',
       'Schema:',
       '{',
       '  "response": "string",',
-      '  "relatedPaths": [',
-      '    { "label": "string", "href": "string" }',
-      '  ],',
+      '  "relatedPaths": [ { "label": "string", "href": "string" } ],',
       '  "nextStep": "string"',
       '}',
-      'Use anchors when helpful: #tree, #library, #chavruta, #ivritcode, #support.',
-      'Keep the response concise and meaningful.',
-      'Mode: ' + selectedMode,
+      'Use anchors: #tree, #library, #chavruta, #ivritcode',
+      'Keep the response concise.',
+      'Mode: ' + mode,
       '',
       'LuminaNexus context:',
       contextBlock,
@@ -136,7 +117,7 @@ exports.handler = async function (event) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + apiKey,
+          Authorization: 'Bearer ' + apiKey,
         },
         body: JSON.stringify({
           model: 'gpt-4o-mini',
@@ -144,21 +125,11 @@ exports.handler = async function (event) {
           input: [
             {
               role: 'system',
-              content: [
-                {
-                  type: 'input_text',
-                  text: systemPrompt,
-                },
-              ],
+              content: [{ type: 'input_text', text: systemPrompt }],
             },
             {
               role: 'user',
-              content: [
-                {
-                  type: 'input_text',
-                  text: question,
-                },
-              ],
+              content: [{ type: 'input_text', text: question }],
             },
           ],
         }),
@@ -173,16 +144,9 @@ exports.handler = async function (event) {
     if (!openaiResponse.ok) {
       return {
         statusCode: openaiResponse.status,
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          error:
-            data &&
-            data.error &&
-            data.error.message
-              ? data.error.message
-              : 'OpenAI request failed.',
+          error: data && data.error ? data.error.message : 'OpenAI request failed.',
         }),
       }
     }
@@ -192,12 +156,8 @@ exports.handler = async function (event) {
     if (!rawText) {
       return {
         statusCode: 500,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          error: 'The model returned an empty response.',
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ error: 'The model returned an empty response.' }),
       }
     }
 
@@ -205,74 +165,51 @@ exports.handler = async function (event) {
 
     try {
       parsedResult = JSON.parse(rawText)
-    } catch (parseError) {
+    } catch (e) {
       return {
         statusCode: 500,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          error: 'The model returned invalid JSON.',
-          debug: rawText,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ error: 'Invalid JSON from model.', debug: rawText }),
       }
     }
 
-    var safeRelatedPaths = []
-
+    var safePaths = []
     if (Array.isArray(parsedResult.relatedPaths)) {
-      for (var k = 0; k < parsedResult.relatedPaths.length; k += 1) {
-        var item = parsedResult.relatedPaths[k]
-
-        if (
-          item &&
-          typeof item.label === 'string' &&
-          typeof item.href === 'string'
-        ) {
-          var cleanItem = {
+      parsedResult.relatedPaths.forEach(function (item) {
+        if (item && item.label && item.href) {
+          safePaths.push({
             label: item.label.trim(),
             href: item.href.trim(),
-          }
-
-          if (cleanItem.label && cleanItem.href) {
-            safeRelatedPaths.push(cleanItem)
-          }
+          })
         }
-      }
+      })
     }
+
+    var sources = matches.map(function (entry) {
+      return {
+        label: entry.title,
+        href: '#library',
+      }
+    })
 
     return {
       statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        response:
-          parsedResult && typeof parsedResult.response === 'string'
-            ? parsedResult.response.trim()
-            : 'No response was returned.',
-        relatedPaths: safeRelatedPaths,
-        nextStep:
-          parsedResult && typeof parsedResult.nextStep === 'string'
-            ? parsedResult.nextStep.trim()
-            : '',
+        response: parsedResult.response || '',
+        relatedPaths: safePaths,
+        nextStep: parsedResult.nextStep || '',
+        sources: sources,
       }),
     }
   } catch (error) {
-    var message =
-      error && error.name === 'AbortError'
-        ? 'ChavrutaGPT timed out while waiting for a response.'
-        : error && error.message
-          ? error.message
-          : 'Unexpected server error.'
-
     return {
       statusCode: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        error: message,
+        error: error.name === 'AbortError'
+          ? 'Request timed out.'
+          : error.message,
       }),
     }
   }
