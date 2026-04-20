@@ -80,27 +80,9 @@ exports.handler = async function (event) {
 
     var systemPrompt = [
       'You are ChavrutaGPT for LuminaNexus.',
-      '',
-      'You are not a generic chatbot. You are a guided study companion within a digital sanctuary shaped by the Tree of Life.',
-      '',
-      'Your tone:',
-      '- calm',
-      '- reverent',
-      '- clear',
-      '- structured',
-      '- companion-like rather than performative',
-      '- thoughtful without being vague',
-      '',
-      'Your method:',
-      '- guide the user as if studying with them, not lecturing at them',
-      '- when relevant, locate the answer within the Tree of Life structure',
-      '- distinguish between established teaching, interpretation, and reflection',
-      '- prefer spiritually grounded clarity over abstraction',
-      '- do not overclaim certainty',
-      '- do not use markdown fences',
-      '- return valid JSON only',
-      '',
-      'The JSON schema must be:',
+      'You are a calm, reverent, structured study companion.',
+      'Return valid JSON only.',
+      'Schema:',
       '{',
       '  "response": "string",',
       '  "relatedPaths": [',
@@ -108,54 +90,54 @@ exports.handler = async function (event) {
       '  ],',
       '  "nextStep": "string"',
       '}',
-      '',
-      'Rules:',
-      '- "response" should feel like guided chavruta',
-      '- when discussing a sefirah, place it in relation to other sefirot when appropriate',
-      '- "relatedPaths" should contain 0 to 5 meaningful next pathways',
-      '- each related path must include a label and href',
-      '- use site anchors when possible:',
-      '  - #tree',
-      '  - #library',
-      '  - #chavruta',
-      '  - #ivritcode',
-      '  - #support',
-      '- "nextStep" should be one real contemplative or practical next movement',
-      '- output must be valid JSON only, with no commentary before or after',
-      '',
+      'Use site anchors when helpful: #tree, #library, #chavruta, #ivritcode, #support.',
+      'Keep the response concise and meaningful.',
       'Mode: ' + selectedMode,
     ].join('\n')
 
-    var openaiResponse = await fetch('https://api.openai.com/v1/responses', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + apiKey,
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o-mini',
-        input: [
-          {
-            role: 'system',
-            content: [
-              {
-                type: 'input_text',
-                text: systemPrompt,
-              },
-            ],
-          },
-          {
-            role: 'user',
-            content: [
-              {
-                type: 'input_text',
-                text: question,
-              },
-            ],
-          },
-        ],
-      }),
-    })
+    var controller = new AbortController()
+    var timeoutId = setTimeout(function () {
+      controller.abort()
+    }, 18000)
+
+    var openaiResponse
+
+    try {
+      openaiResponse = await fetch('https://api.openai.com/v1/responses', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + apiKey,
+        },
+        body: JSON.stringify({
+          model: 'gpt-4o-mini',
+          max_output_tokens: 250,
+          input: [
+            {
+              role: 'system',
+              content: [
+                {
+                  type: 'input_text',
+                  text: systemPrompt,
+                },
+              ],
+            },
+            {
+              role: 'user',
+              content: [
+                {
+                  type: 'input_text',
+                  text: question,
+                },
+              ],
+            },
+          ],
+        }),
+        signal: controller.signal,
+      })
+    } finally {
+      clearTimeout(timeoutId)
+    }
 
     var data = await openaiResponse.json()
 
@@ -230,33 +212,37 @@ exports.handler = async function (event) {
       }
     }
 
-    var safeResult = {
-      response:
-        parsedResult && typeof parsedResult.response === 'string'
-          ? parsedResult.response.trim()
-          : 'No response was returned.',
-      relatedPaths: safeRelatedPaths,
-      nextStep:
-        parsedResult && typeof parsedResult.nextStep === 'string'
-          ? parsedResult.nextStep.trim()
-          : '',
-    }
-
     return {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(safeResult),
+      body: JSON.stringify({
+        response:
+          parsedResult && typeof parsedResult.response === 'string'
+            ? parsedResult.response.trim()
+            : 'No response was returned.',
+        relatedPaths: safeRelatedPaths,
+        nextStep:
+          parsedResult && typeof parsedResult.nextStep === 'string'
+            ? parsedResult.nextStep.trim()
+            : '',
+      }),
     }
   } catch (error) {
+    var message = error && error.name === 'AbortError'
+      ? 'ChavrutaGPT timed out while waiting for a response.'
+      : error && error.message
+        ? error.message
+        : 'Unexpected server error.'
+
     return {
       statusCode: 500,
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        error: error && error.message ? error.message : 'Unexpected server error.',
+        error: message,
       }),
     }
   }
