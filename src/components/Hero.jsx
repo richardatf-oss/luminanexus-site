@@ -7,9 +7,7 @@ export default function Hero() {
             Dedicated to sacred study, language, beauty, and light
           </p>
 
-          <h1 className="hero__title">
-            Enter a living architecture of study.
-          </h1>
+          <h1 className="hero__title">Enter a living architecture of study.</h1>
 
           <p className="hero__text">
             LuminaNexus is a quiet digital sanctuary shaped by the Tree of Life —
@@ -22,8 +20,8 @@ export default function Hero() {
               Begin the Path
             </a>
 
-            <a href="#library" className="button button--secondary">
-              Enter the Library
+            <a href="#chavruta" className="button button--secondary">
+              Ask ChavrutaGPT
             </a>
           </div>
         </div>
@@ -32,9 +30,7 @@ export default function Hero() {
           <div className="hero__panel-inner">
             <p className="hero__panel-label">LuminaNexus</p>
 
-            <h2 className="hero__panel-title">
-              A quiet digital sanctuary
-            </h2>
+            <h2 className="hero__panel-title">A quiet digital sanctuary</h2>
 
             <p className="hero__panel-text">
               Built for sacred study, Hebrew language, contemplative art,
