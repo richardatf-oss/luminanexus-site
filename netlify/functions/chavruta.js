@@ -104,7 +104,7 @@ Prefer:
     var timeoutId = setTimeout(function () {
       controller.abort()
     }, 18000)
-
+Occasionally frame insight as shared exploration (e.g., "we can see", "we might notice"), but keep it natural.
     var openaiResponse
 
     try {
