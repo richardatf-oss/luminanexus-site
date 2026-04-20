@@ -60,11 +60,13 @@ export default function ChavrutaPanel() {
       <div className="section-card chavruta-panel">
         <div className="chavruta-panel__intro">
           <p className="chavruta-panel__eyebrow">Chavruta</p>
-          <h2 className="chavruta-panel__title">Bring your question beneath the Tree.</h2>
+          <h2 className="chavruta-panel__title">
+            Bring your question beneath the Tree.
+          </h2>
           <p className="chavruta-panel__text">
-            ChavrutaGPT is not a generic chatbot. It is a guided study companion for
-            LuminaNexus — built to help you reflect, explore, and follow living pathways
-            through the sanctuary.
+            ChavrutaGPT is a guided study companion for LuminaNexus — built to
+            help you reflect, explore, and follow living pathways through the
+            sanctuary.
           </p>
         </div>
 
