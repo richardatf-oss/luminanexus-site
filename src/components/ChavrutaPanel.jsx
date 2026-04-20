@@ -41,7 +41,16 @@ export default function ChavrutaPanel() {
         }),
       })
 
-      const data = await response.json()
+      const contentType = response.headers.get('content-type') || ''
+      const rawText = await response.text()
+
+      if (!contentType.includes('application/json')) {
+        throw new Error(
+          `Expected JSON but received: ${rawText.slice(0, 200)}`
+        )
+      }
+
+      const data = JSON.parse(rawText)
 
       if (!response.ok) {
         throw new Error(data.error || 'Something went wrong.')
