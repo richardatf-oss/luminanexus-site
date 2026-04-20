@@ -95,7 +95,11 @@ exports.handler = async function (event) {
 When speaking about a sefirah, situate it relationally (e.g., between Chesed and Gevurah, or within the central pillar).,
       'Mode: ' + selectedMode,
     ].join('\n')
-
+Related paths should be tied to real site anchors when possible.
+Prefer:
+- Tree of Life → #tree
+- Library → #library
+- IvritCode → #ivritcode
     var controller = new AbortController()
     var timeoutId = setTimeout(function () {
       controller.abort()
