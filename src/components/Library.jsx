@@ -15,25 +15,37 @@ export default function Library() {
         </div>
 
         <div className="library__grid">
-          {libraryEntries.map((entry) => (
-            <article
-              key={entry.id}
-              id={'library-' + entry.id}
-              className="library-card"
-            >
-              <p className="library-card__eyebrow">{entry.title}</p>
+          {libraryEntries.map(function (entry) {
+            return (
+              <article
+                key={entry.id}
+                id={'library-' + entry.id}
+                className="library-card"
+              >
+                <div className="library-card__top">
+                  <p className="library-card__eyebrow">{entry.title}</p>
+                </div>
 
-              <div className="library-card__tags">
-                {entry.tags.map((tag) => (
-                  <span key={tag} className="library-card__tag">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+                <div className="library-card__tags">
+                  {entry.tags.map(function (tag) {
+                    return (
+                      <span key={tag} className="library-card__tag">
+                        {tag}
+                      </span>
+                    )
+                  })}
+                </div>
 
-              <p className="library-card__content">{entry.content}</p>
-            </article>
-          ))}
+                <p className="library-card__content">{entry.content}</p>
+
+                <div className="library-card__footer">
+                  <a className="library-card__jump" href="#chavruta">
+                    Return to Chavruta
+                  </a>
+                </div>
+              </article>
+            )
+          })}
         </div>
       </div>
     </section>
