@@ -1,3 +1,29 @@
+function extractText(data) {
+  if (typeof data?.output_text === 'string' && data.output_text.trim()) {
+    return data.output_text.trim()
+  }
+
+  if (Array.isArray(data?.output)) {
+    const chunks = []
+
+    for (const item of data.output) {
+      if (Array.isArray(item?.content)) {
+        for (const part of item.content) {
+          if (typeof part?.text === 'string' && part.text.trim()) {
+            chunks.push(part.text.trim())
+          }
+        }
+      }
+    }
+
+    if (chunks.length) {
+      return chunks.join('\n').trim()
+    }
+  }
+
+  return ''
+}
+
 exports.handler = async function (event) {
   if (event.httpMethod !== 'POST') {
     return {
@@ -81,11 +107,21 @@ Mode: ${selectedMode}
         input: [
           {
             role: 'system',
-            content: systemPrompt,
+            content: [
+              {
+                type: 'input_text',
+                text: systemPrompt,
+              },
+            ],
           },
           {
             role: 'user',
-            content: question,
+            content: [
+              {
+                type: 'input_text',
+                text: question,
+              },
+            ],
           },
         ],
       }),
@@ -100,12 +136,12 @@ Mode: ${selectedMode}
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          error: data.error?.message || 'OpenAI request failed.',
+          error: data?.error?.message || 'OpenAI request failed.',
         }),
       }
     }
 
-    const rawText = data.output_text || ''
+    const rawText = extractText(data)
 
     if (!rawText) {
       return {
@@ -131,6 +167,7 @@ Mode: ${selectedMode}
         },
         body: JSON.stringify({
           error: 'The model returned invalid JSON.',
+          debug: rawText,
         }),
       }
     }
