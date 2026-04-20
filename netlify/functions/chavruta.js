@@ -91,7 +91,8 @@ exports.handler = async function (event) {
       '  "nextStep": "string"',
       '}',
       'Use site anchors when helpful: #tree, #library, #chavruta, #ivritcode, #support.',
-      'Keep the response concise and meaningful.',
+      Keep the response concise and meaningful.
+When speaking about a sefirah, situate it relationally (e.g., between Chesed and Gevurah, or within the central pillar).,
       'Mode: ' + selectedMode,
     ].join('\n')
 
