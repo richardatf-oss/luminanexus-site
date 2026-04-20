@@ -37,7 +37,7 @@ export default function ChavrutaPanel() {
         },
         body: JSON.stringify({
           question: trimmed,
-          mode,
+          mode: mode,
         }),
       })
 
@@ -45,7 +45,7 @@ export default function ChavrutaPanel() {
       const rawText = await response.text()
 
       if (!contentType.includes('application/json')) {
-        throw new Error(\`Expected JSON but received: \${rawText.slice(0, 200)}\`)
+        throw new Error('Expected JSON but received: ' + rawText.slice(0, 200))
       }
 
       const data = JSON.parse(rawText)
@@ -87,11 +87,13 @@ export default function ChavrutaPanel() {
             value={mode}
             onChange={(event) => setMode(event.target.value)}
           >
-            {MODES.map((item) => (
-              <option key={item.value} value={item.value}>
-                {item.label}
-              </option>
-            ))}
+            {MODES.map(function (item) {
+              return (
+                <option key={item.value} value={item.value}>
+                  {item.label}
+                </option>
+              )
+            })}
           </select>
 
           <label className="chavruta-form__label" htmlFor="question">
@@ -130,17 +132,21 @@ export default function ChavrutaPanel() {
               <p className="chavruta-response__text">{result.response}</p>
             </div>
 
-            {result.relatedPaths?.length ? (
+            {result.relatedPaths && result.relatedPaths.length ? (
               <div className="chavruta-response__block">
                 <p className="chavruta-response__label">Related Paths</p>
                 <ul className="chavruta-response__list">
-                  {result.relatedPaths.map((item) => (
-                    <li key={\`\${item.label}-\${item.href}\`}>
-                      <a className="chavruta-response__link" href={item.href}>
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
+                  {result.relatedPaths.map(function (item, index) {
+                    const key = (item.label || 'path') + '-' + (item.href || index)
+
+                    return (
+                      <li key={key}>
+                        <a className="chavruta-response__link" href={item.href}>
+                          {item.label}
+                        </a>
+                      </li>
+                    )
+                  })}
                 </ul>
               </div>
             ) : null}
