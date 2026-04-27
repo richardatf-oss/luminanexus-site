@@ -768,11 +768,12 @@ main section {
 }
 
 .tree-map__line {
-  stroke: rgba(230, 201, 139, 0.28);
+  stroke: rgba(230, 201, 139, 0.18);
   stroke-width: 0.45;
   vector-effect: non-scaling-stroke;
+  opacity: 0.45;
+  transition: stroke 0.3s ease, opacity 0.3s ease;
 }
-
 .tree-node {
   position: absolute;
   transform: translate(-50%, -50%);
