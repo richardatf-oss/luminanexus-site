@@ -75,36 +75,32 @@ exports.handler = async function (event) {
       return {
         statusCode: 500,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ error: 'Missing OPENAI_API_KEY environment variable.' }),
+        body: JSON.stringify({
+          error: 'Missing OPENAI_API_KEY environment variable.',
+        }),
       }
     }
 
     var matches = helpers.findLibraryContext(question, 3)
     var contextBlock = buildContextBlock(matches)
 
-    // 🔥 Improved prompt (more deterministic JSON + grounded tone)
     var systemPrompt = [
       'You are ChavrutaGPT for LuminaNexus.',
       'You are calm, reverent, structured, and precise.',
       'You are not a generic assistant.',
       'You use LuminaNexus context when relevant.',
-      'You never invent facts beyond the context.',
+      'Do not invent facts beyond the context.',
       'When discussing a sefirah, place it relationally in the Tree.',
       'Occasionally use shared language like "we can see" naturally.',
+      'For questions involving sexuality, intimacy, or bodies, answer only in a respectful educational religious-study frame.',
+      'If a question needs rabbinic, medical, legal, or personal counseling authority, say so gently and keep the answer general.',
       '',
-      'IMPORTANT:',
-      'Return ONLY valid JSON.',
-      'Do NOT include explanations outside JSON.',
-      '',
-      'Schema:',
-      '{',
-      '  "response": "string",',
-      '  "relatedPaths": [ { "label": "string", "href": "string" } ],',
-      '  "nextStep": "string"',
-      '}',
+      'Return ONLY valid JSON matching the schema.',
+      'Do not include markdown fences.',
+      'Do not include commentary outside the JSON object.',
       '',
       'Use anchors when helpful:',
-      '#tree, #library, #chavruta, #ivritcode',
+      '#tree, #library, #chavruta, #ivritcode, #support',
       '',
       'Keep response concise but meaningful.',
       'Mode: ' + mode,
@@ -129,15 +125,61 @@ exports.handler = async function (event) {
         },
         body: JSON.stringify({
           model: 'gpt-4o-mini',
-          max_output_tokens: 280,
+          max_output_tokens: 350,
+          text: {
+            format: {
+              type: 'json_schema',
+              name: 'chavruta_response',
+              strict: true,
+              schema: {
+                type: 'object',
+                additionalProperties: false,
+                properties: {
+                  response: {
+                    type: 'string',
+                  },
+                  relatedPaths: {
+                    type: 'array',
+                    items: {
+                      type: 'object',
+                      additionalProperties: false,
+                      properties: {
+                        label: {
+                          type: 'string',
+                        },
+                        href: {
+                          type: 'string',
+                        },
+                      },
+                      required: ['label', 'href'],
+                    },
+                  },
+                  nextStep: {
+                    type: 'string',
+                  },
+                },
+                required: ['response', 'relatedPaths', 'nextStep'],
+              },
+            },
+          },
           input: [
             {
               role: 'system',
-              content: [{ type: 'input_text', text: systemPrompt }],
+              content: [
+                {
+                  type: 'input_text',
+                  text: systemPrompt,
+                },
+              ],
             },
             {
               role: 'user',
-              content: [{ type: 'input_text', text: question }],
+              content: [
+                {
+                  type: 'input_text',
+                  text: question,
+                },
+              ],
             },
           ],
         }),
@@ -154,7 +196,10 @@ exports.handler = async function (event) {
         statusCode: openaiResponse.status,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          error: data && data.error ? data.error.message : 'OpenAI request failed.',
+          error:
+            data && data.error && data.error.message
+              ? data.error.message
+              : 'OpenAI request failed.',
         }),
       }
     }
@@ -165,7 +210,9 @@ exports.handler = async function (event) {
       return {
         statusCode: 500,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ error: 'The model returned an empty response.' }),
+        body: JSON.stringify({
+          error: 'The model returned an empty response.',
+        }),
       }
     }
 
@@ -173,7 +220,7 @@ exports.handler = async function (event) {
 
     try {
       parsedResult = JSON.parse(rawText)
-    } catch (e) {
+    } catch (error) {
       return {
         statusCode: 500,
         headers: { 'Content-Type': 'application/json' },
@@ -185,18 +232,18 @@ exports.handler = async function (event) {
     }
 
     var safePaths = []
+
     if (Array.isArray(parsedResult.relatedPaths)) {
       parsedResult.relatedPaths.forEach(function (item) {
         if (item && item.label && item.href) {
           safePaths.push({
-            label: item.label.trim(),
-            href: item.href.trim(),
+            label: String(item.label).trim(),
+            href: String(item.href).trim(),
           })
         }
       })
     }
 
-    // 🔥 FIXED: link to real library cards
     var sources = matches.map(function (entry) {
       return {
         label: entry.title,
@@ -220,9 +267,11 @@ exports.handler = async function (event) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         error:
-          error.name === 'AbortError'
+          error && error.name === 'AbortError'
             ? 'ChavrutaGPT timed out.'
-            : error.message,
+            : error && error.message
+              ? error.message
+              : 'Unexpected server error.',
       }),
     }
   }
