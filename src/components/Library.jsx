@@ -6,11 +6,11 @@ export default function Library() {
       <div className="section-card library">
         <div className="library__intro">
           <p className="library__eyebrow">Library</p>
-          <h2 className="library__title">The living library of LuminaNexus</h2>
+          <h2 className="library__title">The Living Library</h2>
           <p className="library__text">
-            This chamber gathers the inner materials of the sanctuary — sefirot,
-            language, guidance, and symbolic architecture — into a form that can
-            be explored, revisited, and studied in relation.
+            A growing chamber of teachings, pathways, and symbols within
+            LuminaNexus — built so the Tree, Chavruta, and study all return to
+            one shared source.
           </p>
         </div>
 
@@ -40,7 +40,7 @@ export default function Library() {
 
                 <div className="library-card__footer">
                   <a className="library-card__jump" href="#chavruta">
-                    Return to Chavruta
+                    Ask Chavruta about this
                   </a>
                 </div>
               </article>
