@@ -7,11 +7,25 @@ export const libraryEntries = [
       'The Tree of Life is a living architecture of relationship, descent, balance, and return. In LuminaNexus, it serves both as contemplative map and navigational order. The sefirot are not isolated ideas but presences held in relation.',
   },
   {
-    id: 'tiferet',
-    title: 'Tiferet',
-    tags: ['tiferet', 'beauty', 'balance', 'harmony', 'heart'],
+    id: 'keter',
+    title: 'Keter',
+    tags: ['keter', 'crown', 'will', 'source', 'beginning'],
     content:
-      'Tiferet is beauty, harmony, and the radiant balance point within the Tree. It is often understood as the heart of the structure and lives in relation to Chesed and Gevurah. It is not superficial beauty, but ordered beauty born from right relationship.',
+      'Keter is crown, hidden beginning, and source-point above articulation. It is approached through reverence, silence, and orientation more than analysis alone.',
+  },
+  {
+    id: 'chokhmah',
+    title: 'Chokhmah',
+    tags: ['chokhmah', 'wisdom', 'flash', 'insight'],
+    content:
+      'Chokhmah is wisdom as the flash of insight before it is fully formed — bright, sudden, and generative.',
+  },
+  {
+    id: 'binah',
+    title: 'Binah',
+    tags: ['binah', 'understanding', 'formation', 'discernment'],
+    content:
+      'Binah is understanding, formation, and discernment. It is the chamber where insight becomes structure and depth.',
   },
   {
     id: 'chesed',
@@ -28,6 +42,27 @@ export const libraryEntries = [
       'Gevurah is strength, restraint, and judgment. It gives contour, seriousness, and limit. In right relation to Chesed, it helps form the conditions for harmony.',
   },
   {
+    id: 'tiferet',
+    title: 'Tiferet',
+    tags: ['tiferet', 'beauty', 'balance', 'harmony', 'heart'],
+    content:
+      'Tiferet is beauty, harmony, and the radiant balance point within the Tree. It is often understood as the heart of the structure and lives in relation to Chesed and Gevurah. It is not superficial beauty, but ordered beauty born from right relationship.',
+  },
+  {
+    id: 'netzach',
+    title: 'Netzach',
+    tags: ['netzach', 'endurance', 'victory', 'persistence'],
+    content:
+      'Netzach is endurance, victory, and creative persistence. It is the force that carries vision forward despite resistance.',
+  },
+  {
+    id: 'hod',
+    title: 'Hod',
+    tags: ['hod', 'splendor', 'language', 'form', 'resonance'],
+    content:
+      'Hod is splendor, language, form, and resonance. It is where expression becomes patterned, articulate, and luminous.',
+  },
+  {
     id: 'yesod',
     title: 'Yesod',
     tags: ['yesod', 'foundation', 'connection', 'channel'],
@@ -40,13 +75,6 @@ export const libraryEntries = [
     tags: ['malkhut', 'kingdom', 'presence', 'manifestation'],
     content:
       'Malkhut is manifestation, presence, and reception. It is where what is ordered above becomes visible below. In LuminaNexus it relates to what is embodied, shared, and lived.',
-  },
-  {
-    id: 'keter',
-    title: 'Keter',
-    tags: ['keter', 'crown', 'will', 'source', 'beginning'],
-    content:
-      'Keter is crown, hidden beginning, and source-point above articulation. It is often approached through reverence, silence, and orientation more than by analysis alone.',
   },
   {
     id: 'hebrew-letters',
