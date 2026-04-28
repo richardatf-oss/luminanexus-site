@@ -1,4 +1,4 @@
-const { libraryEntries } = require('../../../src/data/libraryEntries')
+const { libraryEntries } = require('../data/libraryEntries')
 
 function normalize(text) {
   return String(text || '').toLowerCase()
