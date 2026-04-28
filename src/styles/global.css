@@ -915,3 +915,22 @@ main section {
     padding: 1.5rem;
   }
 }
+.library__search {
+  margin-bottom: 2rem;
+}
+
+.library__search-input {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.library__search-input:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 0 1px #d4af37;
+}
