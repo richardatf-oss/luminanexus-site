@@ -10,9 +10,7 @@ function IvritCodeSection() {
     <section id="ivritcode" className="section-shell">
       <div className="section-card content-block">
         <p className="content-block__eyebrow">IvritCode</p>
-        <h2 className="content-block__title">
-          Where language becomes structure
-        </h2>
+        <h2 className="content-block__title">Where language becomes structure</h2>
         <p className="content-block__text">
           This chamber holds Hebrew-rooted symbolic computation, interpretive
           architecture, and experimental structures where language, number, and
@@ -37,22 +35,11 @@ export default function App() {
       <Header />
 
       <main>
-        {/* Entrance */}
-      <HeroTree />
-
-        {/* Core Identity — this is now the centerpiece */}
+        <HeroTree />
         <TreeOfLife />
-
-        {/* Knowledge */}
         <Library />
-
-        {/* Practice */}
         <ChavrutaPanel />
-
-        {/* Expression */}
         <IvritCodeSection />
-
-        {/* Offering */}
         <Support />
       </main>
 
