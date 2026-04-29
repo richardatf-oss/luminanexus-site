@@ -2,12 +2,9 @@ export default function Support() {
   return (
     <section id="support" className="section-shell">
       <div className="section-card support">
-
         <div className="support__intro">
           <p className="support__eyebrow">Support</p>
-          <h2 className="support__title">
-            Sustain the Sanctuary
-          </h2>
+          <h2 className="support__title">Sustain the Sanctuary</h2>
           <p className="support__text">
             Support the ongoing creation of LuminaNexus — a quiet digital sanctuary
             for study, reflection, and the living architecture of wisdom.
@@ -28,7 +25,6 @@ export default function Support() {
             Your support allows this work to remain open, growing, and available to all who seek it.
           </p>
         </div>
-
       </div>
     </section>
   )
