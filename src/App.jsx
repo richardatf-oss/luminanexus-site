@@ -38,7 +38,7 @@ export default function App() {
 
       <main>
         {/* Entrance */}
-        <Hero />
+      <HeroTree />
 
         {/* Core Identity — this is now the centerpiece */}
         <TreeOfLife />
