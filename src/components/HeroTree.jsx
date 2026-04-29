@@ -1,16 +1,86 @@
 import { useState } from 'react'
 
 const HERO_NODES = [
-  { id: 'keter', name: 'Keter', hebrew: 'כתר', x: 50, y: 8 },
-  { id: 'chokhmah', name: 'Chokhmah', hebrew: 'חכמה', x: 28, y: 24 },
-  { id: 'binah', name: 'Binah', hebrew: 'בינה', x: 72, y: 24 },
-  { id: 'chesed', name: 'Chesed', hebrew: 'חסד', x: 22, y: 42 },
-  { id: 'gevurah', name: 'Gevurah', hebrew: 'גבורה', x: 78, y: 42 },
-  { id: 'tiferet', name: 'Tiferet', hebrew: 'תפארת', x: 50, y: 49 },
-  { id: 'netzach', name: 'Netzach', hebrew: 'נצח', x: 28, y: 68 },
-  { id: 'hod', name: 'Hod', hebrew: 'הוד', x: 72, y: 68 },
-  { id: 'yesod', name: 'Yesod', hebrew: 'יסוד', x: 50, y: 82 },
-  { id: 'malkhut', name: 'Malkhut', hebrew: 'מלכות', x: 50, y: 96 },
+  {
+    id: 'keter',
+    name: 'Keter',
+    hebrew: 'כתר',
+    x: 50,
+    y: 8,
+    teaching: 'Crown: the hidden beginning, the silence before form.',
+  },
+  {
+    id: 'chokhmah',
+    name: 'Chokhmah',
+    hebrew: 'חכמה',
+    x: 28,
+    y: 24,
+    teaching: 'Wisdom: the first flash of insight, bright before it is shaped.',
+  },
+  {
+    id: 'binah',
+    name: 'Binah',
+    hebrew: 'בינה',
+    x: 72,
+    y: 24,
+    teaching: 'Understanding: the chamber where insight becomes structure.',
+  },
+  {
+    id: 'chesed',
+    name: 'Chesed',
+    hebrew: 'חסד',
+    x: 22,
+    y: 42,
+    teaching: 'Mercy: the open hand, love flowing outward.',
+  },
+  {
+    id: 'gevurah',
+    name: 'Gevurah',
+    hebrew: 'גבורה',
+    x: 78,
+    y: 42,
+    teaching: 'Strength: holy boundary, restraint, and sacred form.',
+  },
+  {
+    id: 'tiferet',
+    name: 'Tiferet',
+    hebrew: 'תפארת',
+    x: 50,
+    y: 49,
+    teaching: 'Beauty: the radiant heart where mercy and strength become harmony.',
+  },
+  {
+    id: 'netzach',
+    name: 'Netzach',
+    hebrew: 'נצח',
+    x: 28,
+    y: 68,
+    teaching: 'Endurance: the power to continue carrying the vision forward.',
+  },
+  {
+    id: 'hod',
+    name: 'Hod',
+    hebrew: 'הוד',
+    x: 72,
+    y: 68,
+    teaching: 'Splendor: language, pattern, resonance, and luminous form.',
+  },
+  {
+    id: 'yesod',
+    name: 'Yesod',
+    hebrew: 'יסוד',
+    x: 50,
+    y: 82,
+    teaching: 'Foundation: the bridge where insight becomes connection.',
+  },
+  {
+    id: 'malkhut',
+    name: 'Malkhut',
+    hebrew: 'מלכות',
+    x: 50,
+    y: 96,
+    teaching: 'Kingdom: manifestation, presence, and the world made luminous.',
+  },
 ]
 
 const HERO_PATHS = [
@@ -28,9 +98,7 @@ const HERO_PATHS = [
 ]
 
 function getNode(id) {
-  return HERO_NODES.find(function (node) {
-    return node.id === id
-  })
+  return HERO_NODES.find((node) => node.id === id)
 }
 
 export default function HeroTree() {
@@ -80,10 +148,9 @@ export default function HeroTree() {
               preserveAspectRatio="none"
               aria-hidden="true"
             >
-              {HERO_PATHS.map(function (pair) {
+              {HERO_PATHS.map((pair, index) => {
                 const first = getNode(pair[0])
                 const second = getNode(pair[1])
-
                 if (!first || !second) return null
 
                 return (
@@ -94,12 +161,13 @@ export default function HeroTree() {
                     x2={second.x}
                     y2={second.y}
                     className="hero-tree-map__line"
+                    style={{ animationDelay: `${index * 0.12}s` }}
                   />
                 )
               })}
             </svg>
 
-            {HERO_NODES.map(function (node) {
+            {HERO_NODES.map((node) => {
               const isActive = node.id === activeId
 
               return (
@@ -115,15 +183,18 @@ export default function HeroTree() {
                     left: node.x + '%',
                     top: node.y + '%',
                   }}
-                  onClick={function () {
-                    setActiveId(node.id)
-                  }}
+                  onClick={() => setActiveId(node.id)}
                   aria-label={node.name}
                 >
                   <span className="hero-tree-node__hebrew">{node.hebrew}</span>
                 </button>
               )
             })}
+          </div>
+
+          <div className="hero-tree-teaching">
+            <p className="hero-tree-teaching__name">{active.name}</p>
+            <p className="hero-tree-teaching__text">{active.teaching}</p>
           </div>
 
           <div className="hero-tree__actions">
