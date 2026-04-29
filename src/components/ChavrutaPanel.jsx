@@ -30,11 +30,7 @@ export default function ChavrutaPanel() {
       const response = await fetch('/.netlify/functions/chavruta', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          question: trimmed,
-          mode,
-          history,
-        }),
+        body: JSON.stringify({ question: trimmed, mode, history }),
       })
 
       const text = await response.text()
@@ -85,8 +81,7 @@ export default function ChavrutaPanel() {
           </h2>
           <p className="chavruta-panel__text">
             ChavrutaGPT is a guided study companion for LuminaNexus — built to
-            help you reflect, explore, and follow living pathways through the
-            sanctuary.
+            help you reflect, explore, and follow living pathways through the sanctuary.
           </p>
         </div>
 
@@ -125,11 +120,7 @@ export default function ChavrutaPanel() {
           />
 
           <div className="chavruta-form__actions">
-            <button
-              className="button button--primary"
-              type="submit"
-              disabled={loading}
-            >
+            <button className="button button--primary" type="submit" disabled={loading}>
               {loading ? 'Studying...' : 'Ask ChavrutaGPT'}
             </button>
           </div>
