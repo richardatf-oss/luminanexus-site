@@ -372,3 +372,84 @@ p {
   display: flex !important;
   justify-content: flex-start !important;
 }
+/* ===== HEADER ===== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  backdrop-filter: blur(18px);
+  background: rgba(5, 11, 26, 0.75);
+
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.site-header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===== BRAND ===== */
+
+.site-brand {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.site-brand__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #f8efd9;
+  letter-spacing: 0.04em;
+}
+
+.site-brand__tagline {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ===== NAV ===== */
+
+.site-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+/* GOLD HOVER EFFECT */
+.site-nav a:hover {
+  color: #f6e27a;
+}
+
+/* UNDERLINE GLOW */
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 1px;
+  background: linear-gradient(90deg, #d4af37, #f6e27a);
+  transition: width 0.3s ease;
+}
+
+.site-nav a:hover::after {
+  width: 100%;
+}
