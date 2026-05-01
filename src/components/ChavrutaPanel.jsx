@@ -47,15 +47,10 @@ export default function ChavrutaPanel() {
       }
 
       setResult(data)
-      setHistory(function (previous) {
-        return [
-          ...previous,
-          {
-            question: trimmed,
-            response: data.response || '',
-          },
-        ]
-      })
+      setHistory((prev) => [
+        ...prev,
+        { question: trimmed, response: data.response || '' },
+      ])
       setQuestion('')
     } catch (err) {
       setError(err.message || 'Unable to reach ChavrutaGPT right now.')
@@ -94,15 +89,13 @@ export default function ChavrutaPanel() {
             id="mode"
             className="chavruta-form__select"
             value={mode}
-            onChange={(event) => setMode(event.target.value)}
+            onChange={(e) => setMode(e.target.value)}
           >
-            {MODES.map(function (item) {
-              return (
-                <option key={item.value} value={item.value}>
-                  {item.label}
-                </option>
-              )
-            })}
+            {MODES.map((item) => (
+              <option key={item.value} value={item.value}>
+                {item.label}
+              </option>
+            ))}
           </select>
 
           <label className="chavruta-form__label" htmlFor="question">
@@ -115,89 +108,77 @@ export default function ChavrutaPanel() {
             rows="6"
             placeholder="Ask your question..."
             value={question}
-            onChange={(event) => setQuestion(event.target.value)}
+            onChange={(e) => setQuestion(e.target.value)}
             onKeyDown={handleKeyDown}
           />
 
-          <div className="chavruta-form__actions">
-            <button className="button button--primary" type="submit" disabled={loading}>
-              {loading ? 'Studying...' : 'Ask ChavrutaGPT'}
-            </button>
-          </div>
+          <button className="button button--primary" type="submit" disabled={loading}>
+            {loading ? 'Studying...' : 'Ask ChavrutaGPT'}
+          </button>
         </form>
 
-        {error ? (
+        {error && (
           <div className="chavruta-response chavruta-response--error">
             <p>{error}</p>
           </div>
-        ) : null}
+        )}
 
-        {result ? (
+        {result && (
           <div className="chavruta-response">
-            <div className="chavruta-response__block">
-              <p className="chavruta-response__label">Response</p>
-              <p className="chavruta-response__text">{result.response}</p>
-            </div>
+            <p className="chavruta-response__label">Response</p>
+            <p className="chavruta-response__text">{result.response}</p>
 
-            {result.relatedPaths && result.relatedPaths.length ? (
-              <div className="chavruta-response__block">
+            {result.relatedPaths?.length ? (
+              <>
                 <p className="chavruta-response__label">Related Paths</p>
                 <ul className="chavruta-response__list">
-                  {result.relatedPaths.map(function (item, index) {
-                    return (
-                      <li key={(item.label || 'path') + index}>
-                        <a className="chavruta-response__link" href={item.href}>
-                          {item.label}
-                        </a>
-                      </li>
-                    )
-                  })}
+                  {result.relatedPaths.map((item, index) => (
+                    <li key={index}>
+                      <a className="chavruta-response__link" href={item.href}>
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
-              </div>
+              </>
             ) : null}
 
-            {result.sources && result.sources.length ? (
-              <div className="chavruta-response__block">
+            {result.sources?.length ? (
+              <>
                 <p className="chavruta-response__label">Sources from the Library</p>
                 <ul className="chavruta-response__list">
-                  {result.sources.map(function (item, index) {
-                    return (
-                      <li key={(item.label || 'source') + index}>
-                        <a className="chavruta-response__link" href={item.href}>
-                          {item.label}
-                        </a>
-                      </li>
-                    )
-                  })}
+                  {result.sources.map((item, index) => (
+                    <li key={index}>
+                      <a className="chavruta-response__link" href={item.href}>
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
-              </div>
+              </>
             ) : null}
 
-            {result.nextStep ? (
-              <div className="chavruta-response__block">
+            {result.nextStep && (
+              <>
                 <p className="chavruta-response__label">Suggested Next Step</p>
                 <p className="chavruta-response__text">{result.nextStep}</p>
-              </div>
-            ) : null}
+              </>
+            )}
           </div>
-        ) : null}
+        )}
 
-        {history.length ? (
+        {history.length > 0 && (
           <div className="chavruta-response">
-            <div className="chavruta-response__block">
-              <p className="chavruta-response__label">Study Path</p>
-              <ul className="chavruta-response__list">
-                {history.map(function (item, index) {
-                  return (
-                    <li key={index}>
-                      <strong>Q:</strong> {item.question}
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
+            <p className="chavruta-response__label">Study Path</p>
+            <ul className="chavruta-response__list">
+              {history.map((item, index) => (
+                <li key={index}>
+                  <strong>Q:</strong> {item.question}
+                </li>
+              ))}
+            </ul>
           </div>
-        ) : null}
+        )}
       </div>
     </section>
   )
