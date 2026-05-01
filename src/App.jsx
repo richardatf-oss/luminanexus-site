@@ -2,9 +2,36 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import HeroTree from './components/HeroTree'
 import TreeOfLife from './components/TreeOfLife'
+import RootsLetters from './components/RootsLetters'
 import Library from './components/Library'
 import ChavrutaPanel from './components/ChavrutaPanel'
 import Support from './components/Support'
+
+function IvritCodeSection() {
+  return (
+    <section id="ivritcode" className="section-shell">
+      <div className="section-card content-block">
+        <p className="content-block__eyebrow">IvritCode</p>
+        <h2 className="content-block__title">
+          Where language becomes structure
+        </h2>
+        <p className="content-block__text">
+          IvritCode explores Hebrew as a living symbolic system — where letters,
+          number, pattern, and meaning converge into a new form of computation
+          and interpretation.
+        </p>
+      </div>
+    </section>
+  )
+}
+
+function Footer() {
+  return (
+    <footer className="footer">
+      LuminaNexus · A quiet digital sanctuary for study, language, beauty, and light.
+    </footer>
+  )
+}
 
 export default function App() {
   return (
@@ -12,24 +39,32 @@ export default function App() {
       <Header />
 
       <main>
-        {/* HERO */}
+        {/* Opening */}
         <Hero />
 
-        {/* TREE FRONT AND CENTER */}
+        {/* Immediate Sacred Interaction */}
         <HeroTree />
 
-        {/* FULL TREE EXPERIENCE */}
+        {/* Full Tree Exploration */}
         <TreeOfLife />
 
-        {/* LIBRARY */}
+        {/* NEW: Roots & Letters Module (Sefaria pitch core) */}
+        <RootsLetters />
+
+        {/* Library */}
         <Library />
 
-        {/* CHAVRUTA */}
+        {/* Chavruta */}
         <ChavrutaPanel />
 
-        {/* SUPPORT */}
+        {/* IvritCode */}
+        <IvritCodeSection />
+
+        {/* Support */}
         <Support />
       </main>
+
+      <Footer />
     </div>
   )
 }
