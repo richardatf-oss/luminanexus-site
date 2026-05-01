@@ -1,5 +1,4 @@
 import Header from './components/Header'
-import Hero from './components/Hero'
 import HeroTree from './components/HeroTree'
 import TreeOfLife from './components/TreeOfLife'
 import RootsLetters from './components/RootsLetters'
@@ -39,28 +38,12 @@ export default function App() {
       <Header />
 
       <main>
-        {/* Opening */}
-        <Hero />
-
-        {/* Immediate Sacred Interaction */}
         <HeroTree />
-
-        {/* Full Tree Exploration */}
         <TreeOfLife />
-
-        {/* NEW: Roots & Letters Module (Sefaria pitch core) */}
         <RootsLetters />
-
-        {/* Library */}
         <Library />
-
-        {/* Chavruta */}
         <ChavrutaPanel />
-
-        {/* IvritCode */}
         <IvritCodeSection />
-
-        {/* Support */}
         <Support />
       </main>
 
