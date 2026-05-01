@@ -329,3 +329,46 @@ p {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(212,175,55,0.4);
 }
+/* HARD FIX — Chavruta vertical layout */
+
+.chavruta-panel {
+  display: grid !important;
+  gap: 2rem !important;
+  padding: 2.25rem !important;
+}
+
+.chavruta-form {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 1rem !important;
+  width: 100% !important;
+}
+
+.chavruta-field {
+  display: grid !important;
+  gap: 0.45rem !important;
+  width: 100% !important;
+}
+
+.chavruta-form__label {
+  display: block !important;
+  color: var(--text-soft, rgba(255,255,255,0.75)) !important;
+}
+
+.chavruta-form__select,
+.chavruta-form__textarea {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border-radius: 16px !important;
+  padding: 1rem !important;
+}
+
+.chavruta-form__textarea {
+  min-height: 190px !important;
+}
+
+.chavruta-form__actions {
+  display: flex !important;
+  justify-content: flex-start !important;
+}
