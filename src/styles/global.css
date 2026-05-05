@@ -840,3 +840,212 @@ p {
     height: 72px;
   }
 }
+/* Roots Explorer — Sefaria Pitch Seed */
+
+.roots-explorer {
+  display: grid;
+  gap: 2rem;
+}
+
+.roots-explorer__eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.roots-explorer__title {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 1.05;
+}
+
+.roots-explorer__text {
+  max-width: 880px;
+  margin: 0;
+}
+
+.roots-explorer__search {
+  width: 100%;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--text);
+  padding: 0.95rem 1.1rem;
+}
+
+.roots-explorer__layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
+  gap: 1.25rem;
+}
+
+.roots-explorer__rail {
+  display: grid;
+  gap: 0.85rem;
+  align-content: start;
+}
+
+.root-choice {
+  text-align: left;
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text);
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.root-choice--active {
+  border-color: rgba(212, 175, 55, 0.58);
+  box-shadow: 0 0 28px rgba(212, 175, 55, 0.14);
+}
+
+.root-choice__hebrew {
+  display: block;
+  font-size: 2rem;
+  color: var(--gold-strong);
+  line-height: 1;
+}
+
+.root-choice__name {
+  display: block;
+  margin-top: 0.4rem;
+  font-weight: 700;
+}
+
+.root-choice__meaning {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.root-scroll {
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top, rgba(212, 175, 55, 0.08), transparent 48%),
+    rgba(255, 255, 255, 0.04);
+  padding: 1.5rem;
+}
+
+.root-scroll__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+}
+
+.root-scroll__hebrew {
+  margin: 0;
+  font-size: clamp(4rem, 9vw, 7rem);
+  line-height: 0.9;
+  color: var(--gold-strong);
+}
+
+.root-scroll__title {
+  margin: 0.5rem 0 0;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.root-scroll__sefirot {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.root-scroll__sefirot span {
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  color: var(--gold-strong);
+  background: rgba(212, 175, 55, 0.06);
+}
+
+.root-scroll__meaning {
+  font-size: 1.1rem;
+}
+
+.letter-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.letter-card {
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+  padding: 1rem;
+}
+
+.letter-card__letter {
+  margin: 0;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--gold-strong);
+}
+
+.letter-card__name {
+  margin: 0.5rem 0;
+  font-weight: 700;
+}
+
+.letter-card__sense,
+.letter-card__value {
+  margin: 0.4rem 0 0;
+  font-size: 0.92rem;
+}
+
+.root-insight,
+.root-sources {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.12);
+  padding-top: 1rem;
+}
+
+.root-insight__label,
+.root-sources__label {
+  margin: 0 0 0.5rem;
+  color: var(--gold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.root-sources__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.root-sources__links a {
+  color: var(--gold-strong);
+}
+
+.root-scroll__actions {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 850px) {
+  .roots-explorer__layout,
+  .letter-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .root-scroll__header {
+    flex-direction: column;
+  }
+
+  .root-scroll__sefirot {
+    justify-content: flex-start;
+  }
+}
