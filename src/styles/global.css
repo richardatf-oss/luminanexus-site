@@ -1049,3 +1049,41 @@ p {
     justify-content: flex-start;
   }
 }
+.source-preview-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.source-preview {
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.035);
+  padding: 1rem;
+}
+
+.source-preview__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--gold-strong);
+}
+
+.source-preview__header a {
+  color: var(--gold-strong);
+  font-size: 0.9rem;
+}
+
+.source-preview__he {
+  direction: rtl;
+  text-align: right;
+  font-size: 1.25rem;
+  line-height: 1.9;
+  color: var(--text);
+}
+
+.source-preview__en {
+  color: var(--text-soft);
+  line-height: 1.8;
+}
