@@ -1100,3 +1100,11 @@ p {
     0 0 6px rgba(212, 175, 55, 0.08),
     0 0 18px rgba(212, 175, 55, 0.06);
 }
+/* Root highlight inside Hebrew text */
+.root-highlight {
+  color: var(--gold-strong);
+  font-weight: 600;
+  text-shadow:
+    0 0 6px rgba(212,175,55,0.35),
+    0 0 14px rgba(212,175,55,0.18);
+}
