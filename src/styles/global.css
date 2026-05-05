@@ -1092,3 +1092,11 @@ p {
   color: var(--text);
   text-shadow: 0 0 10px rgba(212,175,55,0.12);
 }
+.source-preview__he {
+  font-size: 1.4rem;
+  color: var(--text);
+  line-height: 1.9;
+  text-shadow: 
+    0 0 6px rgba(212, 175, 55, 0.08),
+    0 0 18px rgba(212, 175, 55, 0.06);
+}
