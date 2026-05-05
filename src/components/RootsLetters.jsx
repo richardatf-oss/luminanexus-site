@@ -1,9 +1,5 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { roots, letters } from '../data/rootsLettersData'
-
-function makeSefariaUrl(ref) {
-  return 'https://www.sefaria.org/' + encodeURIComponent(ref).replaceAll('%20', '.')
-}
 
 function getLetterInfo(letter) {
   return letters.find((item) => item.letter === letter)
@@ -12,6 +8,8 @@ function getLetterInfo(letter) {
 export default function RootsLetters() {
   const [query, setQuery] = useState('')
   const [activeId, setActiveId] = useState(roots[0].id)
+  const [texts, setTexts] = useState({})
+  const [loadingTexts, setLoadingTexts] = useState(false)
 
   const filteredRoots = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -32,6 +30,44 @@ export default function RootsLetters() {
   const activeRoot =
     roots.find((root) => root.id === activeId) || filteredRoots[0] || roots[0]
 
+  useEffect(() => {
+    let cancelled = false
+
+    async function loadTexts() {
+      setLoadingTexts(true)
+
+      const results = {}
+
+      for (const ref of activeRoot.refs) {
+        try {
+          const response = await fetch(
+            '/.netlify/functions/sefaria?ref=' + encodeURIComponent(ref)
+          )
+          const data = await response.json()
+
+          if (!cancelled) {
+            results[ref] = data
+          }
+        } catch (error) {
+          if (!cancelled) {
+            results[ref] = { error: 'Could not load this source.' }
+          }
+        }
+      }
+
+      if (!cancelled) {
+        setTexts(results)
+        setLoadingTexts(false)
+      }
+    }
+
+    loadTexts()
+
+    return () => {
+      cancelled = true
+    }
+  }, [activeRoot])
+
   return (
     <section id="roots-letters" className="section-shell">
       <div className="section-card roots-explorer">
@@ -41,20 +77,18 @@ export default function RootsLetters() {
             Hebrew becomes the path of discovery.
           </h2>
           <p className="roots-explorer__text">
-            Explore a root through its letters, meaning, sefirot, and source
-            references. This is the seed of a Sefaria-facing module: roots and
+            Explore a root through its letters, meaning, sefirot, and live source
+            previews. This is the seed of a Sefaria-facing module: roots and
             letters as a living interface for Torah study.
           </p>
         </div>
 
-        <div className="roots-explorer__search-row">
-          <input
-            className="roots-explorer__search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search אהב, חסד, אמת, אור, love, truth, light..."
-          />
-        </div>
+        <input
+          className="roots-explorer__search"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Search אהב, חסד, אמת, אור, love, truth, light..."
+        />
 
         <div className="roots-explorer__layout">
           <aside className="roots-explorer__rail" aria-label="Hebrew roots">
@@ -119,13 +153,40 @@ export default function RootsLetters() {
             </div>
 
             <div className="root-sources">
-              <p className="root-sources__label">Source Pathways</p>
-              <div className="root-sources__links">
-                {activeRoot.refs.map((ref) => (
-                  <a key={ref} href={makeSefariaUrl(ref)} target="_blank" rel="noreferrer">
-                    {ref}
-                  </a>
-                ))}
+              <p className="root-sources__label">Live Sefaria Sources</p>
+
+              {loadingTexts ? <p>Loading source previews...</p> : null}
+
+              <div className="source-preview-list">
+                {activeRoot.refs.map((ref) => {
+                  const item = texts[ref]
+
+                  return (
+                    <div key={ref} className="source-preview">
+                      <div className="source-preview__header">
+                        <strong>{ref}</strong>
+                        {item?.url ? (
+                          <a href={item.url} target="_blank" rel="noreferrer">
+                            Open in Sefaria
+                          </a>
+                        ) : null}
+                      </div>
+
+                      {item?.error ? (
+                        <p>{item.error}</p>
+                      ) : (
+                        <>
+                          {item?.he ? (
+                            <p className="source-preview__he">{item.he}</p>
+                          ) : null}
+                          {item?.en ? (
+                            <p className="source-preview__en">{item.en}</p>
+                          ) : null}
+                        </>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
             </div>
 
