@@ -4,7 +4,14 @@ import { roots, letters } from '../data/rootsLettersData'
 function getLetterInfo(letter) {
   return letters.find((item) => item.letter === letter)
 }
+function highlightRoot(text, root) {
+  if (!text || !root) return text
 
+  // Match root inside Hebrew words
+  const regex = new RegExp(`(${root}[\\u0590-\\u05FF]*)`, 'g')
+
+  return text.replace(regex, '<span class="root-highlight">$1</span>')
+}
 export default function RootsLetters() {
   const [query, setQuery] = useState('')
   const [activeId, setActiveId] = useState(roots[0].id)
@@ -180,7 +187,12 @@ export default function RootsLetters() {
                             <p className="source-preview__he">{item.he}</p>
                           ) : null}
                           {item?.en ? (
-                            <p className="source-preview__en">{item.en}</p>
+                           <p
+  className="source-preview__he"
+  dangerouslySetInnerHTML={{
+    __html: highlightRoot(item.he, activeRoot.root),
+  }}
+/>
                           ) : null}
                         </>
                       )}
