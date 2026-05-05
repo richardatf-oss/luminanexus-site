@@ -1,68 +1,75 @@
 export const roots = [
   {
-    id: 'chesed-root',
-    root: 'חסד',
-    transliteration: 'Ch-S-D',
-    meaning: ' lovingkindness, covenantal mercy, generous devotion',
-    letters: ['ח', 'ס', 'ד'],
+    id: 'ahav',
+    root: 'אהב',
+    transliteration: 'Ahav',
+    meaning: 'love, affection, devotion',
     sefirot: ['Chesed', 'Tiferet'],
-    refs: ['Genesis 24:12', 'Psalms 89:3', 'Micah 6:8'],
-    note:
-      'חסד is not merely kindness as sentiment; it is faithful goodness expressed through action, relationship, and covenant.',
+    letters: [
+      { letter: 'א', name: 'Aleph', sense: 'source, unity, hidden breath' },
+      { letter: 'ה', name: 'Hei', sense: 'revelation, breath, opening' },
+      { letter: 'ב', name: 'Bet', sense: 'house, relationship, dwelling' },
+    ],
+    refs: ['Genesis 22:2', 'Leviticus 19:18', 'Deuteronomy 6:5'],
+    insight:
+      'אהב begins in hidden unity, opens through breath, and comes to dwell in relationship. Love is not merely feeling; it is source becoming covenantal presence.',
   },
   {
-    id: 'emet-root',
+    id: 'chesed',
+    root: 'חסד',
+    transliteration: 'Chesed',
+    meaning: 'lovingkindness, covenantal mercy, faithful goodness',
+    sefirot: ['Chesed', 'Tiferet'],
+    letters: [
+      { letter: 'ח', name: 'Chet', sense: 'life, enclosure, threshold' },
+      { letter: 'ס', name: 'Samekh', sense: 'support, surrounding, sustaining' },
+      { letter: 'ד', name: 'Dalet', sense: 'door, humility, opening' },
+    ],
+    refs: ['Genesis 24:12', 'Exodus 34:6', 'Micah 6:8'],
+    insight:
+      'חסד is mercy made durable. It surrounds, sustains, and opens a door where relationship can live.',
+  },
+  {
+    id: 'emet',
     root: 'אמת',
-    transliteration: 'A-M-T',
-    meaning: ' truth, firmness, faithfulness',
-    letters: ['א', 'מ', 'ת'],
+    transliteration: 'Emet',
+    meaning: 'truth, firmness, faithfulness',
     sefirot: ['Tiferet'],
+    letters: [
+      { letter: 'א', name: 'Aleph', sense: 'beginning, unity, source' },
+      { letter: 'מ', name: 'Mem', sense: 'water, depth, formation' },
+      { letter: 'ת', name: 'Tav', sense: 'seal, completion, covenant mark' },
+    ],
     refs: ['Genesis 24:27', 'Exodus 34:6', 'Psalms 119:160'],
-    note:
-      'אמת stretches from Aleph to Tav, suggesting truth as wholeness from beginning to end.',
+    insight:
+      'אמת stretches from Aleph toward Tav: truth as wholeness, not fragment. It begins in unity, passes through depth, and becomes sealed in completion.',
   },
   {
-    id: 'or-root',
+    id: 'or',
     root: 'אור',
-    transliteration: 'A-W-R',
-    meaning: ' light, illumination, revealing radiance',
-    letters: ['א', 'ו', 'ר'],
+    transliteration: 'Or',
+    meaning: 'light, illumination, revealed radiance',
     sefirot: ['Chokhmah', 'Tiferet'],
-    refs: ['Genesis 1:3', 'Isaiah 60:1', 'Psalms 27:1'],
-    note:
-      'אור is the first revealed radiance of creation, a movement from hidden source into visible order.',
+    letters: [
+      { letter: 'א', name: 'Aleph', sense: 'source, silence, unity' },
+      { letter: 'ו', name: 'Vav', sense: 'connection, line, joining' },
+      { letter: 'ר', name: 'Resh', sense: 'head, beginning, emergence' },
+    ],
+    refs: ['Genesis 1:3', 'Psalms 27:1', 'Isaiah 60:1'],
+    insight:
+      'אור is source connected into emergence. Light is the hidden becoming visible.',
   },
 ]
 
 export const letters = [
-  {
-    id: 'alef',
-    letter: 'א',
-    name: 'Aleph',
-    value: 1,
-    themes: ['unity', 'source', 'breath', 'hidden beginning'],
-    roots: ['אמת', 'אור', 'אדם'],
-    note:
-      'Aleph suggests silent source, unity, and the breath before speech.',
-  },
-  {
-    id: 'mem',
-    letter: 'מ',
-    name: 'Mem',
-    value: 40,
-    themes: ['water', 'womb', 'formation', 'depth'],
-    roots: ['אמת', 'מלך', 'מים'],
-    note:
-      'Mem carries the imagery of water, hiddenness, gestation, and formed depth.',
-  },
-  {
-    id: 'tav',
-    letter: 'ת',
-    name: 'Tav',
-    value: 400,
-    themes: ['seal', 'completion', 'mark', 'covenant'],
-    roots: ['אמת', 'תורה', 'תפארת'],
-    note:
-      'Tav is the sign of completion, the seal at the end of the alphabetic path.',
-  },
+  { letter: 'א', name: 'Aleph', value: 1, themes: ['unity', 'source', 'breath'] },
+  { letter: 'ב', name: 'Bet', value: 2, themes: ['house', 'dwelling', 'relationship'] },
+  { letter: 'ד', name: 'Dalet', value: 4, themes: ['door', 'poverty', 'opening'] },
+  { letter: 'ה', name: 'Hei', value: 5, themes: ['breath', 'revelation', 'window'] },
+  { letter: 'ו', name: 'Vav', value: 6, themes: ['hook', 'connection', 'line'] },
+  { letter: 'ח', name: 'Chet', value: 8, themes: ['life', 'threshold', 'enclosure'] },
+  { letter: 'מ', name: 'Mem', value: 40, themes: ['water', 'depth', 'formation'] },
+  { letter: 'ס', name: 'Samekh', value: 60, themes: ['support', 'circle', 'sustaining'] },
+  { letter: 'ר', name: 'Resh', value: 200, themes: ['head', 'beginning', 'emergence'] },
+  { letter: 'ת', name: 'Tav', value: 400, themes: ['seal', 'completion', 'mark'] },
 ]
