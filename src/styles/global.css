@@ -1087,3 +1087,8 @@ p {
   color: var(--text-soft);
   line-height: 1.8;
 }
+.source-preview__he {
+  font-size: 1.35rem;
+  color: var(--text);
+  text-shadow: 0 0 10px rgba(212,175,55,0.12);
+}
