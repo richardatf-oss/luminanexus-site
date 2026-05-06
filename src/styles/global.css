@@ -1115,3 +1115,13 @@ p {
   border-radius: 6px;
   padding: 0 4px;
 }
+.root-highlight {
+  color: var(--gold-strong);
+  font-weight: 800;
+  background: rgba(212, 175, 55, 0.14);
+  border-radius: 7px;
+  padding: 0 5px;
+  text-shadow:
+    0 0 8px rgba(212, 175, 55, 0.4),
+    0 0 18px rgba(212, 175, 55, 0.18);
+}
