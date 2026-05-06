@@ -15,7 +15,7 @@ export default function ChavrutaPanel() {
   const [error, setError] = useState('')
   const [result, setResult] = useState(null)
   const [history, setHistory] = useState([])
-
+import { useEffect, useState } from 'react'
   async function handleSubmit(event) {
     if (event) event.preventDefault()
 
