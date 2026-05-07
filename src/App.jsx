@@ -1,4 +1,5 @@
 import Header from './components/Header'
+import Hero from './components/Hero'
 import HeroTree from './components/HeroTree'
 import TreeOfLife from './components/TreeOfLife'
 import RootsLetters from './components/RootsLetters'
@@ -10,15 +11,29 @@ function IvritCodeSection() {
   return (
     <section id="ivritcode" className="section-shell">
       <div className="section-card content-block">
-        <p className="content-block__eyebrow">IvritCode</p>
+        <p className="content-block__eyebrow">
+          IvritCode
+        </p>
+
         <h2 className="content-block__title">
           Where language becomes structure
         </h2>
+
         <p className="content-block__text">
-          IvritCode explores Hebrew as a living symbolic system — where letters,
-          number, pattern, and meaning converge into a new form of computation
-          and interpretation.
+          IvritCode explores Hebrew as a living symbolic architecture —
+          where letters, number, rhythm, sound, and meaning converge
+          into a new contemplative computational framework.
         </p>
+
+        <div className="hero-actions" style={{ marginTop: '2rem' }}>
+          <a href="#roots-letters" className="button-primary">
+            Explore Roots
+          </a>
+
+          <a href="#library" className="button-secondary">
+            Open the Library
+          </a>
+        </div>
       </div>
     </section>
   )
@@ -26,8 +41,18 @@ function IvritCodeSection() {
 
 function Footer() {
   return (
-    <footer className="footer">
-      LuminaNexus · A quiet digital sanctuary for study, language, beauty, and light.
+    <footer
+      className="footer"
+      style={{
+        padding: '3rem 2rem',
+        textAlign: 'center',
+        color: 'rgba(244,239,227,0.58)',
+        fontSize: '0.95rem',
+        letterSpacing: '0.04em'
+      }}
+    >
+      LuminaNexus · A quiet digital sanctuary for study, language,
+      beauty, and light.
     </footer>
   )
 }
@@ -38,13 +63,31 @@ export default function App() {
       <Header />
 
       <main>
+
+        {/* HERO */}
+        <Hero />
+
+        {/* TREE */}
         <HeroTree />
+
+        {/* FULL TREE EXPERIENCE */}
         <TreeOfLife />
+
+        {/* ROOTS & LETTERS */}
         <RootsLetters />
+
+        {/* LIBRARY */}
         <Library />
+
+        {/* CHAVRUTA */}
         <ChavrutaPanel />
+
+        {/* IVRITCODE */}
         <IvritCodeSection />
+
+        {/* SUPPORT */}
         <Support />
+
       </main>
 
       <Footer />
