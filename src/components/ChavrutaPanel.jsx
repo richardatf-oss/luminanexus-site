@@ -8,6 +8,13 @@ const MODES = [
   { value: 'ivritcode', label: 'IvritCode' },
 ]
 
+const SUGGESTIONS = [
+  'What does Tiferet mean in relation to beauty and balance?',
+  'Explain the root אהב through its letters and Torah sources.',
+  'How does Chesed relate to Tiferet?',
+  'What is the spiritual meaning of Aleph?',
+]
+
 export default function ChavrutaPanel() {
   const [question, setQuestion] = useState('')
   const [mode, setMode] = useState('study')
@@ -68,15 +75,10 @@ export default function ChavrutaPanel() {
       }
 
       setResult(data)
-
       setHistory((previous) => [
         ...previous,
-        {
-          question: trimmed,
-          response: data.response || '',
-        },
+        { question: trimmed, response: data.response || '' },
       ])
-
       setQuestion('')
     } catch (err) {
       setError(err.message || 'Unable to reach ChavrutaGPT right now.')
@@ -92,6 +94,17 @@ export default function ChavrutaPanel() {
     }
   }
 
+  function useSuggestion(text) {
+    setQuestion(text)
+    setError('')
+    setResult(null)
+  }
+
+  function clearQuestion() {
+    setQuestion('')
+    setError('')
+  }
+
   function clearStudyPath() {
     setHistory([])
     setResult(null)
@@ -103,16 +116,25 @@ export default function ChavrutaPanel() {
       <div className="section-card chavruta-panel">
         <div className="chavruta-panel__intro">
           <p className="chavruta-panel__eyebrow">Chavruta</p>
-
           <h2 className="chavruta-panel__title">
             Bring your question beneath the Tree.
           </h2>
-
           <p className="chavruta-panel__text">
-            ChavrutaGPT is a guided study companion for LuminaNexus — built to
-            help you reflect, explore roots and letters, and follow living
-            pathways through the sanctuary.
+            Press Enter to send. Press Shift + Enter for a new line.
           </p>
+        </div>
+
+        <div className="chavruta-suggestions">
+          {SUGGESTIONS.map((item) => (
+            <button
+              key={item}
+              type="button"
+              className="chavruta-chip"
+              onClick={() => useSuggestion(item)}
+            >
+              {item}
+            </button>
+          ))}
         </div>
 
         <form className="chavruta-form" onSubmit={handleSubmit}>
@@ -144,20 +166,29 @@ export default function ChavrutaPanel() {
               id="question"
               className="chavruta-form__textarea"
               rows="7"
-              placeholder="Ask your question..."
+              placeholder="Ask your question, then press Enter..."
               value={question}
               onChange={(event) => setQuestion(event.target.value)}
               onKeyDown={handleKeyDown}
             />
+
+            <div className="chavruta-form__meta">
+              <span>{question.length} characters</span>
+              {question ? (
+                <button type="button" onClick={clearQuestion}>
+                  Clear question
+                </button>
+              ) : null}
+            </div>
           </div>
 
           <div className="chavruta-form__actions">
             <button
               className="button button--primary"
               type="submit"
-              disabled={loading}
+              disabled={loading || !question.trim()}
             >
-              {loading ? 'Studying...' : 'Ask ChavrutaGPT'}
+              {loading ? 'Studying…' : 'Ask ChavrutaGPT'}
             </button>
 
             {history.length > 0 ? (
@@ -180,64 +211,21 @@ export default function ChavrutaPanel() {
 
         {result ? (
           <div className="chavruta-response">
-            <div className="chavruta-response__block">
-              <p className="chavruta-response__label">Response</p>
-              <p className="chavruta-response__text">{result.response}</p>
-            </div>
-
-            {result.relatedPaths && result.relatedPaths.length ? (
-              <div className="chavruta-response__block">
-                <p className="chavruta-response__label">Related Paths</p>
-                <ul className="chavruta-response__list">
-                  {result.relatedPaths.map((item, index) => (
-                    <li key={(item.label || 'path') + index}>
-                      <a className="chavruta-response__link" href={item.href}>
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-
-            {result.sources && result.sources.length ? (
-              <div className="chavruta-response__block">
-                <p className="chavruta-response__label">
-                  Sources from the Library
-                </p>
-                <ul className="chavruta-response__list">
-                  {result.sources.map((item, index) => (
-                    <li key={(item.label || 'source') + index}>
-                      <a className="chavruta-response__link" href={item.href}>
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-
-            {result.nextStep ? (
-              <div className="chavruta-response__block">
-                <p className="chavruta-response__label">Suggested Next Step</p>
-                <p className="chavruta-response__text">{result.nextStep}</p>
-              </div>
-            ) : null}
+            <p className="chavruta-response__label">Response</p>
+            <p className="chavruta-response__text">{result.response}</p>
           </div>
         ) : null}
 
         {history.length > 0 ? (
           <div className="chavruta-response">
-            <div className="chavruta-response__block">
-              <p className="chavruta-response__label">Study Path</p>
-              <ul className="chavruta-response__list">
-                {history.map((item, index) => (
-                  <li key={index}>
-                    <strong>Q:</strong> {item.question}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <p className="chavruta-response__label">Study Path</p>
+            <ul className="chavruta-response__list">
+              {history.map((item, index) => (
+                <li key={index}>
+                  <strong>Q:</strong> {item.question}
+                </li>
+              ))}
+            </ul>
           </div>
         ) : null}
       </div>
