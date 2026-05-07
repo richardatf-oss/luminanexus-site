@@ -678,3 +678,6 @@ main section {
     height: 72px;
   }
 }
+radial-gradient(circle at center,
+rgba(212,175,55,0.06),
+transparent 55%)
