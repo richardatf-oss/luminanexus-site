@@ -777,3 +777,32 @@ transparent 55%)
     0 0 18px rgba(212, 175, 55, 0.45),
     0 0 34px rgba(120, 160, 255, 0.16);
 }
+/* Strengthen HeroTree path lines */
+
+.hero-tree-map__paths {
+  z-index: 1;
+}
+
+.hero-tree-map__line {
+  stroke: rgba(255, 227, 163, 0.42);
+  stroke-width: 1.15;
+  vector-effect: non-scaling-stroke;
+  opacity: 1;
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.24));
+}
+
+.hero-tree-map__line--active {
+  stroke: rgba(255, 227, 163, 0.85);
+  stroke-width: 1.65;
+  filter:
+    drop-shadow(0 0 5px rgba(212, 175, 55, 0.55))
+    drop-shadow(0 0 12px rgba(120, 160, 255, 0.22));
+}
+
+.hero-tree-node {
+  z-index: 4;
+}
+
+.hero-tree-path-letter {
+  z-index: 5;
+}
