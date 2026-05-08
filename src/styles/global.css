@@ -840,3 +840,32 @@ transparent 55%)
     0 0 12px rgba(212, 175, 55, 0.34),
     0 0 22px rgba(120, 160, 255, 0.12);
 }
+/* Make path letters float without hiding the Tree lines */
+
+.hero-tree-path-letter {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 227, 163, 0.88);
+  font-size: 1rem;
+  font-weight: 700;
+  text-shadow:
+    0 0 5px rgba(5, 11, 26, 0.95),
+    0 0 10px rgba(212, 175, 55, 0.32);
+  box-shadow: none;
+}
+
+.hero-tree-path-letter--active {
+  background: transparent;
+  color: var(--gold-strong);
+  text-shadow:
+    0 0 5px rgba(5, 11, 26, 1),
+    0 0 12px rgba(212, 175, 55, 0.65),
+    0 0 24px rgba(212, 175, 55, 0.28);
+  box-shadow: none;
+}
