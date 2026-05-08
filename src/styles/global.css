@@ -682,3 +682,72 @@ main section {
 radial-gradient(circle at center,
 rgba(212,175,55,0.06),
 transparent 55%)
+/* HeroTree refinement */
+
+.hero-tree {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-tree::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(212, 175, 55, 0.055), transparent 52%),
+    radial-gradient(circle at 70% 45%, rgba(120, 160, 255, 0.12), transparent 45%);
+  pointer-events: none;
+}
+
+.hero-tree__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tree__copy {
+  transform: translateY(-1rem);
+}
+
+.hero-tree__panel {
+  transform: translateY(1rem);
+}
+
+.hero-tree-map__line--active {
+  stroke: rgba(255, 227, 163, 0.68);
+  stroke-width: 0.9;
+  filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.45));
+}
+
+.hero-tree-node__name {
+  display: block;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.hero-tree-node:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  border-color: rgba(255, 227, 163, 0.75);
+  box-shadow:
+    0 0 28px rgba(212, 175, 55, 0.28),
+    0 0 55px rgba(120, 160, 255, 0.16);
+}
+
+.hero-tree-node--active {
+  animation: heroNodePulse 3s ease-in-out infinite;
+}
+
+@keyframes heroNodePulse {
+  0%, 100% {
+    box-shadow:
+      0 0 34px rgba(212, 175, 55, 0.65),
+      0 0 65px rgba(120, 160, 255, 0.22);
+  }
+
+  50% {
+    box-shadow:
+      0 0 54px rgba(212, 175, 55, 0.86),
+      0 0 86px rgba(120, 160, 255, 0.34);
+  }
+}
