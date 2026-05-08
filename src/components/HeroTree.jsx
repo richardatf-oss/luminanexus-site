@@ -1,4 +1,4 @@
-import {import { useState } from 'react'
+import { useState } from 'react'
 
 const NODES = [
   { id: 'keter', hebrew: 'כתר', name: 'Keter', meaning: 'Crown', x: 50, y: 7 },
