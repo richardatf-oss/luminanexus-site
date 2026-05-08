@@ -14,29 +14,39 @@ const NODES = [
 ]
 
 const PATHS = [
-  ['keter', 'chokhmah'],
-  ['keter', 'binah'],
-  ['chokhmah', 'binah'],
-  ['chokhmah', 'chesed'],
-  ['binah', 'gevurah'],
-  ['chokhmah', 'tiferet'],
-  ['binah', 'tiferet'],
-  ['chesed', 'gevurah'],
-  ['chesed', 'tiferet'],
-  ['gevurah', 'tiferet'],
-  ['chesed', 'netzach'],
-  ['gevurah', 'hod'],
-  ['tiferet', 'netzach'],
-  ['tiferet', 'hod'],
-  ['tiferet', 'yesod'],
-  ['netzach', 'hod'],
-  ['netzach', 'yesod'],
-  ['hod', 'yesod'],
-  ['yesod', 'malkhut'],
+  { from: 'keter', to: 'chokhmah', letter: 'א' },
+  { from: 'keter', to: 'binah', letter: 'ב' },
+  { from: 'keter', to: 'tiferet', letter: 'ג' },
+  { from: 'chokhmah', to: 'binah', letter: 'ד' },
+  { from: 'chokhmah', to: 'chesed', letter: 'ה' },
+  { from: 'chokhmah', to: 'tiferet', letter: 'ו' },
+  { from: 'binah', to: 'gevurah', letter: 'ז' },
+  { from: 'binah', to: 'tiferet', letter: 'ח' },
+  { from: 'chesed', to: 'gevurah', letter: 'ט' },
+  { from: 'chesed', to: 'tiferet', letter: 'י' },
+  { from: 'gevurah', to: 'tiferet', letter: 'כ' },
+  { from: 'chesed', to: 'netzach', letter: 'ל' },
+  { from: 'gevurah', to: 'hod', letter: 'מ' },
+  { from: 'tiferet', to: 'netzach', letter: 'נ' },
+  { from: 'tiferet', to: 'hod', letter: 'ס' },
+  { from: 'tiferet', to: 'yesod', letter: 'ע' },
+  { from: 'netzach', to: 'hod', letter: 'פ' },
+  { from: 'netzach', to: 'yesod', letter: 'צ' },
+  { from: 'hod', to: 'yesod', letter: 'ק' },
+  { from: 'netzach', to: 'malkhut', letter: 'ר' },
+  { from: 'hod', to: 'malkhut', letter: 'ש' },
+  { from: 'yesod', to: 'malkhut', letter: 'ת' },
 ]
 
 function getNode(id) {
   return NODES.find((node) => node.id === id)
+}
+
+function midpoint(a, b) {
+  return {
+    x: (a.x + b.x) / 2,
+    y: (a.y + b.y) / 2,
+  }
 }
 
 export default function HeroTree() {
@@ -69,19 +79,19 @@ export default function HeroTree() {
         <div className="hero-tree__panel">
           <div className="hero-tree-map">
             <svg className="hero-tree-map__paths" viewBox="0 0 100 100" preserveAspectRatio="none">
-              {PATHS.map(([from, to]) => {
-                const a = getNode(from)
-                const b = getNode(to)
+              {PATHS.map((path) => {
+                const a = getNode(path.from)
+                const b = getNode(path.to)
 
                 return (
                   <line
-                    key={`${from}-${to}`}
+                    key={`${path.from}-${path.to}`}
                     x1={a.x}
                     y1={a.y}
                     x2={b.x}
                     y2={b.y}
                     className={
-                      from === active || to === active
+                      path.from === active || path.to === active
                         ? 'hero-tree-map__line hero-tree-map__line--active'
                         : 'hero-tree-map__line'
                     }
@@ -89,6 +99,29 @@ export default function HeroTree() {
                 )
               })}
             </svg>
+
+            {PATHS.map((path) => {
+              const a = getNode(path.from)
+              const b = getNode(path.to)
+              const mid = midpoint(a, b)
+
+              return (
+                <span
+                  key={`${path.from}-${path.to}-letter`}
+                  className={
+                    path.from === active || path.to === active
+                      ? 'hero-tree-path-letter hero-tree-path-letter--active'
+                      : 'hero-tree-path-letter'
+                  }
+                  style={{
+                    left: `${mid.x}%`,
+                    top: `${mid.y}%`,
+                  }}
+                >
+                  {path.letter}
+                </span>
+              )
+            })}
 
             {NODES.map((node) => (
               <button
