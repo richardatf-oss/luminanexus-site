@@ -751,3 +751,29 @@ transparent 55%)
       0 0 86px rgba(120, 160, 255, 0.34);
   }
 }
+.hero-tree-path-letter {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  background: rgba(5, 11, 26, 0.72);
+  color: rgba(255, 227, 163, 0.72);
+  font-size: 0.95rem;
+  line-height: 1;
+  pointer-events: none;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.28);
+}
+
+.hero-tree-path-letter--active {
+  color: #111;
+  background: linear-gradient(135deg, var(--gold), var(--gold-strong));
+  border-color: rgba(255, 227, 163, 0.7);
+  box-shadow:
+    0 0 18px rgba(212, 175, 55, 0.45),
+    0 0 34px rgba(120, 160, 255, 0.16);
+}
