@@ -71,31 +71,49 @@ export default function HeroTree() {
           </p>
 
           <div className="landing__actions">
-            <a href="#tree" className="button-primary">Begin the Path</a>
-            <a href="#chavruta" className="button-secondary">Ask ChavrutaGPT</a>
+            <a href="#tree" className="button-primary">
+              Begin the Path
+            </a>
+            <a href="#chavruta" className="button-secondary">
+              Ask ChavrutaGPT
+            </a>
           </div>
         </div>
 
         <div className="hero-tree__panel">
           <div className="hero-tree-map">
-            <svg className="hero-tree-map__paths" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <svg
+              className="hero-tree-map__paths"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
               {PATHS.map((path) => {
                 const a = getNode(path.from)
                 const b = getNode(path.to)
+                const isActive = path.from === active || path.to === active
 
                 return (
-                  <line
-                    key={`${path.from}-${path.to}`}
-                    x1={a.x}
-                    y1={a.y}
-                    x2={b.x}
-                    y2={b.y}
-                    className={
-                      path.from === active || path.to === active
-                        ? 'hero-tree-map__line hero-tree-map__line--active'
-                        : 'hero-tree-map__line'
-                    }
-                  />
+                  <g key={`${path.from}-${path.to}`}>
+                    <line
+                      x1={a.x}
+                      y1={a.y}
+                      x2={b.x}
+                      y2={b.y}
+                      className="hero-tree-map__line-base"
+                    />
+                    <line
+                      x1={a.x}
+                      y1={a.y}
+                      x2={b.x}
+                      y2={b.y}
+                      className={
+                        isActive
+                          ? 'hero-tree-map__line-glow hero-tree-map__line-glow--active'
+                          : 'hero-tree-map__line-glow'
+                      }
+                    />
+                  </g>
                 )
               })}
             </svg>
@@ -104,12 +122,13 @@ export default function HeroTree() {
               const a = getNode(path.from)
               const b = getNode(path.to)
               const mid = midpoint(a, b)
+              const isActive = path.from === active || path.to === active
 
               return (
                 <span
                   key={`${path.from}-${path.to}-letter`}
                   className={
-                    path.from === active || path.to === active
+                    isActive
                       ? 'hero-tree-path-letter hero-tree-path-letter--active'
                       : 'hero-tree-path-letter'
                   }
@@ -134,6 +153,7 @@ export default function HeroTree() {
                 }
                 style={{ left: `${node.x}%`, top: `${node.y}%` }}
                 onClick={() => setActive(node.id)}
+                aria-label={`${node.name} ${node.hebrew}`}
               >
                 <span className="hero-tree-node__hebrew">{node.hebrew}</span>
                 <span className="hero-tree-node__name">{node.name}</span>
