@@ -250,25 +250,32 @@ main section {
   height: 100%;
   z-index: 1;
 }
-
-.hero-tree-map__line {
-  stroke: rgba(255, 227, 163, 0.58);
-  stroke-width: 1.15;
+.hero-tree-map__line-base {
+  stroke: rgba(255, 227, 163, 0.42);
+  stroke-width: 1.4;
   vector-effect: non-scaling-stroke;
   opacity: 1;
-  filter:
-    drop-shadow(0 0 4px rgba(212, 175, 55, 0.35))
-    drop-shadow(0 0 10px rgba(212, 175, 55, 0.14));
 }
 
-.hero-tree-map__line--active {
-  stroke: rgba(255, 235, 190, 0.95);
-  stroke-width: 1.45;
+.hero-tree-map__line-glow {
+  stroke: rgba(255, 227, 163, 0.78);
+  stroke-width: 0.82;
+  vector-effect: non-scaling-stroke;
+  opacity: 1;
+
   filter:
-    drop-shadow(0 0 6px rgba(212, 175, 55, 0.72))
-    drop-shadow(0 0 18px rgba(212, 175, 55, 0.28));
+    drop-shadow(0 0 4px rgba(212, 175, 55, 0.34))
+    drop-shadow(0 0 12px rgba(212, 175, 55, 0.18));
 }
 
+.hero-tree-map__line-glow--active {
+  stroke: rgba(255, 239, 205, 1);
+  stroke-width: 1.18;
+
+  filter:
+    drop-shadow(0 0 8px rgba(212, 175, 55, 0.82))
+    drop-shadow(0 0 22px rgba(212, 175, 55, 0.34));
+}
 .hero-tree-path-letter {
   position: absolute;
   transform: translate(-50%, -50%);
