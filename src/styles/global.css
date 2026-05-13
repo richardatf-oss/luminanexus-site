@@ -691,3 +691,34 @@ main section {
     height: 72px;
   }
 }
+/* Spark active path letters when a sefirah is pressed */
+
+.hero-tree-path-letter {
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+.hero-tree-path-letter--active {
+  transform: translate(-50%, -50%) scale(1.55);
+  animation: pathLetterSpark 1.2s ease-in-out infinite;
+}
+
+@keyframes pathLetterSpark {
+  0%, 100% {
+    color: var(--gold-strong);
+    text-shadow:
+      0 0 5px rgba(5, 11, 26, 1),
+      0 0 10px rgba(212, 175, 55, 0.65),
+      0 0 20px rgba(212, 175, 55, 0.25);
+  }
+
+  50% {
+    color: #fff4c8;
+    text-shadow:
+      0 0 4px rgba(5, 11, 26, 1),
+      0 0 14px rgba(255, 227, 163, 0.95),
+      0 0 34px rgba(212, 175, 55, 0.55);
+  }
+}
