@@ -722,3 +722,41 @@ main section {
       0 0 34px rgba(212, 175, 55, 0.55);
   }
 }
+.hero-tree-path-letter {
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    text-shadow 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.hero-tree-path-letter--active {
+  transform: translate(-50%, -50%) scale(1.8);
+  color: #fff4c8;
+  z-index: 6;
+  animation: pathLetterSpark 1.15s ease-in-out infinite;
+}
+
+.hero-tree-map__line-glow--active {
+  stroke: rgba(255, 235, 190, 1);
+  stroke-width: 1.4;
+  filter:
+    drop-shadow(0 0 8px rgba(212, 175, 55, 0.85))
+    drop-shadow(0 0 22px rgba(212, 175, 55, 0.38));
+}
+
+@keyframes pathLetterSpark {
+  0%, 100% {
+    text-shadow:
+      0 0 4px rgba(5, 11, 26, 1),
+      0 0 10px rgba(255, 227, 163, 0.75),
+      0 0 22px rgba(212, 175, 55, 0.35);
+  }
+
+  50% {
+    text-shadow:
+      0 0 4px rgba(5, 11, 26, 1),
+      0 0 18px rgba(255, 244, 200, 1),
+      0 0 42px rgba(212, 175, 55, 0.72);
+  }
+}
