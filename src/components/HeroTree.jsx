@@ -9,8 +9,8 @@ const NODES = [
   { id: 'tiferet', hebrew: 'תפארת', name: 'Tiferet', x: 50, y: 51 },
   { id: 'netzach', hebrew: 'נצח', name: 'Netzach', x: 28, y: 69 },
   { id: 'hod', hebrew: 'הוד', name: 'Hod', x: 72, y: 69 },
-  { id: 'yesod', hebrew: 'יסוד', name: 'Yesod', x: 50, y: 83 },
-  { id: 'malkhut', hebrew: 'מלכות', name: 'Malkhut', x: 50, y: 96 },
+ { id: 'yesod', hebrew: 'יסוד', name: 'Yesod', x: 50, y: 81 },
+{ id: 'malkhut', hebrew: 'מלכות', name: 'Malkhut', x: 50, y: 97 },
 ]
 
 const PATHS = [
