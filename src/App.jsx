@@ -1,8 +1,9 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
 import HeroTree from './components/HeroTree'
-import SefariaStudy from './components/SefariaStudy'
+
 import RootsLetters from './components/RootsLetters'
+import SefariaStudy from './components/SefariaStudy'
 import Library from './components/Library'
 import ChavrutaPanel from './components/ChavrutaPanel'
 import Support from './components/Support'
