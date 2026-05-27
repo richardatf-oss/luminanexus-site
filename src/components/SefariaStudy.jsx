@@ -1,12 +1,21 @@
 import { useState } from 'react'
 
 function normalizeText(value) {
-  if (Array.isArray(value)) return value.join(' ')
-  return value || ''
+  const raw = Array.isArray(value) ? value.join(' ') : value || ''
+
+  const textarea = document.createElement('textarea')
+  textarea.innerHTML = raw
+
+  const decoded = textarea.value
+
+  return decoded
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
 }
 
 export default function SefariaStudy() {
-  const [ref, setRef] = useState('Genesis 22:2')
+  const [ref, setRef] = useState('Exodus 20:4')
   const [source, setSource] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -46,7 +55,14 @@ Hebrew:
 ${normalizeText(source.he)}
 
 English:
-${normalizeText(source.en)}`
+${normalizeText(source.en)}
+
+Please explain:
+- the plain meaning
+- important Hebrew roots
+- spiritual symbolism
+- related sefirot
+- classical Jewish insight`
 
     window.dispatchEvent(
       new CustomEvent('luminanexus:ask-chavruta', {
@@ -75,7 +91,9 @@ ${normalizeText(source.en)}`
             value={ref}
             onChange={(event) => setRef(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === 'Enter') loadSource()
+              if (event.key === 'Enter') {
+                loadSource()
+              }
             }}
             placeholder="Genesis 1:1, Exodus 3:14, Deuteronomy 6:5..."
           />
