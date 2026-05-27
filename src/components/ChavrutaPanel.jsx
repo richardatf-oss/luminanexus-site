@@ -22,7 +22,27 @@ export default function ChavrutaPanel() {
   const [error, setError] = useState('')
   const [result, setResult] = useState(null)
   const [history, setHistory] = useState([])
+useEffect(() => {
+  function receiveSefariaQuestion(event) {
+    const prompt = event.detail?.prompt
 
+    if (prompt) {
+      setQuestion(prompt)
+    }
+  }
+
+  window.addEventListener(
+    'luminanexus:ask-chavruta',
+    receiveSefariaQuestion
+  )
+
+  return () => {
+    window.removeEventListener(
+      'luminanexus:ask-chavruta',
+      receiveSefariaQuestion
+    )
+  }
+}, [])
   useEffect(() => {
     function receivePrompt() {
       const stored = window.localStorage.getItem('luminanexus_chavruta_prompt')
