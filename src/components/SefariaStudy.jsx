@@ -38,15 +38,22 @@ export default function SefariaStudy() {
   }
 
   function askChavruta() {
-    const prompt = `Please help me study ${source.ref}. Hebrew: ${normalizeText(
-      source.he
-    )} English: ${normalizeText(source.en)}`
+    if (!source) return
 
-    const event = new CustomEvent('luminanexus:ask-chavruta', {
-      detail: { prompt },
-    })
+    const prompt = `Please help me study ${source.ref}.
 
-    window.dispatchEvent(event)
+Hebrew:
+${normalizeText(source.he)}
+
+English:
+${normalizeText(source.en)}`
+
+    window.dispatchEvent(
+      new CustomEvent('luminanexus:ask-chavruta', {
+        detail: { prompt },
+      })
+    )
+
     window.location.hash = 'chavruta'
   }
 
@@ -55,9 +62,7 @@ export default function SefariaStudy() {
       <div className="section-card content-block">
         <p className="content-block__eyebrow">Sefaria Study</p>
 
-        <h2 className="content-block__title">
-          Open a living source
-        </h2>
+        <h2 className="content-block__title">Open a living source</h2>
 
         <p className="content-block__text">
           Bring Torah text into LuminaNexus, then carry it directly into
@@ -85,11 +90,7 @@ export default function SefariaStudy() {
           </button>
         </div>
 
-        {error && (
-          <div className="sefaria-error">
-            {error}
-          </div>
-        )}
+        {error && <div className="sefaria-error">{error}</div>}
 
         {source && (
           <div className="sefaria-source">
