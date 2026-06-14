@@ -1,217 +1,265 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-export default function App() {
-  const [menuOpen, setMenuOpen] = useState(false)
+const zeffyLink =
+  "https://www.zeffy.com/en-US/donation-form/luminanexus-a-digital-sanctuary-of-light";
 
-  const closeMenu = () => setMenuOpen(false)
+const stripeLink = "https://buy.stripe.com/aFafZg7nf8R44ihewy4gg00";
+
+const tracks = [
+  {
+    title: "Aleph Track",
+    subtitle: "First Beginning",
+    description:
+      "For students who are new to Hebrew at any grade level. Learners begin with directionality, letter recognition, sounds, names, simple words, and confidence.",
+  },
+  {
+    title: "Bet Track",
+    subtitle: "Building the Word",
+    description:
+      "For students who know some letters and are ready for vowels, syllables, decoding, vocabulary, roots, and simple phrases.",
+  },
+  {
+    title: "Gimel Track",
+    subtitle: "Reading with Meaning",
+    description:
+      "For students ready to read words and short phrases while exploring roots, fluency, culture, meaning, and interpretation.",
+  },
+];
+
+function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <>
+    <div className="site">
       <header className="site-header">
-        <nav className="nav-container" aria-label="Main navigation">
+        <nav className="nav" aria-label="Main navigation">
           <a href="#home" className="brand" onClick={closeMenu}>
             <span className="brand-mark">א</span>
-            <span className="brand-text">LuminaNexus</span>
+            <span className="brand-name">LuminaNexus</span>
           </a>
 
           <button
             className="menu-toggle"
-            aria-label="Open navigation menu"
-            onClick={() => setMenuOpen(!menuOpen)}
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
           >
             ☰
           </button>
 
-          <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-            <li><a href="#mission" onClick={closeMenu}>Mission</a></li>
-            <li><a href="#ivrit-haor" onClick={closeMenu}>Ivrit HaOr</a></li>
-            <li><a href="#tracks" onClick={closeMenu}>Tracks</a></li>
-            <li><a href="#pilot" onClick={closeMenu}>Pilot</a></li>
-            <li><a href="#support" onClick={closeMenu}>Support</a></li>
-          </ul>
+          <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+            <a href="#mission" onClick={closeMenu}>
+              Mission
+            </a>
+            <a href="#ivrit-haor" onClick={closeMenu}>
+              Ivrit HaOr
+            </a>
+            <a href="#tracks" onClick={closeMenu}>
+              Tracks
+            </a>
+            <a href="#pilot" onClick={closeMenu}>
+              Pilot
+            </a>
+            <a href="#support" onClick={closeMenu}>
+              Support
+            </a>
+          </div>
         </nav>
       </header>
 
-      <main id="home">
-        <section className="hero">
-          <div className="hero-content">
-            <p className="eyebrow">Hebrew for Every Grade, Every Beginning</p>
+      <main>
+        <section id="home" className="hero section">
+          <div className="section-inner hero-inner">
+            <p className="eyebrow">LuminaNexus Foundation</p>
 
-            <h1>
-              No student is late to Hebrew.
-              <span>Every letter is a beginning.</span>
-            </h1>
+            <h1>Hebrew for Every Grade, Every Beginning.</h1>
 
             <p className="hero-text">
-              LuminaNexus Foundation creates welcoming Hebrew enrichment programs
-              that meet students by readiness, not shame or grade level.
+              A one-hour-per-week Hebrew enrichment program for K–12 students,
+              designed so learners can enter at any age, begin with confidence,
+              and quickly find their place.
             </p>
 
             <div className="hero-actions">
-              <a href="#ivrit-haor" className="button primary">Explore the Program</a>
-              <a href="#support" className="button secondary">Support the Work</a>
-            </div>
-          </div>
+              <a className="btn btn-primary" href="#ivrit-haor">
+                Explore the Program
+              </a>
 
-          <div className="hero-card" aria-label="Hebrew learning card">
-            <div className="hebrew-large">אוֹר</div>
-            <p className="translit">or</p>
-            <p className="meaning">light</p>
+              <a className="btn btn-secondary" href="#support">
+                Support the Work
+              </a>
+            </div>
           </div>
         </section>
 
         <section id="mission" className="section">
-          <div className="section-heading">
+          <div className="section-inner">
             <p className="eyebrow">Our Mission</p>
-            <h2>Making Hebrew accessible, meaningful, and joyful.</h2>
-          </div>
 
-          <div className="two-column">
-            <p>
-              LuminaNexus Foundation supports Hebrew enrichment through language,
-              culture, stories, letters, sounds, names, roots, and meaning.
-              Our work is designed for students from diverse backgrounds, including
-              Jewish and non-Jewish learners, charter schools, homeschool groups,
-              and general educational settings.
-            </p>
+            <h2>Every student begins somewhere.</h2>
 
-            <p>
-              We believe Hebrew learning should begin with confidence. Students
-              should not feel behind because they are beginning. Beginning is the
-              doorway. Every learner deserves a beautiful first step.
-            </p>
+            <div className="card large-card">
+              <p>
+                Some begin with Aleph. Some begin with their name. Some begin
+                with a song. Some begin with curiosity. Some begin because a
+                teacher opened a door.
+              </p>
+
+              <p>
+                LuminaNexus Foundation provides accessible Hebrew education for
+                K–12 students through a flexible enrichment model designed for
+                schools, homeschool groups, families, and educational partners.
+              </p>
+
+              <p>
+                At LuminaNexus, beginning is not a disadvantage. Beginning is
+                the whole point.
+              </p>
+            </div>
           </div>
         </section>
 
-        <section id="ivrit-haor" className="section warm">
-          <div className="section-heading">
-            <p className="eyebrow">Signature Curriculum</p>
-            <h2>Ivrit HaOr</h2>
-            <p className="section-intro">
-              <strong>Ivrit HaOr</strong>, “Hebrew of Light,” is a readiness-based
-              Hebrew enrichment curriculum designed for one hour per week.
-            </p>
-          </div>
+        <section id="ivrit-haor" className="section section-warm">
+          <div className="section-inner two-column">
+            <div>
+              <p className="eyebrow">Ivrit HaOr</p>
 
-          <div className="feature-grid">
-            <article className="feature-card">
-              <h3>Language</h3>
-              <p>
-                Students learn Hebrew letters, sounds, vowels, words, roots,
-                and reading patterns through simple, encouraging steps.
-              </p>
-            </article>
+              <h2>Hebrew of Light</h2>
 
-            <article className="feature-card">
-              <h3>Culture</h3>
               <p>
-                Students encounter Hebrew through stories, music, geography,
-                history, names, and cultural memory.
+                Ivrit HaOr is the LuminaNexus Hebrew curriculum: a path of
+                letters, sounds, names, roots, culture, and meaning.
               </p>
-            </article>
 
-            <article className="feature-card">
-              <h3>Confidence</h3>
               <p>
-                Students are placed by readiness so that every learner can begin
-                successfully and grow without embarrassment.
+                The program is built for one hour per week and welcomes students
+                by readiness rather than embarrassment. A high school student
+                who has never seen Hebrew can begin with Aleph in an
+                age-appropriate way. A younger student who already knows letters
+                can move forward into vowels, words, and roots.
               </p>
-            </article>
+            </div>
+
+            <div className="card">
+              <h3>What students learn</h3>
+
+              <ul className="clean-list">
+                <li>Hebrew directionality</li>
+                <li>Letter recognition and sounds</li>
+                <li>Names in Hebrew</li>
+                <li>Basic vowels and syllables</li>
+                <li>Simple vocabulary</li>
+                <li>Hebrew roots and word families</li>
+                <li>Culture, meaning, and confidence</li>
+              </ul>
+            </div>
           </div>
         </section>
 
         <section id="tracks" className="section">
-          <div className="section-heading">
-            <p className="eyebrow">Readiness-Based Learning</p>
-            <h2>The Aleph, Bet, and Gimel Tracks</h2>
-          </div>
+          <div className="section-inner">
+            <p className="eyebrow">Flexible Learning Paths</p>
 
-          <div className="track-grid">
-            <article className="track-card">
-              <div className="track-letter">א</div>
-              <h3>Aleph Track</h3>
-              <p className="track-subtitle">First Beginning</p>
-              <p>
-                For students new to Hebrew at any grade level. Students learn
-                directionality, first letters, sounds, simple words, Hebrew names,
-                and confidence.
-              </p>
-            </article>
+            <h2>Three tracks. Many beginnings.</h2>
 
-            <article className="track-card">
-              <div className="track-letter">ב</div>
-              <h3>Bet Track</h3>
-              <p className="track-subtitle">Building the Word</p>
-              <p>
-                For students who know some Hebrew letters and are ready for vowels,
-                syllables, decoding, vocabulary, roots, and simple phrases.
-              </p>
-            </article>
+            <p className="section-lead">
+              Students are placed by Hebrew readiness, not by shame or grade
+              level. Each track gives learners a clear doorway and a next step.
+            </p>
 
-            <article className="track-card">
-              <div className="track-letter">ג</div>
-              <h3>Gimel Track</h3>
-              <p className="track-subtitle">Reading with Meaning</p>
-              <p>
-                For students ready to read Hebrew words, phrases, and short texts
-                while exploring roots, culture, context, and meaning.
-              </p>
-            </article>
+            <div className="track-grid">
+              {tracks.map((track) => (
+                <article className="card track-card" key={track.title}>
+                  <p className="track-label">{track.title}</p>
+                  <h3>{track.subtitle}</h3>
+                  <p>{track.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section id="pilot" className="section pilot">
-          <div className="section-heading">
+        <section id="pilot" className="section section-warm">
+          <div className="section-inner">
             <p className="eyebrow">Pilot Program</p>
-            <h2>Honoring Our First Educational Collaborator</h2>
-          </div>
 
-          <div className="pilot-box">
-            <p>
-              LuminaNexus Foundation is honored to launch the pilot phase of{' '}
-              <strong>Ivrit HaOr: Hebrew for Every Grade, Every Beginning</strong>{' '}
-              in collaboration with{' '}
-              <strong>Desert Ridge Preparatory in Kingman, Arizona</strong>.
-            </p>
+            <h2>A classroom doorway in Kingman, Arizona.</h2>
 
-            <p>
-              This pilot will help demonstrate how the Aleph, Bet, and Gimel Tracks
-              can serve students of different ages, backgrounds, and Hebrew readiness
-              levels within a flexible classroom setting.
-            </p>
+            <div className="card large-card">
+              <p>
+                LuminaNexus Foundation is honored to launch the pilot phase of{" "}
+                <strong>Ivrit HaOr: Hebrew for Every Grade, Every Beginning</strong>{" "}
+                in collaboration with{" "}
+                <strong>Desert Ridge Preparatory in Kingman, Arizona</strong>.
+              </p>
 
-            <p>
-              We gratefully acknowledge Desert Ridge Preparatory for helping make
-              this first implementation possible and for welcoming a model designed
-              to make Hebrew learning approachable, joyful, and confidence-building.
-            </p>
+              <p>
+                This pilot will help demonstrate how the Aleph, Bet, and Gimel
+                Tracks can serve students of different ages, backgrounds, and
+                Hebrew readiness levels within a flexible classroom setting.
+              </p>
+
+              <p>
+                We gratefully acknowledge Desert Ridge Preparatory for helping
+                make this first implementation possible and for welcoming a
+                model designed to make Hebrew learning approachable, joyful, and
+                confidence-building.
+              </p>
+            </div>
           </div>
         </section>
 
-        <section id="support" className="section support">
-          <div className="support-content">
+        <section id="support" className="section support-section">
+          <div className="section-inner support-inner">
             <p className="eyebrow">Support the Work</p>
+
             <h2>Help build the first doorway into Hebrew learning.</h2>
 
             <p>
-              Grant support and donor partnerships help LuminaNexus develop
-              curriculum materials, teacher guides, student resources, family
-              handouts, pilot documentation, and future school partnerships.
+              Your gift helps LuminaNexus Foundation provide accessible Hebrew
+              enrichment, classroom materials, teacher guides, student
+              resources, family handouts, pilot documentation, and future school
+              partnerships.
             </p>
 
-            <a href="mailto:info@luminanexus.org" className="button primary">
-              Contact LuminaNexus
-            </a>
+            <div className="support-actions">
+              <a
+                className="btn btn-primary"
+                href={zeffyLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Donate with Zeffy
+              </a>
+
+              <a
+                className="btn btn-secondary"
+                href={stripeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Give with Stripe
+              </a>
+            </div>
+
+            <p className="support-note">
+              Every donation helps a student begin.
+            </p>
           </div>
         </section>
       </main>
 
       <footer className="site-footer">
         <p>
-          © {new Date().getFullYear()} LuminaNexus Foundation.
-          Hebrew for Every Grade, Every Beginning.
+          © 2026 LuminaNexus Foundation. Hebrew for Every Grade, Every
+          Beginning.
         </p>
       </footer>
-    </>
-  )
+    </div>
+  );
 }
+
+export default App;
