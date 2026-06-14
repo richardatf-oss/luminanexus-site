@@ -3,8 +3,6 @@ import { useState } from "react";
 const zeffyLink =
   "https://www.zeffy.com/en-US/donation-form/luminanexus-a-digital-sanctuary-of-light";
 
-const stripeLink = "https://buy.stripe.com/aFafZg7nf8R44ihewy4gg00";
-
 const tracks = [
   {
     letter: "א",
@@ -54,21 +52,11 @@ function App() {
           </button>
 
           <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-            <a href="#mission" onClick={closeMenu}>
-              Mission
-            </a>
-            <a href="#ivrit-haor" onClick={closeMenu}>
-              Ivrit HaOr
-            </a>
-            <a href="#tracks" onClick={closeMenu}>
-              Tracks
-            </a>
-            <a href="#pilot" onClick={closeMenu}>
-              Pilot
-            </a>
-            <a href="#support" onClick={closeMenu}>
-              Support
-            </a>
+            <a href="#mission" onClick={closeMenu}>Mission</a>
+            <a href="#ivrit-haor" onClick={closeMenu}>Ivrit HaOr</a>
+            <a href="#tracks" onClick={closeMenu}>Tracks</a>
+            <a href="#pilot" onClick={closeMenu}>Pilot</a>
+            <a href="#support" onClick={closeMenu}>Support</a>
           </div>
         </nav>
       </header>
@@ -263,15 +251,6 @@ function App() {
               rel="noopener noreferrer"
             >
               Donate with Zeffy
-            </a>{" "}
-
-            <a
-              className="button secondary"
-              href={stripeLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Give with Stripe
             </a>
 
             <p>
