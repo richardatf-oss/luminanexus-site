@@ -1,14 +1,26 @@
+import { useState } from 'react'
+
 export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <>
       <header className="site-header">
-        <nav className="nav-container">
+        <nav className="nav-container" aria-label="Main navigation">
           <a href="#home" className="brand">
             <span className="brand-mark">א</span>
             <span className="brand-text">LuminaNexus</span>
           </a>
 
-          <ul className="nav-links">
+          <button
+            className="menu-toggle"
+            aria-label="Open navigation menu"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </button>
+
+          <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
             <li><a href="#mission">Mission</a></li>
             <li><a href="#ivrit-haor">Ivrit HaOr</a></li>
             <li><a href="#tracks">Tracks</a></li>
@@ -39,7 +51,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="hero-card">
+          <div className="hero-card" aria-label="Hebrew learning card">
             <div className="hebrew-large">אוֹר</div>
             <p className="translit">or</p>
             <p className="meaning">light</p>
@@ -56,12 +68,15 @@ export default function App() {
             <p>
               LuminaNexus Foundation supports Hebrew enrichment through language,
               culture, stories, letters, sounds, names, roots, and meaning.
+              Our work is designed for students from diverse backgrounds, including
+              Jewish and non-Jewish learners, charter schools, homeschool groups,
+              and general educational settings.
             </p>
 
             <p>
               We believe Hebrew learning should begin with confidence. Students
               should not feel behind because they are beginning. Beginning is the
-              doorway.
+              doorway. Every learner deserves a beautiful first step.
             </p>
           </div>
         </section>
@@ -96,7 +111,7 @@ export default function App() {
             <article className="feature-card">
               <h3>Confidence</h3>
               <p>
-                Students are placed by readiness so every learner can begin
+                Students are placed by readiness so that every learner can begin
                 successfully and grow without embarrassment.
               </p>
             </article>
@@ -151,16 +166,22 @@ export default function App() {
 
           <div className="pilot-box">
             <p>
-              LuminaNexus Foundation is honored to launch the pilot phase of
-              <strong> Ivrit HaOr: Hebrew for Every Grade, Every Beginning </strong>
-              in collaboration with
-              <strong> Desert Ridge Preparatory in Kingman, Arizona</strong>.
+              LuminaNexus Foundation is honored to launch the pilot phase of{' '}
+              <strong>Ivrit HaOr: Hebrew for Every Grade, Every Beginning</strong>{' '}
+              in collaboration with{' '}
+              <strong>Desert Ridge Preparatory in Kingman, Arizona</strong>.
             </p>
 
             <p>
-              This pilot will help demonstrate how the Aleph, Bet, and Gimel
-              Tracks can serve students of different ages, backgrounds, and Hebrew
-              readiness levels within a flexible classroom setting.
+              This pilot will help demonstrate how the Aleph, Bet, and Gimel Tracks
+              can serve students of different ages, backgrounds, and Hebrew readiness
+              levels within a flexible classroom setting.
+            </p>
+
+            <p>
+              We gratefully acknowledge Desert Ridge Preparatory for helping make
+              this first implementation possible and for welcoming a model designed
+              to make Hebrew learning approachable, joyful, and confidence-building.
             </p>
           </div>
         </section>
@@ -185,10 +206,10 @@ export default function App() {
 
       <footer className="site-footer">
         <p>
-          © {new Date().getFullYear()} LuminaNexus Foundation. Hebrew for Every
-          Grade, Every Beginning.
+          © {new Date().getFullYear()} LuminaNexus Foundation.
+          Hebrew for Every Grade, Every Beginning.
         </p>
       </footer>
     </>
-  );
+  )
 }
