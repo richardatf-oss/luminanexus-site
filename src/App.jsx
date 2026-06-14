@@ -3,11 +3,13 @@ import { useState } from 'react'
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
 
+  const closeMenu = () => setMenuOpen(false)
+
   return (
     <>
       <header className="site-header">
         <nav className="nav-container" aria-label="Main navigation">
-          <a href="#home" className="brand">
+          <a href="#home" className="brand" onClick={closeMenu}>
             <span className="brand-mark">א</span>
             <span className="brand-text">LuminaNexus</span>
           </a>
@@ -21,11 +23,11 @@ export default function App() {
           </button>
 
           <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-            <li><a href="#mission">Mission</a></li>
-            <li><a href="#ivrit-haor">Ivrit HaOr</a></li>
-            <li><a href="#tracks">Tracks</a></li>
-            <li><a href="#pilot">Pilot</a></li>
-            <li><a href="#support">Support</a></li>
+            <li><a href="#mission" onClick={closeMenu}>Mission</a></li>
+            <li><a href="#ivrit-haor" onClick={closeMenu}>Ivrit HaOr</a></li>
+            <li><a href="#tracks" onClick={closeMenu}>Tracks</a></li>
+            <li><a href="#pilot" onClick={closeMenu}>Pilot</a></li>
+            <li><a href="#support" onClick={closeMenu}>Support</a></li>
           </ul>
         </nav>
       </header>
