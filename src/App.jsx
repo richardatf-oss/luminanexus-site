@@ -54,6 +54,7 @@ function App() {
           <div className={`nav-links ${menuOpen ? "open" : ""}`}>
             <a href="#mission" onClick={closeMenu}>Mission</a>
             <a href="#ivrit-haor" onClick={closeMenu}>Ivrit HaOr</a>
+            <a href="#chavruta" onClick={closeMenu}>Chavruta</a>
             <a href="#tracks" onClick={closeMenu}>Tracks</a>
             <a href="#pilot" onClick={closeMenu}>Pilot</a>
             <a href="#support" onClick={closeMenu}>Support</a>
