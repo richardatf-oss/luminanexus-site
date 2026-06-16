@@ -177,7 +177,39 @@ function App() {
             </div>
           </div>
         </section>
+<section id="chavruta" className="section">
+  <div className="two-column">
+    <div>
+      <p className="eyebrow">Chavruta Classroom</p>
 
+      <h2>A Hebrew guide that remembers each student’s beginning.</h2>
+
+      <p>
+        Chavruta Classroom helps teachers and students find the right Hebrew
+        starting point through Aleph, Bet, and Gimel Tracks.
+      </p>
+
+      <p>
+        Student progress can be stored by classroom ID, track, current skill,
+        lesson notes, and next practice step, so each learner can continue from
+        the right doorway.
+      </p>
+
+      <a className="button primary" href="#chavruta">
+        Student Memory Coming Online
+      </a>
+    </div>
+
+    <div className="feature-card">
+      <h3>Chavruta will help with:</h3>
+
+      <p>Finding a student’s Hebrew starting point.</p>
+      <p>Remembering Aleph, Bet, or Gimel Track placement.</p>
+      <p>Creating catch-up practice without embarrassment.</p>
+      <p>Supporting one-hour weekly Hebrew lessons.</p>
+    </div>
+  </div>
+</section>
         <section id="tracks" className="section">
           <div className="section-heading">
             <p className="eyebrow">Flexible Learning Paths</p>
