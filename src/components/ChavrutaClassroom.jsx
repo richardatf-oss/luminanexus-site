@@ -1,111 +1,315 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
+const blankProfile = {
+displayName: "",
+gradeBand: "Unknown",
+track: "Aleph",
+currentSkill: "Finding Hebrew starting point",
+};
 
 function ChavrutaClassroom() {
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [nextStep, setNextStep] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+const [profile, setProfile] = useState(blankProfile);
+const [savedProfile, setSavedProfile] = useState(null);
+const [question, setQuestion] = useState("");
+const [answer, setAnswer] = useState("");
+const [nextStep, setNextStep] = useState("");
+const [error, setError] = useState("");
+const [status, setStatus] = useState("");
+const [loading, setLoading] = useState(false);
 
-  async function askChavruta(event) {
-    event.preventDefault();
+const hasProfile = useMemo(() => {
+return savedProfile && savedProfile.displayName;
+}, [savedProfile]);
 
-    if (!question.trim()) {
-      setError("Ask Chavruta a question first.");
-      return;
-    }
+useEffect(() => {
+const stored = window.localStorage.getItem("chavrutaStudentProfile");
 
-    setLoading(true);
-    setError("");
-    setAnswer("");
-    setNextStep("");
+```
+if (stored) {
+  try {
+    const parsed = JSON.parse(stored);
+    setProfile({ ...blankProfile, ...parsed });
+    setSavedProfile({ ...blankProfile, ...parsed });
+  } catch {
+    window.localStorage.removeItem("chavrutaStudentProfile");
+  }
+}
+```
 
-    try {
-      const response = await fetch("/.netlify/functions/chavruta", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          question,
-          mode: "hebrew-classroom",
-        }),
-      });
+}, []);
 
-      const data = await response.json();
+function saveProfile(event) {
+event.preventDefault();
 
-      if (!response.ok) {
-        throw new Error(data.error || "Chavruta could not answer.");
-      }
+```
+const cleanProfile = {
+  displayName: profile.displayName.trim() || "Student",
+  gradeBand: profile.gradeBand,
+  track: profile.track,
+  currentSkill:
+    profile.currentSkill.trim() || "Finding Hebrew starting point",
+};
 
-      setAnswer(data.response || "");
-      setNextStep(data.nextStep || "");
-    } catch (err) {
-      setError(err.message || "Chavruta could not answer.");
-    } finally {
-      setLoading(false);
-    }
+window.localStorage.setItem(
+  "chavrutaStudentProfile",
+  JSON.stringify(cleanProfile)
+);
+
+setProfile(cleanProfile);
+setSavedProfile(cleanProfile);
+setStatus("Profile saved on this device.");
+setError("");
+```
+
+}
+
+function clearProfile() {
+window.localStorage.removeItem("chavrutaStudentProfile");
+setProfile(blankProfile);
+setSavedProfile(null);
+setStatus("Profile cleared from this device.");
+setAnswer("");
+setNextStep("");
+setError("");
+}
+
+async function askChavruta(event) {
+event.preventDefault();
+
+```
+if (!question.trim()) {
+  setError("Ask Chavruta a question first.");
+  return;
+}
+
+setLoading(true);
+setError("");
+setStatus("");
+setAnswer("");
+setNextStep("");
+
+const activeProfile = savedProfile || profile;
+
+const profileContext = [
+  "Student profile for this Chavruta session:",
+  "Name or nickname: " + (activeProfile.displayName || "Student"),
+  "Grade band: " + activeProfile.gradeBand,
+  "Current track: " + activeProfile.track,
+  "Current skill: " + activeProfile.currentSkill,
+  "",
+  "Student question:",
+  question,
+  "",
+  "Answer as Chavruta Classroom for LuminaNexus Foundation.",
+  "Keep the answer age-aware, encouraging, and focused on Hebrew learning.",
+  "Use Aleph, Bet, and Gimel Tracks when helpful.",
+  "Do not make the student feel behind.",
+].join("\n");
+
+try {
+  const response = await fetch("/.netlify/functions/chavruta", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      question: profileContext,
+      mode: "hebrew-classroom",
+    }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error || "Chavruta could not answer.");
   }
 
-  return (
-    <section id="chavruta" className="section chavruta-section">
-      <div className="two-column">
-        <div>
-          <p className="eyebrow">Chavruta Classroom</p>
+  setAnswer(data.response || "");
+  setNextStep(data.nextStep || "");
+} catch (err) {
+  setError(err.message || "Chavruta could not answer.");
+} finally {
+  setLoading(false);
+}
+```
 
-          <h2>A Hebrew guide for every beginning.</h2>
+}
 
-          <p>
-            Ask Chavruta for Hebrew letter help, Aleph / Bet / Gimel Track
-            guidance, one-hour lesson ideas, catch-up practice, or classroom
-            activities.
-          </p>
+return ( <section id="chavruta" className="section chavruta-section"> <div className="section-heading"> <p className="eyebrow">Chavruta Classroom</p>
 
-          <p>
-            No student is late to Hebrew. Every letter is a beginning.
-          </p>
-        </div>
+```
+    <h2>A Hebrew guide for every student’s beginning.</h2>
 
-        <div className="feature-card chavruta-panel">
-          <h3>Ask Chavruta</h3>
+    <p className="section-intro">
+      Create a simple student profile, choose a starting track, and ask
+      Chavruta for Hebrew help, letter practice, catch-up guidance, or
+      one-hour lesson support.
+    </p>
+  </div>
 
-          <form onSubmit={askChavruta}>
-            <label className="field-label" htmlFor="chavruta-question">
-              Question
-            </label>
+  <div className="two-column">
+    <form className="feature-card" onSubmit={saveProfile}>
+      <h3>Student Profile</h3>
 
-            <textarea
-              id="chavruta-question"
-              className="field-textarea"
-              value={question}
-              onChange={(event) => setQuestion(event.target.value)}
-              placeholder="Example: Help me teach Aleph to a mixed-age beginner group."
-            />
+      <label className="field-label" htmlFor="student-name">
+        Name or nickname
+      </label>
 
-            <button className="button primary" type="submit" disabled={loading}>
-              {loading ? "Asking..." : "Ask Chavruta"}
-            </button>
-          </form>
+      <input
+        id="student-name"
+        className="field-input"
+        type="text"
+        value={profile.displayName}
+        onChange={(event) =>
+          setProfile({
+            ...profile,
+            displayName: event.target.value,
+          })
+        }
+        placeholder="Example: Elijah"
+      />
 
-          {answer && (
-            <div className="chavruta-answer">
-              <h4>Chavruta says:</h4>
-              <p>{answer}</p>
+      <label className="field-label" htmlFor="grade-band">
+        Grade band
+      </label>
 
-              {nextStep && (
-                <>
-                  <h4>Next step:</h4>
-                  <p>{nextStep}</p>
-                </>
-              )}
-            </div>
-          )}
+      <select
+        id="grade-band"
+        className="field-input"
+        value={profile.gradeBand}
+        onChange={(event) =>
+          setProfile({
+            ...profile,
+            gradeBand: event.target.value,
+          })
+        }
+      >
+        <option>K-2</option>
+        <option>3-5</option>
+        <option>6-8</option>
+        <option>9-12</option>
+        <option>Mixed</option>
+        <option>Unknown</option>
+      </select>
 
-          {error && <p className="error-message">{error}</p>}
-        </div>
+      <label className="field-label" htmlFor="track">
+        Starting track
+      </label>
+
+      <select
+        id="track"
+        className="field-input"
+        value={profile.track}
+        onChange={(event) =>
+          setProfile({
+            ...profile,
+            track: event.target.value,
+          })
+        }
+      >
+        <option>Aleph</option>
+        <option>Bet</option>
+        <option>Gimel</option>
+        <option>Review</option>
+        <option>Unknown</option>
+      </select>
+
+      <label className="field-label" htmlFor="current-skill">
+        Current skill
+      </label>
+
+      <input
+        id="current-skill"
+        className="field-input"
+        type="text"
+        value={profile.currentSkill}
+        onChange={(event) =>
+          setProfile({
+            ...profile,
+            currentSkill: event.target.value,
+          })
+        }
+        placeholder="Example: Recognizes Aleph"
+      />
+
+      <div className="hero-actions">
+        <button className="button primary" type="submit">
+          Save My Profile
+        </button>
+
+        {hasProfile && (
+          <button
+            className="button secondary"
+            type="button"
+            onClick={clearProfile}
+          >
+            Clear Profile
+          </button>
+        )}
       </div>
-    </section>
-  );
+
+      <p className="small-note">
+        This profile is saved only on this device.
+      </p>
+
+      {hasProfile && (
+        <div className="student-summary">
+          <p>
+            <strong>Current profile:</strong> {savedProfile.displayName}
+          </p>
+          <p>
+            <strong>Track:</strong> {savedProfile.track}
+          </p>
+          <p>
+            <strong>Skill:</strong> {savedProfile.currentSkill}
+          </p>
+        </div>
+      )}
+    </form>
+
+    <div className="feature-card chavruta-panel">
+      <h3>Ask Chavruta</h3>
+
+      <form onSubmit={askChavruta}>
+        <label className="field-label" htmlFor="chavruta-question">
+          Question
+        </label>
+
+        <textarea
+          id="chavruta-question"
+          className="field-textarea"
+          value={question}
+          onChange={(event) => setQuestion(event.target.value)}
+          placeholder="Example: Help me practice the fifth Hebrew letter."
+        />
+
+        <button className="button primary" type="submit" disabled={loading}>
+          {loading ? "Asking..." : "Ask Chavruta"}
+        </button>
+      </form>
+
+      {answer && (
+        <div className="chavruta-answer">
+          <h4>Chavruta says:</h4>
+          <p>{answer}</p>
+
+          {nextStep && (
+            <>
+              <h4>Next step:</h4>
+              <p>{nextStep}</p>
+            </>
+          )}
+        </div>
+      )}
+
+      {status && <p className="status-message">{status}</p>}
+      {error && <p className="error-message">{error}</p>}
+    </div>
+  </div>
+</section>
+```
+
+);
 }
 
 export default ChavrutaClassroom;
