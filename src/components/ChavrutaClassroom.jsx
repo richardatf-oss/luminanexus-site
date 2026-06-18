@@ -67,6 +67,16 @@ function ChavrutaClassroom() {
     setError("");
   }
 
+  function handleQuestionKeyDown(event) {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+
+      if (!loading) {
+        askChavruta(event);
+      }
+    }
+  }
+
   async function askChavruta(event) {
     event.preventDefault();
 
@@ -273,8 +283,13 @@ function ChavrutaClassroom() {
               className="field-textarea"
               value={question}
               onChange={(event) => setQuestion(event.target.value)}
+              onKeyDown={handleQuestionKeyDown}
               placeholder="Example: Help me practice the fifth Hebrew letter."
             />
+
+            <p className="small-note">
+              Press Enter to ask. Press Shift + Enter for a new line.
+            </p>
 
             <button className="button primary" type="submit" disabled={loading}>
               {loading ? "Asking..." : "Ask Chavruta"}
