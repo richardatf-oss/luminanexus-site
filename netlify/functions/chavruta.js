@@ -1,182 +1,198 @@
-const helpers = require('./lib/findLibraryContext')
+const headers = {
+  "Content-Type": "application/json",
+};
+
+function json(statusCode, payload) {
+  return {
+    statusCode: statusCode,
+    headers: headers,
+    body: JSON.stringify(payload),
+  };
+}
 
 function extractText(data) {
-  if (data && typeof data.output_text === 'string' && data.output_text.trim()) {
-    return data.output_text.trim()
+  if (data && typeof data.output_text === "string" && data.output_text.trim()) {
+    return data.output_text.trim();
   }
 
   if (data && Array.isArray(data.output)) {
-    var chunks = []
+    var chunks = [];
 
     for (var i = 0; i < data.output.length; i += 1) {
-      var item = data.output[i]
+      var item = data.output[i];
 
       if (item && Array.isArray(item.content)) {
         for (var j = 0; j < item.content.length; j += 1) {
-          var part = item.content[j]
+          var part = item.content[j];
 
-          if (part && typeof part.text === 'string' && part.text.trim()) {
-            chunks.push(part.text.trim())
+          if (part && typeof part.text === "string" && part.text.trim()) {
+            chunks.push(part.text.trim());
           }
         }
       }
     }
 
     if (chunks.length) {
-      return chunks.join('\n').trim()
+      return chunks.join("\n").trim();
     }
   }
 
-  return ''
-}
-
-function buildContextBlock(matches) {
-  if (!matches || !matches.length) {
-    return 'No matching LuminaNexus context was found.'
-  }
-
-  return matches
-    .map(function (entry, index) {
-      return [
-        '[Context ' + (index + 1) + ']',
-        'Title: ' + entry.title,
-        'Tags: ' + entry.tags.join(', '),
-        'Content: ' + entry.content,
-      ].join('\n')
-    })
-    .join('\n\n')
+  return "";
 }
 
 exports.handler = async function (event) {
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Method not allowed.' }),
-    }
+  if (event.httpMethod !== "POST") {
+    return json(405, { error: "Method not allowed." });
   }
 
   try {
-    var parsedBody = JSON.parse(event.body || '{}')
-    var question = parsedBody.question
-    var mode = parsedBody.mode || 'study'
+    var parsedBody = JSON.parse(event.body || "{}");
+    var question = parsedBody.question;
+    var mode = parsedBody.mode || "hebrew-classroom";
 
-    if (!question || typeof question !== 'string') {
-      return {
-        statusCode: 400,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ error: 'A valid question is required.' }),
-      }
+    if (!question || typeof question !== "string") {
+      return json(400, { error: "A valid question is required." });
     }
 
-    var apiKey = process.env.OPENAI_API_KEY
+    var apiKey = process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
-      return {
-        statusCode: 500,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          error: 'Missing OPENAI_API_KEY environment variable.',
-        }),
-      }
+      return json(500, {
+        error: "Missing OPENAI_API_KEY environment variable.",
+      });
     }
 
-    var matches = helpers.findLibraryContext(question, 3)
-    var contextBlock = buildContextBlock(matches)
-
     var systemPrompt = [
-      'You are ChavrutaGPT for LuminaNexus.',
-      'You are calm, reverent, structured, and precise.',
-      'You are not a generic assistant.',
-      'You use LuminaNexus context when relevant.',
-      'Do not invent facts beyond the context.',
-      'When discussing a sefirah, place it relationally in the Tree.',
-      'Occasionally use shared language like "we can see" naturally.',
-      'For questions involving sexuality, intimacy, or bodies, answer only in a respectful educational religious-study frame.',
-      'If a question needs rabbinic, medical, legal, or personal counseling authority, say so gently and keep the answer general.',
-      '',
-      'Return ONLY valid JSON matching the schema.',
-      'Do not include markdown fences.',
-      'Do not include commentary outside the JSON object.',
-      '',
-      'Use anchors when helpful:',
-      '#tree, #library, #chavruta, #ivritcode, #support',
-      '',
-      'Keep response concise but meaningful.',
-      'Mode: ' + mode,
-      '',
-      'LuminaNexus context:',
-      contextBlock,
-    ].join('\n')
+      "You are Chavruta Classroom for LuminaNexus Foundation.",
+      "You are a warm, clear, school-safe Hebrew enrichment tutor for K-12 students.",
+      "The curriculum is Ivrit HaOr: Hebrew for Every Grade, Every Beginning.",
+      "",
+      "Core principle:",
+      "No student is late to Hebrew. Every letter is a beginning.",
+      "Place students by readiness, not shame, age, or grade level.",
+      "",
+      "Your educational focus:",
+      "- Hebrew letters",
+      "- Hebrew directionality, right to left",
+      "- letter recognition",
+      "- sounds and pronunciation",
+      "- vowels and syllables",
+      "- simple vocabulary",
+      "- roots when appropriate",
+      "- names in Hebrew",
+      "- culture, meaning, memory, and language",
+      "- confidence-building practice",
+      "",
+      "Tracks:",
+      "Aleph Track: total beginners at any age or grade. Focus on directionality, letter shapes, sounds, names, and confidence.",
+      "Bet Track: students who know some letters and are ready for vowels, syllables, decoding, simple words, and roots.",
+      "Gimel Track: students ready for short phrases, reading with meaning, fluency, roots, and cultural context.",
+      "",
+      "Tone:",
+      "Be encouraging, simple, age-aware, and practical.",
+      "Use short paragraphs.",
+      "Give one clear next step.",
+      "Avoid making any student feel behind.",
+      "Do not over-spiritualize beginner questions.",
+      "Do not use Kabbalah, sefirot, Tree of Life, gematria, or mystical interpretations unless the user specifically asks for that and the answer remains age-appropriate.",
+      "",
+      "Religious and cultural boundaries:",
+      "This program may mention God or sacred tradition respectfully, but it is primarily Hebrew enrichment.",
+      "Keep prayers, blessings, sacred phrases, conversion issues, Jewish law, and theology minimal unless directly asked.",
+      "If asked for Jewish law, conversion guidance, religious rulings, or personal spiritual authority, gently say that a qualified rabbi or Jewish educator should guide that question.",
+      "Do not present yourself as a rabbi.",
+      "",
+      "Hebrew accuracy notes:",
+      "Aleph is the first Hebrew letter.",
+      "Aleph is usually silent by itself and carries the vowel sound placed with it.",
+      "Do not teach Aleph as simply making an 'ah' sound. Say that an 'ah' sound comes from a vowel mark, not from Aleph alone.",
+      "Bet can sound like B with a dot, and Vet can sound like V without the dot in many Hebrew learning systems.",
+      "Hey is the fifth Hebrew letter.",
+      "Ayin is usually silent in modern beginner Hebrew pronunciation and carries its vowel.",
+      "",
+      "When answering, return ONLY valid JSON.",
+      "Do not include markdown fences.",
+      "Do not include commentary outside the JSON object.",
+      "",
+      "The JSON must have:",
+      "response: the main answer",
+      "relatedPaths: an array of helpful site links",
+      "nextStep: one simple suggested next action",
+      "",
+      "Useful site anchors:",
+      "#ivrit-haor, #chavruta, #tracks, #pilot, #support",
+      "",
+      "Mode: " + mode,
+    ].join("\n");
 
-    var controller = new AbortController()
+    var controller = new AbortController();
     var timeoutId = setTimeout(function () {
-      controller.abort()
-    }, 18000)
+      controller.abort();
+    }, 18000);
 
-    var openaiResponse
+    var openaiResponse;
 
     try {
-      openaiResponse = await fetch('https://api.openai.com/v1/responses', {
-        method: 'POST',
+      openaiResponse = await fetch("https://api.openai.com/v1/responses", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + apiKey,
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + apiKey,
         },
         body: JSON.stringify({
-          model: 'gpt-4o-mini',
-          max_output_tokens: 350,
+          model: "gpt-4o-mini",
+          max_output_tokens: 450,
           text: {
             format: {
-              type: 'json_schema',
-              name: 'chavruta_response',
+              type: "json_schema",
+              name: "chavruta_classroom_response",
               strict: true,
               schema: {
-                type: 'object',
+                type: "object",
                 additionalProperties: false,
                 properties: {
                   response: {
-                    type: 'string',
+                    type: "string",
                   },
                   relatedPaths: {
-                    type: 'array',
+                    type: "array",
                     items: {
-                      type: 'object',
+                      type: "object",
                       additionalProperties: false,
                       properties: {
                         label: {
-                          type: 'string',
+                          type: "string",
                         },
                         href: {
-                          type: 'string',
+                          type: "string",
                         },
                       },
-                      required: ['label', 'href'],
+                      required: ["label", "href"],
                     },
                   },
                   nextStep: {
-                    type: 'string',
+                    type: "string",
                   },
                 },
-                required: ['response', 'relatedPaths', 'nextStep'],
+                required: ["response", "relatedPaths", "nextStep"],
               },
             },
           },
           input: [
             {
-              role: 'system',
+              role: "system",
               content: [
                 {
-                  type: 'input_text',
+                  type: "input_text",
                   text: systemPrompt,
                 },
               ],
             },
             {
-              role: 'user',
+              role: "user",
               content: [
                 {
-                  type: 'input_text',
+                  type: "input_text",
                   text: question,
                 },
               ],
@@ -184,54 +200,42 @@ exports.handler = async function (event) {
           ],
         }),
         signal: controller.signal,
-      })
+      });
     } finally {
-      clearTimeout(timeoutId)
+      clearTimeout(timeoutId);
     }
 
-    var data = await openaiResponse.json()
+    var data = await openaiResponse.json();
 
     if (!openaiResponse.ok) {
-      return {
-        statusCode: openaiResponse.status,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          error:
-            data && data.error && data.error.message
-              ? data.error.message
-              : 'OpenAI request failed.',
-        }),
-      }
+      return json(openaiResponse.status, {
+        error:
+          data && data.error && data.error.message
+            ? data.error.message
+            : "OpenAI request failed.",
+      });
     }
 
-    var rawText = extractText(data)
+    var rawText = extractText(data);
 
     if (!rawText) {
-      return {
-        statusCode: 500,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          error: 'The model returned an empty response.',
-        }),
-      }
+      return json(500, {
+        error: "The model returned an empty response.",
+      });
     }
 
-    var parsedResult
+    var parsedResult;
 
     try {
-      parsedResult = JSON.parse(rawText)
+      parsedResult = JSON.parse(rawText);
     } catch (error) {
-      return {
-        statusCode: 500,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          error: 'Invalid JSON from model.',
-          debug: rawText.slice(0, 300),
-        }),
-      }
+      return json(500, {
+        error: "Invalid JSON from model.",
+        debug: rawText.slice(0, 300),
+      });
     }
 
-    var safePaths = []
+    var safePaths = [];
 
     if (Array.isArray(parsedResult.relatedPaths)) {
       parsedResult.relatedPaths.forEach(function (item) {
@@ -239,40 +243,25 @@ exports.handler = async function (event) {
           safePaths.push({
             label: String(item.label).trim(),
             href: String(item.href).trim(),
-          })
+          });
         }
-      })
+      });
     }
 
-    var sources = matches.map(function (entry) {
-      return {
-        label: entry.title,
-        href: '#library-' + entry.id,
-      }
-    })
-
-    return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        response: parsedResult.response || '',
-        relatedPaths: safePaths,
-        nextStep: parsedResult.nextStep || '',
-        sources: sources,
-      }),
-    }
+    return json(200, {
+      response: parsedResult.response || "",
+      relatedPaths: safePaths,
+      nextStep: parsedResult.nextStep || "",
+      sources: [],
+    });
   } catch (error) {
-    return {
-      statusCode: 500,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        error:
-          error && error.name === 'AbortError'
-            ? 'ChavrutaGPT timed out.'
-            : error && error.message
-              ? error.message
-              : 'Unexpected server error.',
-      }),
-    }
+    return json(500, {
+      error:
+        error && error.name === "AbortError"
+          ? "Chavruta Classroom timed out."
+          : error && error.message
+            ? error.message
+            : "Unexpected server error.",
+    });
   }
-}
+};
