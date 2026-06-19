@@ -197,7 +197,82 @@ function App() {
             </div>
           </div>
         </section>
+<section id="schools" className="section">
+  <div className="section-heading">
+    <p className="eyebrow">For Schools</p>
 
+    <h2>A gentle Hebrew enrichment model for real classrooms.</h2>
+
+    <p className="section-intro">
+      Ivrit HaOr is designed for schools, homeschool groups, enrichment
+      programs, and pilot classrooms that want to introduce Hebrew in a
+      respectful, accessible, and readiness-based way.
+    </p>
+  </div>
+
+  <div className="feature-grid">
+    <article className="feature-card">
+      <h3>One hour per week</h3>
+      <p>
+        The program is built around a practical weekly enrichment block. Each
+        lesson can include letter review, sound practice, vocabulary, student
+        names, short activities, and a simple confidence-building close.
+      </p>
+    </article>
+
+    <article className="feature-card">
+      <h3>Readiness-based placement</h3>
+      <p>
+        Students enter through Aleph, Bet, or Gimel Tracks based on Hebrew
+        readiness rather than grade level. A student who begins later is not
+        behind; they are simply at their first doorway.
+      </p>
+    </article>
+
+    <article className="feature-card">
+      <h3>School-safe boundaries</h3>
+      <p>
+        Ivrit HaOr teaches Hebrew language, letters, sounds, roots, culture,
+        and meaning. It is not a conversion program, religious authority, or
+        substitute for a rabbi or Jewish educator.
+      </p>
+    </article>
+  </div>
+
+  <div className="two-column">
+    <div className="feature-card">
+      <h3>What a school can expect</h3>
+
+      <p>
+        LuminaNexus Foundation provides a flexible framework for Hebrew
+        enrichment: teacher guidance, student-friendly pacing, printable
+        materials, family-facing language, and Chavruta Classroom support.
+      </p>
+
+      <p>
+        The goal is to help students recognize Hebrew as approachable,
+        beautiful, and meaningful while building literacy confidence one
+        letter at a time.
+      </p>
+    </div>
+
+    <div className="feature-card">
+      <h3>Program guardrails</h3>
+
+      <p>
+        Sacred language is handled respectfully and sparingly. Lessons may
+        acknowledge Jewish culture and tradition, but the classroom focus
+        remains Hebrew enrichment, cultural literacy, and language learning.
+      </p>
+
+      <p>
+        Questions involving Jewish law, conversion, religious rulings, or
+        personal spiritual authority should be directed to a qualified rabbi or
+        Jewish educator.
+      </p>
+    </div>
+  </div>
+</section>
         <ChavrutaClassroom />
 
         <section id="tracks" className="section">
