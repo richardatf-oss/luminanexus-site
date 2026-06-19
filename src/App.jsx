@@ -56,12 +56,15 @@ function App() {
             <a href="#mission" onClick={closeMenu}>
               Mission
             </a>
-            <a href="#ivrit-haor" onClick={closeMenu}>
-              Ivrit HaOr
-            </a>
-            <a href="#chavruta" onClick={closeMenu}>
-              Chavruta
-            </a>
+           <a href="#ivrit-haor" onClick={closeMenu}>
+  Ivrit HaOr
+</a>
+<a href="#schools" onClick={closeMenu}>
+  Schools
+</a>
+<a href="#chavruta" onClick={closeMenu}>
+  Chavruta
+</a>
             <a href="#tracks" onClick={closeMenu}>
               Tracks
             </a>
