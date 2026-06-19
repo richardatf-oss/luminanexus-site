@@ -124,7 +124,8 @@ exports.handler = async function (event) {
       "",
       "Mode: " + mode,
     ].join("\n");
-
+"Do not include a Next step section inside the response field. Put the next step only in the nextStep field.",
+"When explaining Bet, say that the dot is called a dagesh.",
     var controller = new AbortController();
     var timeoutId = setTimeout(function () {
       controller.abort();
