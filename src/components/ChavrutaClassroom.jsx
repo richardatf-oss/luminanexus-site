@@ -252,7 +252,7 @@ function ChavrutaClassroom() {
           </div>
 
           <p className="small-note">
-            This profile is saved only on this device.
+           Use a first name or nickname only. Your profile is saved on this device and is used to personalize Chavruta’s answer when you ask a question.
           </p>
 
           {hasProfile && (
