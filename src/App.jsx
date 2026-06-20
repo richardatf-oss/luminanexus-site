@@ -158,45 +158,94 @@ function App() {
             </article>
           </div>
         </section>
+<section id="ivrit-haor" className="section warm">
+  <div className="section-heading">
+    <p className="eyebrow">Ivrit HaOr</p>
 
-        <section id="ivrit-haor" className="section warm">
-          <div className="two-column">
-            <div>
-              <p className="eyebrow">Ivrit HaOr</p>
+    <h2>Hebrew of Light: the LuminaNexus curriculum.</h2>
 
-              <h2>Hebrew of Light</h2>
+    <p className="section-intro">
+      Ivrit HaOr is a readiness-based Hebrew enrichment program for K–12
+      students. It introduces Hebrew letters, sounds, names, roots, culture,
+      and meaning through a gentle one-hour-per-week model.
+    </p>
+  </div>
 
-              <p>
-                Ivrit HaOr is the LuminaNexus Hebrew curriculum: a path of
-                letters, sounds, names, roots, culture, and meaning.
-              </p>
+  <div className="feature-grid">
+    <article className="feature-card">
+      <h3>What it teaches</h3>
+      <p>
+        Hebrew directionality, letter recognition, basic sounds, vowels,
+        syllables, simple vocabulary, roots, names in Hebrew, cultural
+        literacy, and confidence.
+      </p>
+    </article>
 
-              <p>
-                The program is built for one hour per week and welcomes students
-                by readiness rather than embarrassment. A high school student
-                who has never seen Hebrew can begin with Aleph in an
-                age-appropriate way. A younger student who already knows letters
-                can move forward into vowels, words, and roots.
-              </p>
-            </div>
+    <article className="feature-card">
+      <h3>Who it serves</h3>
+      <p>
+        Students may begin in kindergarten, middle school, high school, or
+        anywhere in between. A student who starts later is not behind; they are
+        simply beginning at their doorway.
+      </p>
+    </article>
 
-            <div className="feature-card">
-              <h3>What students learn</h3>
+    <article className="feature-card">
+      <h3>How it works</h3>
+      <p>
+        Students enter through Aleph, Bet, or Gimel Tracks based on readiness.
+        Each lesson gives learners a clear skill, a simple practice, and a
+        meaningful next step.
+      </p>
+    </article>
+  </div>
 
-              <p>
-                Hebrew directionality, letter recognition, sounds, names,
-                vowels, syllables, simple vocabulary, roots, culture, meaning,
-                and confidence.
-              </p>
+  <div className="two-column">
+    <div className="feature-card">
+      <h3>The one-hour lesson rhythm</h3>
 
-              <p>
-                The goal is not only to teach students how Hebrew looks and
-                sounds, but to help them feel that Hebrew is approachable,
-                beautiful, and meaningful.
-              </p>
-            </div>
-          </div>
-        </section>
+      <p>
+        A typical Ivrit HaOr lesson includes welcome, review, new Hebrew
+        learning, guided practice, student participation, and a short closing
+        reflection.
+      </p>
+
+      <p>
+        The structure is simple enough for weekly enrichment, but flexible
+        enough for mixed-age groups and students who enter at different levels.
+      </p>
+    </div>
+
+    <div className="feature-card">
+      <h3>Curriculum materials in development</h3>
+
+      <p>
+        LuminaNexus Foundation is developing a Master Curriculum Framework,
+        Teacher Guide, Aleph / Bet / Gimel Track maps, student worksheets,
+        printable Hebrew charts, and school-facing overview materials.
+      </p>
+
+      <p>
+        These resources are being shaped through the pilot phase and will grow
+        into downloadable classroom materials.
+      </p>
+    </div>
+  </div>
+
+  <div className="hero-actions">
+    <a className="button primary" href="#tracks">
+      View the Tracks
+    </a>
+
+    <a className="button secondary" href="#schools">
+      For Schools
+    </a>
+
+    <a className="button secondary" href="#chavruta">
+      Try Chavruta
+    </a>
+  </div>
+</section>
 <section id="schools" className="section">
   <div className="section-heading">
     <p className="eyebrow">For Schools</p>
