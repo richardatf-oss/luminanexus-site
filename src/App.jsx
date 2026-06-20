@@ -56,21 +56,31 @@ function App() {
             <a href="#mission" onClick={closeMenu}>
               Mission
             </a>
-           <a href="#ivrit-haor" onClick={closeMenu}>
-  Ivrit HaOr
-</a>
-<a href="#schools" onClick={closeMenu}>
-  Schools
-</a>
-<a href="#chavruta" onClick={closeMenu}>
-  Chavruta
-</a>
+
+            <a href="#ivrit-haor" onClick={closeMenu}>
+              Ivrit HaOr
+            </a>
+
+            <a href="#noahide-parchat" onClick={closeMenu}>
+              Noahide Parchat
+            </a>
+
+            <a href="#schools" onClick={closeMenu}>
+              Schools
+            </a>
+
+            <a href="#chavruta" onClick={closeMenu}>
+              Chavruta
+            </a>
+
             <a href="#tracks" onClick={closeMenu}>
               Tracks
             </a>
+
             <a href="#pilot" onClick={closeMenu}>
               Pilot
             </a>
+
             <a href="#support" onClick={closeMenu}>
               Support
             </a>
@@ -158,170 +168,270 @@ function App() {
             </article>
           </div>
         </section>
-<section id="ivrit-haor" className="section warm">
-  <div className="section-heading">
-    <p className="eyebrow">Ivrit HaOr</p>
 
-    <h2>Hebrew of Light: the LuminaNexus curriculum.</h2>
+        <section id="ivrit-haor" className="section warm">
+          <div className="section-heading">
+            <p className="eyebrow">Ivrit HaOr</p>
 
-    <p className="section-intro">
-      Ivrit HaOr is a readiness-based Hebrew enrichment program for K–12
-      students. It introduces Hebrew letters, sounds, names, roots, culture,
-      and meaning through a gentle one-hour-per-week model.
-    </p>
-  </div>
+            <h2>Hebrew of Light: the LuminaNexus curriculum.</h2>
 
-  <div className="feature-grid">
-    <article className="feature-card">
-      <h3>What it teaches</h3>
-      <p>
-        Hebrew directionality, letter recognition, basic sounds, vowels,
-        syllables, simple vocabulary, roots, names in Hebrew, cultural
-        literacy, and confidence.
-      </p>
-    </article>
+            <p className="section-intro">
+              Ivrit HaOr is a readiness-based Hebrew enrichment program for K–12
+              students. It introduces Hebrew letters, sounds, names, roots,
+              culture, and meaning through a gentle one-hour-per-week model.
+            </p>
+          </div>
 
-    <article className="feature-card">
-      <h3>Who it serves</h3>
-      <p>
-        Students may begin in kindergarten, middle school, high school, or
-        anywhere in between. A student who starts later is not behind; they are
-        simply beginning at their doorway.
-      </p>
-    </article>
+          <div className="feature-grid">
+            <article className="feature-card">
+              <h3>What it teaches</h3>
+              <p>
+                Hebrew directionality, letter recognition, basic sounds, vowels,
+                syllables, simple vocabulary, roots, names in Hebrew, cultural
+                literacy, and confidence.
+              </p>
+            </article>
 
-    <article className="feature-card">
-      <h3>How it works</h3>
-      <p>
-        Students enter through Aleph, Bet, or Gimel Tracks based on readiness.
-        Each lesson gives learners a clear skill, a simple practice, and a
-        meaningful next step.
-      </p>
-    </article>
-  </div>
+            <article className="feature-card">
+              <h3>Who it serves</h3>
+              <p>
+                Students may begin in kindergarten, middle school, high school,
+                or anywhere in between. A student who starts later is not
+                behind; they are simply beginning at their doorway.
+              </p>
+            </article>
 
-  <div className="two-column">
-    <div className="feature-card">
-      <h3>The one-hour lesson rhythm</h3>
+            <article className="feature-card">
+              <h3>How it works</h3>
+              <p>
+                Students enter through Aleph, Bet, or Gimel Tracks based on
+                readiness. Each lesson gives learners a clear skill, a simple
+                practice, and a meaningful next step.
+              </p>
+            </article>
+          </div>
 
-      <p>
-        A typical Ivrit HaOr lesson includes welcome, review, new Hebrew
-        learning, guided practice, student participation, and a short closing
-        reflection.
-      </p>
+          <div className="two-column">
+            <div className="feature-card">
+              <h3>The one-hour lesson rhythm</h3>
 
-      <p>
-        The structure is simple enough for weekly enrichment, but flexible
-        enough for mixed-age groups and students who enter at different levels.
-      </p>
-    </div>
+              <p>
+                A typical Ivrit HaOr lesson includes welcome, review, new Hebrew
+                learning, guided practice, student participation, and a short
+                closing reflection.
+              </p>
 
-    <div className="feature-card">
-      <h3>Curriculum materials in development</h3>
+              <p>
+                The structure is simple enough for weekly enrichment, but
+                flexible enough for mixed-age groups and students who enter at
+                different levels.
+              </p>
+            </div>
 
-      <p>
-        LuminaNexus Foundation is developing a Master Curriculum Framework,
-        Teacher Guide, Aleph / Bet / Gimel Track maps, student worksheets,
-        printable Hebrew charts, and school-facing overview materials.
-      </p>
+            <div className="feature-card">
+              <h3>Curriculum materials in development</h3>
 
-      <p>
-        These resources are being shaped through the pilot phase and will grow
-        into downloadable classroom materials.
-      </p>
-    </div>
-  </div>
+              <p>
+                LuminaNexus Foundation is developing a Master Curriculum
+                Framework, Teacher Guide, Aleph / Bet / Gimel Track maps,
+                student worksheets, printable Hebrew charts, and school-facing
+                overview materials.
+              </p>
 
-  <div className="hero-actions">
-    <a className="button primary" href="#tracks">
-      View the Tracks
-    </a>
+              <p>
+                These resources are being shaped through the pilot phase and
+                will grow into downloadable classroom materials.
+              </p>
+            </div>
+          </div>
 
-    <a className="button secondary" href="#schools">
-      For Schools
-    </a>
+          <div className="hero-actions">
+            <a className="button primary" href="#tracks">
+              View the Tracks
+            </a>
 
-    <a className="button secondary" href="#chavruta">
-      Try Chavruta
-    </a>
-  </div>
-</section>
-<section id="schools" className="section">
-  <div className="section-heading">
-    <p className="eyebrow">For Schools</p>
+            <a className="button secondary" href="#schools">
+              For Schools
+            </a>
 
-    <h2>A gentle Hebrew enrichment model for real classrooms.</h2>
+            <a className="button secondary" href="#chavruta">
+              Try Chavruta
+            </a>
+          </div>
+        </section>
 
-    <p className="section-intro">
-      Ivrit HaOr is designed for schools, homeschool groups, enrichment
-      programs, and pilot classrooms that want to introduce Hebrew in a
-      respectful, accessible, and readiness-based way.
-    </p>
-  </div>
+        <section id="noahide-parchat" className="section">
+          <div className="section-heading">
+            <p className="eyebrow">Noahide Parchat</p>
 
-  <div className="feature-grid">
-    <article className="feature-card">
-      <h3>One hour per week</h3>
-      <p>
-        The program is built around a practical weekly enrichment block. Each
-        lesson can include letter review, sound practice, vocabulary, student
-        names, short activities, and a simple confidence-building close.
-      </p>
-    </article>
+            <h2>The weekly Torah portion through the eyes of the nations.</h2>
 
-    <article className="feature-card">
-      <h3>Readiness-based placement</h3>
-      <p>
-        Students enter through Aleph, Bet, or Gimel Tracks based on Hebrew
-        readiness rather than grade level. A student who begins later is not
-        behind; they are simply at their first doorway.
-      </p>
-    </article>
+            <p className="section-intro">
+              Noahide Parchat is a weekly study path that looks at the Torah
+              portion from a Noahide perspective: honoring Israel, respecting
+              the Torah, and asking what light reaches the nations without
+              claiming Jewish obligation or replacing Jewish interpretation.
+            </p>
+          </div>
 
-    <article className="feature-card">
-      <h3>School-safe boundaries</h3>
-      <p>
-        Ivrit HaOr teaches Hebrew language, letters, sounds, roots, culture,
-        and meaning. It is not a conversion program, religious authority, or
-        substitute for a rabbi or Jewish educator.
-      </p>
-    </article>
-  </div>
+          <div className="feature-grid">
+            <article className="feature-card">
+              <h3>Torah belongs to Israel</h3>
+              <p>
+                Noahide Parchat begins with respect. It does not treat the
+                weekly portion as something taken from the Jewish people, but as
+                teaching received with humility from the tradition entrusted to
+                Israel.
+              </p>
+            </article>
 
-  <div className="two-column">
-    <div className="feature-card">
-      <h3>What a school can expect</h3>
+            <article className="feature-card">
+              <h3>Light for the nations</h3>
+              <p>
+                Each portion asks what universal wisdom can be seen by the
+                nations: creation, justice, humility, speech, family,
+                responsibility, idolatry, mercy, judgment, and the fear of
+                Heaven.
+              </p>
+            </article>
 
-      <p>
-        LuminaNexus Foundation provides a flexible framework for Hebrew
-        enrichment: teacher guidance, student-friendly pacing, printable
-        materials, family-facing language, and Chavruta Classroom support.
-      </p>
+            <article className="feature-card">
+              <h3>Not imitation</h3>
+              <p>
+                The Noahide lens does not turn non-Jews into pretend Jews. It
+                honors boundaries while helping sincere students walk more
+                faithfully as members of the nations before HaShem.
+              </p>
+            </article>
+          </div>
 
-      <p>
-        The goal is to help students recognize Hebrew as approachable,
-        beautiful, and meaningful while building literacy confidence one
-        letter at a time.
-      </p>
-    </div>
+          <div className="two-column">
+            <div className="feature-card">
+              <h3>Weekly structure</h3>
 
-    <div className="feature-card">
-      <h3>Program guardrails</h3>
+              <p>
+                Each Noahide Parchat entry may include the portion name, a
+                Noahide lens, a connection to the Seven Laws, a boundary note, a
+                question for the nations, a practical walking-it-out step, and a
+                closing thought.
+              </p>
 
-      <p>
-        Sacred language is handled respectfully and sparingly. Lessons may
-        acknowledge Jewish culture and tradition, but the classroom focus
-        remains Hebrew enrichment, cultural literacy, and language learning.
-      </p>
+              <p>
+                The goal is not to replace Torah commentary, but to provide a
+                humble study doorway for people of the nations who want to learn
+                with care.
+              </p>
+            </div>
 
-      <p>
-        Questions involving Jewish law, conversion, religious rulings, or
-        personal spiritual authority should be directed to a qualified rabbi or
-        Jewish educator.
-      </p>
-    </div>
-  </div>
-</section>
+            <div className="feature-card">
+              <h3>For learners and families</h3>
+
+              <p>
+                Noahide Parchat can support personal study, family discussion,
+                small groups, and future LuminaNexus teaching materials. It sits
+                beside the Hebrew curriculum as a separate path of Torah-aware
+                learning.
+              </p>
+
+              <p>
+                Questions involving Jewish law, conversion, or religious rulings
+                should always be directed to a qualified rabbi or Jewish
+                educator.
+              </p>
+            </div>
+          </div>
+
+          <div className="hero-actions">
+            <a className="button primary" href="#support">
+              Support Noahide Study
+            </a>
+
+            <a className="button secondary" href="#chavruta">
+              Ask Chavruta
+            </a>
+          </div>
+        </section>
+
+        <section id="schools" className="section">
+          <div className="section-heading">
+            <p className="eyebrow">For Schools</p>
+
+            <h2>A gentle Hebrew enrichment model for real classrooms.</h2>
+
+            <p className="section-intro">
+              Ivrit HaOr is designed for schools, homeschool groups, enrichment
+              programs, and pilot classrooms that want to introduce Hebrew in a
+              respectful, accessible, and readiness-based way.
+            </p>
+          </div>
+
+          <div className="feature-grid">
+            <article className="feature-card">
+              <h3>One hour per week</h3>
+              <p>
+                The program is built around a practical weekly enrichment block.
+                Each lesson can include letter review, sound practice,
+                vocabulary, student names, short activities, and a simple
+                confidence-building close.
+              </p>
+            </article>
+
+            <article className="feature-card">
+              <h3>Readiness-based placement</h3>
+              <p>
+                Students enter through Aleph, Bet, or Gimel Tracks based on
+                Hebrew readiness rather than grade level. A student who begins
+                later is not behind; they are simply at their first doorway.
+              </p>
+            </article>
+
+            <article className="feature-card">
+              <h3>School-safe boundaries</h3>
+              <p>
+                Ivrit HaOr teaches Hebrew language, letters, sounds, roots,
+                culture, and meaning. It is not a conversion program, religious
+                authority, or substitute for a rabbi or Jewish educator.
+              </p>
+            </article>
+          </div>
+
+          <div className="two-column">
+            <div className="feature-card">
+              <h3>What a school can expect</h3>
+
+              <p>
+                LuminaNexus Foundation provides a flexible framework for Hebrew
+                enrichment: teacher guidance, student-friendly pacing, printable
+                materials, family-facing language, and Chavruta Classroom
+                support.
+              </p>
+
+              <p>
+                The goal is to help students recognize Hebrew as approachable,
+                beautiful, and meaningful while building literacy confidence one
+                letter at a time.
+              </p>
+            </div>
+
+            <div className="feature-card">
+              <h3>Program guardrails</h3>
+
+              <p>
+                Sacred language is handled respectfully and sparingly. Lessons
+                may acknowledge Jewish culture and tradition, but the classroom
+                focus remains Hebrew enrichment, cultural literacy, and language
+                learning.
+              </p>
+
+              <p>
+                Questions involving Jewish law, conversion, religious rulings,
+                or personal spiritual authority should be directed to a
+                qualified rabbi or Jewish educator.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <ChavrutaClassroom />
 
         <section id="tracks" className="section">
@@ -386,9 +496,9 @@ function App() {
 
             <p>
               Your gift helps LuminaNexus Foundation provide accessible Hebrew
-              enrichment, classroom materials, teacher guides, student
-              resources, family handouts, pilot documentation, and future school
-              partnerships.
+              enrichment, classroom materials, teacher guides, student resources,
+              family handouts, pilot documentation, Noahide study materials, and
+              future school partnerships.
             </p>
 
             <a
