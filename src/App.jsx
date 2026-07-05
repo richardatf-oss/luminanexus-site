@@ -69,6 +69,10 @@ function App() {
               Schools
             </a>
 
+            <a href="#resources" onClick={closeMenu}>
+              Resources
+            </a>
+
             <a href="#chavruta" onClick={closeMenu}>
               Chavruta
             </a>
@@ -254,6 +258,10 @@ function App() {
               For Schools
             </a>
 
+            <a className="button secondary" href="#resources">
+              Teacher Guide
+            </a>
+
             <a className="button secondary" href="#chavruta">
               Try Chavruta
             </a>
@@ -429,6 +437,58 @@ function App() {
                 qualified rabbi or Jewish educator.
               </p>
             </div>
+          </div>
+        </section>
+
+        <section id="resources" className="section warm">
+          <div className="section-heading">
+            <p className="eyebrow">Curriculum Resources</p>
+
+            <h2>Teacher-facing materials for the Ivrit HaOr classroom.</h2>
+
+            <p className="section-intro">
+              The Teacher Guide gives instructors the practical language,
+              pacing, boundaries, placement guidance, classroom scripts, and
+              complete lesson sequence needed to teach Ivrit HaOr with care.
+            </p>
+          </div>
+
+          <div className="feature-grid">
+            <article className="feature-card">
+              <h3>Teacher Guide</h3>
+              <p>
+                Read the online Teacher Guide for classroom posture, the
+                one-hour rhythm, Chavruta Classroom, assessment without shame,
+                family communication, and the Aleph Track lesson sequence.
+              </p>
+              <a className="button primary" href="/teacher-guide.html">
+                Open Teacher Guide
+              </a>
+            </article>
+
+            <article className="feature-card">
+              <h3>Aleph Track Workbook</h3>
+              <p>
+                The K–2 friendly student workbook is being built page by page
+                with large Hebrew letters, gentle tracing, bright illustrations,
+                and no-shame practice.
+              </p>
+              <a className="button secondary" href="#tracks">
+                View Track Overview
+              </a>
+            </article>
+
+            <article className="feature-card">
+              <h3>More downloads coming</h3>
+              <p>
+                As the curriculum files are finalized, this section can host the
+                Master Framework, family handouts, printable charts, and student
+                practice pages.
+              </p>
+              <a className="button secondary" href="#support">
+                Support Materials
+              </a>
+            </article>
           </div>
         </section>
 
