@@ -1,161 +1,145 @@
 import { useEffect, useMemo, useState } from "react";
 
-const blankProfile = {
+const STORAGE_KEY = "chavrutaStudentProfile";
+
+const defaultProfile = {
   displayName: "",
-  gradeBand: "Unknown",
+  gradeBand: "K-2",
   track: "Aleph",
   currentSkill: "Finding Hebrew starting point",
 };
 
 function ChavrutaClassroom() {
-  const [profile, setProfile] = useState(blankProfile);
-  const [savedProfile, setSavedProfile] = useState(null);
+  const [profile, setProfile] = useState(defaultProfile);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [nextStep, setNextStep] = useState("");
   const [error, setError] = useState("");
-  const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const hasProfile = useMemo(() => {
-    return savedProfile && savedProfile.displayName;
-  }, [savedProfile]);
-
   useEffect(() => {
-    const stored = window.localStorage.getItem("chavrutaStudentProfile");
+    try {
+      const savedProfile = window.localStorage.getItem(STORAGE_KEY);
 
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        setProfile({ ...blankProfile, ...parsed });
-        setSavedProfile({ ...blankProfile, ...parsed });
-      } catch {
-        window.localStorage.removeItem("chavrutaStudentProfile");
+      if (savedProfile) {
+        const parsedProfile = JSON.parse(savedProfile);
+
+        setProfile({
+          ...defaultProfile,
+          ...parsedProfile,
+        });
       }
+    } catch {
+      setProfile(defaultProfile);
     }
   }, []);
 
-  function saveProfile(event) {
-    event.preventDefault();
-
-    const cleanProfile = {
+  const activeProfile = useMemo(
+    () => ({
       displayName: profile.displayName.trim() || "Student",
       gradeBand: profile.gradeBand,
       track: profile.track,
-      currentSkill:
-        profile.currentSkill.trim() || "Finding Hebrew starting point",
+      currentSkill: profile.currentSkill.trim() || "Beginning Hebrew",
+    }),
+    [profile]
+  );
+
+  function updateProfile(field, value) {
+    setProfile((currentProfile) => ({
+      ...currentProfile,
+      [field]: value,
+    }));
+  }
+
+  function saveProfile() {
+    const cleanedProfile = {
+      displayName: profile.displayName.trim(),
+      gradeBand: profile.gradeBand,
+      track: profile.track,
+      currentSkill: profile.currentSkill.trim(),
     };
 
+    setProfile({
+      ...defaultProfile,
+      ...cleanedProfile,
+    });
+
     window.localStorage.setItem(
-      "chavrutaStudentProfile",
-      JSON.stringify(cleanProfile)
+      STORAGE_KEY,
+      JSON.stringify({
+        ...defaultProfile,
+        ...cleanedProfile,
+      })
     );
 
-    setProfile(cleanProfile);
-    setSavedProfile(cleanProfile);
-    setStatus("Profile saved on this device.");
     setError("");
   }
 
   function clearProfile() {
-    window.localStorage.removeItem("chavrutaStudentProfile");
-    setProfile(blankProfile);
-    setSavedProfile(null);
-    setStatus("Profile cleared from this device.");
+    window.localStorage.removeItem(STORAGE_KEY);
+    setProfile(defaultProfile);
     setAnswer("");
     setNextStep("");
     setError("");
-  }
-
-  function handleQuestionKeyDown(event) {
-    if (event.key === "Enter" && !event.shiftKey) {
-      event.preventDefault();
-
-      if (!loading) {
-        askChavruta(event);
-      }
-    }
   }
 
   async function askChavruta(event) {
     event.preventDefault();
 
-    if (!question.trim()) {
-      setError("Ask Chavruta a question first.");
+    const trimmedQuestion = question.trim();
+
+    if (!trimmedQuestion) {
+      setError("Please ask a Hebrew question first.");
       return;
     }
 
     setLoading(true);
     setError("");
-    setStatus("");
     setAnswer("");
     setNextStep("");
 
-    const activeProfile = savedProfile || profile;
+    try {
+      const response = await fetch("/.netlify/functions/chavruta", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          question: trimmedQuestion,
+          profile: {
+            name: activeProfile.displayName,
+            gradeBand: activeProfile.gradeBand,
+            track: activeProfile.track,
+            currentSkill: activeProfile.currentSkill,
+          },
+          mode: "hebrew-classroom",
+        }),
+      });
 
-    const profileContext = [
-      "Student profile for this Chavruta session:",
-      "Name or nickname: " + (activeProfile.displayName || "Student"),
-      "Grade band: " + activeProfile.gradeBand,
-      "Current track: " + activeProfile.track,
-      "Current skill: " + activeProfile.currentSkill,
-      "",
-      "Student question:",
-      question,
-      "",
-      "Answer as Chavruta Classroom for LuminaNexus Foundation.",
-      "Keep the answer age-aware, encouraging, and focused on Hebrew learning.",
-      "Use Aleph, Bet, and Gimel Tracks when helpful.",
-      "Do not make the student feel behind.",
-    ].join("\n");
+      const text = await response.text();
 
-   try {
-  const response = await fetch("/.netlify/functions/chavruta", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      question: profileContext,
-      mode: "hebrew-classroom",
-    }),
-  });
-
-  const text = await response.text();
-
-  let data = {};
-  try {
-    data = JSON.parse(text);
-  } catch {
-    data = {
-      error: text || "The server returned an unreadable response.",
-    };
-  }
-
-  if (!response.ok) {
-    throw new Error(data.error || `Request failed with status ${response.status}.`);
-  }
-
-  const answerText = data.answer || data.response;
-
-  if (!answerText) {
-    throw new Error("Chavruta answered, but no answer text came back.");
-  }
-
-  setAnswer(answerText);
-  setNextStep(data.nextStep || "");
-} catch (err) {
-  setError(err.message || "Chavruta could not answer.");
-} finally {
-  setLoading(false);
-}
-      const data = await response.json();
-
-      if (!response.ok) {
-       {error && <p className="error">{error}</p>}
+      let data = {};
+      try {
+        data = JSON.parse(text);
+      } catch {
+        data = {
+          error: text || "The server returned an unreadable response.",
+        };
       }
 
-      setAnswer(data.response || "");
+      if (!response.ok) {
+        throw new Error(
+          data.error || `Request failed with status ${response.status}.`
+        );
+      }
+
+      const answerText = data.answer || data.response;
+
+      if (!answerText) {
+        throw new Error("Chavruta answered, but no answer text came back.");
+      }
+
+      setAnswer(answerText);
       setNextStep(data.nextStep || "");
     } catch (err) {
       setError(err.message || "Chavruta could not answer.");
@@ -164,12 +148,19 @@ function ChavrutaClassroom() {
     }
   }
 
+  function handleQuestionKeyDown(event) {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      askChavruta(event);
+    }
+  }
+
   return (
-    <section id="chavruta" className="section chavruta-section">
+    <section id="chavruta" className="section">
       <div className="section-heading">
         <p className="eyebrow">Chavruta Classroom</p>
 
-        <h2>A Hebrew guide for every student’s beginning.</h2>
+        <h2>A Hebrew helper for every student’s beginning.</h2>
 
         <p className="section-intro">
           Create a simple student profile, choose a starting track, and ask
@@ -179,96 +170,61 @@ function ChavrutaClassroom() {
       </div>
 
       <div className="two-column">
-        <form className="feature-card" onSubmit={saveProfile}>
+        <article className="feature-card">
           <h3>Student Profile</h3>
 
-          <label className="field-label" htmlFor="student-name">
-            Name or nickname
-          </label>
+          <div className="form-stack">
+            <label htmlFor="student-name">Name or nickname</label>
+            <input
+              id="student-name"
+              type="text"
+              value={profile.displayName}
+              onChange={(event) =>
+                updateProfile("displayName", event.target.value)
+              }
+              placeholder="First name or nickname"
+            />
 
-          <input
-            id="student-name"
-            className="field-input"
-            type="text"
-            value={profile.displayName}
-            onChange={(event) =>
-              setProfile({
-                ...profile,
-                displayName: event.target.value,
-              })
-            }
-            placeholder="Example: Elijah"
-          />
+            <label htmlFor="grade-band">Grade band</label>
+            <select
+              id="grade-band"
+              value={profile.gradeBand}
+              onChange={(event) => updateProfile("gradeBand", event.target.value)}
+            >
+              <option value="K-2">K-2</option>
+              <option value="3-5">3-5</option>
+              <option value="6-8">6-8</option>
+              <option value="9-12">9-12</option>
+              <option value="Adult / Teacher">Adult / Teacher</option>
+            </select>
 
-          <label className="field-label" htmlFor="grade-band">
-            Grade band
-          </label>
+            <label htmlFor="track">Starting track</label>
+            <select
+              id="track"
+              value={profile.track}
+              onChange={(event) => updateProfile("track", event.target.value)}
+            >
+              <option value="Aleph">Aleph</option>
+              <option value="Bet">Bet</option>
+              <option value="Gimel">Gimel</option>
+            </select>
 
-          <select
-            id="grade-band"
-            className="field-input"
-            value={profile.gradeBand}
-            onChange={(event) =>
-              setProfile({
-                ...profile,
-                gradeBand: event.target.value,
-              })
-            }
-          >
-            <option>K-2</option>
-            <option>3-5</option>
-            <option>6-8</option>
-            <option>9-12</option>
-            <option>Mixed</option>
-            <option>Unknown</option>
-          </select>
+            <label htmlFor="current-skill">Current skill</label>
+            <input
+              id="current-skill"
+              type="text"
+              value={profile.currentSkill}
+              onChange={(event) =>
+                updateProfile("currentSkill", event.target.value)
+              }
+              placeholder="Example: Learning Aleph and Ayin"
+            />
 
-          <label className="field-label" htmlFor="track">
-            Starting track
-          </label>
+            <div className="hero-actions">
+              <button className="button primary" type="button" onClick={saveProfile}>
+                Save My Profile
+              </button>
 
-          <select
-            id="track"
-            className="field-input"
-            value={profile.track}
-            onChange={(event) =>
-              setProfile({
-                ...profile,
-                track: event.target.value,
-              })
-            }
-          >
-            <option>Aleph</option>
-            <option>Bet</option>
-            <option>Gimel</option>
-            <option>Review</option>
-            <option>Unknown</option>
-          </select>
-
-          <label className="field-label" htmlFor="current-skill">
-            Current skill
-          </label>
-
-          <input
-            id="current-skill"
-            className="field-input"
-            type="text"
-            value={profile.currentSkill}
-            onChange={(event) =>
-              setProfile({
-                ...profile,
-                currentSkill: event.target.value,
-              })
-            }
-            placeholder="Example: Recognizes Aleph"
-          />
-
-          <div className="hero-actions">
-            <button className="button primary" type="submit">
-              Save My Profile
-            </button>
-
-            {hasProfile && (
               <button
                 className="button secondary"
                 type="button"
@@ -276,46 +232,44 @@ function ChavrutaClassroom() {
               >
                 Clear Profile
               </button>
-            )}
-          </div>
+            </div>
 
-          <p className="small-note">
-           Use a first name or nickname only. Your profile is saved on this device and is used to personalize Chavruta’s answer when you ask a question.
-          </p>
+            <p className="note">
+              Use a first name or nickname only. Your profile is saved on this
+              device and is used to personalize Chavruta’s answer when you ask a
+              question.
+            </p>
 
-          {hasProfile && (
-            <div className="student-summary">
+            <div className="pilot-box">
               <p>
-                <strong>Current profile:</strong> {savedProfile.displayName}
+                <strong>Current profile:</strong> {activeProfile.displayName}
               </p>
               <p>
-                <strong>Track:</strong> {savedProfile.track}
+                <strong>Track:</strong> {activeProfile.track}
               </p>
               <p>
-                <strong>Skill:</strong> {savedProfile.currentSkill}
+                <strong>Skill:</strong> {activeProfile.currentSkill}
               </p>
             </div>
-          )}
-        </form>
+          </div>
+        </article>
 
-        <div className="feature-card chavruta-panel">
+        <article className="feature-card">
           <h3>Ask Chavruta</h3>
 
-          <form onSubmit={askChavruta}>
-            <label className="field-label" htmlFor="chavruta-question">
-              Question
-            </label>
+          <form className="form-stack" onSubmit={askChavruta}>
+            <label htmlFor="chavruta-question">Question</label>
 
             <textarea
               id="chavruta-question"
-              className="field-textarea"
               value={question}
               onChange={(event) => setQuestion(event.target.value)}
               onKeyDown={handleQuestionKeyDown}
-              placeholder="Example: Help me practice the fifth Hebrew letter."
+              placeholder="Ask a Hebrew learning question..."
+              rows={6}
             />
 
-            <p className="small-note">
+            <p className="note">
               Press Enter to ask. Press Shift + Enter for a new line.
             </p>
 
@@ -324,23 +278,22 @@ function ChavrutaClassroom() {
             </button>
           </form>
 
+          {error && <p className="error">{error}</p>}
+
           {answer && (
-            <div className="chavruta-answer">
+            <div className="answer-box">
               <h4>Chavruta says:</h4>
               <p>{answer}</p>
-
-              {nextStep && (
-                <>
-                  <h4>Next step:</h4>
-                  <p>{nextStep}</p>
-                </>
-              )}
             </div>
           )}
 
-          {status && <p className="status-message">{status}</p>}
-          {error && <p className="error-message">{error}</p>}
-        </div>
+          {nextStep && (
+            <div className="pilot-box">
+              <h4>Next step</h4>
+              <p>{nextStep}</p>
+            </div>
+          )}
+        </article>
       </div>
     </section>
   );
