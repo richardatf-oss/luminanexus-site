@@ -433,3 +433,117 @@ h3 {
     grid-template-columns: 1fr;
   }
 }
+/* Chavruta Classroom form polish */
+
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.form-stack label {
+  display: block;
+  width: 100%;
+  font-weight: 700;
+  color: #071b3a;
+  margin: 0;
+}
+
+.form-stack input,
+.form-stack select,
+.form-stack textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #e2d8c7;
+  border-radius: 16px;
+  background: #fffdf8;
+  color: #071b3a;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0.9rem 1rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.form-stack textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.form-stack input:focus,
+.form-stack select:focus,
+.form-stack textarea:focus {
+  outline: none;
+  border-color: #d6a848;
+  background: #ffffff;
+  box-shadow:
+    0 0 0 4px rgba(214, 168, 72, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.form-stack .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.note {
+  color: #5b6680;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.error {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  background: #fff0f0;
+  border: 1px solid #f2b5b5;
+  color: #9b1c1c;
+  font-weight: 700;
+}
+
+.answer-box {
+  margin-top: 1.25rem;
+  padding: 1.25rem 1.35rem;
+  border-radius: 20px;
+  background: #fffaf0;
+  border: 1px solid #eadcc5;
+  box-shadow: 0 12px 28px rgba(7, 27, 58, 0.06);
+}
+
+.answer-box h4 {
+  margin: 0 0 0.75rem;
+  color: #071b3a;
+  font-size: 1.1rem;
+}
+
+.answer-box p {
+  margin: 0;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.feature-card textarea {
+  font-family: inherit;
+}
+
+@media (max-width: 700px) {
+  .form-stack input,
+  .form-stack select,
+  .form-stack textarea {
+    font-size: 1rem;
+    border-radius: 14px;
+  }
+
+  .form-stack textarea {
+    min-height: 130px;
+  }
+}
