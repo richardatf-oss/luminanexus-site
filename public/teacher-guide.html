@@ -1,0 +1,1466 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ivrit HaOr Teacher Guide | LuminaNexus Foundation</title>
+
+    <style>
+      :root {
+        --ink: #14213d;
+        --muted: #52616b;
+        --blue: #1f5fbf;
+        --gold: #d9a441;
+        --cream: #fff8e8;
+        --soft: #f5f8ff;
+        --line: #dfe7f5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, #fffdf6 0%, #f3f7ff 100%);
+        line-height: 1.68;
+      }
+
+      header {
+        background: radial-gradient(
+          circle at top left,
+          #fff3bf,
+          #eaf2ff 50%,
+          #ffffff 100%
+        );
+        border-bottom: 1px solid var(--line);
+        padding: 3rem 1.25rem 2.5rem;
+        text-align: center;
+      }
+
+      main {
+        width: min(980px, 92vw);
+        margin: 0 auto;
+        padding: 2rem 0 4rem;
+      }
+
+      nav {
+        width: min(980px, 92vw);
+        margin: 0 auto;
+        padding: 1rem 0;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a,
+      .button {
+        display: inline-block;
+        text-decoration: none;
+        color: #ffffff;
+        background: var(--blue);
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+
+      nav a.secondary,
+      .button.secondary {
+        background: #ffffff;
+        color: var(--blue);
+        border: 1px solid var(--line);
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.18;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 6vw, 4.4rem);
+        margin: 0.35rem 0;
+      }
+
+      h2 {
+        margin-top: 2.5rem;
+        padding-top: 1.2rem;
+        border-top: 3px solid var(--gold);
+        font-size: clamp(1.7rem, 4vw, 2.6rem);
+      }
+
+      h3 {
+        font-size: 1.35rem;
+        margin-top: 1.8rem;
+      }
+
+      p {
+        font-size: 1.08rem;
+      }
+
+      ul {
+        padding-left: 1.4rem;
+      }
+
+      li {
+        margin: 0.45rem 0;
+        font-size: 1.05rem;
+      }
+
+      .eyebrow {
+        font-family: Arial, sans-serif;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--blue);
+        font-weight: 800;
+        font-size: 0.86rem;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 1.25rem;
+        max-width: 760px;
+        margin: 0.6rem auto 0;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 1.35rem;
+        margin: 1.25rem 0;
+        box-shadow: 0 16px 40px rgba(31, 95, 191, 0.08);
+      }
+
+      .principle {
+        background: var(--cream);
+        border-left: 8px solid var(--gold);
+        padding: 1.25rem 1.4rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+
+      .toc {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0.8rem;
+        margin: 1.25rem 0 2rem;
+      }
+
+      .toc a {
+        display: block;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 0.85rem 1rem;
+        color: var(--blue);
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+      }
+
+      .note {
+        color: var(--muted);
+        font-family: Arial, sans-serif;
+        font-size: 0.98rem;
+      }
+
+      .hebrew {
+        font-size: 2rem;
+        direction: rtl;
+        font-family: "Times New Roman", "Frank Ruehl", serif;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        background: #ffffff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <p class="eyebrow">Ivrit HaOr</p>
+      <h1>Teacher Guide</h1>
+      <p class="subtitle">
+        Hebrew for Every Grade, Every Beginning<br />
+        LuminaNexus Foundation
+      </p>
+    </header>
+
+    <nav aria-label="Teacher guide navigation">
+      <a href="/">Back to LuminaNexus</a>
+      <a class="secondary" href="#contents">Contents</a>
+      <a class="secondary" href="#tracks">Tracks</a>
+      <a class="secondary" href="#lesson-sequence">Lesson Sequence</a>
+    </nav>
+
+    <main>
+      <section class="card">
+        <p>
+          This web edition introduces the Ivrit HaOr Teacher Guide for schools,
+          pilot classrooms, homeschool groups, and enrichment programs. The full
+          working guide includes teacher posture, classroom scripts, readiness
+          placement, mixed-age instruction, Chavruta Classroom use, assessment
+          without shame, family communication, and the Aleph Track 36-week
+          lesson sequence.
+        </p>
+
+        <p class="principle">
+          No student is late to Hebrew. Every letter is a beginning.
+        </p>
+
+        <p class="note">
+          This page is the website doorway for the Teacher Guide. The
+          downloadable PDF / DOCX edition can be added beside it as the
+          curriculum files are finalized.
+        </p>
+      </section>
+
+      <section id="contents">
+        <h2>Guide Contents</h2>
+
+        <div class="toc">
+          <a href="#intro">Introduction</a>
+          <a href="#teacher-role">The Teacher’s Role</a>
+          <a href="#what-it-is">What Ivrit HaOr Is — and Is Not</a>
+          <a href="#placement">Placing Students</a>
+          <a href="#mixed-groups">Mixed-Age and Mixed-Readiness Groups</a>
+          <a href="#rhythm">One-Hour Lesson Rhythm</a>
+          <a href="#scripts">Classroom Scripts</a>
+          <a href="#chavruta">Using Chavruta Classroom</a>
+          <a href="#assessment">Assessment Without Shame</a>
+          <a href="#families">Family Communication</a>
+          <a href="#lesson-sequence">Complete Lesson Sequence</a>
+        </div>
+      </section>
+
+      <section id="intro">
+        <h2>Introduction</h2>
+
+        <p>
+          This Teacher Guide is designed to help instructors bring Ivrit HaOr
+          into real classrooms with clarity, confidence, and care. It translates
+          the Master Curriculum Framework into practical teaching language: how
+          to welcome students, how to place them by readiness, how to guide a
+          one-hour weekly lesson, how to support mixed-age groups, and how to
+          help every learner begin without shame.
+        </p>
+
+        <p>
+          Ivrit HaOr is not built around the assumption that every student
+          arrives with the same background. Some students may recognize Hebrew
+          letters already. Some may have heard Hebrew words at home, in
+          community, or in religious settings. Others may be seeing Hebrew for
+          the first time. This guide helps the teacher meet each student at the
+          right doorway.
+        </p>
+
+        <p>
+          Use this guide as a companion rather than a script. The language,
+          lesson rhythms, placement guidance, and classroom examples are meant
+          to support good teaching judgment, not replace it. Teachers may adapt
+          pacing, activities, and examples according to student age, group size,
+          school setting, and available time.
+        </p>
+      </section>
+
+      <section id="teacher-role">
+        <h2>The Teacher’s Role</h2>
+
+        <p>
+          The teacher’s role in Ivrit HaOr is not simply to deliver Hebrew
+          information. The teacher is the one who protects the student’s
+          beginning.
+        </p>
+
+        <p>
+          For many students, Hebrew will look unfamiliar at first. The letters
+          may seem strange. The direction may feel backward. The sounds may not
+          behave the way English sounds behave. A student may worry that
+          everyone else understands more than they do, especially in a mixed-age
+          or mixed-readiness classroom.
+        </p>
+
+        <p>
+          The teacher’s first responsibility is to make the room safe enough for
+          beginning.
+        </p>
+
+        <div class="card">
+          <h3>A good Ivrit HaOr teacher does four things consistently.</h3>
+
+          <ul>
+            <li>
+              <strong>Names the doorway.</strong> The teacher observes where
+              the student actually is and places them where learning can begin.
+            </li>
+            <li>
+              <strong>Corrects without shaming.</strong> Hebrew accuracy
+              matters, but correction should never communicate embarrassment.
+            </li>
+            <li>
+              <strong>Keeps the lesson active.</strong> Students should see,
+              hear, say, trace, match, and connect Hebrew to meaning.
+            </li>
+            <li>
+              <strong>Returns to the central message.</strong> No student is
+              late to Hebrew. Every letter is a beginning.
+            </li>
+          </ul>
+        </div>
+
+        <p>
+          The teacher does not need to know everything in order to begin
+          teaching well. The teacher does need humility, patience, preparation,
+          and a willingness to learn alongside the students. Ivrit HaOr works
+          best when the teacher models curiosity rather than performance.
+        </p>
+
+        <p>
+          In this classroom, the teacher is a guide at the doorway. The student
+          is not dragged through the door. The student is invited to step
+          through it.
+        </p>
+      </section>
+
+      <section id="what-it-is">
+        <h2>What Ivrit HaOr Is — and Is Not</h2>
+
+        <p>
+          Ivrit HaOr is a Hebrew enrichment program. It introduces students to
+          Hebrew as a language of letters, sounds, names, roots, culture,
+          memory, and meaning.
+        </p>
+
+        <p>
+          Students learn how Hebrew looks, how it moves across the page, how
+          letters are named, how sounds are formed, how words are built, and how
+          meaning can grow from small recognizable parts.
+        </p>
+
+        <p>
+          Ivrit HaOr is for students who are beginning, students who are
+          returning, and students who are ready to go deeper. It is designed to
+          be gentle enough for a first encounter and structured enough to
+          support continued growth.
+        </p>
+
+        <div class="card">
+          <h3>Ivrit HaOr is not:</h3>
+
+          <ul>
+            <li>a conversion program</li>
+            <li>a synagogue replacement</li>
+            <li>a prayer curriculum</li>
+            <li>a system of religious authority</li>
+            <li>mystical instruction for general classroom use</li>
+            <li>a test of religious identity</li>
+          </ul>
+        </div>
+
+        <p>
+          A simple way to explain the program is this:
+        </p>
+
+        <p class="principle">
+          Ivrit HaOr is a school-safe Hebrew enrichment curriculum that helps
+          students begin learning Hebrew letters, sounds, words, roots, and
+          meaning through a gentle readiness-based model.
+        </p>
+
+        <p>
+          When a question arises about whether something belongs in an Ivrit
+          HaOr lesson, the teacher can ask:
+        </p>
+
+        <ul>
+          <li>Does this help the student learn Hebrew?</li>
+          <li>Does this build confidence rather than confusion?</li>
+          <li>Is this respectful of Jewish tradition?</li>
+          <li>Is this appropriate for the age and setting?</li>
+          <li>Does this avoid pressuring the student religiously?</li>
+          <li>
+            Would a school administrator understand why this belongs in a
+            language enrichment class?
+          </li>
+        </ul>
+
+        <p>
+          The safest center of Ivrit HaOr is always the same: teach the letter,
+          teach the sound or role, teach the direction, teach the word, teach
+          the meaning, and protect the beginning.
+        </p>
+      </section>
+
+      <section id="placement">
+        <h2>Placing Students into Aleph, Bet, and Gimel Tracks</h2>
+
+        <p>
+          Placing students in Ivrit HaOr should be gentle, observational, and
+          free from embarrassment. The purpose of placement is not to sort
+          students into winners and strugglers. The purpose is to find the
+          doorway where learning can begin.
+        </p>
+
+        <p>
+          The three tracks — Aleph, Bet, and Gimel — are readiness tracks. They
+          are not grade levels. A younger student may be ready for Bet or Gimel.
+          An older student may need Aleph. This is normal, and it should be
+          treated as normal from the first day.
+        </p>
+
+        <p class="principle">
+          “We are not testing who is ahead or behind. We are finding the right
+          doorway for each student.”
+        </p>
+
+        <div class="card" id="tracks">
+          <h3>Aleph Track — First Beginning</h3>
+          <p>
+            A student belongs in the Aleph Track if they are new to Hebrew or
+            need basic letter confidence. These students may not yet know that
+            Hebrew is read from right to left. They may not recognize most
+            Hebrew letters. They may feel curious, nervous, excited, confused,
+            or all of these at once.
+          </p>
+
+          <h3>Bet Track — Building the Word</h3>
+          <p>
+            A student belongs in the Bet Track if they recognize several Hebrew
+            letters and are ready to build words. These students may be ready to
+            learn that vowel marks help letters speak. They may be able to
+            match some letters to names, but not yet decode words smoothly.
+          </p>
+
+          <h3>Gimel Track — Reading with Meaning</h3>
+          <p>
+            A student belongs in the Gimel Track if they can recognize most
+            letters, know some vowel patterns, and are ready to read with
+            meaning. These students may be able to read simple Hebrew words or
+            phrases and are ready to connect words to roots, families of
+            meaning, culture, and interpretation.
+          </p>
+        </div>
+
+        <p>
+          Placement should be flexible. A student may begin in Aleph and move
+          into Bet after several lessons. A student may work in Bet but review
+          Aleph letters. A student may be ready for Gimel reading activities
+          while still needing Bet vowel practice. The tracks should support
+          learning, not trap the student.
+        </p>
+
+        <p>
+          Review should never be treated as failure. In Hebrew learning,
+          returning to earlier letters, sounds, or vowels is part of mastery.
+          Even advanced students need review.
+        </p>
+
+        <p class="principle">
+          Review is not going backward. Review is strengthening the path.
+        </p>
+      </section>
+            <section id="mixed-groups">
+        <h2>Teaching Mixed-Age and Mixed-Readiness Groups</h2>
+
+        <p>
+          Mixed-age and mixed-readiness groups are not a problem to solve before
+          Ivrit HaOr can begin. They are one of the main reasons the program
+          exists.
+        </p>
+
+        <p>
+          In many real classrooms, students do not arrive with the same
+          background, confidence, age, reading skill, or exposure to Hebrew. One
+          student may recognize several letters because of family or community
+          experience. Another may be seeing Hebrew for the first time. One
+          student may be in second grade and ready to decode simple words.
+          Another may be in seventh grade and still learning that Hebrew moves
+          from right to left.
+        </p>
+
+        <p>
+          The teacher’s task is not to force every student into the same pace.
+          The teacher’s task is to create a shared classroom rhythm with
+          different doorways inside it.
+        </p>
+
+        <p>
+          A mixed-readiness class can still begin together. The teacher may open
+          with a shared greeting, a short review, a visible Hebrew letter, or a
+          simple question:
+        </p>
+
+        <ul>
+          <li>What do you notice?</li>
+          <li>What direction does Hebrew move?</li>
+          <li>Have you seen this letter before?</li>
+          <li>What shape do you see?</li>
+        </ul>
+
+        <p>
+          This shared opening helps the class feel united. After the opening,
+          students may work at different levels.
+        </p>
+
+        <div class="card">
+          <h3>One Hebrew focus, three doorways</h3>
+
+          <p>
+            If the class focus is Bet, the teacher might guide the room this
+            way:
+          </p>
+
+          <ul>
+            <li>
+              <strong>Aleph Track:</strong> Find Bet. Circle it. Trace it.
+              Notice its shape.
+            </li>
+            <li>
+              <strong>Bet Track:</strong> Read Bet with a simple vowel.
+              Practice ba, be, bi, bo, bu.
+            </li>
+            <li>
+              <strong>Gimel Track:</strong> Read a word that begins with Bet,
+              such as bayit, and explain what it means.
+            </li>
+          </ul>
+        </div>
+
+        <p>
+          Teachers should avoid language that makes one group sound more
+          important than another. Do not say, “The advanced group will do the
+          real reading,” or “The beginners will just trace.” Instead, use track
+          language:
+        </p>
+
+        <ul>
+          <li>Aleph is building recognition.</li>
+          <li>Bet is building words.</li>
+          <li>Gimel is building meaning.</li>
+        </ul>
+
+        <p>
+          Mixed-age teaching also requires emotional awareness. Older beginners
+          may feel embarrassed if the material looks too young. Younger students
+          may feel intimidated if older students are present. Students who
+          already know some Hebrew may become impatient. Students who are brand
+          new may become quiet.
+        </p>
+
+        <p class="principle">
+          “Different doorways, same language. Different tracks, same light.”
+        </p>
+
+        <p>
+          In mixed-readiness classrooms, activities should be layered whenever
+          possible. A layered activity is one activity with several levels of
+          participation.
+        </p>
+
+        <ul>
+          <li>
+            A Hebrew letter card can become recognition for Aleph Track, sound
+            and vowel practice for Bet Track, and word or root discussion for
+            Gimel Track.
+          </li>
+          <li>
+            A name worksheet can become letter matching for Aleph Track,
+            syllable practice for Bet Track, and meaning or root exploration for
+            Gimel Track.
+          </li>
+          <li>
+            A vocabulary word can become shape recognition for Aleph Track,
+            decoding for Bet Track, and cultural meaning for Gimel Track.
+          </li>
+        </ul>
+
+        <p>
+          This approach keeps preparation manageable for the teacher. The
+          teacher does not need to create three entirely separate lessons. The
+          teacher creates one shared focus and three levels of access.
+        </p>
+      </section>
+
+      <section id="rhythm">
+        <h2>The One-Hour Weekly Lesson Rhythm</h2>
+
+        <p>
+          The One-Hour Weekly Lesson Rhythm is the standard teaching pattern for
+          Ivrit HaOr. It gives the teacher a dependable structure while leaving
+          room for age, readiness, classroom size, and student needs.
+        </p>
+
+        <p>
+          A predictable rhythm matters because Hebrew may feel unfamiliar to
+          many students. When the letters, direction, and sounds are new, the
+          classroom structure should feel steady.
+        </p>
+
+        <div class="card">
+          <h3>Standard 60-minute rhythm</h3>
+
+          <ul>
+            <li>
+              <strong>Welcome and Confidence Opening:</strong> 5 minutes
+            </li>
+            <li><strong>Review:</strong> 10 minutes</li>
+            <li><strong>New Learning:</strong> 15 minutes</li>
+            <li><strong>Guided Practice:</strong> 15 minutes</li>
+            <li><strong>Student Connection:</strong> 10 minutes</li>
+            <li><strong>Closing Step:</strong> 5 minutes</li>
+          </ul>
+        </div>
+
+        <h3>Welcome and Confidence Opening</h3>
+
+        <p>
+          This opening sets the emotional tone of the lesson. The teacher
+          welcomes students, names the purpose of the day, and reminds them that
+          Hebrew learning begins one doorway at a time.
+        </p>
+
+        <p>
+          The teacher might say:
+        </p>
+
+        <ul>
+          <li>Today we are going to work with one Hebrew doorway.</li>
+          <li>
+            Some of us will recognize. Some of us will sound. Some of us will
+            read. All of that is Hebrew learning.
+          </li>
+          <li>No student is late to Hebrew. Every letter is a beginning.</li>
+        </ul>
+
+        <h3>Review</h3>
+
+        <p>
+          Review helps students remember that Hebrew learning grows through
+          repetition. It also lets the teacher observe what students have
+          retained since the last lesson.
+        </p>
+
+        <p>
+          Review may include letter flashcards, right-to-left direction
+          practice, matching letters to names, identifying letters in a word,
+          quick vowel review, air-writing, call-and-response, notebook review,
+          or a short Chavruta Classroom warmup.
+        </p>
+
+        <p class="principle">
+          Review is not going backward. Review is strengthening the path.
+        </p>
+
+        <h3>New Learning</h3>
+
+        <p>
+          This is the main teaching moment of the lesson. The teacher introduces
+          one new Hebrew focus. The focus should be small enough for students to
+          practice meaningfully.
+        </p>
+
+        <p>
+          A new learning focus might be one Hebrew letter, one vowel mark, one
+          sound distinction, one simple word, one root, one name connection, one
+          reading direction skill, one short phrase, or one cultural meaning.
+        </p>
+
+        <p>
+          Teachers should resist the urge to teach too much at once. A strong
+          lesson does not require many new facts. It requires one clear skill
+          that students can actually use.
+        </p>
+
+        <h3>Guided Practice</h3>
+
+        <p>
+          Guided Practice is where students handle the new learning. They should
+          not only listen to the teacher explain Hebrew. They should use the
+          skill with support.
+        </p>
+
+        <p>
+          Guided Practice may include tracing a letter, circling a letter in a
+          word, matching letter cards, saying a sound with a vowel, reading
+          syllables, sorting similar-looking letters, copying a word, finding a
+          root, reading a short phrase, working with a partner, or asking
+          Chavruta Classroom for a simple review question.
+        </p>
+
+        <h3>Student Connection</h3>
+
+        <p>
+          This movement helps students connect Hebrew to meaning, memory, names,
+          culture, or personal curiosity. It keeps Hebrew from feeling like
+          disconnected marks on a page.
+        </p>
+
+        <h3>Closing Step</h3>
+
+        <p>
+          Every lesson should end with one clear next step. Students should
+          leave knowing what they practiced and what they are invited to try
+          next.
+        </p>
+
+        <p>
+          A strong closing formula is: “Today we practiced _____. Your next step
+          is _____. Remember: no student is late to Hebrew.”
+        </p>
+      </section>
+
+      <section id="scripts">
+        <h2>Classroom Scripts and Teacher Language</h2>
+
+        <p>
+          Classroom language matters. In Ivrit HaOr, the teacher’s words are
+          part of the curriculum.
+        </p>
+
+        <p>
+          Students may forget a letter, confuse a sound, read in the wrong
+          direction, hesitate in front of others, or feel embarrassed because
+          Hebrew looks unfamiliar. The way a teacher responds in those moments
+          can either protect the student’s courage or weaken it.
+        </p>
+
+        <h3>Opening the Class</h3>
+
+        <ul>
+          <li>Welcome back. Today we are opening another Hebrew doorway.</li>
+          <li>
+            Some of us are recognizing letters. Some of us are building sounds.
+            Some of us are reading words. All of that is Hebrew learning.
+          </li>
+          <li>
+            Hebrew may look unfamiliar at first. That does not mean it is
+            impossible. It means your eyes are beginning.
+          </li>
+          <li>
+            Today we will take one clear step. We do not need to learn
+            everything at once.
+          </li>
+        </ul>
+
+        <h3>Introducing a New Letter</h3>
+
+        <p>
+          When introducing Aleph, the teacher might say:
+        </p>
+
+        <ul>
+          <li>This is Aleph. Aleph is the first Hebrew letter.</li>
+          <li>
+            By itself, Aleph is usually silent. It carries the vowel sound
+            placed with it.
+          </li>
+          <li>First, we will learn to recognize Aleph with our eyes.</li>
+          <li>Now we will trace its shape.</li>
+          <li>Now we will look for Aleph inside a word.</li>
+        </ul>
+
+        <p>
+          When introducing Bet, the teacher might say:
+        </p>
+
+        <ul>
+          <li>
+            This is Bet. Bet can make a B sound when it has a dot inside. That
+            dot is called a dagesh.
+          </li>
+          <li>
+            When the dot is not there, many Hebrew learners pronounce this
+            letter as Vet, with a V sound.
+          </li>
+          <li>
+            Today we are going to notice the dot, say the sound, and find Bet
+            in a word.
+          </li>
+        </ul>
+
+        <p>
+          When introducing Ayin, the teacher might say:
+        </p>
+
+        <ul>
+          <li>
+            This is Ayin. In modern beginner Hebrew pronunciation, Ayin is
+            usually silent, like Aleph.
+          </li>
+          <li>It carries the vowel sound placed with it.</li>
+          <li>
+            Even though Aleph and Ayin may sound similar in beginner
+            pronunciation, they are different letters.
+          </li>
+          <li>Our first job is to recognize their shapes.</li>
+        </ul>
+
+        <h3>Correcting Gently</h3>
+
+        <p>
+          Correction should be specific, calm, and useful. A student should know
+          what to try next.
+        </p>
+
+        <div class="card">
+          <h3>Instead of saying only “No” or “That’s wrong,” say:</h3>
+
+          <ul>
+            <li>Look again at the shape.</li>
+            <li>Check the direction.</li>
+            <li>Notice the dot.</li>
+            <li>Try reading from right to left.</li>
+            <li>That letter is close, but not the same.</li>
+            <li>Let’s slow it down.</li>
+            <li>Your eyes found part of it. Now let’s look at the rest.</li>
+          </ul>
+        </div>
+
+        <h3>When a Student Feels Behind</h3>
+
+        <ul>
+          <li>You are not behind. You are beginning.</li>
+          <li>This is your first doorway. We will start there.</li>
+          <li>
+            Hebrew is new to your eyes. That does not mean you cannot learn it.
+          </li>
+          <li>You do not need to know everything today.</li>
+          <li>Let’s find one thing you can recognize.</li>
+          <li>Beginning takes courage. You are doing the work.</li>
+          <li>You are allowed to be new here.</li>
+        </ul>
+
+        <h3>When a Student Already Knows the Material</h3>
+
+        <ul>
+          <li>If you know this already, your job is to strengthen it.</li>
+          <li>Review is not going backward. Review is strengthening the path.</li>
+          <li>You may be ready for a deeper question.</li>
+          <li>Can you find this letter inside a word?</li>
+          <li>
+            Knowing something gives you a responsibility to help the room stay
+            gentle.
+          </li>
+        </ul>
+
+        <p>
+          The desired tone is not silly, casual, or overly sentimental. It is
+          warm, clear, respectful, and steady. Ivrit HaOr should feel like a
+          room where students are allowed to begin and expected to grow.
+        </p>
+      </section>
+
+      <section id="chavruta">
+        <h2>Using Chavruta Classroom</h2>
+
+        <p>
+          Chavruta Classroom is a digital Hebrew helper designed to support the
+          Ivrit HaOr learning model without replacing the teacher’s judgment,
+          presence, or care.
+        </p>
+
+        <p>
+          It exists to give students and teachers a gentle place to ask Hebrew
+          questions, review track skills, receive simple explanations, and find
+          a clear next step. It should feel like a patient learning companion:
+          never rushed, never shaming, never pretending that a student should
+          already know what they are only beginning to learn.
+        </p>
+
+        <p>
+          Teachers should introduce Chavruta Classroom carefully. Students need
+          to understand what it is, what it is not, and how to use it wisely.
+        </p>
+
+        <p class="principle">
+          “Chavruta Classroom is a Hebrew helper. It can help us ask questions,
+          review letters, practice sounds, and find a next step. It is not the
+          teacher, and it is not a rabbi.”
+        </p>
+
+        <div class="card">
+          <h3>Chavruta Classroom can help with:</h3>
+
+          <ul>
+            <li>letter questions</li>
+            <li>sound and vowel review</li>
+            <li>Aleph, Bet, and Gimel Track practice</li>
+            <li>simple Hebrew vocabulary</li>
+            <li>right-to-left reading reminders</li>
+            <li>differences between similar letters</li>
+            <li>confidence-building explanations</li>
+            <li>short review prompts</li>
+            <li>next-step suggestions</li>
+            <li>teacher planning support</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Chavruta Classroom should not be used as:</h3>
+
+          <ul>
+            <li>a replacement for the teacher</li>
+            <li>a replacement for a rabbi or Jewish educator</li>
+            <li>a tool for religious rulings</li>
+            <li>a conversion guide</li>
+            <li>a prayer authority</li>
+            <li>a source for Jewish law decisions</li>
+            <li>a place for private student information</li>
+            <li>a substitute for classroom care</li>
+          </ul>
+        </div>
+
+        <p>
+          Students should use only a first name or nickname when creating a
+          profile. They should not enter full names, addresses, phone numbers,
+          family details, personal problems, or private religious questions.
+        </p>
+
+        <p class="principle">
+          Use a first name or nickname only. Ask Hebrew questions. Keep private
+          information private.
+        </p>
+
+        <h3>Good Chavruta questions</h3>
+
+        <ul>
+          <li>What is Aleph?</li>
+          <li>How do I remember Bet?</li>
+          <li>What is the difference between Aleph and Ayin?</li>
+          <li>How do I read Hebrew from right to left?</li>
+          <li>Give me a simple Aleph Track practice.</li>
+          <li>Help me review the dagesh in Bet.</li>
+          <li>What should I practice if I know Aleph, Bet, and Gimel?</li>
+          <li>Give me one next step for Bet Track.</li>
+          <li>What is one Hebrew word that begins with Bet?</li>
+        </ul>
+
+        <p>
+          Teachers should review Chavruta answers when possible, especially with
+          younger students. Digital tools can help, but they can also be
+          misunderstood. The teacher remains responsible for instruction,
+          correction, pacing, student safety, and educational judgment.
+        </p>
+
+        <p>
+          Used wisely, Chavruta Classroom gives students another doorway into
+          Hebrew. It gives the quiet student a place to ask. It gives the
+          teacher another support. It gives mixed-readiness classrooms a
+          flexible tool. It gives every learner a reminder that beginning is
+          allowed.
+        </p>
+
+        <p class="principle">
+          The tool is not the light. The learning is the light.
+        </p>
+      </section>
+            <section id="assessment">
+        <h2>Assessment Without Shame</h2>
+
+        <p>
+          Assessment in Ivrit HaOr is not designed to rank students, embarrass
+          beginners, or measure worth. It is designed to help the teacher see
+          the next doorway.
+        </p>
+
+        <p>
+          A student is not assessed so the teacher can decide whether the
+          student is good or bad at Hebrew. A student is assessed so the teacher
+          can understand what the student can recognize, what the student is
+          beginning to understand, what still feels confusing, and what kind of
+          support should come next.
+        </p>
+
+        <p>
+          The teacher’s task is to assess in a way that protects courage while
+          still honoring accuracy. Hebrew should be taught carefully. Letters
+          have names. Sounds matter. Direction matters. Similar-looking letters
+          must be distinguished. Vowels must be practiced. Reading should become
+          more accurate over time.
+        </p>
+
+        <p class="principle">
+          Accuracy does not require shame.
+        </p>
+
+        <h3>The Purpose of Assessment</h3>
+
+        <p>
+          The purpose of assessment is to help the teacher answer practical
+          questions.
+        </p>
+
+        <ul>
+          <li>What does this student recognize?</li>
+          <li>What does this student confuse?</li>
+          <li>What can this student do with help?</li>
+          <li>What can this student do independently?</li>
+          <li>What skill is ready to be strengthened?</li>
+          <li>What is the next doorway?</li>
+        </ul>
+
+        <p>
+          These questions are more useful than asking, “Is this student ahead?”
+          or “Is this student behind?”
+        </p>
+
+        <h3>What Teachers Should Observe</h3>
+
+        <p>
+          Teachers should observe both skill and confidence. Skill tells the
+          teacher what the student can do. Confidence tells the teacher how the
+          student is experiencing the learning.
+        </p>
+
+        <ul>
+          <li>Can the student recognize the letter?</li>
+          <li>Can the student remember the letter name?</li>
+          <li>
+            Can the student distinguish this letter from a similar-looking
+            letter?
+          </li>
+          <li>Does the student remember that Hebrew is read from right to left?</li>
+          <li>Can the student trace or write the letter shape?</li>
+          <li>Can the student recognize a letter inside a word?</li>
+          <li>Can the student combine a consonant with a vowel?</li>
+          <li>Can the student decode a simple word?</li>
+          <li>Can the student explain one thing the word means?</li>
+          <li>Can the student try again after correction?</li>
+        </ul>
+
+        <h3>Assessment by Track</h3>
+
+        <div class="card">
+          <h3>Aleph Track</h3>
+          <p>
+            Aleph Track assessment focuses on recognition, direction, comfort,
+            and basic letter confidence. Students may be assessed on whether
+            they can recognize Hebrew as distinct from English, remember that
+            Hebrew is read from right to left, identify selected letters by
+            sight, match selected letters to their names, trace or copy a
+            letter shape, and notice differences between similar letters.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Bet Track</h3>
+          <p>
+            Bet Track assessment focuses on word-building, vowels, syllables,
+            and decoding. Students may be assessed on whether they can identify
+            basic vowel marks, combine consonants and vowels into syllables,
+            notice the dagesh in Bet, distinguish Bet from Vet, decode simple
+            syllables, and read slowly from right to left.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Gimel Track</h3>
+          <p>
+            Gimel Track assessment focuses on reading with meaning. Students may
+            be assessed on whether they can read short Hebrew words or phrases,
+            identify familiar roots, notice word families, explain a simple
+            Hebrew word in English, connect a word to cultural meaning when
+            appropriate, and move from decoding toward understanding.
+          </p>
+        </div>
+
+        <h3>Assessment Language</h3>
+
+        <p>
+          The language used during assessment matters.
+        </p>
+
+        <div class="card">
+          <h3>Avoid saying:</h3>
+          <ul>
+            <li>You failed this.</li>
+            <li>We already learned that.</li>
+            <li>This is easy.</li>
+            <li>Everyone else remembered.</li>
+            <li>You are behind.</li>
+            <li>That is wrong.</li>
+            <li>You are not ready.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Instead, say:</h3>
+          <ul>
+            <li>This shows us what to review.</li>
+            <li>Your eyes are still learning this shape.</li>
+            <li>Let’s look again.</li>
+            <li>You remembered part of it.</li>
+            <li>This letter is close, but not the same.</li>
+            <li>You are ready for more practice.</li>
+            <li>This is the next skill to strengthen.</li>
+            <li>You are beginning.</li>
+            <li>You are not late.</li>
+          </ul>
+        </div>
+
+        <h3>Progress Records</h3>
+
+        <p>
+          Teachers should keep simple progress records. These records do not
+          need to be complicated. A short note after class can be enough.
+        </p>
+
+        <p>
+          A useful progress record may include student name or nickname, current
+          track, letters recognized, vowels recognized, words or syllables read,
+          skills practiced, confidence level, next step, and teacher
+          observation.
+        </p>
+
+        <p class="principle">
+          The student is not a score. The track is not a label. The mistake is
+          not an identity. The review is not a punishment. The beginning is not
+          a weakness.
+        </p>
+      </section>
+
+      <section id="families">
+        <h2>Family Communication</h2>
+
+        <p>
+          Family communication in Ivrit HaOr should be clear, reassuring, and
+          faithful to the program’s central principle: no student is late to
+          Hebrew.
+        </p>
+
+        <p>
+          Families should understand what their children are learning, why the
+          program is structured by readiness rather than grade level, how
+          progress is being observed, and how Hebrew can be practiced gently at
+          home. They should also understand what Ivrit HaOr is and what it is
+          not.
+        </p>
+
+        <p>
+          Good family communication protects the student, supports the teacher,
+          and helps the program remain transparent.
+        </p>
+
+        <h3>The Tone of Family Communication</h3>
+
+        <p>
+          The tone of family communication should be warm, confident, and
+          careful. Families should hear that Hebrew is beautiful and learnable.
+          They should also hear that Hebrew may be unfamiliar at first, and that
+          unfamiliarity is not failure.
+        </p>
+
+        <div class="card">
+          <h3>Instead of saying:</h3>
+          <ul>
+            <li>Your child is behind.</li>
+            <li>Your child failed the placement.</li>
+            <li>Your child cannot read Hebrew.</li>
+            <li>Your child is in the lowest group.</li>
+            <li>Your child should know this already.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Say:</h3>
+          <ul>
+            <li>Your child is beginning in the Aleph Track.</li>
+            <li>Your child is building Hebrew letter recognition.</li>
+            <li>
+              Your child is strengthening right-to-left reading habits.
+            </li>
+            <li>Your child is ready for more practice with vowels.</li>
+            <li>
+              Your child is beginning to decode simple Hebrew words.
+            </li>
+            <li>Your child is growing in confidence.</li>
+          </ul>
+        </div>
+
+        <h3>Explaining the Readiness Tracks to Families</h3>
+
+        <p>
+          Families should understand that Aleph, Bet, and Gimel are readiness
+          tracks, not rankings.
+        </p>
+
+        <p class="principle">
+          The tracks are doorways, not labels.
+        </p>
+
+        <p>
+          Aleph Track is for students who are building first recognition. Bet
+          Track is for students who are ready to build words. Gimel Track is for
+          students who are ready to read with meaning.
+        </p>
+
+        <h3>Home Practice</h3>
+
+        <p>
+          Family support at home should be simple. Ivrit HaOr should not create
+          heavy homework burdens, especially in a one-hour-per-week enrichment
+          model.
+        </p>
+
+        <p>
+          Families can support students by asking gentle questions:
+        </p>
+
+        <ul>
+          <li>What Hebrew letter did you see today?</li>
+          <li>Which direction does Hebrew move?</li>
+          <li>What word did you learn?</li>
+          <li>What was your next step?</li>
+          <li>What felt easier today than last time?</li>
+          <li>What Hebrew question do you want to ask next?</li>
+        </ul>
+
+        <p>
+          Home practice should feel like encouragement, not a second classroom
+          full of pressure.
+        </p>
+
+        <p class="principle">
+          One clear Hebrew step is better than a long confusing assignment.
+        </p>
+
+        <h3>Sample Family-Facing Paragraph</h3>
+
+        <p>
+          Ivrit HaOr is designed to help students begin Hebrew with confidence.
+          Because students come with different backgrounds, they are placed by
+          readiness rather than grade level. Some students begin by recognizing
+          letters and direction. Others begin by building syllables and words.
+          Others are ready to read with meaning. Each track is a doorway, not a
+          label. Our goal is to help every student take the next clear step
+          without shame.
+        </p>
+      </section>
+
+      <section id="lesson-sequence">
+        <h2>Complete Lesson Sequence</h2>
+
+        <p>
+          Ivrit HaOr is not built around sample lessons. It is built as a
+          complete teaching path.
+        </p>
+
+        <p>
+          Each readiness track contains a full thirty-six-week lesson sequence
+          designed for the one-hour-per-week enrichment model. These lessons are
+          detailed enough to guide a teacher through the year, while still
+          allowing room for classroom judgment, student readiness, school
+          setting, mixed-age groups, and the natural pace of learning.
+        </p>
+
+        <p>
+          The three complete lesson sequences are:
+        </p>
+
+        <ul>
+          <li>Aleph Track — First Beginning</li>
+          <li>Bet Track — Building the Word</li>
+          <li>Gimel Track — Reading with Meaning</li>
+        </ul>
+
+        <p>
+          Each track follows the same weekly rhythm: Welcome and Confidence
+          Opening, Review, New Learning, Guided Practice, Student Connection,
+          Chavruta Classroom Support, Assessment Without Shame, Closing Step,
+          Optional Extension, and Teacher Notes.
+        </p>
+
+        <p>
+          The lessons are not meant to become a cage. They are a path.
+        </p>
+
+        <p class="principle">
+          The lesson sequence exists to serve the learner.
+        </p>
+
+        <h3>Aleph Track — First Beginning</h3>
+
+        <p>
+          The Aleph Track is the first doorway of Ivrit HaOr. It is designed for
+          students who are new to Hebrew, students who need letter confidence,
+          and students who benefit from a gentle, non-shaming beginning before
+          moving into vowels, syllables, and decoding.
+        </p>
+
+        <p>
+          The Aleph Track does not teach the Hebrew letters in strict
+          alphabetical order. Students do not simply march from Aleph to Tav.
+          Instead, they learn letters by readiness, usefulness, visual
+          recognition, sound role, and classroom need.
+        </p>
+
+        <p>
+          This non-sequential approach helps students notice patterns early:
+          silent carrier letters, letters affected by dots, letters useful in
+          names and simple words, letters that are often confused, letters with
+          final forms, and letters that help build early Hebrew confidence.
+        </p>
+
+        <h3>Aleph Track 36-Week Overview</h3>
+
+        <div class="card">
+          <ol>
+            <li>Opening the Hebrew Doorway</li>
+            <li>Hebrew Letters Are Not English Letters</li>
+            <li>The Hebrew Side of the Page</li>
+            <li>Aleph: The First Silent Carrier</li>
+            <li>Ayin: Another Silent Carrier</li>
+            <li>Silent Carriers Review: Aleph and Ayin</li>
+            <li>Bet and Vet: The Dot Matters</li>
+            <li>Dagesh Practice: Seeing Before Saying</li>
+            <li>Bet in Simple Words and Names</li>
+            <li>Mem and Final Mem: A Letter with an Ending Form</li>
+            <li>Shin and Sin: The Dot’s Place Matters</li>
+            <li>Lamed: The Tall Letter</li>
+            <li>Building Toward Shalom</li>
+            <li>Vav: The Connecting Letter</li>
+            <li>Yod: Small but Important</li>
+            <li>Hey: A Letter with Breath</li>
+            <li>Name-Building Review: Yod, Vav, Hey</li>
+            <li>Dalet and Resh: Careful Corners</li>
+            <li>Kaf, Khaf, and Final Kaf</li>
+            <li>Final Forms Family I: Mem, Nun, Kaf</li>
+            <li>Final Forms Family II: Pey and Tsadi</li>
+            <li>Final Forms Review: The Ending Doorway</li>
+            <li>Chet: A Strong New Sound</li>
+            <li>Tet and Tav: Similar Sounds, Different Letters</li>
+            <li>Harder Sound Review: Chet, Tet, Tav, Tsadi</li>
+            <li>Qof: The Letter Below the Line</li>
+            <li>Samekh and Zayin: Visual Precision</li>
+            <li>Gimel: Returning to a Distinct Shape</li>
+            <li>Review by Family: Quiet, Dotted, Final</li>
+            <li>Review by Shape: Tall, Small, Closed, Confusing</li>
+            <li>Simple Word: Or — Light</li>
+            <li>Simple Word: Shalom</li>
+            <li>Simple Word: Bayit</li>
+            <li>Names and Hebrew Letters</li>
+            <li>Aleph Track Readiness Review</li>
+            <li>Celebration of Beginning</li>
+          </ol>
+        </div>
+
+        <h3>Sample Lesson: Week 7 — Bet and Vet</h3>
+
+        <p class="hebrew" dir="rtl">בּ / ב</p>
+
+        <p>
+          Primary Hebrew Focus: Bet / Vet — the dot matters.
+        </p>
+
+        <p>
+          Students will recognize Bet and Vet. Students will learn that the dot
+          is called a dagesh. Students will learn that Bet with a dagesh is
+          often B, while Vet without the dot is often V.
+        </p>
+
+        <p>
+          The teacher may say:
+        </p>
+
+        <p class="principle">
+          “Today we learn that small marks matter in Hebrew.”
+        </p>
+
+        <p>
+          Show Bet with a dagesh. Say: “This is Bet. The dot is called a
+          dagesh.” Show Vet without the dot. Explain the beginner B/V
+          difference.
+        </p>
+
+        <p>
+          Guided practice may include tracing Bet, circling the letter with the
+          dot, comparing Bet and Vet, and asking Chavruta: “What is a dagesh?”
+          or “What is the difference between Bet and Vet?”
+        </p>
+
+        <p>
+          Closing step: “Today we learned Bet, Vet, and the dagesh. Your next
+          step is to notice the dot.”
+        </p>
+
+        <h3>Aleph Track Completion Guidance</h3>
+
+        <p>
+          At the end of Aleph Track, a student may be ready for Bet Track if
+          they can usually:
+        </p>
+
+        <ul>
+          <li>remember that Hebrew moves from right to left</li>
+          <li>recognize Hebrew as a distinct writing system</li>
+          <li>identify a meaningful set of Hebrew letters</li>
+          <li>
+            recognize Aleph and Ayin as usually silent carriers in beginner
+            Hebrew
+          </li>
+          <li>notice a dagesh in letters such as Bet, Kaf, and Pey</li>
+          <li>understand that Shin/Sin dot placement matters</li>
+          <li>recognize several high-use letters in simple words</li>
+          <li>understand that some letters have final forms</li>
+          <li>identify at least some final forms at the end of words</li>
+          <li>distinguish some confusing pairs with support</li>
+          <li>
+            recognize letters inside simple words such as
+            <span class="hebrew" dir="rtl">אור</span>,
+            <span class="hebrew" dir="rtl">שלום</span>, and
+            <span class="hebrew" dir="rtl">בית</span>
+          </li>
+          <li>try again after correction without shutting down</li>
+          <li>show growing confidence with Hebrew letters</li>
+        </ul>
+
+        <p>
+          A student does not need perfect mastery to move forward. Readiness
+          means the next doorway can be opened without overwhelming the learner.
+        </p>
+
+        <p>
+          Some students should repeat parts of Aleph Track, review selected
+          lessons, or continue Aleph work alongside early Bet Track activities.
+          This is normal.
+        </p>
+
+        <p class="principle">
+          No student is late to Hebrew. Every letter is a beginning.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Current Status</h2>
+
+        <p>
+          This page is ready to serve as the public Teacher Guide doorway on
+          LuminaNexus.org. As the PDF and workbook files are finalized, they can
+          be added as downloadable classroom resources.
+        </p>
+
+        <p>
+          <a class="button" href="/">Return to LuminaNexus.org</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 LuminaNexus Foundation. Hebrew for Every Grade, Every Beginning.
+    </footer>
+  </body>
+</html>
