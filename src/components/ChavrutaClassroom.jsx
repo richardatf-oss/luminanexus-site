@@ -109,22 +109,50 @@ function ChavrutaClassroom() {
       "Do not make the student feel behind.",
     ].join("\n");
 
-    try {
-      const response = await fetch("/.netlify/functions/chavruta", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          question: profileContext,
-          mode: "hebrew-classroom",
-        }),
-      });
+   try {
+  const response = await fetch("/.netlify/functions/chavruta", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      question: profileContext,
+      mode: "hebrew-classroom",
+    }),
+  });
 
+  const text = await response.text();
+
+  let data = {};
+  try {
+    data = JSON.parse(text);
+  } catch {
+    data = {
+      error: text || "The server returned an unreadable response.",
+    };
+  }
+
+  if (!response.ok) {
+    throw new Error(data.error || `Request failed with status ${response.status}.`);
+  }
+
+  const answerText = data.answer || data.response;
+
+  if (!answerText) {
+    throw new Error("Chavruta answered, but no answer text came back.");
+  }
+
+  setAnswer(answerText);
+  setNextStep(data.nextStep || "");
+} catch (err) {
+  setError(err.message || "Chavruta could not answer.");
+} finally {
+  setLoading(false);
+}
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Chavruta could not answer.");
+       {error && <p className="error">{error}</p>}
       }
 
       setAnswer(data.response || "");
