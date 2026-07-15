@@ -61,7 +61,10 @@ function App() {
               Ivrit HaOr
             </a>
 
-            <a href="#noahide-parchat" onClick={closeMenu}>
+            <a
+              href="https://luminanexus-noahide-parchat.richardatf.chatgpt.site"
+              onClick={closeMenu}
+            >
               Noahide Parchat
             </a>
 
