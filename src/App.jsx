@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ChavrutaClassroom from "./components/ChavrutaClassroom.jsx";
+import DoorwayFinder from "./components/DoorwayFinder.jsx";
 
 const zeffyLink =
   "https://www.zeffy.com/en-US/donation-form/luminanexus-a-digital-sanctuary-of-light";
@@ -128,6 +129,10 @@ function App() {
 
               <a className="button secondary" href="#resources">
                 View Resources
+              </a>
+
+              <a className="button secondary" href="#find-your-doorway">
+                Find Your Doorway
               </a>
 
               <a className="button secondary" href="#support">
@@ -285,6 +290,8 @@ function App() {
             </a>
           </div>
         </section>
+
+        <DoorwayFinder />
 
         <section id="schools" className="section">
           <div className="section-heading">
