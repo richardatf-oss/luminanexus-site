@@ -84,7 +84,7 @@ function App() {
             </a>
 
             <a href="#chavruta" onClick={closeMenu}>
-              Havari
+              Chavruta
             </a>
 
             <a href="#tracks" onClick={closeMenu}>
@@ -123,7 +123,7 @@ function App() {
               </a>
 
               <a className="button secondary" href="#chavruta">
-                Open Chavruta / Havari
+                Open Chavruta
               </a>
 
               <a className="button secondary" href="#resources">
@@ -553,13 +553,13 @@ function App() {
             </article>
 
             <article className="feature-card">
-              <h3>Chavruta / Havari Support</h3>
+              <h3>Chavruta Support</h3>
               <p>
-                Use Chavruta / Havari for gentle review questions, student next
+                Use Chavruta for gentle review questions, student next
                 steps, and teacher language.
               </p>
               <a className="button secondary" href="#chavruta">
-                Ask Havari
+                Ask Chavruta
               </a>
             </article>
           </div>

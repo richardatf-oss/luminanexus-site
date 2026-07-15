@@ -158,18 +158,18 @@ function ChavrutaClassroom() {
   return (
     <section id="chavruta" className="section">
       <div className="section-heading">
-        <p className="eyebrow">Ask Chavruta / Havari</p>
+        <p className="eyebrow">Ask Chavruta</p>
 
         <h2>A gentle Hebrew helper for every student’s beginning.</h2>
 
         <p className="section-intro">
           Create a simple student profile, choose a starting track, and ask
-          Chavruta / Havari for Hebrew help, letter practice, catch-up guidance, or
+          Chavruta for Hebrew help, letter practice, catch-up guidance, or
           one-hour lesson support.
         </p>
         <p className="note">
-          Havari is the friendly learning voice of Chavruta Classroom. It helps
-          with Hebrew letters, track placement, review, and next steps. The
+          Chavruta Classroom is a gentle learning helper for Hebrew letters,
+          track placement, review, and next steps. The
           tracks are doorways, not labels.
         </p>
       </div>
@@ -241,11 +241,11 @@ function ChavrutaClassroom() {
 
             <p className="note">
               Use a first name or nickname only. Your profile is saved on this
-              device and is used to personalize Chavruta / Havari’s answer when you ask a
+              device and is used to personalize Chavruta’s answer when you ask a
               question.
             </p>
             <p className="note">
-              Chavruta / Havari is not a rabbi or religious authority.
+              Chavruta is not a rabbi or religious authority.
             </p>
             <a className="button secondary" href="/placement-quick-check.html">
               Placement Quick-Check
@@ -266,7 +266,7 @@ function ChavrutaClassroom() {
         </article>
 
         <article className="feature-card">
-          <h3>Ask Chavruta / Havari</h3>
+          <h3>Ask Chavruta</h3>
 
           <form className="form-stack" onSubmit={askChavruta}>
             <label htmlFor="chavruta-question">Question</label>
@@ -285,7 +285,7 @@ function ChavrutaClassroom() {
             </p>
 
             <button className="button primary" type="submit" disabled={loading}>
-              {loading ? "Asking..." : "Ask Chavruta / Havari"}
+              {loading ? "Asking..." : "Ask Chavruta"}
             </button>
           </form>
 
@@ -293,7 +293,7 @@ function ChavrutaClassroom() {
 
           {answer && (
             <div className="answer-box">
-              <h4>Havari says:</h4>
+              <h4>Chavruta says:</h4>
               <p>{answer}</p>
             </div>
           )}
