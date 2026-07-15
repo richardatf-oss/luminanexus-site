@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gimel Track Workbook | Ivrit HaOr</title>
+
+    <style>
+      :root {
+        --ink: #102044;
+        --muted: #5b6680;
+        --blue: #1f5fbf;
+        --gold: #d9a441;
+        --cream: #fff8e8;
+        --soft: #f5f8ff;
+        --line: #dfe7f5;
+        --green: #4f8f4f;
+        --purple: #6d4bb8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, #fffdf6 0%, #f3f7ff 100%);
+        line-height: 1.65;
+      }
+
+      header {
+        background: radial-gradient(
+          circle at top left,
+          #fff3bf,
+          #eaf2ff 50%,
+          #ffffff 100%
+        );
+        border-bottom: 1px solid var(--line);
+        padding: 3rem 1.25rem 2.5rem;
+        text-align: center;
+      }
+
+      main {
+        width: min(980px, 92vw);
+        margin: 0 auto;
+        padding: 2rem 0 4rem;
+      }
+
+      nav {
+        width: min(980px, 92vw);
+        margin: 0 auto;
+        padding: 1rem 0;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a,
+      .button {
+        display: inline-block;
+        text-decoration: none;
+        color: #ffffff;
+        background: var(--blue);
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+
+      nav a.secondary,
+      .button.secondary {
+        background: #ffffff;
+        color: var(--blue);
+        border: 1px solid var(--line);
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.18;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 6vw, 4.4rem);
+        margin: 0.35rem 0;
+      }
+
+      h2 {
+        margin-top: 2.5rem;
+        padding-top: 1.2rem;
+        border-top: 3px solid var(--gold);
+        font-size: clamp(1.7rem, 4vw, 2.55rem);
+      }
+
+      h3 {
+        font-size: 1.35rem;
+        margin-top: 1.8rem;
+      }
+
+      p,
+      li {
+        font-size: 1.08rem;
+      }
+
+      ul,
+      ol {
+        padding-left: 1.4rem;
+      }
+
+      li {
+        margin: 0.45rem 0;
+      }
+
+      .eyebrow {
+        font-family: Arial, sans-serif;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--blue);
+        font-weight: 800;
+        font-size: 0.86rem;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 1.25rem;
+        max-width: 760px;
+        margin: 0.6rem auto 0;
+      }
+
+      .card,
+      .lesson-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 1.35rem;
+        margin: 1.25rem 0;
+        box-shadow: 0 16px 40px rgba(31, 95, 191, 0.08);
+      }
+
+      .principle {
+        background: var(--cream);
+        border-left: 8px solid var(--gold);
+        padding: 1.25rem 1.4rem;
+        font-size: 1.32rem;
+        font-weight: 700;
+      }
+
+      .status {
+        background: #f2fff3;
+        border-left: 8px solid var(--green);
+        padding: 1rem 1.25rem;
+        border-radius: 16px;
+      }
+
+      .meaning-box {
+        background: #fbf6ff;
+        border-left: 8px solid var(--purple);
+        border-radius: 16px;
+        padding: 1.15rem 1.3rem;
+        margin: 1rem 0;
+      }
+
+      .toc {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0.8rem;
+        margin: 1.25rem 0 2rem;
+      }
+
+      .toc a {
+        display: block;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 0.85rem 1rem;
+        color: var(--blue);
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+      }
+
+      .hebrew {
+        direction: rtl;
+        font-family: "Times New Roman", "Frank Ruehl", serif;
+        font-size: 2.5rem;
+        letter-spacing: 0.08em;
+        margin: 0.75rem 0;
+      }
+
+      .hebrew-large {
+        direction: rtl;
+        font-family: "Times New Roman", "Frank Ruehl", serif;
+        font-size: clamp(3rem, 10vw, 6rem);
+        letter-spacing: 0.08em;
+        text-align: center;
+        margin: 1rem 0;
+      }
+
+      .practice-line {
+        border-bottom: 2px solid #c8d2e4;
+        min-height: 2.2rem;
+        margin: 0.8rem 0 1.2rem;
+      }
+
+      .draw-box {
+        min-height: 8rem;
+        border: 2px dashed #c8d2e4;
+        border-radius: 18px;
+        background: #fffdf8;
+        margin: 1rem 0;
+        padding: 1rem;
+      }
+
+      .answer-blank {
+        display: inline-block;
+        min-width: 14rem;
+        border-bottom: 2px solid #9aa9c4;
+      }
+
+      .note {
+        color: var(--muted);
+        font-family: Arial, sans-serif;
+        font-size: 0.98rem;
+      }
+
+      .lesson-meta {
+        font-family: Arial, sans-serif;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        background: #ffffff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <p class="eyebrow">Ivrit HaOr</p>
+      <h1>Gimel Track Student Workbook</h1>
+      <p class="subtitle">
+        Reading with Meaning<br />
+        Hebrew for Every Grade, Every Beginning<br />
+        LuminaNexus Foundation
+      </p>
+    </header>
+
+    <nav aria-label="Gimel Track navigation">
+      <a href="/">Back to LuminaNexus</a>
+      <a class="secondary" href="/teacher-guide.html">Teacher Guide</a>
+      <a class="secondary" href="/aleph-track.html">Aleph Track</a>
+      <a class="secondary" href="/bet-track.html">Bet Track</a>
+      <a class="secondary" href="#lessons">Lessons</a>
+    </nav>
+
+    <main>
+      <section class="card">
+        <p class="status">
+          <strong>Living curriculum status:</strong> This Gimel Track page is
+          in early development. Lesson 1 is available now, and additional
+          lessons, worksheets, illustrations, roots, word families, and teacher
+          notes will be added during the pilot phase.
+        </p>
+
+        <p class="principle">
+          Hebrew words do more than make sounds. Hebrew words carry meaning.
+        </p>
+
+        <p>
+          Gimel Track is the third doorway of Ivrit HaOr. It is designed for
+          students who are ready to move beyond letter recognition and early
+          word-building into reading short Hebrew words with meaning.
+        </p>
+
+        <p>
+          Students in Gimel Track still review letters and direction, but the
+          central goal is deeper: see the letters, read the word, and ask what
+          the word means.
+        </p>
+      </section>
+
+      <section id="contents">
+        <h2>Contents</h2>
+
+        <div class="toc">
+          <a href="#track-purpose">Track Purpose</a>
+          <a href="#lesson-1">Lesson 1 — Reading with Meaning</a>
+          <a href="#practice-1">Practice Page — See, Read, Mean</a>
+          <a href="#coming-next">Coming Next</a>
+        </div>
+      </section>
+
+      <section id="track-purpose">
+        <h2>Gimel Track Purpose</h2>
+
+        <p>
+          In Gimel Track, students do more than recognize Hebrew letters. They
+          begin reading Hebrew with meaning.
+        </p>
+
+        <p>
+          A Hebrew word is not only something to sound out. A Hebrew word can
+          carry:
+        </p>
+
+        <ul>
+          <li>an idea</li>
+          <li>a memory</li>
+          <li>a doorway</li>
+          <li>a meaning</li>
+        </ul>
+
+        <p class="principle">
+          Gimel Track is where reading begins to open into meaning.
+        </p>
+      </section>
+
+      <section id="lessons">
+        <h2>Current Gimel Track Lessons</h2>
+      </section>
+
+      <section id="lesson-1" class="lesson-card">
+        <p class="lesson-meta">Gimel Track — Lesson 1</p>
+        <h2>Reading with Meaning</h2>
+        <h3>Hebrew Words Carry Meaning</h3>
+
+        <p><strong>Big Idea</strong></p>
+
+        <p>
+          In Gimel Track, I do more than recognize Hebrew letters. I begin
+          reading Hebrew with meaning.
+        </p>
+
+        <p>
+          A Hebrew word is not only something to sound out. A Hebrew word can
+          carry an idea. A memory. A doorway. A meaning.
+        </p>
+
+        <p><strong>Teacher says:</strong></p>
+        <p>“Gimel Track is where reading begins to open into meaning.”</p>
+
+        <p><strong>Student says:</strong></p>
+        <p>“I can read Hebrew with meaning.”</p>
+
+        <h3>Look at the Word</h3>
+
+        <p>Look at this Hebrew word:</p>
+
+        <p class="hebrew-large">אור</p>
+
+        <div class="meaning-box">
+          <p>This word is read:</p>
+          <p><strong>or</strong></p>
+
+          <p>It means:</p>
+          <p><strong>light</strong></p>
+        </div>
+
+        <p>Try to draw the word here:</p>
+        <p class="practice-line"></p>
+
+        <h3>Read from the Right</h3>
+
+        <p>Hebrew begins on the right.</p>
+
+        <p>Look at the letters in <span class="hebrew">אור</span>.</p>
+
+        <p class="hebrew">א ו ר</p>
+
+        <p>Point to the first letter.</p>
+        <p>Point to the second letter.</p>
+        <p>Point to the last letter.</p>
+
+        <h3>Letter Check</h3>
+
+        <p>Circle the letters you see in <span class="hebrew">אור</span>.</p>
+
+        <p class="hebrew">א ב ו ר ע ש</p>
+
+        <h3>Meaning Check</h3>
+
+        <p>What does <span class="hebrew">אור</span> mean?</p>
+
+        <p>Circle one:</p>
+
+        <ul>
+          <li>house</li>
+          <li>peace</li>
+          <li>light</li>
+          <li>letter</li>
+        </ul>
+
+        <h3>Say It Clearly</h3>
+
+        <p>I can say:</p>
+
+        <p class="hebrew">אור</p>
+
+        <p>or</p>
+
+        <p>light</p>
+
+        <h3>Teacher Question</h3>
+
+        <p>What happens in Gimel Track?</p>
+
+        <h3>Student Answer</h3>
+
+        <p>
+          In Gimel Track, I read with
+          <span class="answer-blank"></span>.
+        </p>
+
+        <h3>I Can Say</h3>
+
+        <p>“Hebrew words carry meaning.”</p>
+
+        <h3>Confidence Check</h3>
+
+        <p>Fill one in:</p>
+
+        <ul>
+          <li>○ I am still learning to read Hebrew words.</li>
+          <li>○ I can recognize letters inside <span class="hebrew">אור</span>.</li>
+          <li>○ I can say or.</li>
+          <li>○ I can remember that <span class="hebrew">אור</span> means light.</li>
+        </ul>
+      </section>
+
+      <section id="practice-1" class="lesson-card">
+        <p class="lesson-meta">Gimel Track — Lesson 1 Practice Page</p>
+        <h2>See, Read, Mean</h2>
+
+        <p><strong>Big Idea</strong></p>
+
+        <p>
+          When I meet a Hebrew word, I can take three steps.
+        </p>
+
+        <ol>
+          <li>See the letters.</li>
+          <li>Read the word.</li>
+          <li>Find the meaning.</li>
+        </ol>
+
+        <p><strong>Teacher says:</strong></p>
+        <p>“Do not rush past the word. Let the word open.”</p>
+
+        <p><strong>Student says:</strong></p>
+        <p>“I can see, read, and find meaning.”</p>
+
+        <h3>Step One: See the Letters</h3>
+
+        <p>Look at the word:</p>
+
+        <p class="hebrew-large">אור</p>
+
+        <p>Write the letters you see.</p>
+
+        <p>First letter:</p>
+        <p class="practice-line"></p>
+
+        <p>Second letter:</p>
+        <p class="practice-line"></p>
+
+        <p>Third letter:</p>
+        <p class="practice-line"></p>
+
+        <h3>Step Two: Read the Word</h3>
+
+        <p>The word is:</p>
+
+        <p class="hebrew">אור</p>
+
+        <p>It is read:</p>
+
+        <p><strong>or</strong></p>
+
+        <p>Say it slowly:</p>
+
+        <p><strong>or</strong></p>
+
+        <p>Say it again:</p>
+
+        <p><strong>or</strong></p>
+
+        <h3>Step Three: Find the Meaning</h3>
+
+        <p><span class="hebrew">אור</span> means light.</p>
+
+        <p>Draw or color a little light below.</p>
+
+        <div class="draw-box"></div>
+
+        <h3>Word and Meaning Match</h3>
+
+        <p>Draw a line.</p>
+
+        <p><span class="hebrew">אור</span> &nbsp;&nbsp;&nbsp; house</p>
+        <p><span class="hebrew">בית</span> &nbsp;&nbsp;&nbsp; light</p>
+        <p><span class="hebrew">שלום</span> &nbsp;&nbsp;&nbsp; peace</p>
+
+        <p class="note">Teacher may help.</p>
+
+        <h3>One Word, One Meaning</h3>
+
+        <p>Complete the sentence.</p>
+
+        <p>
+          <span class="hebrew">אור</span> means
+          <span class="answer-blank"></span>.
+        </p>
+
+        <h3>Chavruta Question</h3>
+
+        <p>Ask Chavruta or your teacher:</p>
+
+        <p>“What does <span class="hebrew">אור</span> mean?”</p>
+
+        <h3>Closing Sentence</h3>
+
+        <p>Today I read a Hebrew word with meaning.</p>
+      </section>
+
+      <section id="coming-next" class="card">
+        <h2>Coming Next</h2>
+
+        <p>
+          This Gimel Track page will continue to grow as the workbook expands.
+          Upcoming lessons may include more simple Hebrew words, word families,
+          roots, short phrases, careful reading from right to left, and meaning
+          connections.
+        </p>
+
+        <p>
+          Possible early words include
+          <span class="hebrew">שלום</span>,
+          <span class="hebrew">בית</span>,
+          <span class="hebrew">שם</span>,
+          and other student-friendly Hebrew words.
+        </p>
+
+        <p class="principle">
+          See the letters. Read the word. Find the meaning.
+        </p>
+
+        <p>
+          <a class="button" href="/">Return to LuminaNexus.org</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 LuminaNexus Foundation. Hebrew for Every Grade, Every Beginning.
+    </footer>
+  </body>
+</html>
