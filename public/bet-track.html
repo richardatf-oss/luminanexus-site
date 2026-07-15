@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bet Track Workbook | Ivrit HaOr</title>
+
+    <style>
+      :root {
+        --ink: #102044;
+        --muted: #5b6680;
+        --blue: #1f5fbf;
+        --gold: #d9a441;
+        --cream: #fff8e8;
+        --soft: #f5f8ff;
+        --line: #dfe7f5;
+        --green: #4f8f4f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, #fffdf6 0%, #f3f7ff 100%);
+        line-height: 1.65;
+      }
+
+      header {
+        background: radial-gradient(
+          circle at top left,
+          #fff3bf,
+          #eaf2ff 50%,
+          #ffffff 100%
+        );
+        border-bottom: 1px solid var(--line);
+        padding: 3rem 1.25rem 2.5rem;
+        text-align: center;
+      }
+
+      main {
+        width: min(980px, 92vw);
+        margin: 0 auto;
+        padding: 2rem 0 4rem;
+      }
+
+      nav {
+        width: min(980px, 92vw);
+        margin: 0 auto;
+        padding: 1rem 0;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a,
+      .button {
+        display: inline-block;
+        text-decoration: none;
+        color: #ffffff;
+        background: var(--blue);
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+
+      nav a.secondary,
+      .button.secondary {
+        background: #ffffff;
+        color: var(--blue);
+        border: 1px solid var(--line);
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.18;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 6vw, 4.4rem);
+        margin: 0.35rem 0;
+      }
+
+      h2 {
+        margin-top: 2.5rem;
+        padding-top: 1.2rem;
+        border-top: 3px solid var(--gold);
+        font-size: clamp(1.7rem, 4vw, 2.55rem);
+      }
+
+      h3 {
+        font-size: 1.35rem;
+        margin-top: 1.8rem;
+      }
+
+      p,
+      li {
+        font-size: 1.08rem;
+      }
+
+      ul,
+      ol {
+        padding-left: 1.4rem;
+      }
+
+      li {
+        margin: 0.45rem 0;
+      }
+
+      .eyebrow {
+        font-family: Arial, sans-serif;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--blue);
+        font-weight: 800;
+        font-size: 0.86rem;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 1.25rem;
+        max-width: 760px;
+        margin: 0.6rem auto 0;
+      }
+
+      .card,
+      .lesson-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 1.35rem;
+        margin: 1.25rem 0;
+        box-shadow: 0 16px 40px rgba(31, 95, 191, 0.08);
+      }
+
+      .principle {
+        background: var(--cream);
+        border-left: 8px solid var(--gold);
+        padding: 1.25rem 1.4rem;
+        font-size: 1.32rem;
+        font-weight: 700;
+      }
+
+      .status {
+        background: #f2fff3;
+        border-left: 8px solid var(--green);
+        padding: 1rem 1.25rem;
+        border-radius: 16px;
+      }
+
+      .toc {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0.8rem;
+        margin: 1.25rem 0 2rem;
+      }
+
+      .toc a {
+        display: block;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 0.85rem 1rem;
+        color: var(--blue);
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+      }
+
+      .hebrew {
+        direction: rtl;
+        font-family: "Times New Roman", "Frank Ruehl", serif;
+        font-size: 2.5rem;
+        letter-spacing: 0.08em;
+        margin: 0.75rem 0;
+      }
+
+      .hebrew-large {
+        direction: rtl;
+        font-family: "Times New Roman", "Frank Ruehl", serif;
+        font-size: clamp(3rem, 10vw, 6rem);
+        letter-spacing: 0.08em;
+        text-align: center;
+        margin: 1rem 0;
+      }
+
+      .practice-line {
+        border-bottom: 2px solid #c8d2e4;
+        min-height: 2.2rem;
+        margin: 0.8rem 0 1.2rem;
+      }
+
+      .answer-blank {
+        display: inline-block;
+        min-width: 14rem;
+        border-bottom: 2px solid #9aa9c4;
+      }
+
+      .note {
+        color: var(--muted);
+        font-family: Arial, sans-serif;
+        font-size: 0.98rem;
+      }
+
+      .lesson-meta {
+        font-family: Arial, sans-serif;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .right-left-box {
+        background: #f7fbff;
+        border: 1px dashed #8db2e8;
+        border-radius: 18px;
+        padding: 1rem 1.25rem;
+        margin: 1rem 0;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        background: #ffffff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <p class="eyebrow">Ivrit HaOr</p>
+      <h1>Bet Track Student Workbook</h1>
+      <p class="subtitle">
+        Building the Word<br />
+        Hebrew for Every Grade, Every Beginning<br />
+        LuminaNexus Foundation
+      </p>
+    </header>
+
+    <nav aria-label="Bet Track navigation">
+      <a href="/">Back to LuminaNexus</a>
+      <a class="secondary" href="/teacher-guide.html">Teacher Guide</a>
+      <a class="secondary" href="/aleph-track.html">Aleph Track</a>
+      <a class="secondary" href="/gimel-track.html">Gimel Track</a>
+      <a class="secondary" href="#lessons">Lessons</a>
+    </nav>
+
+    <main>
+      <section class="card">
+        <p class="status">
+          <strong>Living curriculum status:</strong> This Bet Track page is in
+          early development. Lesson 1 is available now, and additional lessons,
+          worksheets, illustrations, and teacher notes will be added during the
+          pilot phase.
+        </p>
+
+        <p class="principle">
+          Review is not going backward. Review is strengthening the path.
+        </p>
+
+        <p>
+          Bet Track is the second doorway of Ivrit HaOr. It is designed for
+          students who have begun recognizing Hebrew letters and are ready to
+          start building Hebrew sounds, letter pairs, simple words, and early
+          decoding habits.
+        </p>
+
+        <p>
+          Students in Bet Track still review Aleph Track skills. They remember
+          that Hebrew begins on the right, identify familiar letters, and begin
+          noticing how Hebrew letters work together to form words.
+        </p>
+      </section>
+
+      <section id="contents">
+        <h2>Contents</h2>
+
+        <div class="toc">
+          <a href="#track-purpose">Track Purpose</a>
+          <a href="#lesson-1">Lesson 1 — Building the Word</a>
+          <a href="#practice-1">Practice Page — Build from the Right</a>
+          <a href="#coming-next">Coming Next</a>
+        </div>
+      </section>
+
+      <section id="track-purpose">
+        <h2>Bet Track Purpose</h2>
+
+        <p>
+          In Aleph Track, students learned to see Hebrew letters. In Bet Track,
+          students begin learning how Hebrew letters help build sounds and
+          words.
+        </p>
+
+        <p>
+          A Hebrew word is built one small step at a time.
+        </p>
+
+        <ul>
+          <li>Letter by letter.</li>
+          <li>Sound by sound.</li>
+          <li>Word by word.</li>
+        </ul>
+
+        <p class="principle">
+          Bet Track is where Hebrew letters begin working together.
+        </p>
+      </section>
+
+      <section id="lessons">
+        <h2>Current Bet Track Lessons</h2>
+      </section>
+
+      <section id="lesson-1" class="lesson-card">
+        <p class="lesson-meta">Bet Track — Lesson 1</p>
+        <h2>Building the Word</h2>
+        <h3>Letters Can Join Sounds</h3>
+
+        <p><strong>Big Idea</strong></p>
+
+        <p>
+          In Aleph Track, I learned to see Hebrew letters. In Bet Track, I begin
+          learning how Hebrew letters help build sounds and words.
+        </p>
+
+        <p>
+          A Hebrew word is built one small step at a time.
+        </p>
+
+        <ul>
+          <li>Letter by letter.</li>
+          <li>Sound by sound.</li>
+          <li>Word by word.</li>
+        </ul>
+
+        <p><strong>Teacher says:</strong></p>
+        <p>“Bet Track is where Hebrew letters begin working together.”</p>
+
+        <p><strong>Student says:</strong></p>
+        <p>“I can build Hebrew sounds and words.”</p>
+
+        <h3>Look and Remember</h3>
+
+        <p>Hebrew begins on the right.</p>
+
+        <div class="right-left-box">
+          <p><strong>Look at this Hebrew path:</strong></p>
+          <p>RIGHT SIDE ← ← ← LEFT SIDE</p>
+        </div>
+
+        <p>When I read Hebrew, my eyes begin on the right.</p>
+
+        <p><strong>Teacher says:</strong></p>
+        <p>“Before we read a word, we find the starting side.”</p>
+
+        <p><strong>Student says:</strong></p>
+        <p>“Hebrew begins on the right.”</p>
+
+        <h3>Letters We Know</h3>
+
+        <p>Look at these Hebrew letters.</p>
+
+        <p class="hebrew">א ב ע מ ש ל ו י ה</p>
+
+        <p>
+          Some may feel familiar. Some may still need practice. That is okay.
+        </p>
+
+        <p class="principle">
+          Review is not going backward. Review is strengthening the path.
+        </p>
+
+        <h3>Point and Say</h3>
+
+        <p>Point to each letter. Say the letter name if you know it.</p>
+
+        <p>If you do not know it yet, say:</p>
+
+        <p>“I am still learning this one.”</p>
+
+        <h3>Circle the Letters You Know</h3>
+
+        <p>Circle the Hebrew letters you can recognize.</p>
+
+        <p class="hebrew">א ב ע מ ש ל ו י ה</p>
+
+        <h3>Find Bet</h3>
+
+        <p>Circle every Bet.</p>
+
+        <p class="hebrew">ב א ב ע ב מ</p>
+
+        <h3>Find Aleph</h3>
+
+        <p>Circle every Aleph.</p>
+
+        <p class="hebrew">א ב ע א מ א</p>
+
+        <h3>Find Ayin</h3>
+
+        <p>Circle every Ayin.</p>
+
+        <p class="hebrew">ע א ב ע ש ע</p>
+
+        <h3>Teacher Question</h3>
+
+        <p>What do Hebrew words begin with?</p>
+
+        <h3>Student Answer</h3>
+
+        <p>
+          Hebrew words begin with <span class="answer-blank"></span>.
+        </p>
+
+        <h3>I Can Say</h3>
+
+        <p>“Hebrew words are built from letters.”</p>
+
+        <h3>Confidence Check</h3>
+
+        <p>Fill in one.</p>
+
+        <ul>
+          <li>○ I am still remembering Hebrew letters.</li>
+          <li>○ I can find some Hebrew letters.</li>
+          <li>○ I can begin on the right side.</li>
+          <li>○ I am ready to build Hebrew words.</li>
+        </ul>
+      </section>
+
+      <section id="practice-1" class="lesson-card">
+        <p class="lesson-meta">Bet Track — Lesson 1 Practice Page</p>
+        <h2>Build from the Right</h2>
+
+        <p><strong>Big Idea</strong></p>
+
+        <p>
+          Hebrew words are read from right to left. I can slow down and look
+          carefully.
+        </p>
+
+        <p><strong>Teacher says:</strong></p>
+        <p>“In Bet Track, we do not guess. We build.”</p>
+
+        <p><strong>Student says:</strong></p>
+        <p>“I can build from the right.”</p>
+
+        <h3>Start on the Right</h3>
+
+        <p>Put your finger on the first Hebrew letter.</p>
+
+        <p>Remember: Hebrew begins on the right.</p>
+
+        <p class="hebrew">ב א</p>
+
+        <p>Which letter comes first when reading Hebrew?</p>
+
+        <p>Circle one:</p>
+
+        <p class="hebrew">ב &nbsp;&nbsp;&nbsp; א</p>
+
+        <h3>Try Again</h3>
+
+        <p>Look at this Hebrew pair.</p>
+
+        <p class="hebrew">מ ב</p>
+
+        <p>Which letter comes first when reading Hebrew?</p>
+
+        <p>Circle one:</p>
+
+        <p class="hebrew">מ &nbsp;&nbsp;&nbsp; ב</p>
+
+        <h3>Letter Pairs</h3>
+
+        <p>Read from right to left.</p>
+
+        <p>Point to the first letter in each pair.</p>
+
+        <ol>
+          <li><span class="hebrew">ב א</span></li>
+          <li><span class="hebrew">ע ב</span></li>
+          <li><span class="hebrew">מ א</span></li>
+          <li><span class="hebrew">ש ל</span></li>
+          <li><span class="hebrew">ו י</span></li>
+        </ol>
+
+        <h3>Find the First Letter</h3>
+
+        <p>Circle the first letter you would read.</p>
+
+        <ol>
+          <li><span class="hebrew">א ב</span></li>
+          <li><span class="hebrew">ב ע</span></li>
+          <li><span class="hebrew">ל ש</span></li>
+          <li><span class="hebrew">י ו</span></li>
+          <li><span class="hebrew">ה מ</span></li>
+        </ol>
+
+        <h3>Build a Word Slowly</h3>
+
+        <p>Look at this word:</p>
+
+        <p class="hebrew-large">שלום</p>
+
+        <p><strong>Teacher says:</strong></p>
+        <p>“This word is shalom. We read it from right to left.”</p>
+
+        <p>Point to each letter.</p>
+
+        <p class="hebrew">ש ל ו ם</p>
+
+        <p>Now say:</p>
+
+        <p>“Shalom.”</p>
+
+        <h3>Look and Tell</h3>
+
+        <p>Which letter comes first in <span class="hebrew">שלום</span>?</p>
+
+        <p>Write it here:</p>
+        <p class="practice-line"></p>
+
+        <p>Which letter comes last in <span class="hebrew">שלום</span>?</p>
+
+        <p>Write it here:</p>
+        <p class="practice-line"></p>
+
+        <h3>Chavruta Question</h3>
+
+        <p>Ask Chavruta or your teacher:</p>
+
+        <p>“How do Hebrew letters build words?”</p>
+
+        <h3>Closing Sentence</h3>
+
+        <p>Today I began building Hebrew words from the right.</p>
+      </section>
+
+      <section id="coming-next" class="card">
+        <h2>Coming Next</h2>
+
+        <p>
+          This Bet Track page will continue to grow as the workbook expands.
+          Upcoming lessons may include vowel marks, simple syllables, Bet and
+          Vet review, building with familiar letters, early decoding, short
+          vocabulary, and simple Hebrew word families.
+        </p>
+
+        <p>
+          Bet Track will remain practical, gentle, and confidence-building:
+          students will learn to slow down, begin on the right, notice each
+          letter, and build Hebrew words one step at a time.
+        </p>
+
+        <p class="principle">
+          We do not guess. We build.
+        </p>
+
+        <p>
+          <a class="button" href="/">Return to LuminaNexus.org</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 LuminaNexus Foundation. Hebrew for Every Grade, Every Beginning.
+    </footer>
+  </body>
+</html>
