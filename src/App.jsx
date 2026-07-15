@@ -61,13 +61,6 @@ function App() {
               Ivrit HaOr
             </a>
 
-            <a
-              href="https://luminanexus-noahide-parchat.richardatf.chatgpt.site"
-              onClick={closeMenu}
-            >
-              Noahide Parchat
-            </a>
-
             <a href="#schools" onClick={closeMenu}>
               Schools
             </a>
@@ -81,11 +74,11 @@ function App() {
             </a>
 
             <a href="#teacher-dashboard" onClick={closeMenu}>
-              Teacher Dashboard
+              Dashboard
             </a>
 
             <a href="#chavruta" onClick={closeMenu}>
-              Chavruta
+              Havari
             </a>
 
             <a href="#tracks" onClick={closeMenu}>
@@ -114,18 +107,21 @@ function App() {
             </h1>
 
             <p className="hero-text">
-              LuminaNexus Foundation creates welcoming Hebrew enrichment
-              programs that meet students by readiness, not shame or grade
-              level.
+              Accessible Hebrew enrichment for schools, families, and beginning
+              learners—meeting every student by readiness, not shame or grade level.
             </p>
 
             <div className="hero-actions">
               <a className="button primary" href="#ivrit-haor">
-                Explore the Program
+                Explore Ivrit HaOr
               </a>
 
               <a className="button secondary" href="#chavruta">
-                Open Chavruta
+                Open Chavruta / Havari
+              </a>
+
+              <a className="button secondary" href="#resources">
+                View Resources
               </a>
 
               <a className="button secondary" href="#support">
@@ -275,98 +271,6 @@ function App() {
 
             <a className="button secondary" href="#chavruta">
               Try Chavruta
-            </a>
-          </div>
-        </section>
-
-        <section id="noahide-parchat" className="section">
-          <div className="section-heading">
-            <p className="eyebrow">Noahide Parchat</p>
-
-            <h2>The weekly Torah portion through the eyes of the nations.</h2>
-
-            <p className="section-intro">
-              Noahide Parchat is a weekly study path that looks at the Torah
-              portion from a Noahide perspective: honoring Israel, respecting
-              the Torah, and asking what light reaches the nations without
-              claiming Jewish obligation or replacing Jewish interpretation.
-            </p>
-          </div>
-
-          <div className="feature-grid">
-            <article className="feature-card">
-              <h3>Torah belongs to Israel</h3>
-              <p>
-                Noahide Parchat begins with respect. It does not treat the
-                weekly portion as something taken from the Jewish people, but as
-                teaching received with humility from the tradition entrusted to
-                Israel.
-              </p>
-            </article>
-
-            <article className="feature-card">
-              <h3>Light for the nations</h3>
-              <p>
-                Each portion asks what universal wisdom can be seen by the
-                nations: creation, justice, humility, speech, family,
-                responsibility, idolatry, mercy, judgment, and the fear of
-                Heaven.
-              </p>
-            </article>
-
-            <article className="feature-card">
-              <h3>Not imitation</h3>
-              <p>
-                The Noahide lens does not turn non-Jews into pretend Jews. It
-                honors boundaries while helping sincere students walk more
-                faithfully as members of the nations before HaShem.
-              </p>
-            </article>
-          </div>
-
-          <div className="two-column">
-            <div className="feature-card">
-              <h3>Weekly structure</h3>
-
-              <p>
-                Each Noahide Parchat entry may include the portion name, a
-                Noahide lens, a connection to the Seven Laws, a boundary note, a
-                question for the nations, a practical walking-it-out step, and a
-                closing thought.
-              </p>
-
-              <p>
-                The goal is not to replace Torah commentary, but to provide a
-                humble study doorway for people of the nations who want to learn
-                with care.
-              </p>
-            </div>
-
-            <div className="feature-card">
-              <h3>For learners and families</h3>
-
-              <p>
-                Noahide Parchat can support personal study, family discussion,
-                small groups, and future LuminaNexus teaching materials. It sits
-                beside the Hebrew curriculum as a separate path of Torah-aware
-                learning.
-              </p>
-
-              <p>
-                Questions involving Jewish law, conversion, or religious rulings
-                should always be directed to a qualified rabbi or Jewish
-                educator.
-              </p>
-            </div>
-          </div>
-
-          <div className="hero-actions">
-            <a className="button primary" href="#support">
-              Support Noahide Study
-            </a>
-
-            <a className="button secondary" href="#chavruta">
-              Ask Chavruta
             </a>
           </div>
         </section>
@@ -530,30 +434,36 @@ function App() {
             </article>
 
             <article className="feature-card">
-              <h3>Living Curriculum Status</h3>
+              <h3>Placement Quick-Check</h3>
               <p>
-                These pages may be incomplete while the pilot develops. New
-                lessons, worksheets, illustrations, and teacher notes will be
-                added as they are completed.
+                Find the right starting doorway without ranking or shaming a
+                student. Placement supports confidence and may change over time.
               </p>
-              <a className="button secondary" href="#pilot">
-                View Pilot Program
+              <a className="button secondary" href="/placement-quick-check.html">
+                Open Placement Tool
               </a>
             </article>
 
             <article className="feature-card">
               <h3>Printable Downloads</h3>
               <p>
-                Printable PDF workbooks and handouts will be added here as they
-                are prepared for the pilot classroom.
+                Printable workbooks are prepared during the pilot phase. Aleph,
+                Bet, and Gimel Track PDFs are available now and will continue to
+                grow with their living curriculum pages.
               </p>
               <a className="button secondary" href="/downloads/Aleph_Track_Printable.pdf">
                 Aleph Printable
               </a>
+              <a className="button secondary" href="/downloads/Bet_Track_Printable.pdf">
+                Bet Printable
+              </a>
+              <a className="button secondary" href="/downloads/Gimel_Track_Printable.pdf">
+                Gimel Printable
+              </a>
             </article>
 
             <article className="feature-card">
-              <h3>Sefaria Source Links</h3>
+              <h3>Source Library</h3>
               <p>
                 Sefaria.org provides access to Jewish texts and translations.
                 Ivrit HaOr may link to selected Hebrew source passages for
@@ -568,7 +478,7 @@ function App() {
                 Open Sefaria
               </a>
               <a className="button secondary" href="/sources.html">
-                Source Library
+                Open Source Library
               </a>
             </article>
           </div>
@@ -610,11 +520,17 @@ function App() {
             <article className="feature-card">
               <h3>Printable Materials</h3>
               <p>
-                PDF workbooks and classroom handouts will be added as they are
-                prepared.
+                Print-ready Aleph, Bet, and Gimel workbooks are available now
+                and will be refreshed as the tracks expand.
               </p>
               <a className="button secondary" href="/downloads/Aleph_Track_Printable.pdf">
                 Aleph Printable
+              </a>
+              <a className="button secondary" href="/downloads/Bet_Track_Printable.pdf">
+                Bet Printable
+              </a>
+              <a className="button secondary" href="/downloads/Gimel_Track_Printable.pdf">
+                Gimel Printable
               </a>
             </article>
 
@@ -654,6 +570,42 @@ function App() {
                 <p>{track.description}</p>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section id="noahide-parchat" className="section noahide-path">
+          <div className="section-heading">
+            <p className="eyebrow">A Separate Study Path</p>
+            <h2>Noahide Parchat</h2>
+            <p className="section-intro">
+              The weekly Torah portion through the eyes of the nations—honoring
+              Israel, respecting the Torah, and receiving universal wisdom
+              without claiming Jewish obligation or replacing Jewish interpretation.
+            </p>
+          </div>
+          <div className="feature-grid">
+            <article className="feature-card">
+              <h3>Honor the source</h3>
+              <p>Torah is entrusted to Israel. This path approaches as a respectful guest, with gratitude and care.</p>
+            </article>
+            <article className="feature-card">
+              <h3>Light for the nations</h3>
+              <p>Each portion asks what universal wisdom may shape justice, mercy, speech, family, and responsibility.</p>
+            </article>
+            <article className="feature-card">
+              <h3>Keep clear boundaries</h3>
+              <p>Questions of Jewish law, conversion, or religious rulings belong with a qualified rabbi or Jewish educator.</p>
+            </article>
+          </div>
+          <div className="hero-actions">
+            <a
+              className="button secondary"
+              href="https://luminanexus-noahide-parchat.richardatf.chatgpt.site"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open Noahide Parchat
+            </a>
           </div>
         </section>
 
