@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aleph Track Workbook | Ivrit HaOr</title>
+
+    <style>
+      :root {
+        --ink: #102044;
+        --muted: #5b6680;
+        --blue: #1f5fbf;
+        --gold: #d9a441;
+        --cream: #fff8e8;
+        --soft: #f5f8ff;
+        --line: #dfe7f5;
+        --green: #4f8f4f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, #fffdf6 0%, #f3f7ff 100%);
+        line-height: 1.65;
+      }
+
+      header {
+        background: radial-gradient(
+          circle at top left,
+          #fff3bf,
+          #eaf2ff 50%,
+          #ffffff 100%
+        );
+        border-bottom: 1px solid var(--line);
+        padding: 3rem 1.25rem 2.5rem;
+        text-align: center;
+      }
+
+      main {
+        width: min(980px, 92vw);
+        margin: 0 auto;
+        padding: 2rem 0 4rem;
+      }
+
+      nav {
+        width: min(980px, 92vw);
+        margin: 0 auto;
+        padding: 1rem 0;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a,
+      .button {
+        display: inline-block;
+        text-decoration: none;
+        color: #ffffff;
+        background: var(--blue);
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+
+      nav a.secondary,
+      .button.secondary {
+        background: #ffffff;
+        color: var(--blue);
+        border: 1px solid var(--line);
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.18;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 6vw, 4.4rem);
+        margin: 0.35rem 0;
+      }
+
+      h2 {
+        margin-top: 2.5rem;
+        padding-top: 1.2rem;
+        border-top: 3px solid var(--gold);
+        font-size: clamp(1.7rem, 4vw, 2.55rem);
+      }
+
+      h3 {
+        font-size: 1.35rem;
+        margin-top: 1.8rem;
+      }
+
+      p,
+      li {
+        font-size: 1.08rem;
+      }
+
+      ul,
+      ol {
+        padding-left: 1.4rem;
+      }
+
+      li {
+        margin: 0.45rem 0;
+      }
+
+      .eyebrow {
+        font-family: Arial, sans-serif;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--blue);
+        font-weight: 800;
+        font-size: 0.86rem;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 1.25rem;
+        max-width: 760px;
+        margin: 0.6rem auto 0;
+      }
+
+      .card,
+      .lesson-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 1.35rem;
+        margin: 1.25rem 0;
+        box-shadow: 0 16px 40px rgba(31, 95, 191, 0.08);
+      }
+
+      .principle {
+        background: var(--cream);
+        border-left: 8px solid var(--gold);
+        padding: 1.25rem 1.4rem;
+        font-size: 1.32rem;
+        font-weight: 700;
+      }
+
+      .status {
+        background: #f2fff3;
+        border-left: 8px solid var(--green);
+        padding: 1rem 1.25rem;
+        border-radius: 16px;
+      }
+
+      .toc {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0.8rem;
+        margin: 1.25rem 0 2rem;
+      }
+
+      .toc a {
+        display: block;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 0.85rem 1rem;
+        color: var(--blue);
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+      }
+
+      .hebrew {
+        direction: rtl;
+        font-family: "Times New Roman", "Frank Ruehl", serif;
+        font-size: 2.5rem;
+        letter-spacing: 0.08em;
+        margin: 0.75rem 0;
+      }
+
+      .hebrew-large {
+        direction: rtl;
+        font-family: "Times New Roman", "Frank Ruehl", serif;
+        font-size: clamp(3rem, 10vw, 6rem);
+        letter-spacing: 0.08em;
+        text-align: center;
+        margin: 1rem 0;
+      }
+
+      .practice-line {
+        border-bottom: 2px solid #c8d2e4;
+        min-height: 2.2rem;
+        margin: 0.8rem 0 1.2rem;
+      }
+
+      .answer-blank {
+        display: inline-block;
+        min-width: 14rem;
+        border-bottom: 2px solid #9aa9c4;
+      }
+
+      .note {
+        color: var(--muted);
+        font-family: Arial, sans-serif;
+        font-size: 0.98rem;
+      }
+
+      .lesson-meta {
+        font-family: Arial, sans-serif;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        background: #ffffff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <p class="eyebrow">Ivrit HaOr</p>
+      <h1>Aleph Track Student Workbook</h1>
+      <p class="subtitle">
+        First Beginning<br />
+        Hebrew for Every Grade, Every Beginning<br />
+        LuminaNexus Foundation
+      </p>
+    </header>
+
+    <nav aria-label="Aleph Track navigation">
+      <a href="/">Back to LuminaNexus</a>
+      <a class="secondary" href="/teacher-guide.html">Teacher Guide</a>
+      <a class="secondary" href="/bet-track.html">Bet Track</a>
+      <a class="secondary" href="/gimel-track.html">Gimel Track</a>
+      <a class="secondary" href="#lessons">Lessons</a>
+    </nav>
+
+    <main>
+      <section class="card">
+        <p class="status">
+          <strong>Living curriculum status:</strong> This Aleph Track page is
+          being updated as the student workbook grows. Lessons, illustrations,
+          worksheets, and teacher notes may be revised during the pilot phase.
+        </p>
+
+        <p class="principle">
+          No student is late to Hebrew. Every letter is a beginning.
+        </p>
+
+        <p>
+          Aleph Track is the first doorway into Ivrit HaOr. It is designed for
+          students who are new to Hebrew, students who need letter confidence,
+          and students who benefit from a gentle beginning before moving into
+          vowels, syllables, and decoding.
+        </p>
+      </section>
+
+      <section id="contents">
+        <h2>Contents</h2>
+
+        <div class="toc">
+          <a href="#beginning">My Hebrew Beginning</a>
+          <a href="#lesson-1">Lesson 1 — Opening the Hebrew Doorway</a>
+          <a href="#lesson-2">Lesson 2 — Hebrew Letters Are Not English Letters</a>
+          <a href="#lesson-3">Lesson 3 — Aleph and Ayin</a>
+          <a href="#lesson-4">Lesson 4 — Bet and Vet</a>
+          <a href="#coming-next">Coming Next</a>
+        </div>
+      </section>
+
+      <section id="beginning">
+        <h2>My Hebrew Beginning</h2>
+
+        <p>
+          Hebrew is new to my eyes. That is okay. Every student begins
+          somewhere. Every letter is a beginning.
+        </p>
+
+        <p>In this workbook, I will learn to:</p>
+
+        <ul>
+          <li>see Hebrew letters</li>
+          <li>follow Hebrew from right to left</li>
+          <li>trace letters carefully</li>
+          <li>find letters inside words</li>
+          <li>notice small marks</li>
+          <li>ask good questions</li>
+          <li>grow with courage</li>
+        </ul>
+
+        <p>
+          I do not have to know everything today. I begin with one step. One
+          letter. One doorway. One little light.
+        </p>
+      </section>
+
+      <section id="lessons">
+        <h2>Current Aleph Track Lessons</h2>
+      </section>
+
+      <section id="lesson-1" class="lesson-card">
+        <p class="lesson-meta">Lesson 1</p>
+        <h2>Opening the Hebrew Doorway</h2>
+        <h3>Hebrew Begins on the Right</h3>
+
+        <p><strong>Big Idea</strong></p>
+        <p>Hebrew begins on the right side of the page.</p>
+
+        <p>Look at the arrow.</p>
+        <p class="hebrew">←</p>
+
+        <p>Hebrew moves this way.</p>
+
+        <p><strong>Teacher says:</strong></p>
+        <p>
+          “When we read Hebrew, our eyes begin on the right and move toward the
+          left.”
+        </p>
+
+        <p><strong>Student says:</strong></p>
+        <p>“Hebrew begins on the right.”</p>
+
+        <h3>Point and Say</h3>
+        <p>Point to the right side of the page.</p>
+        <p>Say: “This is where Hebrew begins.”</p>
+        <p>
+          Now move your finger slowly across the page from right to left.
+        </p>
+
+        <h3>Practice the Hebrew Direction</h3>
+        <p>Use your finger first. Then use your pencil.</p>
+
+        <p><strong>Start here:</strong></p>
+        <p>RIGHT SIDE ← ← ← ← LEFT SIDE</p>
+
+        <p><strong>Trace the arrows:</strong></p>
+        <p>← ← ← ← ←</p>
+
+        <h3>Circle the Starting Side</h3>
+        <p>Circle the side where Hebrew begins.</p>
+        <p>LEFT SIDE &nbsp;&nbsp;&nbsp; RIGHT SIDE</p>
+
+        <h3>Teacher Question</h3>
+        <p>Where do your Hebrew eyes begin?</p>
+
+        <h3>Student Answer</h3>
+        <p>
+          My Hebrew eyes begin on the
+          <span class="answer-blank"></span> side.
+        </p>
+
+        <h3>Confidence Check</h3>
+        <p>Color one light.</p>
+        <ul>
+          <li>○ I am still learning.</li>
+          <li>○ I can point to the right side.</li>
+          <li>○ I can show the Hebrew direction.</li>
+        </ul>
+
+        <h3>Chavruta Question</h3>
+        <p>Ask Chavruta or your teacher:</p>
+        <p>“Which side does Hebrew begin on?”</p>
+
+        <h3>Closing Sentence</h3>
+        <p>Today I opened the Hebrew doorway.</p>
+      </section>
+
+      <section id="lesson-2" class="lesson-card">
+        <p class="lesson-meta">Lesson 2</p>
+        <h2>Hebrew Letters Are Not English Letters</h2>
+
+        <p><strong>Big Idea</strong></p>
+        <p>
+          Hebrew letters do not look like English letters. That is okay. English
+          has its own letter shapes. Hebrew has its own letter shapes too.
+        </p>
+
+        <p>
+          We do not need Hebrew letters to look like A, B, or C. We only need to
+          look carefully and learn them one by one.
+        </p>
+
+        <p><strong>Teacher says:</strong></p>
+        <p>
+          “Hebrew is its own language. Its letters have their own beautiful
+          shapes.”
+        </p>
+
+        <p><strong>Student says:</strong></p>
+        <p>“Hebrew letters are different, and I can learn them.”</p>
+
+        <h3>Look and Notice</h3>
+        <p>English letters look one way.</p>
+        <p>A B C</p>
+
+        <p>Hebrew letters look another way.</p>
+        <p class="hebrew">א ב ע</p>
+
+        <p>Both are real letters. Both are good to learn. They are not the same.</p>
+
+        <h3>Careful Looking</h3>
+        <p>Look at these Hebrew letters:</p>
+        <p class="hebrew">א ב ג ע</p>
+
+        <p>They may be new to your eyes. That is okay.</p>
+
+        <h3>Circle the Hebrew Letters</h3>
+        <p>Circle the letters that are Hebrew:</p>
+        <p class="hebrew">A ג B א C ד ב</p>
+
+        <h3>Teacher Question</h3>
+        <p>Do Hebrew letters look exactly like English letters?</p>
+
+        <h3>Student Answer</h3>
+        <p>Yes / No</p>
+
+        <h3>I Can Say</h3>
+        <p>“Hebrew letters have their own shapes.”</p>
+
+        <h3>Confidence Check</h3>
+        <ul>
+          <li>○ I am still noticing.</li>
+          <li>○ I can find Hebrew letters.</li>
+          <li>○ I can tell Hebrew and English apart.</li>
+        </ul>
+
+        <h3>Chavruta Question</h3>
+        <p>Ask Chavruta or your teacher:</p>
+        <p>“How are Hebrew letters different from English letters?”</p>
+
+        <h3>Closing Sentence</h3>
+        <p>Today I learned that Hebrew letters have their own shapes.</p>
+      </section>
+
+      <section id="lesson-3" class="lesson-card">
+        <p class="lesson-meta">Lesson 3</p>
+        <h2>Aleph and Ayin</h2>
+        <h3>The Quiet Letters</h3>
+
+        <p><strong>Big Idea</strong></p>
+        <p>
+          Aleph and Ayin are Hebrew letters. These letters are special. They are
+          often quiet letters. That means they do not usually make a strong
+          sound by themselves. They help carry the vowel sound.
+        </p>
+
+        <p>Aleph is:</p>
+        <p class="hebrew-large">א</p>
+
+        <p>Ayin is:</p>
+        <p class="hebrew-large">ע</p>
+
+        <p><strong>Teacher says:</strong></p>
+        <p>
+          “Aleph and Ayin are quiet letters. Quiet does not mean unimportant.”
+        </p>
+
+        <p><strong>Student says:</strong></p>
+        <p>“Aleph and Ayin are quiet letters.”</p>
+
+        <h3>Look and Notice</h3>
+        <p>Look at Aleph. Look at Ayin. They are not the same.</p>
+        <p>Aleph looks one way. Ayin looks another way.</p>
+
+        <h3>Circle the Aleph</h3>
+        <p>Circle every Aleph.</p>
+        <p class="hebrew">א ע א ב א</p>
+
+        <h3>Circle the Ayin</h3>
+        <p>Circle every Ayin.</p>
+        <p class="hebrew">ע א ע ב ע</p>
+
+        <h3>Trace Aleph</h3>
+        <p>Trace the Aleph letters.</p>
+        <p class="hebrew">א א א</p>
+
+        <h3>Trace Ayin</h3>
+        <p>Trace the Ayin letters.</p>
+        <p class="hebrew">ע ע ע</p>
+
+        <h3>Same or Different?</h3>
+        <p>Put a check mark if they are the same.</p>
+        <ul>
+          <li>א א ______</li>
+          <li>ע ע ______</li>
+          <li>א ע ______</li>
+          <li>ע א ______</li>
+        </ul>
+
+        <h3>Teacher Question</h3>
+        <p>Do Aleph and Ayin look the same?</p>
+
+        <h3>Student Answer</h3>
+        <p>Yes / No</p>
+
+        <h3>Chavruta Question</h3>
+        <p>Ask Chavruta or your teacher:</p>
+        <p>“What is the difference between Aleph and Ayin?”</p>
+
+        <h3>Closing Sentence</h3>
+        <p>Today I learned Aleph and Ayin.</p>
+      </section>
+
+      <section id="lesson-4" class="lesson-card">
+        <p class="lesson-meta">Lesson 4</p>
+        <h2>Bet and Vet</h2>
+        <h3>The Dot Helps Us See</h3>
+
+        <p><strong>Big Idea</strong></p>
+        <p>
+          Bet and Vet look almost the same. Bet has a dot. Vet has no dot. The
+          dot helps us know which letter we are seeing.
+        </p>
+
+        <p>Bet is:</p>
+        <p class="hebrew-large">בּ</p>
+
+        <p>Vet is:</p>
+        <p class="hebrew-large">ב</p>
+
+        <p><strong>Teacher says:</strong></p>
+        <p>
+          “Bet and Vet have the same shape. The dot helps us tell them apart.”
+        </p>
+
+        <p><strong>Student says:</strong></p>
+        <p>“The dot helps me see Bet.”</p>
+
+        <h3>Look and Notice</h3>
+        <p>
+          Look at Bet. Look at Vet. They have the same letter shape. Bet has a
+          dot inside. Vet has an empty space inside.
+        </p>
+
+        <p>Bet has the ball. Vet has the void.</p>
+
+        <h3>Point and Say</h3>
+        <p>Point to Bet. Say: “Bet.”</p>
+        <p>Point to the dot. Say: “Dot.”</p>
+        <p>Point to Vet. Say: “Vet.”</p>
+        <p>Now say: “Bet has a dot. Vet does not.”</p>
+
+        <h3>Circle the Bet</h3>
+        <p>Circle every Bet.</p>
+        <p class="hebrew">בּ ב בּ א בּ</p>
+
+        <h3>Circle the Vet</h3>
+        <p>Circle every Vet.</p>
+        <p class="hebrew">ב בּ ע ב ב</p>
+
+        <h3>Teacher Question</h3>
+        <p>How can you tell Bet and Vet apart?</p>
+
+        <h3>Student Answer</h3>
+        <p>Bet has a <span class="answer-blank"></span>.</p>
+        <p>Vet has no <span class="answer-blank"></span>.</p>
+
+        <h3>I Can Say</h3>
+        <p>“Bet has a dot. Vet has no dot.”</p>
+
+        <h3>Confidence Check</h3>
+        <ul>
+          <li>○ I am still learning.</li>
+          <li>○ I can find the dot.</li>
+          <li>○ I can tell Bet and Vet apart.</li>
+        </ul>
+
+        <h3>Chavruta Question</h3>
+        <p>Ask Chavruta or your teacher:</p>
+        <p>“How are Bet and Vet different?”</p>
+
+        <h3>Closing Sentence</h3>
+        <p>Today I learned that Bet has a dot and Vet has no dot.</p>
+      </section>
+
+      <section id="coming-next" class="card">
+        <h2>Coming Next</h2>
+
+        <p>
+          This Aleph Track page will continue to grow as the workbook expands.
+          Upcoming lessons may include Mem and Final Mem, Shin and Sin, Lamed,
+          building toward Shalom, Vav, Yod, Hey, final forms, and simple Hebrew
+          words such as <span class="hebrew">אור</span>,
+          <span class="hebrew">שלום</span>, and
+          <span class="hebrew">בית</span>.
+        </p>
+
+        <p class="principle">
+          The track is a doorway, not a label. The beginning is not a weakness.
+        </p>
+
+        <p>
+          <a class="button" href="/">Return to LuminaNexus.org</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 LuminaNexus Foundation. Hebrew for Every Grade, Every Beginning.
+    </footer>
+  </body>
+</html>
