@@ -9,6 +9,8 @@ const tracks = [
     letter: "א",
     title: "Aleph Track",
     subtitle: "First Beginning",
+    image: "/images/aleph-doorway.webp",
+    alt: "An illustrated Hebrew workbook beside a glowing doorway",
     description:
       "For students who are new to Hebrew at any grade level. Learners begin with directionality, letter recognition, sounds, names, simple words, and confidence.",
   },
@@ -16,6 +18,8 @@ const tracks = [
     letter: "ב",
     title: "Bet Track",
     subtitle: "Building the Word",
+    image: "/images/bet-building-words.webp",
+    alt: "Illustrated Hebrew letter blocks arranged for word-building",
     description:
       "For students who know some letters and are ready for vowels, syllables, decoding, vocabulary, roots, and simple phrases.",
   },
@@ -23,6 +27,8 @@ const tracks = [
     letter: "ג",
     title: "Gimel Track",
     subtitle: "Reading with Meaning",
+    image: "/images/gimel-reading-meaning.webp",
+    alt: "An illustrated path of Hebrew letters rising from an open book",
     description:
       "For students ready to read words and short phrases while exploring roots, fluency, culture, meaning, and interpretation.",
   },
@@ -130,7 +136,12 @@ function App() {
             </div>
           </div>
 
-          <aside className="hero-card" aria-label="Hebrew word for light">
+          <aside className="hero-card hero-image-card" aria-label="Hebrew word for light">
+            <img
+              src="/images/ivrit-haor-hero.webp"
+              alt="A luminous tree and doorway rising from an open book with Hebrew letters"
+              fetchPriority="high"
+            />
             <div className="hebrew-large" dir="rtl">
               אור
             </div>
@@ -494,6 +505,13 @@ function App() {
             </p>
           </div>
 
+          <img
+            className="section-banner"
+            src="/images/teacher-dashboard.webp"
+            alt="A warm illustrated teacher workspace with curriculum cards, notebooks, and Hebrew letter blocks"
+            loading="lazy"
+          />
+
           <div className="feature-grid">
             <article className="feature-card">
               <h3>Week 1 Teaching Packet</h3>
@@ -564,6 +582,7 @@ function App() {
           <div className="track-grid">
             {tracks.map((track) => (
               <article className="track-card" key={track.title}>
+                <img className="track-image" src={track.image} alt={track.alt} loading="lazy" />
                 <div className="track-letter">{track.letter}</div>
                 <h3>{track.title}</h3>
                 <p className="track-subtitle">{track.subtitle}</p>
@@ -583,6 +602,12 @@ function App() {
               without claiming Jewish obligation or replacing Jewish interpretation.
             </p>
           </div>
+          <img
+            className="section-banner"
+            src="/images/noahide-parchat.webp"
+            alt="An illuminated scroll and open book beneath a pathway of Hebrew letters"
+            loading="lazy"
+          />
           <div className="feature-grid">
             <article className="feature-card">
               <h3>Honor the source</h3>
