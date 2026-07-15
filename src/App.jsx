@@ -76,6 +76,14 @@ function App() {
               Resources
             </a>
 
+            <a href="/sources.html" onClick={closeMenu}>
+              Sources
+            </a>
+
+            <a href="#teacher-dashboard" onClick={closeMenu}>
+              Teacher Dashboard
+            </a>
+
             <a href="#chavruta" onClick={closeMenu}>
               Chavruta
             </a>
@@ -467,6 +475,9 @@ function App() {
               <a className="button primary" href="/teacher-guide.html">
                 Open Teacher Guide
               </a>
+              <a className="button secondary" href="/placement-quick-check.html">
+                Placement Quick-Check
+              </a>
             </article>
 
             <article className="feature-card">
@@ -479,6 +490,12 @@ function App() {
               </p>
               <a className="button secondary" href="/aleph-track.html">
                 Open Aleph Track
+              </a>
+              <a
+                className="button secondary"
+                href="/downloads/Aleph_Track_Printable.pdf"
+              >
+                Download PDF
               </a>
             </article>
 
@@ -519,14 +536,90 @@ function App() {
             </article>
 
             <article className="feature-card">
-              <h3>More Downloads Coming</h3>
+              <h3>Printable Downloads</h3>
               <p>
-                As the curriculum files are finalized, this section can host the
-                Master Framework, family handouts, printable charts, and student
-                practice pages.
+                Printable PDF workbooks and handouts will be added here as they
+                are prepared for the pilot classroom.
               </p>
-              <a className="button secondary" href="#support">
-                Support Materials
+              <a className="button secondary" href="/downloads/Aleph_Track_Printable.pdf">
+                Aleph Printable
+              </a>
+            </article>
+
+            <article className="feature-card">
+              <h3>Sefaria Source Links</h3>
+              <p>
+                Sefaria.org provides access to Jewish texts and translations.
+                Ivrit HaOr may link to selected Hebrew source passages for
+                cultural literacy and teacher reference.
+              </p>
+              <a
+                className="button secondary"
+                href="https://www.sefaria.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open Sefaria
+              </a>
+              <a className="button secondary" href="/sources.html">
+                Source Library
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section id="teacher-dashboard" className="section">
+          <div className="section-heading">
+            <p className="eyebrow">Teacher Dashboard</p>
+            <h2>A practical doorway for the pilot classroom.</h2>
+            <p className="section-intro">
+              Prepare a first session, find each student’s starting doorway,
+              and move into track work without labels or shame.
+            </p>
+          </div>
+
+          <div className="feature-grid">
+            <article className="feature-card">
+              <h3>Week 1 Teaching Packet</h3>
+              <p>
+                Start with the placement quick-check, then guide students into
+                Aleph, Bet, or Gimel readiness work.
+              </p>
+              <a className="button primary" href="/teacher-guide.html">
+                Open Teacher Guide
+              </a>
+            </article>
+
+            <article className="feature-card">
+              <h3>Placement Quick-Check</h3>
+              <p>
+                A no-shame way to observe whether a student begins with
+                letters, word-building, or reading with meaning.
+              </p>
+              <a className="button secondary" href="/placement-quick-check.html">
+                Find the Right Doorway
+              </a>
+            </article>
+
+            <article className="feature-card">
+              <h3>Printable Materials</h3>
+              <p>
+                PDF workbooks and classroom handouts will be added as they are
+                prepared.
+              </p>
+              <a className="button secondary" href="/downloads/Aleph_Track_Printable.pdf">
+                Aleph Printable
+              </a>
+            </article>
+
+            <article className="feature-card">
+              <h3>Chavruta / Havari Support</h3>
+              <p>
+                Use Chavruta / Havari for gentle review questions, student next
+                steps, and teacher language.
+              </p>
+              <a className="button secondary" href="#chavruta">
+                Ask Havari
               </a>
             </article>
           </div>
