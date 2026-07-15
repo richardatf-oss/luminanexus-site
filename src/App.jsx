@@ -509,6 +509,9 @@ function App() {
               <a className="button secondary" href="/bet-track.html">
                 Open Bet Track
               </a>
+              <a className="button secondary" href="/downloads/Bet_Track_Printable.pdf">
+                Download PDF
+              </a>
             </article>
 
             <article className="feature-card">
@@ -520,6 +523,9 @@ function App() {
               </p>
               <a className="button secondary" href="/gimel-track.html">
                 Open Gimel Track
+              </a>
+              <a className="button secondary" href="/downloads/Gimel_Track_Printable.pdf">
+                Download PDF
               </a>
             </article>
 
