@@ -259,7 +259,7 @@ function App() {
             </a>
 
             <a className="button secondary" href="#resources">
-              Teacher Guide
+              Curriculum Resources
             </a>
 
             <a className="button secondary" href="#chavruta">
@@ -444,12 +444,12 @@ function App() {
           <div className="section-heading">
             <p className="eyebrow">Curriculum Resources</p>
 
-            <h2>Teacher-facing materials for the Ivrit HaOr classroom.</h2>
+            <h2>Living curriculum pages for the Ivrit HaOr classroom.</h2>
 
             <p className="section-intro">
-              The Teacher Guide gives instructors the practical language,
-              pacing, boundaries, placement guidance, classroom scripts, and
-              complete lesson sequence needed to teach Ivrit HaOr with care.
+              Ivrit HaOr materials are being prepared for the pilot classroom.
+              These pages are intentionally updateable as lessons, worksheets,
+              illustrations, and teacher notes are completed.
             </p>
           </div>
 
@@ -459,7 +459,7 @@ function App() {
               <p>
                 Read the online Teacher Guide for classroom posture, the
                 one-hour rhythm, Chavruta Classroom, assessment without shame,
-                family communication, and the Aleph Track lesson sequence.
+                family communication, and the developing lesson sequence.
               </p>
               <a className="button primary" href="/teacher-guide.html">
                 Open Teacher Guide
@@ -469,17 +469,54 @@ function App() {
             <article className="feature-card">
               <h3>Aleph Track Workbook</h3>
               <p>
-                The K–2 friendly student workbook is being built page by page
-                with large Hebrew letters, gentle tracing, bright illustrations,
-                and no-shame practice.
+                First Beginning. A gentle student workbook for Hebrew
+                directionality, letter recognition, tracing, Aleph and Ayin, Bet
+                and Vet, and early Hebrew confidence. This track is being
+                expanded lesson by lesson.
               </p>
-              <a className="button secondary" href="#tracks">
-                View Track Overview
+              <a className="button secondary" href="/aleph-track.html">
+                Open Aleph Track
               </a>
             </article>
 
             <article className="feature-card">
-              <h3>More downloads coming</h3>
+              <h3>Bet Track Workbook</h3>
+              <p>
+                Building the Word. A developing track for students ready to move
+                from letter recognition into right-to-left word-building, simple
+                sounds, syllables, vowels, and early decoding.
+              </p>
+              <a className="button secondary" href="/bet-track.html">
+                Open Bet Track
+              </a>
+            </article>
+
+            <article className="feature-card">
+              <h3>Gimel Track Workbook</h3>
+              <p>
+                Reading with Meaning. A developing track for students ready to
+                read short Hebrew words, connect them to meaning, notice roots,
+                and begin simple Hebrew explanation.
+              </p>
+              <a className="button secondary" href="/gimel-track.html">
+                Open Gimel Track
+              </a>
+            </article>
+
+            <article className="feature-card">
+              <h3>Living Curriculum Status</h3>
+              <p>
+                These pages may be incomplete while the pilot develops. New
+                lessons, worksheets, illustrations, and teacher notes will be
+                added as they are completed.
+              </p>
+              <a className="button secondary" href="#pilot">
+                View Pilot Program
+              </a>
+            </article>
+
+            <article className="feature-card">
+              <h3>More Downloads Coming</h3>
               <p>
                 As the curriculum files are finalized, this section can host the
                 Master Framework, family handouts, printable charts, and student
