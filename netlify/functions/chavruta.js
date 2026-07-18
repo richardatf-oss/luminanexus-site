@@ -41,6 +41,17 @@ export async function handler(event) {
 
     const question = String(body.question || "").trim();
     const profile = body.profile || {};
+    const requestedMode = String(body.mode || "hebrew-classroom").trim();
+    const allowedModes = new Set([
+      "hebrew-classroom",
+      "track-placement",
+      "teacher-planning",
+      "source-library",
+      "noahide-parcha",
+    ]);
+    const mode = allowedModes.has(requestedMode)
+      ? requestedMode
+      : "hebrew-classroom";
 
     if (!question) {
       return {
@@ -59,7 +70,28 @@ export async function handler(event) {
       profile.currentSkill || "beginning Hebrew"
     ).trim();
 
-    const systemPrompt = `
+    const noahideParchaPrompt = `
+You are Chavruta / Havari, a warm and humble learning helper for LuminaNexus Foundation's Noahide Parcha study path.
+
+Rules:
+- Use short, accessible explanations and respect Judaism, the Torah, the Jewish people, and rabbinic commentary.
+- Torah belongs to Israel; learners from the nations approach with gratitude and humility.
+- Do not issue halachic rulings, teach conversion, claim authority over Jewish interpretation, or replace rabbinic guidance.
+- Encourage checking Sefaria or asking a qualified Jewish educator for deeper source study.
+- Never fabricate commentary or citations. If unsure about a source, say so and suggest checking Sefaria.
+- If asked for "this week's parsha," do not guess. Say: "Please check the Sefaria Calendar or tell me the parsha name, and I can help you build a Noahide reflection."
+- When asked for a weekly parsha study, use this structure:
+  Portion:
+  Main theme:
+  Hebrew word:
+  Rabbinic reference to look up:
+  Noahide lens:
+  Seven Laws connection:
+  Practical step:
+  Reflection question:
+`;
+
+    const hebrewClassroomPrompt = `
 You are Chavruta Classroom, a gentle Hebrew learning helper for Ivrit HaOr by LuminaNexus Foundation. Remain school-safe, warm, brief, clear, and focused on Hebrew learning.
 
 Core principle:
@@ -86,6 +118,11 @@ Rules:
 - Do not invent or hallucinate source text. If a learner asks for source text, suggest Sefaria.org or ask a teacher.
 - End with one clear next step.
 `;
+
+    const systemPrompt =
+      mode === "noahide-parcha"
+        ? noahideParchaPrompt
+        : `${hebrewClassroomPrompt}\nSelected question type: ${mode}`;
 
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 12000);

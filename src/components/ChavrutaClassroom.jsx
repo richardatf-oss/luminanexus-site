@@ -12,6 +12,7 @@ const defaultProfile = {
 function ChavrutaClassroom() {
   const [profile, setProfile] = useState(defaultProfile);
   const [question, setQuestion] = useState("");
+  const [mode, setMode] = useState("hebrew-classroom");
   const [answer, setAnswer] = useState("");
   const [nextStep, setNextStep] = useState("");
   const [error, setError] = useState("");
@@ -89,7 +90,7 @@ function ChavrutaClassroom() {
     const trimmedQuestion = question.trim();
 
     if (!trimmedQuestion) {
-      setError("Please ask a Hebrew question first.");
+      setError("Please enter a study question first.");
       return;
     }
 
@@ -112,7 +113,7 @@ function ChavrutaClassroom() {
             track: activeProfile.track,
             currentSkill: activeProfile.currentSkill,
           },
-          mode: "hebrew-classroom",
+          mode,
         }),
       });
 
@@ -165,7 +166,8 @@ function ChavrutaClassroom() {
         <p className="section-intro">
           Create a simple student profile, choose a starting track, and ask
           Chavruta for Hebrew help, letter practice, catch-up guidance, or
-          one-hour lesson support.
+          one-hour lesson support. Noahide learners may also choose Noahide
+          Parcha for a humble, source-aware weekly reflection.
         </p>
         <p className="note">
           Chavruta Classroom is a gentle learning helper for Hebrew letters,
@@ -269,6 +271,19 @@ function ChavrutaClassroom() {
           <h3>Ask Chavruta</h3>
 
           <form className="form-stack" onSubmit={askChavruta}>
+            <label htmlFor="chavruta-mode">Question type</label>
+            <select
+              id="chavruta-mode"
+              value={mode}
+              onChange={(event) => setMode(event.target.value)}
+            >
+              <option value="hebrew-classroom">Hebrew learning</option>
+              <option value="track-placement">Track placement</option>
+              <option value="teacher-planning">Teacher planning</option>
+              <option value="source-library">Source Library</option>
+              <option value="noahide-parcha">Noahide Parcha</option>
+            </select>
+
             <label htmlFor="chavruta-question">Question</label>
 
             <textarea
@@ -276,7 +291,11 @@ function ChavrutaClassroom() {
               value={question}
               onChange={(event) => setQuestion(event.target.value)}
               onKeyDown={handleQuestionKeyDown}
-              placeholder="Ask a Hebrew learning question..."
+              placeholder={
+                mode === "noahide-parcha"
+                  ? "Name a parsha and ask for a Noahide reflection..."
+                  : "Ask a Hebrew learning question..."
+              }
               rows={6}
             />
 

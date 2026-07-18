@@ -80,6 +80,10 @@ function App() {
               Sources
             </a>
 
+            <a href="/noahide-parcha.html" onClick={closeMenu}>
+              Noahide Parcha
+            </a>
+
             <a href="#teacher-dashboard" onClick={closeMenu}>
               Dashboard
             </a>
@@ -599,14 +603,19 @@ function App() {
           </div>
         </section>
 
-        <section id="noahide-parchat" className="section noahide-path">
+        <section id="noahide-parcha" className="section noahide-path">
           <div className="section-heading">
             <p className="eyebrow">A Separate Study Path</p>
-            <h2>Noahide Parchat</h2>
+            <h2>Weekly Noahide Torah Parcha</h2>
             <p className="section-intro">
-              The weekly Torah portion through the eyes of the nations—honoring
-              Israel, respecting the Torah, and receiving universal wisdom
-              without claiming Jewish obligation or replacing Jewish interpretation.
+              The weekly Torah portion through the eyes of the nations.
+            </p>
+            <p className="section-intro">
+              Noahide Parcha is a separate LuminaNexus study path for non-Jews
+              who honor Torah and the Jewish people. It offers a humble weekly
+              reflection on the Torah portion, supported by rabbinic commentary
+              references and source links, while carefully avoiding imitation of
+              Jewish obligation or replacement of Jewish authority.
             </p>
           </div>
           <img
@@ -617,26 +626,31 @@ function App() {
           />
           <div className="feature-grid">
             <article className="feature-card">
-              <h3>Honor the source</h3>
-              <p>Torah is entrusted to Israel. This path approaches as a respectful guest, with gratitude and care.</p>
+              <h3>Torah Belongs to Israel</h3>
+              <p>We approach the Torah as students from the nations, with gratitude and humility, not as owners or replacers.</p>
             </article>
             <article className="feature-card">
-              <h3>Light for the nations</h3>
-              <p>Each portion asks what universal wisdom may shape justice, mercy, speech, family, and responsibility.</p>
+              <h3>Light for the Nations</h3>
+              <p>Each parsha may reveal universal themes: justice, mercy, speech, idolatry, responsibility, family, humility, and the fear of Heaven.</p>
             </article>
             <article className="feature-card">
-              <h3>Keep clear boundaries</h3>
-              <p>Questions of Jewish law, conversion, or religious rulings belong with a qualified rabbi or Jewish educator.</p>
+              <h3>Rabbinic Commentary Reference</h3>
+              <p>Where appropriate, we link to classical Jewish sources and commentary through Sefaria for teacher-guided study.</p>
+            </article>
+            <article className="feature-card">
+              <h3>Noahide Reflection</h3>
+              <p>The focus is practical: what can a person from the nations learn, repair, avoid, or strengthen this week?</p>
             </article>
           </div>
           <div className="hero-actions">
-            <a
-              className="button secondary"
-              href="https://luminanexus-noahide-parchat.richardatf.chatgpt.site"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Open Noahide Parchat
+            <a className="button primary" href="/noahide-parcha.html">
+              Open Weekly Parcha
+            </a>
+            <a className="button secondary" href="/sources.html">
+              Open Source Library
+            </a>
+            <a className="button secondary" href="#chavruta">
+              Ask Chavruta / Havari
             </a>
           </div>
         </section>
