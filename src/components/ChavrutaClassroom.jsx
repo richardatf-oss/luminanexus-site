@@ -1,6 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 
 const STORAGE_KEY = "chavrutaStudentProfile";
+const MODES = new Set([
+  "hebrew-classroom",
+  "track-placement",
+  "teacher-planning",
+  "source-library",
+  "noahide-parcha",
+]);
 
 const defaultProfile = {
   displayName: "",
@@ -33,6 +40,36 @@ function ChavrutaClassroom() {
     } catch {
       setProfile(defaultProfile);
     }
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const requestedMode = params.get("chavrutaMode");
+    const requestedQuestion = params.get("chavrutaQuestion");
+
+    if (MODES.has(requestedMode)) {
+      setMode(requestedMode);
+    }
+
+    if (requestedQuestion) {
+      setQuestion(requestedQuestion.slice(0, 1200));
+    }
+
+    function openWithContext(event) {
+      const detail = event.detail || {};
+
+      if (MODES.has(detail.mode)) {
+        setMode(detail.mode);
+      }
+
+      if (typeof detail.question === "string") {
+        setQuestion(detail.question.slice(0, 1200));
+      }
+    }
+
+    window.addEventListener("luminanexus:open-chavruta", openWithContext);
+    return () =>
+      window.removeEventListener("luminanexus:open-chavruta", openWithContext);
   }, []);
 
   const activeProfile = useMemo(
@@ -283,6 +320,21 @@ function ChavrutaClassroom() {
               <option value="source-library">Source Library</option>
               <option value="noahide-parcha">Noahide Parcha</option>
             </select>
+
+            {mode === "noahide-parcha" && (
+              <p className="context-note">
+                Parcha mode offers a structured Noahide reflection with source
+                boundaries. Name the portion rather than asking Chavruta to
+                guess this week’s reading.
+              </p>
+            )}
+
+            {mode === "source-library" && (
+              <p className="context-note">
+                Source Library mode can explain a reference or Hebrew word.
+                Check linked texts in Sefaria for the source itself.
+              </p>
+            )}
 
             <label htmlFor="chavruta-question">Question</label>
 

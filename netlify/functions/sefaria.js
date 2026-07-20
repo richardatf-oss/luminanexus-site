@@ -1,4 +1,4 @@
-exports.handler = async function (event) {
+export async function handler(event) {
   if (event.httpMethod !== 'GET') {
     return {
       statusCode: 405,
@@ -19,7 +19,7 @@ exports.handler = async function (event) {
     }
 
     const encodedRef = encodeURIComponent(ref)
-    const url = `https://www.sefaria.org/api/v3/texts/${encodedRef}?context=0`
+    const url = `https://www.sefaria.org/api/v3/texts/${encodedRef}?version=source&version=translation&return_format=text_only`
 
     const response = await fetch(url, {
       headers: {
@@ -27,14 +27,25 @@ exports.handler = async function (event) {
       },
     })
 
-    const data = await response.json()
+    const responseText = await response.text()
+    let data = {}
+
+    try {
+      data = JSON.parse(responseText)
+    } catch {
+      return {
+        statusCode: 502,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ error: 'Sefaria returned an unreadable response.' }),
+      }
+    }
 
     if (!response.ok) {
       return {
         statusCode: response.status,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          error: data.error || 'Sefaria request failed.',
+          error: data.error || `Sefaria request failed with status ${response.status}.`,
         }),
       }
     }
@@ -53,7 +64,7 @@ exports.handler = async function (event) {
         ref: data.ref || ref,
         he: hebrewVersion ? hebrewVersion.text : '',
         en: englishVersion ? englishVersion.text : '',
-        url: `https://www.sefaria.org/${ref.replaceAll(' ', '.')}`,
+        url: `https://www.sefaria.org/${encodeURIComponent(ref.replaceAll(' ', '.'))}`,
       }),
     }
   } catch (error) {

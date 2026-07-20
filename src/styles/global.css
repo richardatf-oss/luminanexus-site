@@ -9,6 +9,7 @@
   --muted: #667085;
   --border: #e7dfcf;
   --shadow: 0 20px 60px rgba(20, 33, 61, 0.12);
+  --shadow-soft: 0 12px 32px rgba(20, 33, 61, 0.08);
 }
 
 * {
@@ -88,12 +89,31 @@ a {
 }
 
 .nav-links a {
+  position: relative;
+  padding: 0.35rem 0;
   color: var(--navy);
   font-weight: 600;
 }
 
 .nav-links a:hover {
   color: var(--deep-blue);
+}
+
+.nav-links a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--gold);
+  content: "";
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .menu-toggle {
@@ -275,6 +295,103 @@ h3 {
   color: var(--muted);
 }
 
+.study-doorways {
+  max-width: none;
+  padding-right: max(1.25rem, calc((100vw - 1180px) / 2));
+  padding-left: max(1.25rem, calc((100vw - 1180px) / 2));
+  background:
+    radial-gradient(circle at 82% 10%, rgba(242, 193, 78, 0.22), transparent 28%),
+    linear-gradient(180deg, #fffdf8 0%, #f5f8ff 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.doorway-heading {
+  max-width: 1180px;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  align-items: end;
+  gap: 3rem;
+}
+
+.doorway-heading > * {
+  margin-bottom: 0;
+}
+
+.study-path-grid {
+  max-width: 1180px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.study-path-card {
+  position: relative;
+  grid-column: span 2;
+  min-height: 285px;
+  padding: 1.6rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.study-path-card:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.study-path-card:hover,
+.study-path-card:focus-visible {
+  border-color: rgba(31, 59, 115, 0.45);
+  box-shadow: var(--shadow);
+  transform: translateY(-4px);
+}
+
+.study-path-card h3 {
+  max-width: 240px;
+  margin-top: 2.2rem;
+}
+
+.study-path-card p:not(.eyebrow) {
+  color: var(--muted);
+}
+
+.study-path-marker {
+  position: absolute;
+  top: 0.8rem;
+  right: 1.1rem;
+  color: rgba(31, 59, 115, 0.1);
+  font-size: 5.5rem;
+  line-height: 1;
+}
+
+.study-path-action {
+  position: absolute;
+  right: 1.6rem;
+  bottom: 1.4rem;
+  left: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  color: var(--deep-blue);
+  font-family: Arial, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.boundary-line {
+  max-width: 980px;
+  margin: 2rem auto 0;
+  padding: 1.1rem 1.35rem;
+  background: var(--soft-gold);
+  border: 1px solid #ead89f;
+  border-left: 5px solid var(--gold);
+  border-radius: 16px;
+  color: var(--navy);
+  text-align: center;
+}
+
 .two-column {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -308,6 +425,14 @@ h3 {
 .track-card {
   display: flex;
   flex-direction: column;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.feature-card:hover,
+.track-card:hover {
+  border-color: rgba(31, 59, 115, 0.28);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-2px);
 }
 
 .feature-card > p:last-of-type,
@@ -325,6 +450,9 @@ h3 {
 
 .noahide-path {
   border-top: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 12% 5%, rgba(242, 193, 78, 0.2), transparent 24%),
+    var(--cream);
 }
 
 a:focus-visible,
@@ -653,6 +781,21 @@ textarea:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .doorway-heading,
+  .study-path-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .doorway-heading {
+    gap: 1rem;
+  }
+
+  .study-path-card,
+  .study-path-card:nth-child(4) {
+    grid-column: auto;
+    min-height: 260px;
+  }
+
   .hero-card {
     max-width: 420px;
   }
@@ -818,6 +961,28 @@ textarea:focus-visible {
   color: #5b6680;
   font-size: 1rem;
   line-height: 1.55;
+}
+
+.context-note {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  background: var(--soft-gold);
+  border: 1px solid #ead89f;
+  border-radius: 14px;
+  color: var(--navy);
+  font-size: 0.95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .error {

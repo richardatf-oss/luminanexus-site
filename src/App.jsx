@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ChavrutaClassroom from "./components/ChavrutaClassroom.jsx";
 import DoorwayFinder from "./components/DoorwayFinder.jsx";
+import StudyDoorways from "./components/StudyDoorways.jsx";
 
 const zeffyLink =
   "https://www.zeffy.com/en-US/donation-form/luminanexus-a-digital-sanctuary-of-light";
@@ -64,40 +65,24 @@ function App() {
               Mission
             </a>
 
+            <a href="#study-doorways" onClick={closeMenu}>
+              Doorways
+            </a>
+
             <a href="#ivrit-haor" onClick={closeMenu}>
               Ivrit HaOr
-            </a>
-
-            <a href="#schools" onClick={closeMenu}>
-              Schools
-            </a>
-
-            <a href="#resources" onClick={closeMenu}>
-              Resources
-            </a>
-
-            <a href="/sources.html" onClick={closeMenu}>
-              Sources
             </a>
 
             <a href="/noahide-parcha.html" onClick={closeMenu}>
               Noahide Parcha
             </a>
 
-            <a href="#teacher-dashboard" onClick={closeMenu}>
-              Dashboard
+            <a href="#resources" onClick={closeMenu}>
+              Resources
             </a>
 
             <a href="#chavruta" onClick={closeMenu}>
-              Chavruta
-            </a>
-
-            <a href="#tracks" onClick={closeMenu}>
-              Tracks
-            </a>
-
-            <a href="#pilot" onClick={closeMenu}>
-              Pilot
+              Chavruta / Havari
             </a>
 
             <a href="#support" onClick={closeMenu}>
@@ -123,20 +108,12 @@ function App() {
             </p>
 
             <div className="hero-actions">
-              <a className="button primary" href="#ivrit-haor">
-                Explore Ivrit HaOr
+              <a className="button primary" href="#study-doorways">
+                Choose Your Doorway
               </a>
 
               <a className="button secondary" href="#chavruta">
                 Open Chavruta
-              </a>
-
-              <a className="button secondary" href="#resources">
-                View Resources
-              </a>
-
-              <a className="button secondary" href="#find-your-doorway">
-                Find Your Doorway
               </a>
 
               <a className="button secondary" href="#support">
@@ -199,6 +176,8 @@ function App() {
             </article>
           </div>
         </section>
+
+        <StudyDoorways />
 
         <section id="ivrit-haor" className="section warm">
           <div className="section-heading">
@@ -649,7 +628,7 @@ function App() {
             <a className="button secondary" href="/sources.html">
               Open Source Library
             </a>
-            <a className="button secondary" href="#chavruta">
+            <a className="button secondary" href="/?chavrutaMode=noahide-parcha#chavruta">
               Ask Chavruta / Havari
             </a>
           </div>
