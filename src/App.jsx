@@ -389,9 +389,9 @@ function App() {
               <h3>Aleph Track Workbook</h3>
               <p>
                 First Beginning. A gentle student workbook for Hebrew
-                directionality, letter recognition, tracing, Aleph and Ayin, Bet
-                and Vet, and early Hebrew confidence. This track is being
-                expanded lesson by lesson.
+                directionality, Aleph and Ayin, the “ahhh” Stick Vowels, Bet and
+                Vet, the Pea Vowel, tracing, confidence checks, and early Hebrew
+                confidence. The current printable edition is 31 pages.
               </p>
               <a className="button secondary" href="/aleph-track.html">
                 Open Aleph Track
