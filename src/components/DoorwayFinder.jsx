@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { chooseTrackKey } from "../data/placement.js";
 
 const questions = [
   {
@@ -29,6 +30,28 @@ const questions = [
       { label: "I begin by finding individual letters", value: 0 },
       { label: "I can try building the sounds", value: 1 },
       { label: "I can read some words and seek meaning", value: 2 },
+    ],
+  },
+  {
+    eyebrow: "Letter check",
+    prompt: "Which letter is Mem?",
+    visual: <p>Choose the letter itself, or choose “I’m still learning.”</p>,
+    answers: [
+      { label: "ש", value: 0 },
+      { label: "מ", value: 2 },
+      { label: "א", value: 0 },
+      { label: "I’m still learning these letters", value: 0 },
+    ],
+  },
+  {
+    eyebrow: "Reading check",
+    prompt: "Which sound matches this pointed word?",
+    visual: <div className="doorway-hebrew" dir="rtl" lang="he">מִי</div>,
+    answers: [
+      { label: "mah", value: 0 },
+      { label: "mee", value: 2 },
+      { label: "moh", value: 0 },
+      { label: "I’m still learning to read pointed words", value: 0 },
     ],
   },
 ];
@@ -64,10 +87,7 @@ const tracks = {
 };
 
 function chooseTrack(scores) {
-  const total = scores.reduce((sum, score) => sum + score, 0);
-  if (total <= 2) return tracks.Aleph;
-  if (total <= 4) return tracks.Bet;
-  return tracks.Gimel;
+  return tracks[chooseTrackKey(scores)];
 }
 
 export default function DoorwayFinder() {
@@ -98,7 +118,7 @@ export default function DoorwayFinder() {
           <h2>Not a test. A place to begin.</h2>
         </div>
         <p>
-          Three gentle questions can suggest a starting track. The result is a
+          Five gentle questions can suggest a starting track. The result is a
           doorway, not a label—and students may move as confidence grows.
         </p>
       </div>
@@ -117,7 +137,7 @@ export default function DoorwayFinder() {
             <div className="doorway-answers" role="group" aria-label={questions[step].prompt}>
               {questions[step].answers.map((option) => (
                 <button key={option.label} type="button" onClick={() => answer(option.value)}>
-                  <span>{option.label}</span><span aria-hidden="true">→</span>
+                  <span lang={/[\u0590-\u05ff]/.test(option.label) ? "he" : undefined}>{option.label}</span><span aria-hidden="true">→</span>
                 </button>
               ))}
             </div>
