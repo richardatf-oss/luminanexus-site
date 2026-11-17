@@ -10,6 +10,8 @@ const tracks = [
   {
     letter: "א",
     title: "Aleph Track",
+    page: "/aleph-track.html",
+    pdf: "/downloads/Aleph_Track_Printable.pdf",
     subtitle: "First Beginning",
     image: "/images/aleph-doorway.webp",
     alt: "An illustrated Hebrew workbook beside a glowing doorway",
@@ -19,6 +21,8 @@ const tracks = [
   {
     letter: "ב",
     title: "Bet Track",
+    page: "/bet-track.html",
+    pdf: "/downloads/Bet_Track_Printable.pdf",
     subtitle: "Building the Word",
     image: "/images/bet-building-words.webp",
     alt: "Illustrated Hebrew letter blocks arranged for word-building",
@@ -28,6 +32,8 @@ const tracks = [
   {
     letter: "ג",
     title: "Gimel Track",
+    page: "/gimel-track.html",
+    pdf: "/downloads/Gimel_Track_Printable.pdf",
     subtitle: "Reading with Meaning",
     image: "/images/gimel-reading-meaning.webp",
     alt: "An illustrated path of Hebrew letters rising from an open book",
@@ -391,7 +397,7 @@ function App() {
                 First Beginning. A gentle student workbook for Hebrew
                 directionality, Aleph and Ayin, the “ahhh” Stick Vowels, Bet and
                 Vet, the Pea Vowel, tracing, confidence checks, and early Hebrew
-                confidence. The current printable edition is 31 pages.
+                confidence. The current printable edition is 34 pages.
               </p>
               <a className="button secondary" href="/aleph-track.html">
                 Open Aleph Track
@@ -577,6 +583,7 @@ function App() {
                 <h3>{track.title}</h3>
                 <p className="track-subtitle">{track.subtitle}</p>
                 <p>{track.description}</p>
+                <div className="hero-actions"><a className="button primary" href={track.page}>Open {track.title}</a><a className="button secondary" href={track.pdf}>Download workbook</a></div>
               </article>
             ))}
           </div>
@@ -585,14 +592,13 @@ function App() {
         <section id="noahide-parcha" className="section noahide-path">
           <div className="section-heading">
             <p className="eyebrow">A Separate Study Path</p>
-            <h2>Weekly Noahide Torah Parcha</h2>
+            <h2>Noahide Torah Study Guide</h2>
             <p className="section-intro">
               The weekly Torah portion through the eyes of the nations.
             </p>
             <p className="section-intro">
               Noahide Parcha is a separate LuminaNexus study path for non-Jews
-              who honor Torah and the Jewish people. It offers a humble weekly
-              reflection on the Torah portion, supported by rabbinic commentary
+              who honor Torah and the Jewish people. It provides a study framework and a sample reflection, with links to find the weekly reading and explore rabbinic commentary
               references and source links, while carefully avoiding imitation of
               Jewish obligation or replacement of Jewish authority.
             </p>
@@ -623,7 +629,7 @@ function App() {
           </div>
           <div className="hero-actions">
             <a className="button primary" href="/noahide-parcha.html">
-              Open Weekly Parcha
+              Open Noahide Study Guide
             </a>
             <a className="button secondary" href="/sources.html">
               Open Source Library
