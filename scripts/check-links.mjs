@@ -56,8 +56,21 @@ for (const htmlFile of htmlFiles) {
   }
 }
 
+// React links often come from track data rather than literal HTML attributes.
+const sourceFiles = listFiles(resolve("src")).filter((path) => /\.(jsx?|tsx?)$/.test(path));
+for (const sourceFile of sourceFiles) {
+  const source = readFileSync(sourceFile, "utf8");
+  const targets = source.matchAll(/["'](\/[^"'\s]+\.(?:html|pdf|docx|webp|png|svg|jpg)(?:[?#][^"']*)?)["']/g);
+  for (const [, rawTarget] of targets) {
+    const pathOnly = rawTarget.split(/[?#]/)[0];
+    if (!existsSync(join(outputDirectory, pathOnly.slice(1)))) {
+      missing.push(`${relative(resolve("."), sourceFile)} -> ${rawTarget}`);
+    }
+  }
+}
+
 if (missing.length) {
   throw new Error(`Missing internal targets:\n${missing.join("\n")}`);
 }
 
-console.log(`Validated internal targets across ${htmlFiles.length} HTML pages.`);
+console.log(`Validated internal targets across ${htmlFiles.length} HTML pages and ${sourceFiles.length} React/JavaScript source files.`);
