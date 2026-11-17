@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const pathways = [
   {
     marker: "א",
@@ -41,7 +43,16 @@ const pathways = [
   },
 ];
 
+const guides = [
+  { audience: ["Learners", "Educators"], time: "15 minutes", steps: ["Take the three-question doorway finder below.", "Open the workbook for your recommended track.", "Practice one letter or sound before moving to a new one."], practice: "Find the same Hebrew letter three times on a page. Trace it, then name or sound it with help.", reflection: "Which shape can I recognize without a hint?", resource: "/aleph-track.html", label: "Start Aleph Track" },
+  { audience: ["Learners", "Study partners"], time: "20 minutes", steps: ["Read the weekly reflection and its linked passage.", "Separate the words of the passage from commentary and your own interpretation.", "Choose one practical act of justice, kindness, or responsibility."], practice: "Write one observation and one question. Discuss what the source supports and what remains uncertain.", reflection: "What can I put into practice this week?", resource: "/sources.html", label: "Follow the sources" },
+  { audience: ["Learners", "Study partners", "Educators"], time: "20 minutes", steps: ["Choose a passage from the source library.", "Read its surrounding verses and identify the speaker and situation.", "Compare a linked commentary with your first understanding."], practice: "Keep a source notebook: reference, short paraphrase, commentary, and an open question.", reflection: "What changed when I read the surrounding passage?", resource: "/?chavrutaMode=hebrew-classroom#chavruta", label: "Bring a question" },
+  { audience: ["Educators"], time: "30 minutes", steps: ["Use the placement quick-check to observe readiness.", "Choose one goal and the matching printable workbook.", "Model the task, practice together, and finish with a gentle review."], practice: "Plan a short session: five minutes of review, ten minutes of guided practice, and five minutes of sharing. Introduce each vowel before independent use.", reflection: "What can each learner do more confidently now?", resource: "/placement-quick-check.html", label: "Open placement quick-check" },
+  { audience: ["Learners", "Study partners", "Educators"], time: "10 minutes", steps: ["Choose the Chavruta mode that matches your task.", "Ask one focused question and include the source or letter you are studying.", "Check the response against your workbook or linked source."], practice: "Try: Help me review one Hebrew letter I know, then give me one small practice task.", reflection: "Can I explain the answer in my own words?", resource: "/teacher-guide.html", label: "Read the teacher guidance" },
+];
+
 export default function StudyDoorways() {
+  const [audience, setAudience] = useState("Everyone");
   return (
     <section id="study-doorways" className="section study-doorways">
       <div className="section-heading doorway-heading">
@@ -55,20 +66,39 @@ export default function StudyDoorways() {
         </p>
       </div>
 
-      <div className="study-path-grid">
-        {pathways.map((path) => (
-          <a className="study-path-card" href={path.href} key={path.title}>
-            <span className="study-path-marker" aria-hidden="true" dir="rtl">
-              {path.marker}
-            </span>
-            <span className="eyebrow">{path.eyebrow}</span>
-            <h3>{path.title}</h3>
-            <p>{path.text}</p>
-            <span className="study-path-action">
-              {path.action} <span aria-hidden="true">→</span>
-            </span>
-          </a>
+      <img className="section-banner" src="/images/study-courtyard.webp" alt="Sunlit arches surrounding an open study book" loading="lazy" />
+      <div className="gate-filters" role="group" aria-label="Choose study audience">
+        {["Everyone", "Learners", "Study partners", "Educators"].map((option) => (
+          <button className="button secondary" type="button" key={option} aria-pressed={audience === option} onClick={() => setAudience(option)}>{option}</button>
         ))}
+      </div>
+      <p className="gate-count" role="status">{pathways.filter((_, i) => audience === "Everyone" || guides[i].audience.includes(audience)).length} gates for {audience.toLowerCase()}</p>
+      <div className="study-path-grid">
+        {pathways.map((path, i) => {
+          const guide = guides[i];
+          if (audience !== "Everyone" && !guide.audience.includes(audience)) return null;
+          return (
+            <article className="study-path-card expanded-gate" key={path.title}>
+              <span className="study-path-marker" aria-hidden="true" dir="rtl">{path.marker}</span>
+              <span className="eyebrow">{path.eyebrow} · {guide.time}</span>
+              <h3>{path.title}</h3>
+              <p>{path.text}</p>
+              <a className="study-path-action" href={path.href}>{path.action} <span aria-hidden="true">→</span></a>
+              <details>
+                <summary>Open this gate’s study guide</summary>
+                <h4>Your first steps</h4>
+                <ol>{guide.steps.map((step) => <li key={step}>{step}</li>)}</ol>
+                <h4>Try it</h4><p>{guide.practice}</p>
+                <h4>Pause and reflect</h4><p>{guide.reflection}</p>
+                <a href={guide.resource}>{guide.label} →</a>
+              </details>
+            </article>
+          );
+        })}
+      </div>
+      <div className="gate-study-invitation">
+        <img src="/images/shared-study.webp" alt="Open notebooks ready for shared study in a sunlit library" loading="lazy" />
+        <div><p className="eyebrow">Learn together</p><h3>One source. Two perspectives. A better question.</h3><p>Take turns reading a short passage. Each partner shares an observation before either offers an interpretation. Return to the text together, and keep one question for your next session.</p><a className="button secondary" href="#chavruta">Continue with Chavruta / Havari</a></div>
       </div>
 
       <p className="boundary-line">

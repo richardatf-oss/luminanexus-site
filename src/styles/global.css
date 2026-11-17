@@ -1057,3 +1057,21 @@ textarea:focus-visible {
     padding-top: 0.6rem;
   }
 }
+
+/* Expanded study gates */
+.gate-filters { display:flex; flex-wrap:wrap; gap:.65rem; margin:1.5rem 0 .5rem; }
+.gate-filters button { cursor:pointer; font:inherit; }
+.gate-filters button[aria-pressed="true"] { background:#243f36; color:#fff; border-color:#243f36; }
+.gate-count { color:#526158; font-size:.95rem; }
+.expanded-gate { display:flex; flex-direction:column; }
+.expanded-gate details { margin-top:1.25rem; padding-top:1rem; border-top:1px solid #d8ded3; }
+.expanded-gate summary { cursor:pointer; font-weight:700; line-height:1.5; }
+.expanded-gate h4 { margin:1.2rem 0 .5rem; }
+.expanded-gate ol { padding-left:1.35rem; }
+.expanded-gate li { margin:.6rem 0; line-height:1.6; }
+.expanded-gate details a { text-decoration:underline; }
+.gate-study-invitation { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:2rem; margin-top:2.5rem; }
+.gate-study-invitation img { width:100%; border-radius:1rem; }
+.gate-study-invitation p { line-height:1.75; }
+.gate-filters button:focus-visible, .expanded-gate summary:focus-visible { outline:3px solid #a16a27; outline-offset:4px; }
+@media(max-width:700px) { .gate-study-invitation { grid-template-columns:1fr; } }
