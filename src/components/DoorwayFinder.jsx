@@ -1,3 +1,4 @@
+import { openChavruta } from "../data/chavruta-navigation.js";
 import { useState } from "react";
 import { chooseTrackKey } from "../data/placement.js";
 
@@ -126,7 +127,7 @@ export default function DoorwayFinder() {
       <div className="doorway-shell" aria-live="polite">
         {!complete ? (
           <div className="doorway-question">
-            <div className="doorway-progress" aria-label={`Question ${step + 1} of ${questions.length}`}>
+            <div className="doorway-progress" style={{ gridTemplateColumns: `repeat(${questions.length}, 1fr)` }} aria-label={`Question ${step + 1} of ${questions.length}`}>
               {questions.map((_, index) => (
                 <span key={index} className={index <= step ? "active" : ""} />
               ))}
@@ -157,6 +158,10 @@ export default function DoorwayFinder() {
               <div className="hero-actions">
                 <a className="button primary" href={result.page}>Open {result.title}</a>
                 <a className="button secondary" href={result.pdf}>Printable Workbook</a>
+                <button className="button secondary" type="button" onClick={() => {
+                  window.history.pushState(null, "", "#chavruta");
+                  openChavruta({ track: result.title.split(" ")[0], mode: "hebrew-classroom" });
+                }}>Use {result.title} in Chavruta</button>
                 <button className="text-button" type="button" onClick={reset}>Start again</button>
               </div>
             </div>

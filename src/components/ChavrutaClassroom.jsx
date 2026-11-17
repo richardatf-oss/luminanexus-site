@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const STORAGE_KEY = "chavrutaStudentProfile";
 const MODES = new Set([
@@ -21,7 +21,8 @@ function ChavrutaClassroom() {
   const [question, setQuestion] = useState("");
   const [mode, setMode] = useState("hebrew-classroom");
   const [answer, setAnswer] = useState("");
-  const [nextStep, setNextStep] = useState("");
+  const inFlight = useRef(false);
+  const [profileStatus, setProfileStatus] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -34,7 +35,10 @@ function ChavrutaClassroom() {
 
         setProfile({
           ...defaultProfile,
-          ...parsedProfile,
+          displayName: typeof parsedProfile?.displayName === "string" ? parsedProfile.displayName.slice(0, 60) : "",
+          gradeBand: ["K-2", "3-5", "6-8", "9-12", "Adult / Teacher"].includes(parsedProfile?.gradeBand) ? parsedProfile.gradeBand : defaultProfile.gradeBand,
+          track: ["Aleph", "Bet", "Gimel"].includes(parsedProfile?.track) ? parsedProfile.track : "Aleph",
+          currentSkill: typeof parsedProfile?.currentSkill === "string" ? parsedProfile.currentSkill.slice(0, 200) : defaultProfile.currentSkill,
         });
       }
     } catch {
@@ -57,6 +61,10 @@ function ChavrutaClassroom() {
 
     function openWithContext(event) {
       const detail = event.detail || {};
+      if (["Aleph", "Bet", "Gimel"].includes(detail.track)) {
+        setProfile(current => ({ ...current, track: detail.track }));
+        setProfileStatus(`${detail.track} Track selected for this session. Save your profile to remember it on this device.`);
+      }
 
       if (MODES.has(detail.mode)) {
         setMode(detail.mode);
@@ -102,27 +110,31 @@ function ChavrutaClassroom() {
       ...cleanedProfile,
     });
 
-    window.localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({
-        ...defaultProfile,
-        ...cleanedProfile,
-      })
-    );
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(cleanedProfile));
+      setProfileStatus("Profile saved on this device.");
+    } catch {
+      setProfileStatus("Your profile is available for this session, but this browser could not save it on this device.");
+    }
 
     setError("");
   }
 
   function clearProfile() {
-    window.localStorage.removeItem(STORAGE_KEY);
+    try {
+      window.localStorage.removeItem(STORAGE_KEY);
+      setProfileStatus("Profile cleared from this device.");
+    } catch {
+      setProfileStatus("Profile reset for this session. This browser could not remove the saved copy.");
+    }
     setProfile(defaultProfile);
     setAnswer("");
-    setNextStep("");
     setError("");
   }
 
   async function askChavruta(event) {
     event.preventDefault();
+    if (inFlight.current) return;
 
     const trimmedQuestion = question.trim();
 
@@ -131,10 +143,10 @@ function ChavrutaClassroom() {
       return;
     }
 
+    inFlight.current = true;
     setLoading(true);
     setError("");
     setAnswer("");
-    setNextStep("");
 
     try {
       const response = await fetch("/.netlify/functions/chavruta", {
@@ -178,16 +190,16 @@ function ChavrutaClassroom() {
       }
 
       setAnswer(answerText);
-      setNextStep(data.nextStep || "");
     } catch (err) {
       setError(err.message || "Chavruta could not answer.");
     } finally {
+      inFlight.current = false;
       setLoading(false);
     }
   }
 
   function handleQuestionKeyDown(event) {
-    if (event.key === "Enter" && !event.shiftKey) {
+    if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
       event.preventDefault();
       askChavruta(event);
     }
@@ -198,7 +210,7 @@ function ChavrutaClassroom() {
       <div className="section-heading">
         <p className="eyebrow">Ask Chavruta</p>
 
-        <h2>A gentle Hebrew helper for every student’s beginning.</h2>
+        <h2 tabIndex={-1}>A gentle Hebrew helper for every student’s beginning.</h2>
 
         <p className="section-intro">
           Create a simple student profile, choose a starting track, and ask
@@ -221,6 +233,7 @@ function ChavrutaClassroom() {
             <label htmlFor="student-name">Name or nickname</label>
             <input
               id="student-name"
+              maxLength={60}
               type="text"
               value={profile.displayName}
               onChange={(event) =>
@@ -256,6 +269,7 @@ function ChavrutaClassroom() {
             <label htmlFor="current-skill">Current skill</label>
             <input
               id="current-skill"
+              maxLength={200}
               type="text"
               value={profile.currentSkill}
               onChange={(event) =>
@@ -278,10 +292,13 @@ function ChavrutaClassroom() {
               </button>
             </div>
 
+            <p role="status">{profileStatus}</p>
             <p className="note">
               Use a first name or nickname only. Your profile is saved on this
-              device and is used to personalize Chavruta’s answer when you ask a
-              question.
+              device when you save it. When you ask a question, your question,
+              nickname, grade band, track, and current skill are sent to our
+              answer service and OpenAI to generate a response. You can leave the
+              nickname blank. Please avoid private personal information.
             </p>
             <p className="note">
               Chavruta is not a rabbi or religious authority.
@@ -307,7 +324,7 @@ function ChavrutaClassroom() {
         <article className="feature-card">
           <h3>Ask Chavruta</h3>
 
-          <form className="form-stack" onSubmit={askChavruta}>
+          <form className="form-stack" onSubmit={askChavruta} aria-busy={loading}>
             <label htmlFor="chavruta-mode">Question type</label>
             <select
               id="chavruta-mode"
@@ -340,6 +357,7 @@ function ChavrutaClassroom() {
 
             <textarea
               id="chavruta-question"
+              maxLength={1200}
               value={question}
               onChange={(event) => setQuestion(event.target.value)}
               onKeyDown={handleQuestionKeyDown}
@@ -360,21 +378,17 @@ function ChavrutaClassroom() {
             </button>
           </form>
 
-          {error && <p className="error">{error}</p>}
+          <p role="status">{loading ? "Chavruta is preparing your answer…" : ""}</p>
+          {error && <p className="error" role="alert">{error}</p>}
 
           {answer && (
-            <div className="answer-box">
+            <div className="answer-box" role="region" aria-label="Chavruta answer" aria-live="polite">
               <h4>Chavruta says:</h4>
               <p>{answer}</p>
             </div>
           )}
 
-          {nextStep && (
-            <div className="pilot-box">
-              <h4>Next step</h4>
-              <p>{nextStep}</p>
-            </div>
-          )}
+
         </article>
       </div>
     </section>
