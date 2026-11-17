@@ -1,3 +1,17 @@
+export function validateStudyRequest(body) {
+  if (!body || typeof body !== "object" || Array.isArray(body)) return "Please send a study question.";
+  if (typeof body.question !== "string" || !body.question.trim()) return "Question is required.";
+  if (body.question.length > 1200) return "Please keep your question to 1,200 characters.";
+  if (body.profile !== undefined && (!body.profile || typeof body.profile !== "object" || Array.isArray(body.profile))) return "Please check your student profile.";
+  const profile = body.profile || {};
+  for (const [field, limit] of [["name",60],["currentSkill",200],["gradeBand",30],["track",10]]) {
+    if (profile[field] !== undefined && (typeof profile[field] !== "string" || profile[field].length > limit)) return "Please check your student profile fields.";
+  }
+  if (profile.track && !["Aleph","Bet","Gimel"].includes(profile.track)) return "Please choose a valid Hebrew track.";
+  if (profile.gradeBand && !["K-2","3-5","6-8","9-12","Adult / Teacher"].includes(profile.gradeBand)) return "Please choose a valid grade band.";
+  return null;
+}
+
 export async function handler(event) {
   const headers = {
     "Content-Type": "application/json",
@@ -25,19 +39,13 @@ export async function handler(event) {
   }
 
   try {
+    let body;
+    try { body = JSON.parse(event.body || "{}"); }
+    catch { return { statusCode: 400, headers, body: JSON.stringify({ error: "Please send a valid study question." }) }; }
+    const validationError = validateStudyRequest(body);
+    if (validationError) return { statusCode: 400, headers, body: JSON.stringify({ error: validationError }) };
     const apiKey = process.env.OPENAI_API_KEY;
-
-    if (!apiKey) {
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({
-          error: "Missing OPENAI_API_KEY in Netlify environment variables.",
-        }),
-      };
-    }
-
-    const body = JSON.parse(event.body || "{}");
+    if (!apiKey) return { statusCode: 503, headers, body: JSON.stringify({ error: "Chavruta is temporarily unavailable. Please try again later." }) };
 
     const question = String(body.question || "").trim();
     const profile = body.profile || {};

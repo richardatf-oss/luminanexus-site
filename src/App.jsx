@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { openChavruta } from "./data/chavruta-navigation.js";
+import { useEffect, useState } from "react";
 import ChavrutaClassroom from "./components/ChavrutaClassroom.jsx";
 import DoorwayFinder from "./components/DoorwayFinder.jsx";
 import StudyDoorways from "./components/StudyDoorways.jsx";
@@ -44,6 +45,32 @@ const tracks = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    function activateLink(event) {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = event.target.closest?.("a[href]");
+      if (!link || link.target === "_blank" || link.hasAttribute("download")) return;
+      const url = new URL(link.href, window.location.href);
+      if (url.origin !== window.location.origin || url.pathname !== window.location.pathname || url.hash !== "#chavruta") return;
+      event.preventDefault();
+      setMenuOpen(false);
+      window.history.pushState(null, "", url);
+      openChavruta({ mode: url.searchParams.get("chavrutaMode"), question: url.searchParams.get("chavrutaQuestion") ?? undefined });
+    }
+    function alignInitialChavruta() {
+      if (window.location.hash === "#chavruta") openChavruta();
+    }
+    document.addEventListener("click", activateLink);
+    window.addEventListener("hashchange", alignInitialChavruta);
+    window.addEventListener("load", alignInitialChavruta, { once: true });
+    alignInitialChavruta();
+    return () => {
+      document.removeEventListener("click", activateLink);
+      window.removeEventListener("hashchange", alignInitialChavruta);
+      window.removeEventListener("load", alignInitialChavruta);
+    };
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
