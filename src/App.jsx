@@ -272,18 +272,14 @@ function App() {
             </div>
 
             <div className="feature-card">
-              <h3>Curriculum materials in development</h3>
+              <h3>Available now and growing</h3>
 
               <p>
-                LuminaNexus Foundation is developing a Master Curriculum
-                Framework, Teacher Guide, Aleph / Bet / Gimel Track maps,
-                student worksheets, printable Hebrew charts, and school-facing
-                overview materials.
+                The Teacher Guide, placement quick-check, and Aleph, Bet, and Gimel printable workbooks are available now. Online Aleph lessons include vowel examples and practice with feedback.
               </p>
 
               <p>
-                These resources are being shaped through the pilot phase and
-                will grow into downloadable classroom materials.
+                Additional lesson sequences, teacher answer keys, and classroom resources are planned as the pilot develops.
               </p>
             </div>
           </div>
