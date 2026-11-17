@@ -1,0 +1,5 @@
+@font-face { font-family: "Frank Ruhl Libre"; src: url("/fonts/FrankRuhlLibre.ttf") format("truetype"); font-weight:100 900; font-style:normal; font-display:swap; unicode-range:U+0590-05FF,U+FB1D-FB4F; }
+body { font-family:"Frank Ruhl Libre", Georgia, "Times New Roman", serif; }
+.hebrew, .hebrew-large, .doorway-hebrew, .track-letter, .brand-mark, .study-path-marker, .result-title > span, [lang="he"], [dir="rtl"] { font-family:"Frank Ruhl Libre", serif; }
+.reading-direction { display:flex; direction:ltr; align-items:center; justify-content:space-between; gap:.4rem; font-family:Arial,sans-serif; font-size:clamp(.8rem,3vw,1rem); }
+.reading-direction strong { white-space:nowrap; }
