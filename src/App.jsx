@@ -28,7 +28,7 @@ const tracks = [
     image: "/images/bet-building-words.webp",
     alt: "Illustrated Hebrew letter blocks arranged for word-building",
     description:
-      "For students who know some letters and are ready for vowels, syllables, decoding, vocabulary, roots, and simple phrases.",
+      "For students ready to blend familiar sounds, learn vowel patterns, close syllables, and decode words and short greetings with meaning.",
   },
   {
     letter: "ג",
@@ -436,9 +436,7 @@ function App() {
             <article className="feature-card">
               <h3>Bet Track Workbook</h3>
               <p>
-                Building the Word. A developing track for students ready to move
-                from letter recognition into right-to-left word-building, simple
-                sounds, syllables, vowels, and early decoding.
+                Building the Word. Six illustrated lessons move from blending ahhh and eee to closed words, oh, oo, eh and ay, and short greetings. Includes online practice and a matching 16 page printable with teacher answers.
               </p>
               <a className="button secondary" href="/bet-track.html">
                 Open Bet Track

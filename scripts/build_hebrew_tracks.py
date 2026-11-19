@@ -247,6 +247,10 @@ def lesson_page(doc, n, item, track):
 
 
 def make_track(track):
+    if track == "Bet":
+        import subprocess, sys
+        subprocess.run([sys.executable, str(ROOT / "scripts" / "build_bet_track.py")], check=True)
+        return PDF_DIR / "Bet_Track_Printable.pdf"
     lessons=FOUNDATION + [dict(title=a,focus=b,idea=c,notice=d,examples=e) for a,b,c,d,e in TRACKS[track]]
     doc=Document(); configure(doc, track); cover(doc, track, len(lessons))
     for n,item in enumerate(lessons,1): lesson_page(doc,n,item,track)
