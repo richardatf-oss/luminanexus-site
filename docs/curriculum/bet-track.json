@@ -1,0 +1,590 @@
+{
+  "title": "Bet Track Building and Reading Words",
+  "lessons": [
+    {
+      "id": 1,
+      "title": "Blend ahhh and eee",
+      "goal": "Blend a familiar consonant and vowel without guessing a whole word.",
+      "new": [
+        [
+          "מ",
+          "Mem says m."
+        ],
+        [
+          "א",
+          "Aleph carries the vowel sound."
+        ],
+        [
+          "בּ ב",
+          "Bet says b; Vet says v."
+        ]
+      ],
+      "teach": [
+        "The stick and the stick with a handle say ahhh in these examples. The pea beneath says eee.",
+        "Find the letter, look beneath, then join the sounds: m plus ahhh makes mah; m plus eee makes mee.",
+        "A dot inside Mem keeps its m sound. A final Aleph is quiet in our two family words."
+      ],
+      "model": [
+        [
+          "מַ מִ",
+          "mah / mee"
+        ],
+        [
+          "בַּ בִּ בִ",
+          "bah / bee / vee"
+        ],
+        [
+          "אִמָּא אַבָּא",
+          "ee-ma / ah-ba"
+        ]
+      ],
+      "words": [
+        [
+          "אִמָּא",
+          "mother"
+        ],
+        [
+          "אַבָּא",
+          "father"
+        ]
+      ],
+      "steps": [
+        "Read each small sound before blending the whole word.",
+        "Point to the mother and father in the picture. Read their labels.",
+        "Say each word again without using the picture to guess."
+      ],
+      "questions": [
+        {
+          "prompt": "Which syllable says mee?",
+          "options": [
+            "מַ",
+            "מִ",
+            "בִּ"
+          ],
+          "answer": 1,
+          "why": "The pea beneath Mem gives eee: mee."
+        },
+        {
+          "prompt": "Which word means father?",
+          "options": [
+            "אִמָּא",
+            "אַבָּא"
+          ],
+          "answer": 1,
+          "why": "Father is אַבָּא, ah-ba."
+        }
+      ],
+      "tasks": [
+        [
+          "Read aloud",
+          "מַ מִ בַּ בִּ בִ"
+        ],
+        [
+          "Circle the word for mother",
+          "אִמָּא אַבָּא"
+        ],
+        [
+          "Copy father and circle its ahhh marks",
+          "אַבָּא"
+        ]
+      ],
+      "check": "I can blend ahhh and eee and read two family words.",
+      "answers": [
+        "Read mah, mee, bah, bee, vee.",
+        "Circle mother, ee-ma.",
+        "Copy father, ah-ba; circle both ahhh marks."
+      ],
+      "alt": "A mother, father, and child together",
+      "answerTargets": [
+        "מַ מִ בַּ בִּ בִ",
+        "אִמָּא",
+        "אַבָּא"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Close a word with a consonant",
+      "goal": "Read the final consonant without adding an extra vowel.",
+      "new": [
+        [
+          "י",
+          "Yud says y at the start of these words."
+        ],
+        [
+          "ד",
+          "Dalet says d."
+        ],
+        [
+          "מ ם",
+          "Mem changes to ם at the end; it still says m."
+        ]
+      ],
+      "teach": [
+        "Read a letter and its vowel, then close with the last consonant. Do not add ahhh after the final letter.",
+        "Yud with the ahhh handle, followed by final Mem, makes yam: sea. Yud plus ahhh and Dalet makes yad: hand.",
+        "Yud can also help write the eee sound after another letter. In מִי, the whole word says mee, meaning who."
+      ],
+      "model": [
+        [
+          "יָ ם",
+          "yah + m = yam"
+        ],
+        [
+          "יָ ד",
+          "yah + d = yad"
+        ],
+        [
+          "מִי",
+          "mee = who"
+        ]
+      ],
+      "words": [
+        [
+          "יָם",
+          "sea"
+        ],
+        [
+          "יָד",
+          "hand"
+        ],
+        [
+          "מִי",
+          "who"
+        ]
+      ],
+      "steps": [
+        "Touch the rightmost letter first.",
+        "Blend the vowel, then finish with m or d.",
+        "Use the sea and hand picture to check meaning after reading."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word means sea?",
+          "options": [
+            "יָד",
+            "מִי",
+            "יָם"
+          ],
+          "answer": 2,
+          "why": "Sea is יָם, yam. The final Mem closes the word."
+        },
+        {
+          "prompt": "How does יָד end?",
+          "options": [
+            "With d, without an added vowel",
+            "With dah"
+          ],
+          "answer": 0,
+          "why": "The last letter is Dalet with no vowel beneath it here. Finish with d."
+        }
+      ],
+      "tasks": [
+        [
+          "Read and close each word",
+          "יָם יָד"
+        ],
+        [
+          "Circle the word for hand",
+          "יָם יָד מִי"
+        ],
+        [
+          "Copy sea and underline its final Mem",
+          "יָם"
+        ]
+      ],
+      "check": "I can close yam and yad without adding a vowel.",
+      "answers": [
+        "Read yam and yad without an extra final vowel.",
+        "Circle hand, yad.",
+        "Copy sea, yam; underline final Mem."
+      ],
+      "alt": "Sea waves and an open hand",
+      "answerTargets": [
+        "יָם יָד",
+        "יָד",
+        "יָם"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Read the over vowel oh",
+      "goal": "Recognize both common oh spellings and blend a word for light.",
+      "new": [
+        [
+          "ר",
+          "Resh says r; follow your teacher."
+        ],
+        [
+          "וֹ",
+          "Vav with the dot over says oh here."
+        ]
+      ],
+      "teach": [
+        "The over vowel says ohhhver oh. Look above the letter.",
+        "Oh may be written as a dot over a letter or with Vav carrying the dot above. Both patterns below say moh.",
+        "Vav is helping write a vowel in וֹ. Do not add a v sound."
+      ],
+      "model": [
+        [
+          "מֹ מוֹ",
+          "moh / moh"
+        ],
+        [
+          "אוֹ ר",
+          "oh + r = or"
+        ],
+        [
+          "אוֹר",
+          "or = light"
+        ]
+      ],
+      "words": [
+        [
+          "אוֹר",
+          "light"
+        ]
+      ],
+      "steps": [
+        "Find the dot above in each model.",
+        "Blend oh and r. Finish with r, without an added vowel.",
+        "Read the word, then point to the light in the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word means light?",
+          "options": [
+            "אוֹר",
+            "יָם",
+            "יָד"
+          ],
+          "answer": 0,
+          "why": "Light is אוֹר, or."
+        },
+        {
+          "prompt": "What does Vav contribute in וֹ?",
+          "options": [
+            "v plus oh",
+            "The oh vowel sound"
+          ],
+          "answer": 1,
+          "why": "In this pattern Vav carries oh. Do not add v."
+        }
+      ],
+      "tasks": [
+        [
+          "Read both spellings with Mem",
+          "מֹ מוֹ"
+        ],
+        [
+          "Circle the word for light",
+          "יָד אוֹר יָם"
+        ],
+        [
+          "Copy light and circle its over dot",
+          "אוֹר"
+        ]
+      ],
+      "check": "I can recognize oh and read or for light.",
+      "answers": [
+        "Both spellings say moh.",
+        "Circle light, or.",
+        "Copy light; circle the dot above Vav."
+      ],
+      "alt": "Sunlight shining through an open window",
+      "answerTargets": [
+        "מֹ מוֹ",
+        "אוֹר",
+        "אוֹר"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Read the belly vowel oo",
+      "goal": "Read both oo patterns and decode two pictured words.",
+      "new": [
+        [
+          "ס",
+          "Samech says s."
+        ],
+        [
+          "ת",
+          "Tav says t. A dot inside does not change its t sound."
+        ],
+        [
+          "וּ",
+          "Vav with a dot in its belly says oo."
+        ]
+      ],
+      "teach": [
+        "A dot touching Vav at its belly gives oo, as in moon. Say oo without adding v.",
+        "Three descending dots beneath a letter also give oo. The two Mem models below both say moo.",
+        "Keep oo smooth between the first and last consonants: s-oo-s and t-oo-t."
+      ],
+      "model": [
+        [
+          "מֻ מוּ",
+          "moo / moo"
+        ],
+        [
+          "סוּס",
+          "soos = horse"
+        ],
+        [
+          "תּוּת",
+          "toot = strawberry"
+        ]
+      ],
+      "words": [
+        [
+          "סוּס",
+          "horse"
+        ],
+        [
+          "תּוּת",
+          "strawberry"
+        ]
+      ],
+      "steps": [
+        "Find the belly dot and the three-dot staircase.",
+        "Read the word before using the picture.",
+        "Point to the horse or a strawberry to show meaning."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word names a horse?",
+          "options": [
+            "תּוּת",
+            "סוּס"
+          ],
+          "answer": 1,
+          "why": "Horse is סוּס, soos."
+        },
+        {
+          "prompt": "Which patterns both say moo?",
+          "options": [
+            "מֻ and מוּ",
+            "מֹ and מִ"
+          ],
+          "answer": 0,
+          "why": "The three-dot staircase and belly Vav both give oo."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the two oo spellings",
+          "מֻ מוּ"
+        ],
+        [
+          "Circle the word for strawberry",
+          "תּוּת סוּס"
+        ],
+        [
+          "Copy horse and circle the belly dot",
+          "סוּס"
+        ]
+      ],
+      "check": "I can read oo without adding v, then say the word meaning.",
+      "answers": [
+        "Both spellings say moo.",
+        "Circle strawberry, toot.",
+        "Copy horse, soos; circle the belly dot."
+      ],
+      "alt": "A standing horse and three strawberries",
+      "answerTargets": [
+        "מֻ מוּ",
+        "תּוּת",
+        "סוּס"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Read eh and ay carefully",
+      "goal": "Distinguish the three eggs from the two side-by-side dots.",
+      "new": [
+        [
+          "ל",
+          "Lamed says l."
+        ],
+        [
+          "ח",
+          "Chet says kh, a throat sound as in Bach."
+        ],
+        [
+          "נ ן",
+          "Nun says n; final ן keeps the n sound."
+        ]
+      ],
+      "teach": [
+        "Three eggs beneath the letter give eh, as in eggs. The two side-by-side dots use our class cue ay, as in brake.",
+        "Many modern Hebrew speakers pronounce both signs as eh. Follow one teacher model consistently; do not mark a familiar community pronunciation wrong.",
+        "Use final Mem and final Nun to close the words. Pictures check meaning; the marks tell you how to read."
+      ],
+      "model": [
+        [
+          "לֶ",
+          "leh"
+        ],
+        [
+          "לֶ חֶ ם",
+          "leh + kheh + m"
+        ],
+        [
+          "לֶחֶם בֵּן",
+          "leh-khem = bread / bayn = son"
+        ]
+      ],
+      "words": [
+        [
+          "לֶחֶם",
+          "bread"
+        ],
+        [
+          "בֵּן",
+          "son"
+        ]
+      ],
+      "steps": [
+        "Point to each vowel and say eh or the class ay cue.",
+        "Read bread slowly, joining the last m without adding a vowel.",
+        "Read son with your teacher: class bayn; often ben in modern Hebrew."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word means bread?",
+          "options": [
+            "לֶחֶם",
+            "תּוּת"
+          ],
+          "answer": 0,
+          "why": "Bread is לֶחֶם, leh-khem."
+        },
+        {
+          "prompt": "Which mark has three eggs?",
+          "options": [
+            "אֵ",
+            "אֶ"
+          ],
+          "answer": 1,
+          "why": "אֶ has three dots. Our cue is eh as in eggs."
+        }
+      ],
+      "tasks": [
+        [
+          "Read and compare the vowel marks",
+          "לֶ לֵ"
+        ],
+        [
+          "Circle the word for bread",
+          "בֵּן לֶחֶם"
+        ],
+        [
+          "Copy son and underline final Nun",
+          "בֵּן"
+        ]
+      ],
+      "check": "I can distinguish the marks and read bread and son with my teacher.",
+      "answers": [
+        "Class cues: leh and lay. Accept the teacher model.",
+        "Circle bread, leh-khem.",
+        "Copy son; underline final Nun. Class bayn or modern ben."
+      ],
+      "alt": "A loaf of bread with two slices on a plate",
+      "answerTargets": [
+        "לֶ לֵ",
+        "לֶחֶם",
+        "בֵּן"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Read a greeting with meaning",
+      "goal": "Blend known patterns into shalom and two short greetings.",
+      "new": [
+        [
+          "שׁ",
+          "Shin has its dot on the right and says sh."
+        ],
+        [
+          "ם",
+          "Final Mem closes with m, without an extra vowel."
+        ]
+      ],
+      "teach": [
+        "Find the right-hand dot on Shin. This dot gives sh; the mark beneath supplies the vowel.",
+        "Blend sh plus ahhh, then l plus oh, then close with m: sha-lom.",
+        "Shalom can mean peace and is also used as hello or goodbye. Use the greeting scene to act out hello."
+      ],
+      "model": [
+        [
+          "שָׁ לוֹ ם",
+          "sha + loh + m"
+        ],
+        [
+          "שָׁלוֹם",
+          "sha-lom = peace / hello / goodbye"
+        ],
+        [
+          "שָׁלוֹם אַבָּא",
+          "sha-lom ah-ba = hello, Dad"
+        ]
+      ],
+      "words": [
+        [
+          "שָׁלוֹם",
+          "peace / hello / goodbye"
+        ]
+      ],
+      "steps": [
+        "Read shalom without a picture hint.",
+        "Read each greeting, then tell whom you greeted.",
+        "Act out one greeting with a study partner."
+      ],
+      "questions": [
+        {
+          "prompt": "Which greeting says hello, Mom?",
+          "options": [
+            "שָׁלוֹם אַבָּא",
+            "שָׁלוֹם אִמָּא"
+          ],
+          "answer": 1,
+          "why": "אִמָּא means mother, so שָׁלוֹם אִמָּא says hello, Mom."
+        },
+        {
+          "prompt": "How does shalom finish?",
+          "options": [
+            "With mah",
+            "With m, without an extra vowel"
+          ],
+          "answer": 1,
+          "why": "Final Mem closes the word with m."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the two greetings",
+          "שָׁלוֹם אַבָּא / שָׁלוֹם אִמָּא"
+        ],
+        [
+          "Circle the word for hello",
+          "אוֹר שָׁלוֹם סוּס"
+        ],
+        [
+          "Copy hello, Dad, then explain it",
+          "שָׁלוֹם אַבָּא"
+        ]
+      ],
+      "check": "I can read and explain two short greetings without guessing.",
+      "answers": [
+        "Read hello, Dad and hello, Mom.",
+        "Circle shalom.",
+        "Copy hello, Dad; accept goodbye, Dad in matching context."
+      ],
+      "alt": "Two children waving hello on a path",
+      "answerTargets": [
+        "שָׁלוֹם אַבָּא / שָׁלוֹם אִמָּא",
+        "שָׁלוֹם",
+        "שָׁלוֹם אַבָּא"
+      ]
+    }
+  ]
+}
