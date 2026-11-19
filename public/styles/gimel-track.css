@@ -1,0 +1,13 @@
+.gimel-progress { margin:1.5rem 0 2rem; padding:1.25rem; border:1px solid #dfe7f5; border-radius:18px; background:#fff; }
+.gimel-progress h2 { margin-top:.35rem; }
+.gimel-progress-line { display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap; font-family:Arial,sans-serif; }
+.gimel-progress button { min-height:44px; padding:.65rem .9rem; border:2px solid #1f3b73; border-radius:10px; color:#14213d; background:#fff; font:700 .95rem Arial,sans-serif; cursor:pointer; }
+.gimel-progress progress { width:100%; height:1rem; margin-top:.75rem; accent-color:#4f8f4f; }
+.gimel-lesson-map { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr)); gap:.65rem; margin:1rem 0 2rem; }
+.gimel-lesson-map a { display:block; padding:.75rem .9rem; border:1px solid #dfe7f5; border-radius:12px; background:#fff; color:#1f3b73; text-decoration:none; font:700 .95rem Arial,sans-serif; }
+.gimel-lesson-map a:hover { background:#f5f8ff; }
+.gimel-word { margin:.5rem 0; font-size:clamp(3rem,9vw,5rem); line-height:1.5; text-align:center; color:#14213d; }
+.gimel-progress button:focus-visible,.gimel-lesson-map a:focus-visible,.practice-check button:focus-visible,.practice-check input:focus-visible { outline:3px solid #a16a27; outline-offset:3px; }
+.practice-check.is-correct { border-color:#4f8f4f; box-shadow:0 0 0 2px rgba(79,143,79,.14); }
+@media(max-width:540px) { .gimel-lesson-map { grid-template-columns:1fr; } .gimel-progress-line { align-items:flex-start; } }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
