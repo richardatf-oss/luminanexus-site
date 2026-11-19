@@ -120,6 +120,8 @@
   const closing=document.querySelector("#coming-next");
   if(closing) {
     closing.id="gimel-finish";
+    const tocLink=document.querySelector('.toc a[href="#coming-next"]');
+    if(tocLink){tocLink.href="#gimel-finish";tocLink.textContent="Track Finish & Readiness";}
     closing.innerHTML='<h2>Ready to Read with Meaning?</h2><p>Choose a short word you know, read it from right to left, and explain its meaning without using a picture clue. Then read the final phrase aloud: <span class="hebrew" lang="he" dir="rtl">יֵשׁ לִי סֵפֶר</span>.</p><p>Gimel Track is a beginning in fluent, meaningful reading. A student can repeat lessons, read with a teacher or study partner, and return to the printable workbook for pencil practice.</p><p class="principle">See the letters. Read the word. Find the meaning. Share it.</p><p><a class="button" href="/downloads/Gimel_Track_Printable.pdf">Download the current printable edition</a><a class="button secondary" href="/">Return to LuminaNexus.org</a></p><p class="note">The online track is expanded to 32 lessons. The linked printable PDF is an earlier edition and will need a matching expansion.</p>';
   }
   const key="ivrit-haor-gimel-progress-v1";
