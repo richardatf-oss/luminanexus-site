@@ -534,11 +534,11 @@ function App() {
             <article className="feature-card">
               <h3>Week 1 Teaching Packet</h3>
               <p>
-                Start with the placement quick-check, then guide students into
-                Aleph, Bet, or Gimel readiness work.
+                A ready-to-teach 60-minute lesson with differentiated Aleph,
+                Bet, and Gimel activities, printable practice, and an answer key.
               </p>
-              <a className="button primary" href="/teacher-guide.html">
-                Open Teacher Guide
+              <a className="button primary" href="/week-1-teaching-packet.html">
+                Open Week 1 Packet
               </a>
             </article>
 
