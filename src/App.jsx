@@ -272,14 +272,14 @@ function App() {
             </div>
 
             <div className="feature-card">
-              <h3>Available now and growing</h3>
+              <h3>Ready-to-use learning paths</h3>
 
               <p>
-                The Teacher Guide, placement quick-check, and Aleph, Bet, and Gimel printable workbooks are available now. Online Aleph lessons include vowel examples and practice with feedback.
+                The Teacher Guide, placement quick-check, and Aleph, Bet, and Gimel tracks are ready to use. Each track has a printable workbook; the online lessons include practice checks and feedback.
               </p>
 
               <p>
-                Additional lesson sequences, teacher answer keys, and classroom resources are planned as the pilot develops.
+                Learners can move between the three tracks as their confidence and reading skills grow. Teachers can use the lesson maps, printable practice, and answer notes to plan a session.
               </p>
             </div>
           </div>
@@ -392,9 +392,9 @@ function App() {
             <h2>Living curriculum pages for the Ivrit HaOr classroom.</h2>
 
             <p className="section-intro">
-              Ivrit HaOr materials are being prepared for the pilot classroom.
-              These pages are intentionally updateable as lessons, worksheets,
-              illustrations, and teacher notes are completed.
+              Start with the 36-lesson Aleph sequence, the 32-lesson Bet course,
+              or the 32-lesson Gimel course. Online lessons and printable
+              workbooks give learners and teachers a shared path to follow.
             </p>
           </div>
 
@@ -404,7 +404,7 @@ function App() {
               <p>
                 Read the online Teacher Guide for classroom posture, the
                 one-hour rhythm, Chavruta Classroom, assessment without shame,
-                family communication, and the developing lesson sequence.
+                family communication, track maps, lesson practice, and teacher answers.
               </p>
               <a className="button primary" href="/teacher-guide.html">
                 Open Teacher Guide
@@ -420,7 +420,7 @@ function App() {
                 First Beginning. A gentle student workbook for Hebrew
                 directionality, Aleph and Ayin, the “ahhh” Stick Vowels, Bet and
                 Vet, the Pea Vowel, tracing, confidence checks, and early Hebrew
-                confidence. The current printable edition is 34 pages.
+                confidence. The current matching printable edition is 46 pages.
               </p>
               <a className="button secondary" href="/aleph-track.html">
                 Open Aleph Track
@@ -449,9 +449,10 @@ function App() {
             <article className="feature-card">
               <h3>Gimel Track Workbook</h3>
               <p>
-                Reading with Meaning. A developing track for students ready to
-                read short Hebrew words, connect them to meaning, notice roots,
-                and begin simple Hebrew explanation.
+                Reading with Meaning. Thirty-two lessons help students decode
+                words and phrases, connect them to meaning, and begin explaining
+                what they read. Includes online checks and a matching 40-page
+                printable workbook.
               </p>
               <a className="button secondary" href="/gimel-track.html">
                 Open Gimel Track
@@ -475,9 +476,9 @@ function App() {
             <article className="feature-card">
               <h3>Printable Downloads</h3>
               <p>
-                Printable workbooks are prepared during the pilot phase. Aleph,
-                Bet, and Gimel Track PDFs are available now and will continue to
-                grow with their living curriculum pages.
+                Download the current Aleph, Bet, or Gimel workbook. Each print
+                edition follows its online sequence and includes guided practice
+                and teacher support.
               </p>
               <a className="button secondary" href="/downloads/Aleph_Track_Printable.pdf">
                 Aleph Printable
@@ -555,8 +556,8 @@ function App() {
             <article className="feature-card">
               <h3>Printable Materials</h3>
               <p>
-                Print-ready Aleph, Bet, and Gimel workbooks are available now
-                and will be refreshed as the tracks expand.
+                The print editions match the current online tracks: 36 Aleph
+                lessons, 32 Bet lessons, and 32 Gimel lessons.
               </p>
               <a className="button secondary" href="/downloads/Aleph_Track_Printable.pdf">
                 Aleph Printable
