@@ -1,0 +1,32 @@
+*{box-sizing:border-box}
+body{margin:0;background:#fffdf7;color:#17243c;line-height:1.7}
+header,main,.course-nav,footer{max-width:1040px;margin:auto;padding:1.4rem}
+header{padding-top:2rem}
+h1{font-size:clamp(2.2rem,7vw,3.6rem);margin:.25rem 0}
+h2{font-size:clamp(1.6rem,4vw,2.1rem);line-height:1.2}
+h3{margin-top:1.5rem}
+.lead{max-width:850px;font-size:1.15rem}
+.track-cover{display:block;width:min(100%,620px);height:auto;margin:1.4rem auto 0;border-radius:14px}
+.course-nav{display:flex;flex-wrap:wrap;gap:.65rem;border-block:1px solid #d9d9d9}
+.course-nav a,.lesson-actions a{padding:.45rem .65rem;color:#1c4266;text-underline-offset:.2em}
+.intro,.track-lesson{padding:1.2rem;border:1px solid #d9d9d9;border-radius:16px;background:white;margin:1.2rem 0}
+.progress-panel{display:grid;grid-template-columns:1fr auto;gap:.7rem;align-items:center;margin-top:1rem}
+.progress-panel progress{grid-column:1/-1;width:100%;height:1.2rem}
+.progress-panel button{padding:.55rem .8rem;border:1px solid #1c4266;border-radius:8px;background:white;color:#17243c;font:inherit;cursor:pointer}
+.lesson-map{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,275px),1fr));gap:.8rem;padding-left:1.6rem}
+.lesson-map li{padding:.75rem;border:1px solid #ddd;border-radius:12px;background:white}
+.lesson-map p{margin:.3rem 0 0;font-size:.95rem}
+.track-lesson{scroll-margin-top:1rem;border-top:3px solid #c99b43}
+.eyebrow{font-weight:bold;color:#66501c;text-transform:uppercase;letter-spacing:.04em}
+[lang=he]{font-family:"Frank Ruhl Libre",serif;direction:rtl;unicode-bidi:isolate}
+.track-lesson>p [lang=he]{font-size:1.25em}
+.examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:.6rem}
+.examples p{margin:0;padding:.9rem;text-align:center;border:1px solid #e1e4e7;border-radius:12px;background:#fffaf0;font-size:1.4rem}
+.readiness{padding:.9rem;background:#edf7ef;border-radius:10px}
+details{padding:.6rem;border-top:1px solid #e3e3e3}
+summary{font-weight:bold;cursor:pointer}
+.lesson-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #a16a27;outline-offset:3px}
+footer{border-top:1px solid #ddd;margin-top:2rem}
+@media(max-width:600px){header,main,.course-nav,footer{padding:1rem}.track-lesson,.intro{padding:1rem}.examples{grid-template-columns:1fr}.progress-panel{grid-template-columns:1fr}}
+@media print{.course-nav,.lesson-map,.lesson-actions,.practice-check button,.progress-panel{display:none}.track-lesson{break-before:page}body{background:white}}

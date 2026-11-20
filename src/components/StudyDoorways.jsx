@@ -12,8 +12,8 @@ const pathways = [
   {
     marker: "ת",
     eyebrow: "Torah-Aware Study",
-    title: "Noahide Parcha Study Guide",
-    text: "Approach the weekly portion as a student from the nations, with gratitude, clear boundaries, and source links.",
+    title: "Noahide Daily Parcha",
+    text: "Use an optional seven-day rhythm to read a short portion passage with context, source links, and a humble Noahide reflection.",
     href: "/noahide-parcha.html",
     action: "Open study guide",
   },
@@ -41,14 +41,23 @@ const pathways = [
     href: "/?chavrutaMode=hebrew-classroom#chavruta",
     action: "Begin a conversation",
   },
+  {
+    marker: "231",
+    eyebrow: "Sefer Yetzirah · Letter Study",
+    title: "Explore the 231 Gates",
+    text: "Browse the distinct two-letter pairings described in Sefer Yetzirah and study the letters without assigning unsupported meanings.",
+    href: "/231-gates.html",
+    action: "Open the gate explorer",
+  },
 ];
 
 const guides = [
   { audience: ["Learners", "Educators"], time: "15 minutes", steps: ["Take the five-question doorway finder below.", "Open the workbook for your recommended track.", "Practice one letter or sound before moving to a new one."], practice: "Find the same Hebrew letter three times on a page. Trace it, then name or sound it with help.", reflection: "Which shape can I recognize without a hint?", resource: "/aleph-track.html", label: "Start Aleph Track" },
-  { audience: ["Learners", "Study partners"], time: "20 minutes", steps: ["Find the weekly portion using the calendar linked in the guide, then choose a short passage.", "Separate the words of the passage from commentary and your own interpretation.", "Choose one practical act of justice, kindness, or responsibility."], practice: "Write one observation and one question. Discuss what the source supports and what remains uncertain.", reflection: "What can I put into practice this week?", resource: "/sources.html", label: "Follow the sources" },
+  { audience: ["Learners", "Study partners"], time: "10–15 minutes daily", steps: ["Choose the current portion using the calendar or enter the portion you are studying.", "Use the optional seven-day path to read a short passage, check one word, and keep text separate from commentary.", "Choose a practical response only when the text supports a clear reflection."], practice: "Complete one small study step. Your progress stays in this browser and can be cleared at any time.", reflection: "What did I learn from the passage itself?", resource: "/noahide-parcha.html", label: "Open Noahide Daily Parcha" },
   { audience: ["Learners", "Study partners", "Educators"], time: "20 minutes", steps: ["Choose a passage from the source library.", "Read its surrounding verses and identify the speaker and situation.", "Compare a linked commentary with your first understanding."], practice: "Keep a source notebook: reference, short paraphrase, commentary, and an open question.", reflection: "What changed when I read the surrounding passage?", resource: "/?chavrutaMode=hebrew-classroom#chavruta", label: "Bring a question" },
   { audience: ["Educators"], time: "30 minutes", steps: ["Use the placement quick-check to observe readiness.", "Choose one goal and the matching printable workbook.", "Model the task, practice together, and finish with a gentle review."], practice: "Plan a short session: five minutes of review, ten minutes of guided practice, and five minutes of sharing. Introduce each vowel before independent use.", reflection: "What can each learner do more confidently now?", resource: "/placement-quick-check.html", label: "Open placement quick-check" },
   { audience: ["Learners", "Study partners", "Educators"], time: "10 minutes", steps: ["Choose the Chavruta mode that matches your task.", "Ask one focused question and include the source or letter you are studying.", "Check the response against your workbook or linked source."], practice: "Try: Help me review one Hebrew letter I know, then give me one small practice task.", reflection: "Can I explain the answer in my own words?", resource: "/teacher-guide.html", label: "Read the teacher guidance" },
+  { audience: ["Learners", "Study partners", "Educators"], time: "10 minutes", steps: ["Read the short source note about Sefer Yetzirah 2:4.", "Choose one two-letter gate and say or identify each letter separately.", "Look for a verified Hebrew word containing both letters and check it in a source."], practice: "Compare the letter shapes and sounds. Treat your reflection as a study question, not as a traditional interpretation unless a reliable source supports it.", reflection: "What did I notice, and what would I need to verify?", resource: "/231-gates.html", label: "Explore the 231 Gates" },
 ];
 
 export default function StudyDoorways() {

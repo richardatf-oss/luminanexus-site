@@ -1,588 +1,332 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Aleph Track Workbook | Ivrit HaOr</title>
-
-    <style>
-      :root {
-        --ink: #102044;
-        --muted: #5b6680;
-        --blue: #1f5fbf;
-        --gold: #d9a441;
-        --cream: #fff8e8;
-        --soft: #f5f8ff;
-        --line: #dfe7f5;
-        --green: #4f8f4f;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        font-family: Georgia, "Times New Roman", serif;
-        color: var(--ink);
-        background: linear-gradient(180deg, #fffdf6 0%, #f3f7ff 100%);
-        line-height: 1.65;
-      }
-
-      header {
-        background: radial-gradient(
-          circle at top left,
-          #fff3bf,
-          #eaf2ff 50%,
-          #ffffff 100%
-        );
-        border-bottom: 1px solid var(--line);
-        padding: 3rem 1.25rem 2.5rem;
-        text-align: center;
-      }
-
-      main {
-        width: min(980px, 92vw);
-        margin: 0 auto;
-        padding: 2rem 0 4rem;
-      }
-
-      nav {
-        width: min(980px, 92vw);
-        margin: 0 auto;
-        padding: 1rem 0;
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      nav a,
-      .button {
-        display: inline-block;
-        text-decoration: none;
-        color: #ffffff;
-        background: var(--blue);
-        padding: 0.75rem 1rem;
-        border-radius: 999px;
-        font-family: Arial, sans-serif;
-        font-weight: 700;
-        font-size: 0.95rem;
-      }
-
-      nav a.secondary,
-      .button.secondary {
-        background: #ffffff;
-        color: var(--blue);
-        border: 1px solid var(--line);
-      }
-
-      h1,
-      h2,
-      h3 {
-        line-height: 1.18;
-      }
-
-      h1 {
-        font-size: clamp(2.3rem, 6vw, 4.4rem);
-        margin: 0.35rem 0;
-      }
-
-      h2 {
-        margin-top: 2.5rem;
-        padding-top: 1.2rem;
-        border-top: 3px solid var(--gold);
-        font-size: clamp(1.7rem, 4vw, 2.55rem);
-      }
-
-      h3 {
-        font-size: 1.35rem;
-        margin-top: 1.8rem;
-      }
-
-      p,
-      li {
-        font-size: 1.08rem;
-      }
-
-      ul,
-      ol {
-        padding-left: 1.4rem;
-      }
-
-      li {
-        margin: 0.45rem 0;
-      }
-
-      .eyebrow {
-        font-family: Arial, sans-serif;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--blue);
-        font-weight: 800;
-        font-size: 0.86rem;
-      }
-
-      .subtitle {
-        color: var(--muted);
-        font-size: 1.25rem;
-        max-width: 760px;
-        margin: 0.6rem auto 0;
-      }
-
-      .card,
-      .lesson-card {
-        background: rgba(255, 255, 255, 0.9);
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        padding: 1.35rem;
-        margin: 1.25rem 0;
-        box-shadow: 0 16px 40px rgba(31, 95, 191, 0.08);
-      }
-
-      .principle {
-        background: var(--cream);
-        border-left: 8px solid var(--gold);
-        padding: 1.25rem 1.4rem;
-        font-size: 1.32rem;
-        font-weight: 700;
-      }
-
-      .status {
-        background: #f2fff3;
-        border-left: 8px solid var(--green);
-        padding: 1rem 1.25rem;
-        border-radius: 16px;
-      }
-
-      .toc {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 0.8rem;
-        margin: 1.25rem 0 2rem;
-      }
-
-      .toc a {
-        display: block;
-        background: #ffffff;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        padding: 0.85rem 1rem;
-        color: var(--blue);
-        text-decoration: none;
-        font-family: Arial, sans-serif;
-        font-weight: 700;
-      }
-
-      .hebrew {
-        direction: rtl;
-        font-family: "Frank Ruhl Libre", serif;
-        font-size: 2.5rem;
-        letter-spacing: 0.08em;
-        margin: 0.75rem 0;
-      }
-
-      .hebrew-large {
-        direction: rtl;
-        font-family: "Frank Ruhl Libre", serif;
-        font-size: clamp(3rem, 10vw, 6rem);
-        letter-spacing: 0.08em;
-        text-align: center;
-        margin: 1rem 0;
-      }
-
-      .practice-line {
-        border-bottom: 2px solid #c8d2e4;
-        min-height: 2.2rem;
-        margin: 0.8rem 0 1.2rem;
-      }
-
-      .answer-blank {
-        display: inline-block;
-        min-width: 14rem;
-        border-bottom: 2px solid #9aa9c4;
-      }
-
-      .note {
-        color: var(--muted);
-        font-family: Arial, sans-serif;
-        font-size: 0.98rem;
-      }
-
-      .lesson-meta {
-        font-family: Arial, sans-serif;
-        color: var(--muted);
-        font-weight: 700;
-      }
-
-      footer {
-        text-align: center;
-        padding: 2rem 1rem;
-        color: var(--muted);
-        border-top: 1px solid var(--line);
-        background: #ffffff;
-      }
-    </style>
-    <link rel="stylesheet" href="/styles/hebrew.css" />
-<link rel="stylesheet" href="/styles/lesson-practice.css" />
-<script src="/lesson-practice.js" defer></script>
-</head>
-
-  <body>
-    <header>
-      <p class="eyebrow">Ivrit HaOr</p>
-      <h1>Aleph Track Student Workbook</h1>
-      <p class="subtitle">
-        First Beginning<br />
-        Hebrew for Every Grade, Every Beginning<br />
-        LuminaNexus Foundation
-      </p>
-    </header>
-
-    <nav aria-label="Aleph Track navigation">
-      <a href="/">Back to LuminaNexus</a>
-      <a href="/downloads/Aleph_Track_Printable.pdf">Download Printable PDF</a>
-      <a class="secondary" href="/placement-quick-check.html">Placement Quick-Check</a>
-      <a class="secondary" href="/teacher-guide.html">Teacher Guide</a>
-      <a class="secondary" href="/bet-track.html">Bet Track</a>
-      <a class="secondary" href="/gimel-track.html">Gimel Track</a>
-      <a class="secondary" href="#lessons">Lessons</a>
-    </nav>
-
-    <main>
-      <section class="card">
-        <p class="status">
-          <strong>Current printable edition:</strong> This page reflects the
-          34-page Aleph Track Student Workbook now available for download. The
-          workbook contains two opening lessons with illustrated practice,
-          tracing pages, confidence checks, and teacher prompts.
-        </p>
-
-        <p class="principle">
-          No student is late to Hebrew. Every letter is a beginning.
-        </p>
-
-        <p>
-          Aleph Track is the first doorway into Ivrit HaOr. It is designed for
-          students who are new to Hebrew, students who need letter confidence,
-          and students who benefit from a gentle beginning. This edition begins
-          with right-to-left direction, Aleph and Ayin, the “ahhh” Stick Vowels,
-          and Bet and Vet with the Pea Vowel.
-        </p>
-        <p class="status"><strong>Printable workbook:</strong> Download the current 34-page workbook to use the full illustrated and traceable activities.</p>
-      </section>
-
-      <section id="contents">
-        <h2>Contents</h2>
-
-        <div class="toc">
-          <a href="#beginning">My Hebrew Beginning</a>
-          <a href="#lesson-1">Lesson 1 — Opening the Hebrew Doorway</a>
-          <a href="#quiet-letters">Aleph and Ayin — The Quiet Letters</a>
-          <a href="#stick-vowels">The Stick Vowels — “Ahhh”</a>
-          <a href="#lesson-2">Lesson 2 — Bet and Vet / The Pea Vowel</a>
-          <a href="#pea-vowel">The Pea Vowel — “Eee”</a>
-          <a href="#workbook-close">Workbook Close</a>
-        </div>
-      </section>
-
-      <nav class="lesson-route" aria-label="Your first learning journey"><a href="#quiet-letters">1. Meet Aleph and Ayin</a><a href="#stick-vowels">2. Learn “ahhh”</a><a href="#lesson-2">3. Meet Bet and Vet</a><a href="#pea-vowel">4. Learn “eee”</a></nav>
-      <p>Online practice below gives immediate feedback. For tracing and pencil activities, use the printable workbook. These online vowel explanations supplement the current printable edition.</p>
-      <section id="beginning">
-        <h2>My Hebrew Beginning</h2>
-
-        <p>
-          Hebrew is new to my eyes. That is okay. Every student begins
-          somewhere. Every letter is a beginning.
-        </p>
-
-        <p>In this workbook, I will learn to:</p>
-
-        <ul>
-          <li>see Hebrew letters</li>
-          <li>follow Hebrew from right to left</li>
-          <li>trace letters carefully</li>
-          <li>find letters inside words</li>
-          <li>notice small marks</li>
-          <li>ask good questions</li>
-          <li>grow with courage</li>
-        </ul>
-
-        <p>
-          I do not have to know everything today. I begin with the silent
-          letters, and learn how they breathe.
-        </p>
-      </section>
-
-      <section id="lessons">
-        <h2>Current Aleph Track Lessons</h2>
-      </section>
-
-      <section id="lesson-1" class="lesson-card">
-        <p class="lesson-meta">Lesson 1</p>
-        <h2>Opening the Hebrew Doorway</h2>
-        <h3>Hebrew Begins on the Right</h3>
-
-        <p><strong>Big Idea</strong></p>
-        <p>Hebrew begins on the right side of the page.</p>
-
-        <p>Look at the arrow.</p>
-        <p class="hebrew">←</p>
-
-        <p>Hebrew moves this way.</p>
-
-        <p><strong>Teacher says:</strong></p>
-        <p>
-          “When we read Hebrew, our eyes begin on the right and move toward the
-          left.”
-        </p>
-
-        <p><strong>Student says:</strong></p>
-        <p>“Hebrew begins on the right.”</p>
-
-        <h3>Point and Say</h3>
-        <p>Point to the right side of the page.</p>
-        <p>Say: “This is where Hebrew begins.”</p>
-        <p>
-          Now move your finger slowly across the page from right to left.
-        </p>
-
-        <h3>Practice the Hebrew Direction</h3>
-        <p>Use your finger first. Then use your pencil.</p>
-
-        <p><strong>Start here:</strong></p>
-        <p>Finish: LEFT SIDE ← ← ← ← Start: RIGHT SIDE</p>
-
-        <p><strong>Trace the arrows:</strong></p>
-        <p>← ← ← ← ←</p>
-
-        <h3>Circle the Starting Side</h3>
-        <p>Circle the side where Hebrew begins.</p>
-        <p>LEFT SIDE &nbsp;&nbsp;&nbsp; RIGHT SIDE</p>
-
-        <h3>Teacher Question</h3>
-        <p>Where do your Hebrew eyes begin?</p>
-
-        <h3>Student Answer</h3>
-        <p>
-          My Hebrew eyes begin on the
-          <span class="answer-blank"></span> side.
-        </p>
-
-        <h3>Confidence Check</h3>
-        <p>Color one light.</p>
-        <ul>
-          <li>○ I am still learning.</li>
-          <li>○ I can point to the right side.</li>
-          <li>○ I can show the Hebrew direction.</li>
-        </ul>
-
-        <h3>Chavruta Question</h3>
-        <p>Ask Chavruta or your teacher:</p>
-        <p>“Which side does Hebrew begin on?”</p>
-
-        <h3>Closing Sentence</h3>
-        <p>Today I opened the Hebrew doorway.</p>
-      </section>
-
-      <section id="quiet-letters" class="lesson-card">
-        <p class="lesson-meta">Lesson 1 continued</p>
-        <h2>Aleph and Ayin</h2>
-        <h3>The Quiet Letters</h3>
-
-        <p><strong>Big Idea</strong></p>
-        <p>
-          Aleph and Ayin are Hebrew letters. These letters are special. They are
-          often quiet letters. That means they do not usually make a strong
-          sound by themselves. They help carry the vowel sound.
-        </p>
-
-        <p>Aleph is:</p>
-        <p class="hebrew-large">א</p>
-
-        <p>Ayin is:</p>
-        <p class="hebrew-large">ע</p>
-
-        <p><strong>Teacher says:</strong></p>
-        <p>
-          “Aleph and Ayin are quiet letters. Quiet does not mean unimportant.”
-        </p>
-
-        <p><strong>Student says:</strong></p>
-        <p>“Aleph and Ayin are quiet letters.”</p>
-
-        <h3>Look and Notice</h3>
-        <p>Look at Aleph. Look at Ayin. They are not the same.</p>
-        <p>Aleph looks one way. Ayin looks another way.</p>
-
-        <h3>Circle the Aleph</h3>
-        <p>Circle every Aleph.</p>
-        <p class="hebrew">א ע א ב א</p>
-
-        <h3>Circle the Ayin</h3>
-        <p>Circle every Ayin.</p>
-        <p class="hebrew">ע א ע ב ע</p>
-
-        <h3>Trace Aleph</h3>
-        <p>Trace the Aleph letters.</p>
-        <p class="hebrew">א א א</p>
-
-        <h3>Trace Ayin</h3>
-        <p>Trace the Ayin letters.</p>
-        <p class="hebrew">ע ע ע</p>
-
-        <h3>Same or Different?</h3>
-        <p>Put a check mark if they are the same.</p>
-        <ul>
-          <li>א א ______</li>
-          <li>ע ע ______</li>
-          <li>א ע ______</li>
-          <li>ע א ______</li>
-        </ul>
-
-        <h3>Teacher Question</h3>
-        <p>Do Aleph and Ayin look the same?</p>
-
-        <h3>Student Answer</h3>
-        <p>Yes / No</p>
-
-        <h3>Chavruta Question</h3>
-        <p>Ask Chavruta or your teacher:</p>
-        <p>“What is the difference between Aleph and Ayin?”</p>
-
-        <h3>Confidence Check</h3>
-        <p>
-          The printable workbook includes a full-page confidence check for
-          pointing to, tracing, finding, writing, and telling Aleph and Ayin
-          apart.
-        </p>
-        <div class="lesson-actions"><a href="#stick-vowels">Next: learn the ahhh Stick Vowels</a></div>
-      </section>      <section id="stick-vowels" class="lesson-card">
-        <p class="lesson-meta">Lesson 1 continued · Learn before you practice</p><h2>The Stick Vowels</h2><h3>Both Say “Ahhh”</h3>
-        <p>The little stick beneath the letter says “ahhh.” The stick with a handle beneath the letter also says “ahhh” in these examples. Look beneath the letter before you say its sound.</p>
-        <div class="vowel-examples"><div class="vowel-example"><strong>The stick</strong><span class="hebrew" lang="he" dir="rtl">אַ</span><p>Aleph carries “ahhh.” Notice the short line underneath.</p></div><div class="vowel-example"><strong>The stick with a handle</strong><span class="hebrew" lang="he" dir="rtl">אָ</span><p>Aleph carries “ahhh.” Notice the small handle pointing down.</p></div></div>
-        <h3>Try it together</h3><p>Point to the letter first, then to its mark beneath. Say “ahhh.” Now try the same marks with Ayin:</p><p class="hebrew" lang="he" dir="rtl">עַ עָ</p>
-        <p><strong>Teacher says:</strong> “The letter is above. The vowel mark is below. Point, notice, then say ahhh.”</p>
-<form class="practice-check" data-answer="0" data-correct="Yes. אָ has the stick with a handle beneath Aleph. It says ahhh here." data-retry="Look beneath Aleph. The handle is the tiny stroke pointing down. Try again."><fieldset><legend>Which example has the stick with a handle?</legend><label><input type="radio" name="stick" value="0" /><span lang="he" dir="rtl">אָ</span></label><label><input type="radio" name="stick" value="1" /><span lang="he" dir="rtl">אַ</span></label></fieldset><button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p><details><summary>Teacher answer / printable answer key</summary><p>Yes. אָ has the stick with a handle beneath Aleph. It says ahhh here.</p></details></form>
-        <p><strong>I can:</strong> Find both marks beneath a letter and say ahhh in these examples.</p><div class="lesson-actions"><a href="#quiet-letters">Review Aleph and Ayin</a><a href="#lesson-2">Next: Bet and Vet</a><a href="/?chavrutaMode=hebrew-classroom&chavrutaQuestion=Help+me+practice+the+stick+vowel+and+the+stick+with+a+handle.+Both+say+ahhh+in+my+first+Aleph+lesson.+Please+use+only+Aleph+and+Ayin.#chavruta">Ask Chavruta about this lesson</a></div>
-      </section>
-
-      <section id="lesson-2" class="lesson-card">
-        <p class="lesson-meta">Lesson 2</p>
-        <h2>Bet and Vet</h2>
-        <h3>The Dot Matters • The Pea Vowel</h3>
-
-        <p><strong>Big Idea</strong></p>
-        <p>
-          Bet and Vet look almost the same. Bet has a dot. Vet has no dot. The
-          dot helps us know which letter we are seeing.
-        </p>
-
-        <p>
-          The printable introduces this lesson as “Bet and Vet — The Pea Vowel.”
-          Its current practice pages center on seeing the dot, distinguishing the
-          two letter forms, and tracing each form.
-        </p>
-
-        <p>Bet is:</p>
-        <p class="hebrew-large">בּ</p>
-
-        <p>Vet is:</p>
-        <p class="hebrew-large">ב</p>
-
-        <p><strong>Teacher says:</strong></p>
-        <p>
-          “Bet and Vet have the same shape. The dot helps us tell them apart.”
-        </p>
-
-        <p><strong>Student says:</strong></p>
-        <p>“The dot helps me see Bet.”</p>
-
-        <h3>Look and Notice</h3>
-        <p>
-          Look at Bet. Look at Vet. They have the same letter shape. Bet has a
-          dot inside. Vet has an empty space inside.
-        </p>
-
-        <p>Bet has the ball. Vet has the void.</p>
-
-        <h3>Point and Say</h3>
-        <p>Point to Bet. Say: “Bet.”</p>
-        <p>Point to the dot. Say: “Dot.”</p>
-        <p>Point to Vet. Say: “Vet.”</p>
-        <p>Now say: “Bet has a dot. Vet does not.”</p>
-
-        <h3>Circle the Bet</h3>
-        <p>Circle every Bet.</p>
-        <p class="hebrew">בּ ב בּ א בּ</p>
-
-        <h3>Circle the Vet</h3>
-        <p>Circle every Vet.</p>
-        <p class="hebrew">ב בּ ע ב ב</p>
-
-        <h3>Teacher Question</h3>
-        <p>How can you tell Bet and Vet apart?</p>
-
-        <h3>Student Answer</h3>
-        <p>Bet has a <span class="answer-blank"></span>.</p>
-        <p>Vet has no <span class="answer-blank"></span>.</p>
-
-        <h3>I Can Say</h3>
-        <p>“Bet has a dot. Vet has no dot.”</p>
-
-        <h3>Confidence Check</h3>
-        <ul>
-          <li>○ I am still learning.</li>
-          <li>○ I can find the dot.</li>
-          <li>○ I can tell Bet and Vet apart.</li>
-        </ul>
-
-        <h3>Chavruta Question</h3>
-        <p>Ask Chavruta or your teacher:</p>
-        <p>“How are Bet and Vet different?”</p>
-
-        <h3>Closing Sentence</h3>
-        <p>Today I learned that Bet has a dot and Vet has no dot.</p>
-        <div class="lesson-actions"><a href="#pea-vowel">Next: learn the eee Pea Vowel</a></div>
-      </section>
-
-      <section id="pea-vowel" class="lesson-card"><p class="lesson-meta">Lesson 2 continued · Learn before you practice</p><h2>The Pea Vowel — “Eee”</h2>
-<p>First, remember the dot inside Bet. It helps Bet say “b.” Vet has no dot inside and says “v.” That inside dot is different from the little pea beneath a letter.</p>
-<div class="vowel-examples"><div class="vowel-example"><strong>Bet: dot inside</strong><span class="hebrew" lang="he" dir="rtl">בּ</span><p>Point inside the letter. This dot helps us recognize Bet.</p></div><div class="vowel-example"><strong>The pea: dot beneath</strong><span class="hebrew" lang="he" dir="rtl">אִ</span><p>Point beneath Aleph. This pea says “eee.”</p></div></div>
-<form class="practice-check" data-answer="0" data-correct="Yes. בּ has the dot inside. This is Bet." data-retry="Look inside each letter. Bet has a dot inside; Vet does not. Try again."><fieldset><legend>Which letter has a dot inside?</legend><label><input type="radio" name="bet-dot" value="0" /><span lang="he" dir="rtl">בּ</span></label><label><input type="radio" name="bet-dot" value="1" /><span lang="he" dir="rtl">ב</span></label></fieldset><button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p><details><summary>Teacher answer / printable answer key</summary><p>Yes. בּ has the dot inside. This is Bet.</p></details></form>
-<h3>Build two sounds together</h3><div class="vowel-examples"><div class="vowel-example"><strong>Bet + pea</strong><span class="hebrew" lang="he" dir="rtl">בִּ</span><p>“b” + “eee” = “bee.” There are two dots: one inside and one beneath.</p></div><div class="vowel-example"><strong>Vet + pea</strong><span class="hebrew" lang="he" dir="rtl">בִ</span><p>“v” + “eee” = “vee.” The pea is beneath; there is no dot inside.</p></div></div>
-<p><strong>Teacher says:</strong> “Inside tells us Bet or Vet. Beneath gives us eee.” Point to each location separately, then blend the sounds.</p>
-<form class="practice-check" data-answer="0" data-correct="Yes. אִ has the pea beneath Aleph. Say eee." data-retry="The pea is a single dot beneath the letter. A little line is the stick vowel. Try again."><fieldset><legend>Which example has the pea beneath Aleph?</legend><label><input type="radio" name="pea-location" value="0" /><span lang="he" dir="rtl">אִ</span></label><label><input type="radio" name="pea-location" value="1" /><span lang="he" dir="rtl">אַ</span></label></fieldset><button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p><details><summary>Teacher answer / printable answer key</summary><p>Yes. אִ has the pea beneath Aleph. Say eee.</p></details></form><form class="practice-check" data-answer="0" data-correct="Yes. The inside dot gives b, and the pea beneath gives eee: bee." data-retry="Find the dot inside Bet first: b. Then find the pea beneath: eee. Blend them slowly."><fieldset><legend>What sound does בִּ make?</legend><label><input type="radio" name="blend" value="0" /><span>bee</span></label><label><input type="radio" name="blend" value="1" /><span>vee</span></label><label><input type="radio" name="blend" value="2" /><span>ahhh</span></label></fieldset><button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p><details><summary>Teacher answer / printable answer key</summary><p>Yes. The inside dot gives b, and the pea beneath gives eee: bee.</p></details></form>
-<h3>Ready for the next doorway?</h3><p>Show a teacher or study partner that you can begin on the right, recognize Aleph and Ayin, tell Bet from Vet, and distinguish the inside dot from the pea beneath. If any part feels new, revisit it together before moving on.</p>
-<div class="lesson-actions"><a href="#stick-vowels">Review ahhh</a><a href="/?chavrutaMode=hebrew-classroom&chavrutaQuestion=I+have+learned+Bet+and+Vet%2C+the+ahhh+stick+vowels%2C+and+the+eee+pea+beneath.+Help+me+distinguish+the+inside+dot+from+the+dot+beneath%2C+then+practice+bee+and+vee.#chavruta">Practice this lesson with Chavruta</a><a href="/bet-track.html#lesson-1">Continue: Bet Track Lesson 1</a><a href="/placement-quick-check.html">Teacher readiness check</a></div></section>
-
-      <section id="workbook-close" class="card">
-        <h2>Use the Current Workbook</h2>
-
-        <p>
-          The downloadable 34-page edition includes the complete illustrated
-          sequence, letter-identification practice, Aleph and Ayin confidence
-          check, Stick Vowel activity, Bet and Vet tracing sheets, teacher
-          questions, Chavruta prompts, and closing sentences.
-        </p>
-
-        <p class="principle">
-          The track is a doorway, not a label. The beginning is not a weakness.
-        </p>
-
-        <p>
-          <a class="button" href="/downloads/Aleph_Track_Printable.pdf">Download Printable Aleph Track PDF</a>
-          <a class="button secondary" href="/">Return to LuminaNexus.org</a>
-        </p>
-      </section>
-    </main>
-
-    <footer>
-      © 2026 LuminaNexus Foundation. Hebrew for Every Grade, Every Beginning.
-    </footer>
-  </body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aleph Track — First Beginning | Ivrit HaOr</title><meta name="description" content="A 36-lesson first Hebrew sequence for right-to-left direction, letter recognition, vowel cues, familiar words, and confidence before Bet. The order groups useful visual and sound families instead of following strict alphabet order.">
+<link rel="stylesheet" href="/styles/hebrew.css"><link rel="stylesheet" href="/styles/lesson-practice.css"><link rel="stylesheet" href="/styles/foundation-track.css"><script src="/lesson-practice.js" defer></script></head>
+<body><header><p>Ivrit HaOr · LuminaNexus Foundation</p><h1>Aleph Track</h1><p class="lead">A 36-lesson first Hebrew sequence for right-to-left direction, letter recognition, vowel cues, familiar words, and confidence before Bet. The order groups useful visual and sound families instead of following strict alphabet order.</p></header>
+<nav class="course-nav" aria-label="Aleph Track navigation"><a href="/">Home</a><a href="/aleph-track.html">Aleph</a><a href="/bet-track.html">Bet</a><a href="/gimel-track.html">Gimel</a><a href="/downloads/Aleph_Track_Printable.pdf">Printable workbook</a><a href="#lessons">Lesson map</a><a href="/teacher-guide.html">Teacher guide</a></nav>
+<main><section class="intro"><h2>Welcome to Aleph</h2><p>A 36-lesson first Hebrew sequence for right-to-left direction, letter recognition, vowel cues, familiar words, and confidence before Bet. The order groups useful visual and sound families instead of following strict alphabet order.</p><p>Use a steady rhythm: look carefully, listen to a model, practice together, then try independently. The printable workbook and online lessons follow this same sequence.</p></section>
+<section id="lessons"><h2>36 lessons</h2><ol class="lesson-map"><li><a href="#lesson-1">Opening the Hebrew Doorway</a><p>Start Hebrew at the right edge and move toward the left.</p></li><li><a href="#lesson-2">Hebrew Letters Are Not English Letters</a><p>Recognize that Hebrew has its own letter shapes and names.</p></li><li><a href="#lesson-3">The Hebrew Side of the Page</a><p>Track a Hebrew line from right to left, one word at a time.</p></li><li><a href="#lesson-4">Aleph: The First Silent Carrier</a><p>Aleph carries a vowel mark in these examples; hear the modeled ahhh sound without adding an Aleph consonant.</p></li><li><a href="#lesson-5">Ayin: Another Silent Carrier</a><p>Ayin is a distinct letter; use a gentle class pronunciation and respect tradition differences.</p></li><li><a href="#lesson-6">Silent Carriers Review: Aleph and Ayin</a><p>Recognize Aleph and Ayin, then pair them with the two ahhh marks.</p></li><li><a href="#lesson-7">Bet and Vet: The Dot Matters</a><p>Distinguish Bet’s inside dot from Vet’s open center; learn the Pea Vowel beneath the letter.</p></li><li><a href="#lesson-8">Dagesh Practice: Seeing Before Saying</a><p>Notice the dagesh dot inside a letter before saying its modeled consonant sound.</p></li><li><a href="#lesson-9">Bet in Simple Words and Names</a><p>Read two Bet examples that use the previously taught ahhh marks.</p></li><li><a href="#lesson-10">Mem and Final Mem: A Letter with an Ending Form</a><p>Recognize Mem in its regular form and its final form at a word’s end.</p></li><li><a href="#lesson-11">Shin and Sin: The Dot’s Place Matters</a><p>The right-side dot cues Shin; the left-side dot cues Sin.</p></li><li><a href="#lesson-12">Lamed: The Tall Letter</a><p>Recognize Lamed by its tall stroke and blend it with known ahhh vowels.</p></li><li><a href="#lesson-13">The Dot Over and Vav-Cholam: Oh</a><p>Cholam is the dot over a letter; Vav-Cholam carries the oh sound.</p></li><li><a href="#lesson-14">Vav: The Connecting Letter</a><p>Recognize Vav in its upright shape and in a familiar vowel pattern.</p></li><li><a href="#lesson-15">Yod: Small but Important</a><p>Recognize Yod as a small but important letter.</p></li><li><a href="#lesson-16">Hey: A Letter with Breath</a><p>Recognize Hey by its open shape and gentle breath sound.</p></li><li><a href="#lesson-17">Name-Building Review and the Three Eggs</a><p>Recognize Yod, Vav, and Hey; introduce Segol, the Three Eggs eh vowel.</p></li><li><a href="#lesson-18">Dalet and Resh: Careful Corners</a><p>Compare Dalet and Resh by their small corner and stroke differences.</p></li><li><a href="#lesson-19">Kaf, Khaf, and Final Kaf</a><p>Distinguish Kaf, Khaf, and final Kaf; the dot and final position matter.</p></li><li><a href="#lesson-20">Final Forms Family I: Mem, Nun, Kaf</a><p>Match Mem, Nun, and Kaf with their final forms.</p></li><li><a href="#lesson-21">Final Forms Family II: Pey and Tsadi</a><p>Match Peh and Tsadi with their final forms.</p></li><li><a href="#lesson-22">Final Forms Review: The Ending Doorway</a><p>Review all five final letter shapes and place each at a word’s end.</p></li><li><a href="#lesson-23">Chet: A Strong New Sound</a><p>Recognize Chet as a distinct letter and learn its pronunciation from the teacher.</p></li><li><a href="#lesson-24">Tet and Tav: Similar Sounds, Different Letters</a><p>Recognize Tet and Tav as different letters, even when both represent t.</p></li><li><a href="#lesson-25">The OOOH Vowel Pair: Kubutz and Vav-Shuruk</a><p>Kubutz is the three-dot staircase “OOOH belly”; Vav with its middle dot (Shuruk) also says oo.</p></li><li><a href="#lesson-26">Qof: The Letter Below the Line</a><p>Recognize Qof by its descending shape and learn its class pronunciation.</p></li><li><a href="#lesson-27">Samekh and Zayin: Visual Precision</a><p>Compare the rounded shape of Samekh with the angled shape of Zayin.</p></li><li><a href="#lesson-28">Gimel: Returning to a Distinct Shape</a><p>Recognize Gimel by its distinct shape and modeled g sound.</p></li><li><a href="#lesson-29">Review by Family: Quiet, Dotted, Final</a><p>Sort carrier, dotted, and final-form families.</p></li><li><a href="#lesson-30">Review by Shape: Tall, Small, Closed, Confusing</a><p>Use tall, small, open, closed, and corner features to identify letters.</p></li><li><a href="#lesson-31">Simple Word: Or — Light</a><p>Decode אוֹר and connect it to light; Vav-Cholam was taught earlier.</p></li><li><a href="#lesson-32">Simple Word: Shalom</a><p>Decode שָׁלוֹם and connect it to hello or peace.</p></li><li><a href="#lesson-33">Simple Word: Bayit</a><p>Decode בַּיִת and connect it to house.</p></li><li><a href="#lesson-34">Names and Hebrew Letters</a><p>Read Hebrew names from their letters and taught vowel marks.</p></li><li><a href="#lesson-35">Aleph Track Readiness Review</a><p>Show recognition of letters, marks, and familiar words without picture guessing.</p></li><li><a href="#lesson-36">Celebration of Beginning</a><p>Reflect on growth and choose a comfortable next learning step.</p></li></ol></section><section class="track-lesson" id="lesson-1"><p class="eyebrow">Aleph lesson 1 of 36</p>
+<h2>Opening the Hebrew Doorway</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">←</span></p><p><strong>Goal:</strong> Start Hebrew at the right edge and move toward the left.</p>
+<h3>Learn together</h3><ul><li>Start Hebrew at the right edge and move toward the left.</li><li>Hold the page sideways if helpful: Hebrew begins at the right edge. Point to the first mark before tracing toward the left.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">Start → finish</span></p><p><span lang="he" dir="rtl">Right edge → left edge</span></p></div>
+<h3>Practice</h3><ol><li>Place a start mark at the right edge; trace a path toward the left.</li><li>Take turns pointing to the Hebrew start and saying the direction aloud.</li></ol>
+<form class="practice-check" data-answer="0" data-correct="Correct. Start Hebrew at the right edge and move toward the left." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Where do Hebrew readers begin?</legend><label><input type="radio" name="aleph-1" value="0"><span>Right side</span></label><label><input type="radio" name="aleph-1" value="1"><span>Left side</span></label><label><input type="radio" name="aleph-1" value="2"><span>Top of the page</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Start Hebrew at the right edge and move toward the left.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Start Hebrew at the right edge and move toward the left.</p></details>
+<div class="lesson-actions"><a href="#lesson-2">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+1%3A+Opening+the+Hebrew+Doorway.+Start+Hebrew+at+the+right+edge+and+move+toward+the+left.+Help+me+practice+the+focus+%E2%86%90+and+these+examples%3A+Start+%E2%86%92+finish%3B+Right+edge+%E2%86%92+left+edge.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-2"><p class="eyebrow">Aleph lesson 2 of 36</p>
+<h2>Hebrew Letters Are Not English Letters</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">א ב ג</span></p><p><strong>Goal:</strong> Recognize that Hebrew has its own letter shapes and names.</p>
+<h3>Learn together</h3><ul><li>Recognize that Hebrew has its own letter shapes and names.</li><li>Compare a Hebrew letter with a Latin letter. Name the script first, then identify the Hebrew shapes.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">א  ב  ג</span></p><p><span lang="he" dir="rtl">A  B  C</span></p></div>
+<h3>Practice</h3><ol><li>Sort Hebrew letters and Latin letters into separate groups.</li><li>Choose one Hebrew letter; point to it and say its name after a teacher model.</li></ol>
+<form class="practice-check" data-answer="1" data-correct="Correct. Recognize that Hebrew has its own letter shapes and names." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which is a Hebrew letter?</legend><label><input type="radio" name="aleph-2" value="0"><span>B</span></label><label><input type="radio" name="aleph-2" value="1"><span><span lang="he" dir="rtl">ב</span></span></label><label><input type="radio" name="aleph-2" value="2"><span>D</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Recognize that Hebrew has its own letter shapes and names.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Recognize that Hebrew has its own letter shapes and names.</p></details>
+<div class="lesson-actions"><a href="#lesson-1">Previous lesson</a><a href="#lesson-3">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+2%3A+Hebrew+Letters+Are+Not+English+Letters.+Recognize+that+Hebrew+has+its+own+letter+shapes+and+names.+Help+me+practice+the+focus+%D7%90+%D7%91+%D7%92+and+these+examples%3A+%D7%90++%D7%91++%D7%92%3B+A++B++C.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-3"><p class="eyebrow">Aleph lesson 3 of 36</p>
+<h2>The Hebrew Side of the Page</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">א ב ←</span></p><p><strong>Goal:</strong> Track a Hebrew line from right to left, one word at a time.</p>
+<h3>Learn together</h3><ul><li>Track a Hebrew line from right to left, one word at a time.</li><li>Track one short line with a finger. Pause at each space and restart from the right side of the next word.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">א ב ג →</span></p><p><span lang="he" dir="rtl">Point right, then track left</span></p></div>
+<h3>Practice</h3><ol><li>Track a whole line from right to left with your finger.</li><li>Pause at the space between words, then continue from the next word on the right.</li></ol>
+<form class="practice-check" data-answer="2" data-correct="Correct. Track a Hebrew line from right to left, one word at a time." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which way do you follow a Hebrew line?</legend><label><input type="radio" name="aleph-3" value="0"><span>Left to right</span></label><label><input type="radio" name="aleph-3" value="1"><span>Bottom to top</span></label><label><input type="radio" name="aleph-3" value="2"><span>Right to left</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Track a Hebrew line from right to left, one word at a time.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Track a Hebrew line from right to left, one word at a time.</p></details>
+<div class="lesson-actions"><a href="#lesson-2">Previous lesson</a><a href="#lesson-4">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+3%3A+The+Hebrew+Side+of+the+Page.+Track+a+Hebrew+line+from+right+to+left%2C+one+word+at+a+time.+Help+me+practice+the+focus+%D7%90+%D7%91+%E2%86%90+and+these+examples%3A+%D7%90+%D7%91+%D7%92+%E2%86%92%3B+Point+right%2C+then+track+left.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-4"><p class="eyebrow">Aleph lesson 4 of 36</p>
+<h2>Aleph: The First Silent Carrier</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">א אַ אָ</span></p><p><strong>Goal:</strong> Aleph carries a vowel mark in these examples; hear the modeled ahhh sound without adding an Aleph consonant.</p>
+<h3>Learn together</h3><ul><li>Aleph does not add a consonant sound in these examples; it carries the vowel.</li><li>Patach is the Stick Vowel and Qamatz the Stick with a Handle. Point below the letter; both say ahhh in today’s examples.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">אַ  אָ</span></p><p><span lang="he" dir="rtl">Patach · Qamatz</span></p></div>
+<h3>Practice</h3><ol><li>Circle Patach and box Qamatz.</li><li>Point to א then the mark below; say ahhh for אַ and אָ.</li></ol>
+<form class="practice-check" data-answer="0" data-correct="Correct. The vowel mark supplies the modeled sound carried by Aleph." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>What should you notice when reading these Aleph examples?</legend><label><input type="radio" name="aleph-4" value="0"><span>The vowel mark supplies the modeled sound</span></label><label><input type="radio" name="aleph-4" value="1"><span>Aleph adds an English A sound</span></label><label><input type="radio" name="aleph-4" value="2"><span>The vowel mark is part of the picture</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Point to Aleph and its vowel mark, then say the modeled ahhh sound.</p><details><summary>Teacher note and answer</summary><p>Model the Stick Vowel patach and Stick with Handle qamatz with an ahhh sound for these examples. The cue names are memory aids, not formal vowel definitions.</p><p>Correct. The vowel mark supplies the modeled sound carried by Aleph.</p></details>
+<div class="lesson-actions"><a href="#lesson-3">Previous lesson</a><a href="#lesson-5">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+4%3A+Aleph%3A+The+First+Silent+Carrier.+Aleph+carries+a+vowel+mark+in+these+examples%3B+hear+the+modeled+ahhh+sound+without+adding+an+Aleph+consonant.+Help+me+practice+the+focus+%D7%90+%D7%90%D6%B7+%D7%90%D6%B8+and+these+examples%3A+%D7%90%D6%B7++%D7%90%D6%B8%3B+Patach+%C2%B7+Qamatz.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-5"><p class="eyebrow">Aleph lesson 5 of 36</p>
+<h2>Ayin: Another Silent Carrier</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">עַ עָ</span></p><p><strong>Goal:</strong> Ayin is a distinct letter; use a gentle class pronunciation and respect tradition differences.</p>
+<h3>Learn together</h3><ul><li>Ayin is not Aleph; it is a separate letter with its own name.</li><li>Ayin has different pronunciations in Hebrew traditions. Use the class model and describe variation respectfully.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">עַ  עָ</span></p><p><span lang="he" dir="rtl">Ayin with the Stick Vowels</span></p></div>
+<h3>Practice</h3><ol><li>Match עַ and עָ to the two ahhh marks.</li><li>Practice the teacher’s pronunciation model and listen respectfully to other traditions.</li></ol>
+<form class="practice-check" data-answer="1" data-correct="Correct. Ayin is a distinct letter; use a gentle class pronunciation and respect tradition differences." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>How should learners handle pronunciation differences?</legend><label><input type="radio" name="aleph-5" value="0"><span>Call every other tradition wrong</span></label><label><input type="radio" name="aleph-5" value="1"><span>Use a clear model and respect established traditions</span></label><label><input type="radio" name="aleph-5" value="2"><span>Skip the letter</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Ayin is a distinct letter; use a gentle class pronunciation and respect tradition differences.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Ayin is a distinct letter; use a gentle class pronunciation and respect tradition differences.</p></details>
+<div class="lesson-actions"><a href="#lesson-4">Previous lesson</a><a href="#lesson-6">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+5%3A+Ayin%3A+Another+Silent+Carrier.+Ayin+is+a+distinct+letter%3B+use+a+gentle+class+pronunciation+and+respect+tradition+differences.+Help+me+practice+the+focus+%D7%A2%D6%B7+%D7%A2%D6%B8+and+these+examples%3A+%D7%A2%D6%B7++%D7%A2%D6%B8%3B+Ayin+with+the+Stick+Vowels.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-6"><p class="eyebrow">Aleph lesson 6 of 36</p>
+<h2>Silent Carriers Review: Aleph and Ayin</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">א ע אַ עָ</span></p><p><strong>Goal:</strong> Recognize Aleph and Ayin, then pair them with the two ahhh marks.</p>
+<h3>Learn together</h3><ul><li>Recognize Aleph and Ayin, then pair them with the two ahhh marks.</li><li>Place א and ע cards in separate groups. Say each name before matching it to its vowel example.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">א ע אַ עָ</span></p><p><span lang="he" dir="rtl">Point to letter, then vowel</span></p></div>
+<h3>Practice</h3><ol><li>Sort Aleph and Ayin letter cards.</li><li>Pair each letter with a Stick Vowel and explain which part gives the sound.</li></ol>
+<form class="practice-check" data-answer="2" data-correct="Correct. Recognize Aleph and Ayin, then pair them with the two ahhh marks." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Silent Carriers Review: Aleph and Ayin”?</legend><label><input type="radio" name="aleph-6" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-6" value="1"><span>A picture clue</span></label><label><input type="radio" name="aleph-6" value="2"><span><span lang="he" dir="rtl">א ע אַ עָ</span></span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Recognize Aleph and Ayin, then pair them with the two ahhh marks.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Recognize Aleph and Ayin, then pair them with the two ahhh marks.</p></details>
+<div class="lesson-actions"><a href="#lesson-5">Previous lesson</a><a href="#lesson-7">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+6%3A+Silent+Carriers+Review%3A+Aleph+and+Ayin.+Recognize+Aleph+and+Ayin%2C+then+pair+them+with+the+two+ahhh+marks.+Help+me+practice+the+focus+%D7%90+%D7%A2+%D7%90%D6%B7+%D7%A2%D6%B8+and+these+examples%3A+%D7%90+%D7%A2+%D7%90%D6%B7+%D7%A2%D6%B8%3B+Point+to+letter%2C+then+vowel.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-7"><p class="eyebrow">Aleph lesson 7 of 36</p>
+<h2>Bet and Vet: The Dot Matters</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">בִּ בִ</span></p><p><strong>Goal:</strong> Distinguish Bet’s inside dot from Vet’s open center; learn the Pea Vowel beneath the letter.</p>
+<h3>Learn together</h3><ul><li>Bet has a dot inside—the ball—and Vet has an open center—the void.</li><li>The Pea Vowel is one dot beneath a letter and says eee. The dot inside Bet and the dot below it do different jobs.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">בִּ  בִ</span></p><p><span lang="he" dir="rtl">Bet + Pea · Vet + Pea</span></p></div>
+<h3>Practice</h3><ol><li>Circle the Bet ball and underline the Pea below.</li><li>Read בִּ and בִ after naming the inside dot and the beneath dot.</li></ol>
+<form class="practice-check" data-answer="0" data-correct="Correct. Distinguish Bet’s inside dot from Vet’s open center; learn the Pea Vowel beneath the letter." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Where is the Pea Vowel?</legend><label><input type="radio" name="aleph-7" value="0"><span>Beneath the letter</span></label><label><input type="radio" name="aleph-7" value="1"><span>Inside the letter</span></label><label><input type="radio" name="aleph-7" value="2"><span>Above the word</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Distinguish Bet’s inside dot from Vet’s open center; learn the Pea Vowel beneath the letter.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Distinguish Bet’s inside dot from Vet’s open center; learn the Pea Vowel beneath the letter.</p></details>
+<div class="lesson-actions"><a href="#lesson-6">Previous lesson</a><a href="#lesson-8">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+7%3A+Bet+and+Vet%3A+The+Dot+Matters.+Distinguish+Bet%E2%80%99s+inside+dot+from+Vet%E2%80%99s+open+center%3B+learn+the+Pea+Vowel+beneath+the+letter.+Help+me+practice+the+focus+%D7%91%D6%BC%D6%B4+%D7%91%D6%B4+and+these+examples%3A+%D7%91%D6%BC%D6%B4++%D7%91%D6%B4%3B+Bet+%2B+Pea+%C2%B7+Vet+%2B+Pea.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-8"><p class="eyebrow">Aleph lesson 8 of 36</p>
+<h2>Dagesh Practice: Seeing Before Saying</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">בּ ב כּ כ</span></p><p><strong>Goal:</strong> Notice the dagesh dot inside a letter before saying its modeled consonant sound.</p>
+<h3>Learn together</h3><ul><li>Dagesh is the dot inside a letter. For Bet and Kaf in these beginner examples, it helps identify the firmer sound.</li><li>Always point to the letter and the inside dot before trying its teacher-modeled sound.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">בּ  ב  כּ  כ</span></p><p><span lang="he" dir="rtl">Dot inside · open center</span></p></div>
+<h3>Practice</h3><ol><li>Find which examples have a dot inside.</li><li>Compare בּ/ב and כּ/כ; echo the community sound model.</li></ol>
+<form class="practice-check" data-answer="1" data-correct="Correct. Notice the dagesh dot inside a letter before saying its modeled consonant sound." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>What should you inspect before choosing a modeled sound?</legend><label><input type="radio" name="aleph-8" value="0"><span>The picture only</span></label><label><input type="radio" name="aleph-8" value="1"><span>The letter and its inside dot</span></label><label><input type="radio" name="aleph-8" value="2"><span>The English translation</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Notice the dagesh dot inside a letter before saying its modeled consonant sound.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Notice the dagesh dot inside a letter before saying its modeled consonant sound.</p></details>
+<div class="lesson-actions"><a href="#lesson-7">Previous lesson</a><a href="#lesson-9">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+8%3A+Dagesh+Practice%3A+Seeing+Before+Saying.+Notice+the+dagesh+dot+inside+a+letter+before+saying+its+modeled+consonant+sound.+Help+me+practice+the+focus+%D7%91%D6%BC+%D7%91+%D7%9B%D6%BC+%D7%9B+and+these+examples%3A+%D7%91%D6%BC++%D7%91++%D7%9B%D6%BC++%D7%9B%3B+Dot+inside+%C2%B7+open+center.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-9"><p class="eyebrow">Aleph lesson 9 of 36</p>
+<h2>Bet in Simple Words and Names</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">בַּת · בָּא</span></p><p><strong>Goal:</strong> Read two Bet examples that use the previously taught ahhh marks.</p>
+<h3>Learn together</h3><ul><li>Only use marks already introduced: Patach and Qamatz.</li><li>Point to the letters from the right, blend each known part, then say the word.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">בַּת (daughter)</span></p><p><span lang="he" dir="rtl">בָּא (came)</span></p></div>
+<h3>Practice</h3><ol><li>Cover the meanings and read בַּת and בָּא from right to left.</li><li>Uncover the gloss; tell which word means daughter and which means came.</li></ol>
+<form class="practice-check" data-answer="2" data-correct="Correct. Read two Bet examples that use the previously taught ahhh marks." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which word means daughter?</legend><label><input type="radio" name="aleph-9" value="0"><span><span lang="he" dir="rtl">בָּא</span></span></label><label><input type="radio" name="aleph-9" value="1"><span><span lang="he" dir="rtl">אוֹר</span></span></label><label><input type="radio" name="aleph-9" value="2"><span><span lang="he" dir="rtl">בַּת</span></span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Read two Bet examples that use the previously taught ahhh marks.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Read two Bet examples that use the previously taught ahhh marks.</p></details>
+<div class="lesson-actions"><a href="#lesson-8">Previous lesson</a><a href="#lesson-10">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+9%3A+Bet+in+Simple+Words+and+Names.+Read+two+Bet+examples+that+use+the+previously+taught+ahhh+marks.+Help+me+practice+the+focus+%D7%91%D6%B7%D6%BC%D7%AA+%C2%B7+%D7%91%D6%B8%D6%BC%D7%90+and+these+examples%3A+%D7%91%D6%B7%D6%BC%D7%AA+%28daughter%29%3B+%D7%91%D6%B8%D6%BC%D7%90+%28came%29.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-10"><p class="eyebrow">Aleph lesson 10 of 36</p>
+<h2>Mem and Final Mem: A Letter with an Ending Form</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">מ ם</span></p><p><strong>Goal:</strong> Recognize Mem in its regular form and its final form at a word’s end.</p>
+<h3>Learn together</h3><ul><li>Mem says m in both forms. Final Mem ם is used at the end of a word.</li><li>Do not call ם a new letter; it is Mem’s ending shape.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">מ  ם</span></p><p><span lang="he" dir="rtl">Middle · final</span></p></div>
+<h3>Practice</h3><ol><li>Match מ with ם and find each in a letter row.</li><li>Place ם only in the ending box.</li></ol>
+<form class="practice-check" data-answer="0" data-correct="Correct. Recognize Mem in its regular form and its final form at a word’s end." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Where does Final Mem appear?</legend><label><input type="radio" name="aleph-10" value="0"><span>At the end of a word</span></label><label><input type="radio" name="aleph-10" value="1"><span>Only at the start</span></label><label><input type="radio" name="aleph-10" value="2"><span>Only under a vowel</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Recognize Mem in its regular form and its final form at a word’s end.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Recognize Mem in its regular form and its final form at a word’s end.</p></details>
+<div class="lesson-actions"><a href="#lesson-9">Previous lesson</a><a href="#lesson-11">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+10%3A+Mem+and+Final+Mem%3A+A+Letter+with+an+Ending+Form.+Recognize+Mem+in+its+regular+form+and+its+final+form+at+a+word%E2%80%99s+end.+Help+me+practice+the+focus+%D7%9E+%D7%9D+and+these+examples%3A+%D7%9E++%D7%9D%3B+Middle+%C2%B7+final.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-11"><p class="eyebrow">Aleph lesson 11 of 36</p>
+<h2>Shin and Sin: The Dot’s Place Matters</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">שׁ שׂ</span></p><p><strong>Goal:</strong> The right-side dot cues Shin; the left-side dot cues Sin.</p>
+<h3>Learn together</h3><ul><li>Shin and Sin share a letter body. The dot’s side changes the reading.</li><li>Right-side dot: Shin, sh. Left-side dot: Sin, s. Follow the classroom model.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">שׁ (sh)</span></p><p><span lang="he" dir="rtl">שׂ (s)</span></p></div>
+<h3>Practice</h3><ol><li>Mark the side of each dot before naming Shin or Sin.</li><li>Sort the sh and s forms; read only after checking the dot.</li></ol>
+<form class="practice-check" data-answer="1" data-correct="Correct. The right-side dot cues Shin; the left-side dot cues Sin." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which dot position cues Shin, sh?</legend><label><input type="radio" name="aleph-11" value="0"><span>Left side</span></label><label><input type="radio" name="aleph-11" value="1"><span>Right side</span></label><label><input type="radio" name="aleph-11" value="2"><span>No dot</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> The right-side dot cues Shin; the left-side dot cues Sin.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. The right-side dot cues Shin; the left-side dot cues Sin.</p></details>
+<div class="lesson-actions"><a href="#lesson-10">Previous lesson</a><a href="#lesson-12">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+11%3A+Shin+and+Sin%3A+The+Dot%E2%80%99s+Place+Matters.+The+right-side+dot+cues+Shin%3B+the+left-side+dot+cues+Sin.+Help+me+practice+the+focus+%D7%A9%D7%81+%D7%A9%D7%82+and+these+examples%3A+%D7%A9%D7%81+%28sh%29%3B+%D7%A9%D7%82+%28s%29.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-12"><p class="eyebrow">Aleph lesson 12 of 36</p>
+<h2>Lamed: The Tall Letter</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">לַ לָ</span></p><p><strong>Goal:</strong> Recognize Lamed by its tall stroke and blend it with known ahhh vowels.</p>
+<h3>Learn together</h3><ul><li>Recognize Lamed by its tall stroke and blend it with known ahhh vowels.</li><li>Compare ל with nearby short letters. Its tall stroke rises above the usual letter height.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">לַ  לָ</span></p><p><span lang="he" dir="rtl">Lamed + ahhh</span></p></div>
+<h3>Practice</h3><ol><li>Find Lamed among short letters.</li><li>Trace ל, then blend לַ and לָ.</li></ol>
+<form class="practice-check" data-answer="2" data-correct="Correct. Recognize Lamed by its tall stroke and blend it with known ahhh vowels." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which is the tall letter?</legend><label><input type="radio" name="aleph-12" value="0"><span><span lang="he" dir="rtl">מ</span></span></label><label><input type="radio" name="aleph-12" value="1"><span><span lang="he" dir="rtl">ד</span></span></label><label><input type="radio" name="aleph-12" value="2"><span><span lang="he" dir="rtl">ל</span></span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Recognize Lamed by its tall stroke and blend it with known ahhh vowels.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Recognize Lamed by its tall stroke and blend it with known ahhh vowels.</p></details>
+<div class="lesson-actions"><a href="#lesson-11">Previous lesson</a><a href="#lesson-13">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+12%3A+Lamed%3A+The+Tall+Letter.+Recognize+Lamed+by+its+tall+stroke+and+blend+it+with+known+ahhh+vowels.+Help+me+practice+the+focus+%D7%9C%D6%B7+%D7%9C%D6%B8+and+these+examples%3A+%D7%9C%D6%B7++%D7%9C%D6%B8%3B+Lamed+%2B+ahhh.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-13"><p class="eyebrow">Aleph lesson 13 of 36</p>
+<h2>The Dot Over and Vav-Cholam: Oh</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">בֹּ · בוֹ</span></p><p><strong>Goal:</strong> Cholam is the dot over a letter; Vav-Cholam carries the oh sound.</p>
+<h3>Learn together</h3><ul><li>The Cholam dot above a letter cues oh: “Over says Ohhhver Oh.”</li><li>When the dot is above Vav, Vav-Cholam carries oh. Point to the mark before reading.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">בֹּ (over dot: oh)</span></p><p><span lang="he" dir="rtl">בוֹ (Vav-Cholam: oh)</span></p></div>
+<h3>Practice</h3><ol><li>Point to the dot over the letter in בֹּ and name oh.</li><li>Find the dot over Vav in בוֹ and compare the two oh patterns.</li></ol>
+<form class="practice-check" data-answer="0" data-correct="Correct. Cholam is the dot over a letter; Vav-Cholam carries the oh sound." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>What sound does the Cholam dot cue here?</legend><label><input type="radio" name="aleph-13" value="0"><span>Oh</span></label><label><input type="radio" name="aleph-13" value="1"><span>Ah</span></label><label><input type="radio" name="aleph-13" value="2"><span>Eee</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Cholam is the dot over a letter; Vav-Cholam carries the oh sound.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Cholam is the dot over a letter; Vav-Cholam carries the oh sound.</p></details>
+<div class="lesson-actions"><a href="#lesson-12">Previous lesson</a><a href="#lesson-14">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+13%3A+The+Dot+Over+and+Vav-Cholam%3A+Oh.+Cholam+is+the+dot+over+a+letter%3B+Vav-Cholam+carries+the+oh+sound.+Help+me+practice+the+focus+%D7%91%D6%B9%D6%BC+%C2%B7+%D7%91%D7%95%D6%B9+and+these+examples%3A+%D7%91%D6%B9%D6%BC+%28over+dot%3A+oh%29%3B+%D7%91%D7%95%D6%B9+%28Vav-Cholam%3A+oh%29.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-14"><p class="eyebrow">Aleph lesson 14 of 36</p>
+<h2>Vav: The Connecting Letter</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">ו וֹ</span></p><p><strong>Goal:</strong> Recognize Vav in its upright shape and in a familiar vowel pattern.</p>
+<h3>Learn together</h3><ul><li>Recognize Vav in its upright shape and in a familiar vowel pattern.</li><li>Compare ו with ל: both rise, but Vav is shorter. Find the dot in וֹ and recall its oh sound.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">ו  וֹ</span></p><p><span lang="he" dir="rtl">Vav · Vav-Cholam</span></p></div>
+<h3>Practice</h3><ol><li>Find Vav in a mixed letter row.</li><li>Compare ו with י; name which one is taller.</li></ol>
+<form class="practice-check" data-answer="1" data-correct="Correct. Recognize Vav in its upright shape and in a familiar vowel pattern." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Vav: The Connecting Letter”?</legend><label><input type="radio" name="aleph-14" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-14" value="1"><span><span lang="he" dir="rtl">ו וֹ</span></span></label><label><input type="radio" name="aleph-14" value="2"><span>A picture clue</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Recognize Vav in its upright shape and in a familiar vowel pattern.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Recognize Vav in its upright shape and in a familiar vowel pattern.</p></details>
+<div class="lesson-actions"><a href="#lesson-13">Previous lesson</a><a href="#lesson-15">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+14%3A+Vav%3A+The+Connecting+Letter.+Recognize+Vav+in+its+upright+shape+and+in+a+familiar+vowel+pattern.+Help+me+practice+the+focus+%D7%95+%D7%95%D6%B9+and+these+examples%3A+%D7%95++%D7%95%D6%B9%3B+Vav+%C2%B7+Vav-Cholam.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-15"><p class="eyebrow">Aleph lesson 15 of 36</p>
+<h2>Yod: Small but Important</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">י יַ</span></p><p><strong>Goal:</strong> Recognize Yod as a small but important letter.</p>
+<h3>Learn together</h3><ul><li>Recognize Yod as a small but important letter.</li><li>Find י beside taller letters. Notice how small it is, then locate it again in a word.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">י  יַ</span></p><p><span lang="he" dir="rtl">Yod · Yod with Patach</span></p></div>
+<h3>Practice</h3><ol><li>Find Yod without relying on its place in a row.</li><li>Trace י and blend יַ using the already taught Patach.</li></ol>
+<form class="practice-check" data-answer="2" data-correct="Correct. Recognize Yod as a small but important letter." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Yod: Small but Important”?</legend><label><input type="radio" name="aleph-15" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-15" value="1"><span>A picture clue</span></label><label><input type="radio" name="aleph-15" value="2"><span><span lang="he" dir="rtl">י יַ</span></span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Recognize Yod as a small but important letter.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Recognize Yod as a small but important letter.</p></details>
+<div class="lesson-actions"><a href="#lesson-14">Previous lesson</a><a href="#lesson-16">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+15%3A+Yod%3A+Small+but+Important.+Recognize+Yod+as+a+small+but+important+letter.+Help+me+practice+the+focus+%D7%99+%D7%99%D6%B7+and+these+examples%3A+%D7%99++%D7%99%D6%B7%3B+Yod+%C2%B7+Yod+with+Patach.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-16"><p class="eyebrow">Aleph lesson 16 of 36</p>
+<h2>Hey: A Letter with Breath</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">ה הַ</span></p><p><strong>Goal:</strong> Recognize Hey by its open shape and gentle breath sound.</p>
+<h3>Learn together</h3><ul><li>Recognize Hey by its open shape and gentle breath sound.</li><li>Look for the open space in ה. Say the name, then echo the gentle breath sound modeled by the teacher.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">ה  הַ</span></p><p><span lang="he" dir="rtl">Hey · Hey with Patach</span></p></div>
+<h3>Practice</h3><ol><li>Point to the opening in Hey.</li><li>Compare ה and ח; use the class sound model for each.</li></ol>
+<form class="practice-check" data-answer="0" data-correct="Correct. Recognize Hey by its open shape and gentle breath sound." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Hey: A Letter with Breath”?</legend><label><input type="radio" name="aleph-16" value="0"><span><span lang="he" dir="rtl">ה הַ</span></span></label><label><input type="radio" name="aleph-16" value="1"><span>A Latin letter</span></label><label><input type="radio" name="aleph-16" value="2"><span>A picture clue</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Recognize Hey by its open shape and gentle breath sound.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Recognize Hey by its open shape and gentle breath sound.</p></details>
+<div class="lesson-actions"><a href="#lesson-15">Previous lesson</a><a href="#lesson-17">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+16%3A+Hey%3A+A+Letter+with+Breath.+Recognize+Hey+by+its+open+shape+and+gentle+breath+sound.+Help+me+practice+the+focus+%D7%94+%D7%94%D6%B7+and+these+examples%3A+%D7%94++%D7%94%D6%B7%3B+Hey+%C2%B7+Hey+with+Patach.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-17"><p class="eyebrow">Aleph lesson 17 of 36</p>
+<h2>Name-Building Review and the Three Eggs</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">בֶּ מֶ</span></p><p><strong>Goal:</strong> Recognize Yod, Vav, and Hey; introduce Segol, the Three Eggs eh vowel.</p>
+<h3>Learn together</h3><ul><li>Yod, Vav, and Hey have distinct sizes and openings.</li><li>Segol is three dots beneath a letter: three eggs cue eh. Say the vowel after naming the letter and the mark.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">בֶּ  מֶ</span></p><p><span lang="he" dir="rtl">Segol · Three Eggs eh</span></p></div>
+<h3>Practice</h3><ol><li>Compare Yod, Vav, and Hey by size and opening.</li><li>Count the three Segol dots; read בֶּ and מֶ as eh.</li></ol>
+<form class="practice-check" data-answer="1" data-correct="Correct. Recognize Yod, Vav, and Hey; introduce Segol, the Three Eggs eh vowel." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>How many dots make the Three Eggs vowel?</legend><label><input type="radio" name="aleph-17" value="0"><span>One</span></label><label><input type="radio" name="aleph-17" value="1"><span>Three</span></label><label><input type="radio" name="aleph-17" value="2"><span>Two</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Recognize Yod, Vav, and Hey; introduce Segol, the Three Eggs eh vowel.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Recognize Yod, Vav, and Hey; introduce Segol, the Three Eggs eh vowel.</p></details>
+<div class="lesson-actions"><a href="#lesson-16">Previous lesson</a><a href="#lesson-18">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+17%3A+Name-Building+Review+and+the+Three+Eggs.+Recognize+Yod%2C+Vav%2C+and+Hey%3B+introduce+Segol%2C+the+Three+Eggs+eh+vowel.+Help+me+practice+the+focus+%D7%91%D6%B6%D6%BC+%D7%9E%D6%B6+and+these+examples%3A+%D7%91%D6%B6%D6%BC++%D7%9E%D6%B6%3B+Segol+%C2%B7+Three+Eggs+eh.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-18"><p class="eyebrow">Aleph lesson 18 of 36</p>
+<h2>Dalet and Resh: Careful Corners</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">ד ר</span></p><p><strong>Goal:</strong> Compare Dalet and Resh by their small corner and stroke differences.</p>
+<h3>Learn together</h3><ul><li>Compare Dalet and Resh by their small corner and stroke differences.</li><li>Set ד and ר side by side. Follow the upper corner and right edge to tell the shapes apart.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">ד  ר</span></p><p><span lang="he" dir="rtl">Compare the corners</span></p></div>
+<h3>Practice</h3><ol><li>Place ד and ר side by side.</li><li>Trace the corner detail slowly; identify each letter in a mixed row.</li></ol>
+<form class="practice-check" data-answer="2" data-correct="Correct. Compare Dalet and Resh by their small corner and stroke differences." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Dalet and Resh: Careful Corners”?</legend><label><input type="radio" name="aleph-18" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-18" value="1"><span>A picture clue</span></label><label><input type="radio" name="aleph-18" value="2"><span><span lang="he" dir="rtl">ד ר</span></span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Compare Dalet and Resh by their small corner and stroke differences.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Compare Dalet and Resh by their small corner and stroke differences.</p></details>
+<div class="lesson-actions"><a href="#lesson-17">Previous lesson</a><a href="#lesson-19">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+18%3A+Dalet+and+Resh%3A+Careful+Corners.+Compare+Dalet+and+Resh+by+their+small+corner+and+stroke+differences.+Help+me+practice+the+focus+%D7%93+%D7%A8+and+these+examples%3A+%D7%93++%D7%A8%3B+Compare+the+corners.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-19"><p class="eyebrow">Aleph lesson 19 of 36</p>
+<h2>Kaf, Khaf, and Final Kaf</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">כּ כ ך</span></p><p><strong>Goal:</strong> Distinguish Kaf, Khaf, and final Kaf; the dot and final position matter.</p>
+<h3>Learn together</h3><ul><li>Distinguish Kaf, Khaf, and final Kaf; the dot and final position matter.</li><li>The regular Kaf כּ and Khaf כ share a family shape; the dot marks the firmer sound in this beginner comparison. Final Kaf ך is used only at a word’s end.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">כּ  כ  ך</span></p><p><span lang="he" dir="rtl">Kaf · Khaf · final</span></p></div>
+<h3>Practice</h3><ol><li>Sort כּ, כ, and ך by dot and word position.</li><li>Keep the final form in the ending box and echo the Khaf model.</li></ol>
+<form class="practice-check" data-answer="0" data-correct="Correct. Distinguish Kaf, Khaf, and final Kaf; the dot and final position matter." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which is Final Kaf?</legend><label><input type="radio" name="aleph-19" value="0"><span><span lang="he" dir="rtl">ך</span></span></label><label><input type="radio" name="aleph-19" value="1"><span><span lang="he" dir="rtl">כּ</span></span></label><label><input type="radio" name="aleph-19" value="2"><span><span lang="he" dir="rtl">כ</span></span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Distinguish Kaf, Khaf, and final Kaf; the dot and final position matter.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Distinguish Kaf, Khaf, and final Kaf; the dot and final position matter.</p></details>
+<div class="lesson-actions"><a href="#lesson-18">Previous lesson</a><a href="#lesson-20">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+19%3A+Kaf%2C+Khaf%2C+and+Final+Kaf.+Distinguish+Kaf%2C+Khaf%2C+and+final+Kaf%3B+the+dot+and+final+position+matter.+Help+me+practice+the+focus+%D7%9B%D6%BC+%D7%9B+%D7%9A+and+these+examples%3A+%D7%9B%D6%BC++%D7%9B++%D7%9A%3B+Kaf+%C2%B7+Khaf+%C2%B7+final.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-20"><p class="eyebrow">Aleph lesson 20 of 36</p>
+<h2>Final Forms Family I: Mem, Nun, Kaf</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">מ ם נ ן כ ך</span></p><p><strong>Goal:</strong> Match Mem, Nun, and Kaf with their final forms.</p>
+<h3>Learn together</h3><ul><li>Mem, Nun, and Kaf each change shape at a word’s end.</li><li>Regular and final forms keep their letter identity and sound; use the final shape only at the end.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">מ/ם · נ/ן · כ/ך</span></p><p><span lang="he" dir="rtl">Match the forms</span></p></div>
+<h3>Practice</h3><ol><li>Match each middle form with its final partner.</li><li>Write one family pair and explain where the ending shape belongs.</li></ol>
+<form class="practice-check" data-answer="1" data-correct="Correct. Match Mem, Nun, and Kaf with their final forms." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Final Forms Family I: Mem, Nun, Kaf”?</legend><label><input type="radio" name="aleph-20" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-20" value="1"><span><span lang="he" dir="rtl">מ ם נ ן כ ך</span></span></label><label><input type="radio" name="aleph-20" value="2"><span>A picture clue</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Match Mem, Nun, and Kaf with their final forms.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Match Mem, Nun, and Kaf with their final forms.</p></details>
+<div class="lesson-actions"><a href="#lesson-19">Previous lesson</a><a href="#lesson-21">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+20%3A+Final+Forms+Family+I%3A+Mem%2C+Nun%2C+Kaf.+Match+Mem%2C+Nun%2C+and+Kaf+with+their+final+forms.+Help+me+practice+the+focus+%D7%9E+%D7%9D+%D7%A0+%D7%9F+%D7%9B+%D7%9A+and+these+examples%3A+%D7%9E%2F%D7%9D+%C2%B7+%D7%A0%2F%D7%9F+%C2%B7+%D7%9B%2F%D7%9A%3B+Match+the+forms.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-21"><p class="eyebrow">Aleph lesson 21 of 36</p>
+<h2>Final Forms Family II: Pey and Tsadi</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">פ ף צ ץ</span></p><p><strong>Goal:</strong> Match Peh and Tsadi with their final forms.</p>
+<h3>Learn together</h3><ul><li>Peh and Tsadi also change shape at the end of a word.</li><li>Match פ with ף and צ with ץ before reading any example.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">פ/ף · צ/ץ</span></p><p><span lang="he" dir="rtl">Match the forms</span></p></div>
+<h3>Practice</h3><ol><li>Match פ/ף and צ/ץ.</li><li>Sort regular and final forms, then read the letter names.</li></ol>
+<form class="practice-check" data-answer="2" data-correct="Correct. Match Peh and Tsadi with their final forms." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which is Final Tsadi?</legend><label><input type="radio" name="aleph-21" value="0"><span><span lang="he" dir="rtl">צ</span></span></label><label><input type="radio" name="aleph-21" value="1"><span><span lang="he" dir="rtl">פ</span></span></label><label><input type="radio" name="aleph-21" value="2"><span><span lang="he" dir="rtl">ץ</span></span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Match Peh and Tsadi with their final forms.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Match Peh and Tsadi with their final forms.</p></details>
+<div class="lesson-actions"><a href="#lesson-20">Previous lesson</a><a href="#lesson-22">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+21%3A+Final+Forms+Family+II%3A+Pey+and+Tsadi.+Match+Peh+and+Tsadi+with+their+final+forms.+Help+me+practice+the+focus+%D7%A4+%D7%A3+%D7%A6+%D7%A5+and+these+examples%3A+%D7%A4%2F%D7%A3+%C2%B7+%D7%A6%2F%D7%A5%3B+Match+the+forms.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-22"><p class="eyebrow">Aleph lesson 22 of 36</p>
+<h2>Final Forms Review: The Ending Doorway</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">ך ם ן ף ץ</span></p><p><strong>Goal:</strong> Review all five final letter shapes and place each at a word’s end.</p>
+<h3>Learn together</h3><ul><li>There are five common final forms: ך ם ן ף ץ.</li><li>Their shapes change at a word’s end; the reading direction does not.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">ך ם ן ף ץ</span></p><p><span lang="he" dir="rtl">Five final forms</span></p></div>
+<h3>Practice</h3><ol><li>Place all five final forms in ending boxes.</li><li>Say each family name and show its regular partner.</li></ol>
+<form class="practice-check" data-answer="0" data-correct="Correct. Review all five final letter shapes and place each at a word’s end." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Where are final forms placed?</legend><label><input type="radio" name="aleph-22" value="0"><span>At the end of a word</span></label><label><input type="radio" name="aleph-22" value="1"><span>At the beginning only</span></label><label><input type="radio" name="aleph-22" value="2"><span>Above the vowel</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Review all five final letter shapes and place each at a word’s end.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Review all five final letter shapes and place each at a word’s end.</p></details>
+<div class="lesson-actions"><a href="#lesson-21">Previous lesson</a><a href="#lesson-23">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+22%3A+Final+Forms+Review%3A+The+Ending+Doorway.+Review+all+five+final+letter+shapes+and+place+each+at+a+word%E2%80%99s+end.+Help+me+practice+the+focus+%D7%9A+%D7%9D+%D7%9F+%D7%A3+%D7%A5+and+these+examples%3A+%D7%9A+%D7%9D+%D7%9F+%D7%A3+%D7%A5%3B+Five+final+forms.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-23"><p class="eyebrow">Aleph lesson 23 of 36</p>
+<h2>Chet: A Strong New Sound</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">ח</span></p><p><strong>Goal:</strong> Recognize Chet as a distinct letter and learn its pronunciation from the teacher.</p>
+<h3>Learn together</h3><ul><li>Chet is a different letter from Hey.</li><li>Ask the teacher to model the community sound. Learners may listen and echo without forcing the throat.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">ח</span></p><p><span lang="he" dir="rtl">Chet · teacher model</span></p></div>
+<h3>Practice</h3><ol><li>Find ח among Hey and other shapes.</li><li>Listen to the teacher’s pronunciation and echo at a comfortable level.</li></ol>
+<form class="practice-check" data-answer="1" data-correct="Correct. Recognize Chet as a distinct letter and learn its pronunciation from the teacher." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Chet: A Strong New Sound”?</legend><label><input type="radio" name="aleph-23" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-23" value="1"><span><span lang="he" dir="rtl">ח</span></span></label><label><input type="radio" name="aleph-23" value="2"><span>A picture clue</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Recognize Chet as a distinct letter and learn its pronunciation from the teacher.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Recognize Chet as a distinct letter and learn its pronunciation from the teacher.</p></details>
+<div class="lesson-actions"><a href="#lesson-22">Previous lesson</a><a href="#lesson-24">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+23%3A+Chet%3A+A+Strong+New+Sound.+Recognize+Chet+as+a+distinct+letter+and+learn+its+pronunciation+from+the+teacher.+Help+me+practice+the+focus+%D7%97+and+these+examples%3A+%D7%97%3B+Chet+%C2%B7+teacher+model.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-24"><p class="eyebrow">Aleph lesson 24 of 36</p>
+<h2>Tet and Tav: Similar Sounds, Different Letters</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">ט ת</span></p><p><strong>Goal:</strong> Recognize Tet and Tav as different letters, even when both represent t.</p>
+<h3>Learn together</h3><ul><li>Tet and Tav have different shapes.</li><li>Some traditions pronounce both with t. Point to the letter to identify it, not just the sound.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">ט  ת</span></p><p><span lang="he" dir="rtl">Tet · Tav</span></p></div>
+<h3>Practice</h3><ol><li>Find ט and ת in a mixed row.</li><li>Name the shape before saying a sound; both may use t in the class tradition.</li></ol>
+<form class="practice-check" data-answer="2" data-correct="Correct. Recognize Tet and Tav as different letters, even when both represent t." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Tet and Tav: Similar Sounds, Different Letters”?</legend><label><input type="radio" name="aleph-24" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-24" value="1"><span>A picture clue</span></label><label><input type="radio" name="aleph-24" value="2"><span><span lang="he" dir="rtl">ט ת</span></span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Recognize Tet and Tav as different letters, even when both represent t.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Recognize Tet and Tav as different letters, even when both represent t.</p></details>
+<div class="lesson-actions"><a href="#lesson-23">Previous lesson</a><a href="#lesson-25">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+24%3A+Tet+and+Tav%3A+Similar+Sounds%2C+Different+Letters.+Recognize+Tet+and+Tav+as+different+letters%2C+even+when+both+represent+t.+Help+me+practice+the+focus+%D7%98+%D7%AA+and+these+examples%3A+%D7%98++%D7%AA%3B+Tet+%C2%B7+Tav.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-25"><p class="eyebrow">Aleph lesson 25 of 36</p>
+<h2>The OOOH Vowel Pair: Kubutz and Vav-Shuruk</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">בֻ · בוּ</span></p><p><strong>Goal:</strong> Kubutz is the three-dot staircase “OOOH belly”; Vav with its middle dot (Shuruk) also says oo.</p>
+<h3>Learn together</h3><ul><li>Kubutz uses three small dots in a staircase and cues the “OOOH belly.”</li><li>Shuruk is Vav with a dot in its middle—the “ball hit the Vav.” Both patterns cue oo.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">בֻ (Kubutz: oo)</span></p><p><span lang="he" dir="rtl">בוּ (Shuruk: oo)</span></p></div>
+<h3>Practice</h3><ol><li>Count the three Kubutz dots in בֻ and trace their staircase.</li><li>Point to the dot inside וּ in בוּ; compare the two oo patterns.</li></ol>
+<form class="practice-check" data-answer="0" data-correct="Correct. Kubutz is the three-dot staircase “OOOH belly”; Vav with its middle dot (Shuruk) also says oo." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which two patterns cue oo?</legend><label><input type="radio" name="aleph-25" value="0"><span>Kubutz and Shuruk</span></label><label><input type="radio" name="aleph-25" value="1"><span>Patach and Qamatz</span></label><label><input type="radio" name="aleph-25" value="2"><span>Chirik and Segol</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Kubutz is the three-dot staircase “OOOH belly”; Vav with its middle dot (Shuruk) also says oo.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Kubutz is the three-dot staircase “OOOH belly”; Vav with its middle dot (Shuruk) also says oo.</p></details>
+<div class="lesson-actions"><a href="#lesson-24">Previous lesson</a><a href="#lesson-26">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+25%3A+The+OOOH+Vowel+Pair%3A+Kubutz+and+Vav-Shuruk.+Kubutz+is+the+three-dot+staircase+%E2%80%9COOOH+belly%E2%80%9D%3B+Vav+with+its+middle+dot+%28Shuruk%29+also+says+oo.+Help+me+practice+the+focus+%D7%91%D6%BB+%C2%B7+%D7%91%D7%95%D6%BC+and+these+examples%3A+%D7%91%D6%BB+%28Kubutz%3A+oo%29%3B+%D7%91%D7%95%D6%BC+%28Shuruk%3A+oo%29.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-26"><p class="eyebrow">Aleph lesson 26 of 36</p>
+<h2>Qof: The Letter Below the Line</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">ק</span></p><p><strong>Goal:</strong> Recognize Qof by its descending shape and learn its class pronunciation.</p>
+<h3>Learn together</h3><ul><li>Recognize Qof by its descending shape and learn its class pronunciation.</li><li>Compare ק with כ. Notice Qof’s stroke below the line; then repeat the teacher’s sound model.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">ק</span></p><p><span lang="he" dir="rtl">Qof · descending shape</span></p></div>
+<h3>Practice</h3><ol><li>Trace ק and point to its descending feature.</li><li>Compare Qof with Kaf and say which one drops below.</li></ol>
+<form class="practice-check" data-answer="1" data-correct="Correct. Recognize Qof by its descending shape and learn its class pronunciation." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Qof: The Letter Below the Line”?</legend><label><input type="radio" name="aleph-26" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-26" value="1"><span><span lang="he" dir="rtl">ק</span></span></label><label><input type="radio" name="aleph-26" value="2"><span>A picture clue</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Recognize Qof by its descending shape and learn its class pronunciation.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Recognize Qof by its descending shape and learn its class pronunciation.</p></details>
+<div class="lesson-actions"><a href="#lesson-25">Previous lesson</a><a href="#lesson-27">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+26%3A+Qof%3A+The+Letter+Below+the+Line.+Recognize+Qof+by+its+descending+shape+and+learn+its+class+pronunciation.+Help+me+practice+the+focus+%D7%A7+and+these+examples%3A+%D7%A7%3B+Qof+%C2%B7+descending+shape.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-27"><p class="eyebrow">Aleph lesson 27 of 36</p>
+<h2>Samekh and Zayin: Visual Precision</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">ס ז</span></p><p><strong>Goal:</strong> Compare the rounded shape of Samekh with the angled shape of Zayin.</p>
+<h3>Learn together</h3><ul><li>Compare the rounded shape of Samekh with the angled shape of Zayin.</li><li>Trace ס as a rounded shape and ז as an angled shape. Name each before mixing the cards.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">ס  ז</span></p><p><span lang="he" dir="rtl">Samekh · Zayin</span></p></div>
+<h3>Practice</h3><ol><li>Sort rounded ס and angled ז.</li><li>Find each shape in a mixed row and name it.</li></ol>
+<form class="practice-check" data-answer="2" data-correct="Correct. Compare the rounded shape of Samekh with the angled shape of Zayin." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Samekh and Zayin: Visual Precision”?</legend><label><input type="radio" name="aleph-27" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-27" value="1"><span>A picture clue</span></label><label><input type="radio" name="aleph-27" value="2"><span><span lang="he" dir="rtl">ס ז</span></span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Compare the rounded shape of Samekh with the angled shape of Zayin.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Compare the rounded shape of Samekh with the angled shape of Zayin.</p></details>
+<div class="lesson-actions"><a href="#lesson-26">Previous lesson</a><a href="#lesson-28">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+27%3A+Samekh+and+Zayin%3A+Visual+Precision.+Compare+the+rounded+shape+of+Samekh+with+the+angled+shape+of+Zayin.+Help+me+practice+the+focus+%D7%A1+%D7%96+and+these+examples%3A+%D7%A1++%D7%96%3B+Samekh+%C2%B7+Zayin.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-28"><p class="eyebrow">Aleph lesson 28 of 36</p>
+<h2>Gimel: Returning to a Distinct Shape</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">ג</span></p><p><strong>Goal:</strong> Recognize Gimel by its distinct shape and modeled g sound.</p>
+<h3>Learn together</h3><ul><li>Recognize Gimel by its distinct shape and modeled g sound.</li><li>Compare ג with ד and ז. Point to Gimel’s distinctive shape, then echo its modeled sound.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">ג</span></p><p><span lang="he" dir="rtl">Gimel</span></p></div>
+<h3>Practice</h3><ol><li>Find ג among similar letters.</li><li>Trace Gimel and say its class-model sound.</li></ol>
+<form class="practice-check" data-answer="0" data-correct="Correct. Recognize Gimel by its distinct shape and modeled g sound." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Gimel: Returning to a Distinct Shape”?</legend><label><input type="radio" name="aleph-28" value="0"><span><span lang="he" dir="rtl">ג</span></span></label><label><input type="radio" name="aleph-28" value="1"><span>A Latin letter</span></label><label><input type="radio" name="aleph-28" value="2"><span>A picture clue</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Recognize Gimel by its distinct shape and modeled g sound.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Recognize Gimel by its distinct shape and modeled g sound.</p></details>
+<div class="lesson-actions"><a href="#lesson-27">Previous lesson</a><a href="#lesson-29">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+28%3A+Gimel%3A+Returning+to+a+Distinct+Shape.+Recognize+Gimel+by+its+distinct+shape+and+modeled+g+sound.+Help+me+practice+the+focus+%D7%92+and+these+examples%3A+%D7%92%3B+Gimel.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-29"><p class="eyebrow">Aleph lesson 29 of 36</p>
+<h2>Review by Family: Quiet, Dotted, Final</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">א ע בּ ב ם</span></p><p><strong>Goal:</strong> Sort carrier, dotted, and final-form families.</p>
+<h3>Learn together</h3><ul><li>Sort carrier, dotted, and final-form families.</li><li>Sort the examples by what to notice: carrier, inside dot, or ending shape. Explain one choice.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">א ע · בּ ב · מ ם</span></p><p><span lang="he" dir="rtl">Carriers · dot · final</span></p></div>
+<h3>Practice</h3><ol><li>Sort א/ע, בּ/ב, and מ/ם into the named families.</li><li>Explain one clue used in every group.</li></ol>
+<form class="practice-check" data-answer="1" data-correct="Correct. Sort carrier, dotted, and final-form families." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Review by Family: Quiet, Dotted, Final”?</legend><label><input type="radio" name="aleph-29" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-29" value="1"><span><span lang="he" dir="rtl">א ע בּ ב ם</span></span></label><label><input type="radio" name="aleph-29" value="2"><span>A picture clue</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Sort carrier, dotted, and final-form families.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Sort carrier, dotted, and final-form families.</p></details>
+<div class="lesson-actions"><a href="#lesson-28">Previous lesson</a><a href="#lesson-30">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+29%3A+Review+by+Family%3A+Quiet%2C+Dotted%2C+Final.+Sort+carrier%2C+dotted%2C+and+final-form+families.+Help+me+practice+the+focus+%D7%90+%D7%A2+%D7%91%D6%BC+%D7%91+%D7%9D+and+these+examples%3A+%D7%90+%D7%A2+%C2%B7+%D7%91%D6%BC+%D7%91+%C2%B7+%D7%9E+%D7%9D%3B+Carriers+%C2%B7+dot+%C2%B7+final.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-30"><p class="eyebrow">Aleph lesson 30 of 36</p>
+<h2>Review by Shape: Tall, Small, Closed, Confusing</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">ל י ח ה ד ר</span></p><p><strong>Goal:</strong> Use tall, small, open, closed, and corner features to identify letters.</p>
+<h3>Learn together</h3><ul><li>Use tall, small, open, closed, and corner features to identify letters.</li><li>Make three groups from the examples: tall, small, and corner shapes. Move a letter if a partner gives a better visual reason.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">ל י · ח ה · ד ר</span></p><p><span lang="he" dir="rtl">Tall · small · closed/open</span></p></div>
+<h3>Practice</h3><ol><li>Sort letters by tall, small, open, closed, and corner features.</li><li>Name the specific letter after pointing to its shape clue.</li></ol>
+<form class="practice-check" data-answer="2" data-correct="Correct. Use tall, small, open, closed, and corner features to identify letters." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Review by Shape: Tall, Small, Closed, Confusing”?</legend><label><input type="radio" name="aleph-30" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-30" value="1"><span>A picture clue</span></label><label><input type="radio" name="aleph-30" value="2"><span><span lang="he" dir="rtl">ל י ח ה ד ר</span></span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Use tall, small, open, closed, and corner features to identify letters.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Use tall, small, open, closed, and corner features to identify letters.</p></details>
+<div class="lesson-actions"><a href="#lesson-29">Previous lesson</a><a href="#lesson-31">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+30%3A+Review+by+Shape%3A+Tall%2C+Small%2C+Closed%2C+Confusing.+Use+tall%2C+small%2C+open%2C+closed%2C+and+corner+features+to+identify+letters.+Help+me+practice+the+focus+%D7%9C+%D7%99+%D7%97+%D7%94+%D7%93+%D7%A8+and+these+examples%3A+%D7%9C+%D7%99+%C2%B7+%D7%97+%D7%94+%C2%B7+%D7%93+%D7%A8%3B+Tall+%C2%B7+small+%C2%B7+closed%2Fopen.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-31"><p class="eyebrow">Aleph lesson 31 of 36</p>
+<h2>Simple Word: Or — Light</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">אוֹר</span></p><p><strong>Goal:</strong> Decode אוֹר and connect it to light; Vav-Cholam was taught earlier.</p>
+<h3>Learn together</h3><ul><li>Point to each letter and mark in אוֹר; read from the right.</li><li>Connect the decoded word to light after reading. The Vav-Cholam dot was taught in lesson 13.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">אוֹר</span></p><p><span lang="he" dir="rtl">light</span></p></div>
+<h3>Practice</h3><ol><li>Cover the gloss and picture; decode אוֹר.</li><li>Uncover the meaning and explain which mark cues oh.</li></ol>
+<form class="practice-check" data-answer="0" data-correct="Correct. Decode אוֹר and connect it to light; Vav-Cholam was taught earlier." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>What does אוֹר mean?</legend><label><input type="radio" name="aleph-31" value="0"><span>Light</span></label><label><input type="radio" name="aleph-31" value="1"><span>Peace</span></label><label><input type="radio" name="aleph-31" value="2"><span>House</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Decode אוֹר and connect it to light; Vav-Cholam was taught earlier.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Decode אוֹר and connect it to light; Vav-Cholam was taught earlier.</p></details>
+<div class="lesson-actions"><a href="#lesson-30">Previous lesson</a><a href="#lesson-32">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+31%3A+Simple+Word%3A+Or+%E2%80%94+Light.+Decode+%D7%90%D7%95%D6%B9%D7%A8+and+connect+it+to+light%3B+Vav-Cholam+was+taught+earlier.+Help+me+practice+the+focus+%D7%90%D7%95%D6%B9%D7%A8+and+these+examples%3A+%D7%90%D7%95%D6%B9%D7%A8%3B+light.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-32"><p class="eyebrow">Aleph lesson 32 of 36</p>
+<h2>Simple Word: Shalom</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">שָׁלוֹם</span></p><p><strong>Goal:</strong> Decode שָׁלוֹם and connect it to hello or peace.</p>
+<h3>Learn together</h3><ul><li>Point to each letter and mark in שָׁלוֹם.</li><li>Decode before using the familiar greeting meaning. The Shin dot and Cholam have already been introduced.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">שָׁלוֹם</span></p><p><span lang="he" dir="rtl">shalom</span></p></div>
+<h3>Practice</h3><ol><li>Decode שָׁלוֹם before saying its meaning.</li><li>Use it as hello or peace in a teacher-modeled example.</li></ol>
+<form class="practice-check" data-answer="1" data-correct="Correct. Decode שָׁלוֹם and connect it to hello or peace." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which word can be a greeting?</legend><label><input type="radio" name="aleph-32" value="0"><span><span lang="he" dir="rtl">מַיִם</span></span></label><label><input type="radio" name="aleph-32" value="1"><span><span lang="he" dir="rtl">שָׁלוֹם</span></span></label><label><input type="radio" name="aleph-32" value="2"><span><span lang="he" dir="rtl">בַּיִת</span></span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Decode שָׁלוֹם and connect it to hello or peace.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Decode שָׁלוֹם and connect it to hello or peace.</p></details>
+<div class="lesson-actions"><a href="#lesson-31">Previous lesson</a><a href="#lesson-33">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+32%3A+Simple+Word%3A+Shalom.+Decode+%D7%A9%D6%B8%D7%81%D7%9C%D7%95%D6%B9%D7%9D+and+connect+it+to+hello+or+peace.+Help+me+practice+the+focus+%D7%A9%D6%B8%D7%81%D7%9C%D7%95%D6%B9%D7%9D+and+these+examples%3A+%D7%A9%D6%B8%D7%81%D7%9C%D7%95%D6%B9%D7%9D%3B+shalom.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-33"><p class="eyebrow">Aleph lesson 33 of 36</p>
+<h2>Simple Word: Bayit</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">בַּיִת</span></p><p><strong>Goal:</strong> Decode בַּיִת and connect it to house.</p>
+<h3>Learn together</h3><ul><li>Point to each part of בַּיִת and follow its known marks.</li><li>Read the word first, then connect it to a house. Yod and the Pea Vowel are already familiar.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">בַּיִת</span></p><p><span lang="he" dir="rtl">bayit</span></p></div>
+<h3>Practice</h3><ol><li>Read בַּיִת without a picture.</li><li>Tell which familiar vowel mark helps with the second beat.</li></ol>
+<form class="practice-check" data-answer="2" data-correct="Correct. Decode בַּיִת and connect it to house." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>What does בַּיִת mean?</legend><label><input type="radio" name="aleph-33" value="0"><span>Day</span></label><label><input type="radio" name="aleph-33" value="1"><span>Book</span></label><label><input type="radio" name="aleph-33" value="2"><span>House</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Decode בַּיִת and connect it to house.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Decode בַּיִת and connect it to house.</p></details>
+<div class="lesson-actions"><a href="#lesson-32">Previous lesson</a><a href="#lesson-34">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+33%3A+Simple+Word%3A+Bayit.+Decode+%D7%91%D6%B7%D6%BC%D7%99%D6%B4%D7%AA+and+connect+it+to+house.+Help+me+practice+the+focus+%D7%91%D6%B7%D6%BC%D7%99%D6%B4%D7%AA+and+these+examples%3A+%D7%91%D6%B7%D6%BC%D7%99%D6%B4%D7%AA%3B+bayit.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-34"><p class="eyebrow">Aleph lesson 34 of 36</p>
+<h2>Names and Hebrew Letters</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">דָּוִד · מֹשֶׁה</span></p><p><strong>Goal:</strong> Read Hebrew names from their letters and taught vowel marks.</p>
+<h3>Learn together</h3><ul><li>Look at each Hebrew name as Hebrew, from right to left.</li><li>Point to the letters and already learned marks; use teacher pronunciation as a model, not English spelling as a shortcut.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">דָּוִד</span></p><p><span lang="he" dir="rtl">מֹשֶׁה</span></p></div>
+<h3>Practice</h3><ol><li>Read דָּוִד and מֹשֶׁה from the Hebrew letters.</li><li>Point to a vowel mark already studied before saying each name.</li></ol>
+<form class="practice-check" data-answer="0" data-correct="Correct. Read Hebrew names from their letters and taught vowel marks." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Names and Hebrew Letters”?</legend><label><input type="radio" name="aleph-34" value="0"><span><span lang="he" dir="rtl">דָּוִד · מֹשֶׁה</span></span></label><label><input type="radio" name="aleph-34" value="1"><span>A Latin letter</span></label><label><input type="radio" name="aleph-34" value="2"><span>A picture clue</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Read Hebrew names from their letters and taught vowel marks.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Read Hebrew names from their letters and taught vowel marks.</p></details>
+<div class="lesson-actions"><a href="#lesson-33">Previous lesson</a><a href="#lesson-35">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+34%3A+Names+and+Hebrew+Letters.+Read+Hebrew+names+from+their+letters+and+taught+vowel+marks.+Help+me+practice+the+focus+%D7%93%D6%B8%D6%BC%D7%95%D6%B4%D7%93+%C2%B7+%D7%9E%D6%B9%D7%A9%D6%B6%D7%81%D7%94+and+these+examples%3A+%D7%93%D6%B8%D6%BC%D7%95%D6%B4%D7%93%3B+%D7%9E%D6%B9%D7%A9%D6%B6%D7%81%D7%94.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-35"><p class="eyebrow">Aleph lesson 35 of 36</p>
+<h2>Aleph Track Readiness Review</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">א בּ ב מ ם</span></p><p><strong>Goal:</strong> Show recognition of letters, marks, and familiar words without picture guessing.</p>
+<h3>Learn together</h3><ul><li>Show recognition of letters, marks, and familiar words without picture guessing.</li><li>Mix letter and word cards. Identify the letters and marks first; read only patterns already taught.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">בַּת · אוֹר · שָׁלוֹם</span></p><p><span lang="he" dir="rtl">Read then explain</span></p></div>
+<h3>Practice</h3><ol><li>Name one letter family, one vowel pattern, and one short word.</li><li>Read a short example aloud and explain the steps, not just the meaning.</li></ol>
+<form class="practice-check" data-answer="1" data-correct="Correct. Show recognition of letters, marks, and familiar words without picture guessing." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Aleph Track Readiness Review”?</legend><label><input type="radio" name="aleph-35" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-35" value="1"><span><span lang="he" dir="rtl">א בּ ב מ ם</span></span></label><label><input type="radio" name="aleph-35" value="2"><span>A picture clue</span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Show recognition of letters, marks, and familiar words without picture guessing.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Show recognition of letters, marks, and familiar words without picture guessing.</p></details>
+<div class="lesson-actions"><a href="#lesson-34">Previous lesson</a><a href="#lesson-36">Next lesson</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+35%3A+Aleph+Track+Readiness+Review.+Show+recognition+of+letters%2C+marks%2C+and+familiar+words+without+picture+guessing.+Help+me+practice+the+focus+%D7%90+%D7%91%D6%BC+%D7%91+%D7%9E+%D7%9D+and+these+examples%3A+%D7%91%D6%B7%D6%BC%D7%AA+%C2%B7+%D7%90%D7%95%D6%B9%D7%A8+%C2%B7+%D7%A9%D6%B8%D7%81%D7%9C%D7%95%D6%B9%D7%9D%3B+Read+then+explain.#chavruta">Ask Chavruta about this lesson</a></div></section><section class="track-lesson" id="lesson-36"><p class="eyebrow">Aleph lesson 36 of 36</p>
+<h2>Celebration of Beginning</h2><p><strong>Focus:</strong> <span lang="he" dir="rtl">א ב ג ד ה ו</span></p><p><strong>Goal:</strong> Reflect on growth and choose a comfortable next learning step.</p>
+<h3>Learn together</h3><ul><li>Reflect on growth and choose a comfortable next learning step.</li><li>Choose a favorite shape, sound, or word. Tell a partner one thing that feels easier now and one next step you would enjoy.</li></ul>
+<h3>Read or notice</h3><div class="examples"><p><span lang="he" dir="rtl">א · ב · ג · ד · ה · ו</span></p><p><span lang="he" dir="rtl">Choose one word to read</span></p></div>
+<h3>Practice</h3><ol><li>Choose a letter or word you can now read more confidently.</li><li>Tell a teacher one thing you learned and one thing you want to practice next.</li></ol>
+<form class="practice-check" data-answer="2" data-correct="Correct. Reflect on growth and choose a comfortable next learning step." data-retry="Look at the focus and examples above, then try once more.">
+<fieldset><legend>Which Hebrew form or cue did we practice in “Celebration of Beginning”?</legend><label><input type="radio" name="aleph-36" value="0"><span>A Latin letter</span></label><label><input type="radio" name="aleph-36" value="1"><span>A picture clue</span></label><label><input type="radio" name="aleph-36" value="2"><span><span lang="he" dir="rtl">א ב ג ד ה ו</span></span></label></fieldset>
+<button type="submit">Check my answer</button><p class="practice-feedback" role="status" aria-live="polite"></p></form>
+<p class="readiness"><strong>Ready when:</strong> Reflect on growth and choose a comfortable next learning step.</p><details><summary>Teacher note and answer</summary><p>Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.</p><p>Correct. Reflect on growth and choose a comfortable next learning step.</p></details>
+<div class="lesson-actions"><a href="#lesson-35">Previous lesson</a><a href="/placement-quick-check.html">Review placement guidance</a><a href="/?chavrutaMode=hebrew-classroom&amp;chavrutaQuestion=I+am+studying+Aleph+Track+lesson+36%3A+Celebration+of+Beginning.+Reflect+on+growth+and+choose+a+comfortable+next+learning+step.+Help+me+practice+the+focus+%D7%90+%D7%91+%D7%92+%D7%93+%D7%94+%D7%95+and+these+examples%3A+%D7%90+%C2%B7+%D7%91+%C2%B7+%D7%92+%C2%B7+%D7%93+%C2%B7+%D7%94+%C2%B7+%D7%95%3B+Choose+one+word+to+read.#chavruta">Ask Chavruta about this lesson</a></div></section></main><footer>© 2026 LuminaNexus Foundation · Ivrit HaOr · <a href="/downloads/Aleph_Track_Printable.pdf">Download the printable workbook</a></footer></body></html>

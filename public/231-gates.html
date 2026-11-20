@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Explore the 231 distinct two-letter gates described in Sefer Yetzirah, chapter 2, with a careful interactive Hebrew-letter study tool." />
+  <title>The 231 Gates | LuminaNexus Foundation</title>
+  <link rel="stylesheet" href="/styles/hebrew.css" />
+  <style>
+    :root{--ink:#14213d;--muted:#52616b;--blue:#1f5fbf;--gold:#d9a441;--cream:#fff8e8;--soft:#f5f8ff;--line:#dfe7f5;--green:#315c4b}
+    *{box-sizing:border-box}body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:linear-gradient(180deg,#fffdf6,#f3f7ff);line-height:1.68}
+    header{background:radial-gradient(circle at top left,#fff3bf,#eaf2ff 50%,#fff);border-bottom:1px solid var(--line);padding:3rem 1.25rem 2.5rem;text-align:center}main,nav{width:min(1100px,92vw);margin:0 auto}main{padding:2rem 0 4rem}nav{padding:1rem 0;display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center}
+    nav a,.button{display:inline-block;text-decoration:none;color:#fff;background:var(--blue);padding:.75rem 1rem;border-radius:999px;font-family:Arial,sans-serif;font-weight:700;font-size:.95rem}.secondary{background:#fff!important;color:var(--blue)!important;border:1px solid var(--line)}
+    h1,h2,h3{line-height:1.18}h1{font-size:clamp(2.3rem,6vw,4.4rem);margin:.35rem 0}h2{font-size:clamp(1.65rem,4vw,2.25rem);margin-top:2rem}p,li{font-size:1.05rem}.intro{max-width:780px;margin:1rem auto;color:var(--muted);font-size:1.17rem}.eyebrow{font:800 .8rem Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+    .card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.35rem;box-shadow:0 10px 30px rgba(20,33,61,.07);margin:1rem 0}.principle{background:var(--cream);border-left:6px solid var(--gold);padding:1rem 1.2rem;border-radius:10px}
+    .explorer{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:1.25rem;align-items:start}.tools{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:.8rem 0}.tools input{flex:1 1 230px;min-width:0;padding:.75rem .85rem;border:1px solid #aeb9c9;border-radius:10px;font:inherit}.tools button,.gate-item,.saved-item{font:inherit}.tools button,.save-button{padding:.68rem .9rem;border:1px solid #aeb9c9;border-radius:10px;background:#fff;color:var(--ink);cursor:pointer}.gate-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.42rem;max-height:580px;overflow:auto;padding:.3rem}.gate-item{min-width:0;padding:.45rem .15rem;border:1px solid var(--line);border-radius:9px;background:#fff;cursor:pointer}.gate-item:hover,.gate-item[aria-pressed="true"]{border-color:var(--blue);background:#edf4ff}.gate-item[aria-pressed="true"]{box-shadow:0 0 0 2px #1f5fbf40}.gate-item small{display:block;color:var(--muted);font:600 .72rem Arial,sans-serif}.gate-item b{font-family:"Frank Ruhl Libre",serif;font-size:1.25rem;direction:rtl;unicode-bidi:isolate}
+    .selected{position:sticky;top:1rem}.pair-display{font-family:"Frank Ruhl Libre",serif;font-size:clamp(3rem,9vw,5rem);text-align:center;line-height:1.25;letter-spacing:.05em;margin:.4rem 0;color:var(--green)}.pair-name{text-align:center;font:700 1.15rem Arial,sans-serif;color:var(--muted)}.prompt{padding:1rem;background:var(--soft);border-radius:12px}.saved-list{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;list-style:none}.saved-item{padding:.45rem .7rem;border:1px solid var(--line);border-radius:9px;background:#fff;cursor:pointer}.status{min-height:1.5em;color:var(--muted)}.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #a16a27;outline-offset:3px}.source{font-size:.94rem;color:var(--muted)}footer{width:min(1100px,92vw);margin:auto;padding:2rem 0;border-top:1px solid var(--line);color:var(--muted)}
+    @media(max-width:760px){.explorer{grid-template-columns:1fr}.selected{position:static}.gate-grid{grid-template-columns:repeat(5,minmax(0,1fr));max-height:420px}.tools{align-items:stretch}.tools input,.tools button{flex:1 1 100%}}
+  </style>
+  <script src="/231-gates.js" defer></script>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">A Source-Based Letter Study</p>
+    <h1>The 231 Gates</h1>
+    <p class="intro">Sefer Yetzirah describes the twenty-two Hebrew foundation letters set in a wheel with 231 gates. This page makes the distinct two-letter pairs explorable as a study aid.</p>
+  </header>
+  <nav aria-label="231 Gates navigation">
+    <a href="/">Back to LuminaNexus</a><a class="secondary" href="/sources.html">Source Library</a><a class="secondary" href="/aleph-track.html">Aleph Track</a><a class="secondary" href="/noahide-parcha.html">Noahide Daily Parcha</a><a class="secondary" href="/?chavrutaMode=source-library#chavruta">Ask Chavruta / Havari</a>
+  </nav>
+  <main>
+    <section class="card">
+      <h2>What “231” counts</h2>
+      <p>The traditional count is the number of distinct pairs formed from twenty-two different letters: 22 × 21 ÷ 2 = 231. A pair is treated as one gate in this simple explorer; its reverse is not counted again. The page presents the combinations for learning and reflection. It does not assign a fixed mystical meaning, translation, or power to an individual pair.</p>
+      <p class="principle">Use the pairs to notice letters, compare forms, and ask better questions. Check words and meanings against reliable Hebrew sources.</p>
+      <p class="source">Primary text: <a href="https://www.sefaria.org/Sefer_Yetzirah.2.4?lang=bi&amp;with=Translations" target="_blank" rel="noopener noreferrer">Sefer Yetzirah 2:4 on Sefaria</a>.</p>
+    </section>
+    <section class="explorer" aria-label="Interactive letter-pair explorer">
+      <div class="card">
+        <h2>Choose a gate</h2>
+        <p>There are 231 pairings below. Search by a letter name or Hebrew character, choose any pair, or ask for a random one.</p>
+        <div class="tools">
+          <label for="gate-search" class="visually-hidden">Search gates by Hebrew letter or name</label>
+          <input id="gate-search" type="search" placeholder="Search Aleph, Bet, א, ב…" autocomplete="off" />
+          <button id="random-gate" type="button">Choose a random gate</button>
+          <button id="show-saved" type="button" aria-pressed="false">Show saved gates</button>
+        </div>
+        <p id="gate-count" class="status" role="status" aria-live="polite">231 gates</p>
+        <div id="gate-grid" class="gate-grid" aria-label="All two-letter gates"></div>
+      </div>
+      <aside class="card selected" aria-labelledby="selected-heading">
+        <p class="eyebrow">Selected Pair</p>
+        <h2 id="selected-heading">Explore one gate</h2>
+        <div id="pair-display" class="pair-display" lang="he" dir="rtl" aria-live="polite">א · ב</div>
+        <p id="pair-name" class="pair-name">Aleph · Bet</p>
+        <p class="prompt">Notice each letter separately. What shape or sound do you recognize? Where have you encountered both letters in a word you can verify?</p>
+        <p id="pair-number" class="source">Gate 1 of 231</p>
+        <button id="save-gate" class="save-button" type="button" aria-pressed="false">Save this gate</button>
+        <h3>Your saved gates</h3>
+        <p id="saved-empty" class="status">No gates saved on this device yet.</p>
+        <ul id="saved-list" class="saved-list" aria-label="Saved letter pairs"></ul>
+      </aside>
+    </section>
+    <section class="card">
+      <h2>A gentle study routine</h2>
+      <ol><li>Say or identify each letter using a pronunciation model you trust.</li><li>Compare their shapes without treating visual resemblance as proof of a word relationship.</li><li>Find a real Hebrew word containing both letters, then check its spelling and meaning in a lexicon or with a qualified teacher.</li><li>Record the source and keep your own reflection separate from what the source says.</li></ol>
+      <p class="source">The gates belong to a Jewish mystical text and tradition. This interactive page is educational; it is not a religious ruling, a substitute for Jewish teaching, or a claim that every pairing has a separate traditional interpretation.</p>
+    </section>
+  </main>
+  <footer>LuminaNexus Foundation · Hebrew learning and source study</footer>
+</body>
+</html>

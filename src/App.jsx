@@ -613,15 +613,15 @@ function App() {
         <section id="noahide-parcha" className="section noahide-path">
           <div className="section-heading">
             <p className="eyebrow">A Separate Study Path</p>
-            <h2>Noahide Torah Study Guide</h2>
+            <h2>Noahide Daily Parcha</h2>
             <p className="section-intro">
-              The weekly Torah portion through the eyes of the nations.
+              A gentle, optional seven-day rhythm for studying a short passage from the weekly Torah portion.
             </p>
             <p className="section-intro">
-              Noahide Parcha is a separate LuminaNexus study path for non-Jews
-              who honor Torah and the Jewish people. It provides a study framework and a sample reflection, with links to find the weekly reading and explore rabbinic commentary
-              references and source links, while carefully avoiding imitation of
-              Jewish obligation or replacement of Jewish authority.
+              This separate study path helps learners find the current reading,
+              work through one short passage, keep biblical text distinct from
+              commentary, and record a personal reflection without creating a
+              religious obligation or replacing Jewish authority.
             </p>
           </div>
           <img
@@ -636,12 +636,12 @@ function App() {
               <p>We approach the Torah as students from the nations, with gratitude and humility, not as owners or replacers.</p>
             </article>
             <article className="feature-card">
-              <h3>Light for the Nations</h3>
-              <p>Each parsha may reveal universal themes: justice, mercy, speech, idolatry, responsibility, family, humility, and the fear of Heaven.</p>
+              <h3>Seven-Day Study Rhythm</h3>
+              <p>Short, optional steps guide learners from finding the portion to carrying one question into further study.</p>
             </article>
             <article className="feature-card">
-              <h3>Rabbinic Commentary Reference</h3>
-              <p>Where appropriate, we link to classical Jewish sources and commentary through Sefaria for teacher-guided study.</p>
+              <h3>Source-Aware Learning</h3>
+              <p>Keep the biblical passage, classical commentary, and personal application clearly distinguished.</p>
             </article>
             <article className="feature-card">
               <h3>Noahide Reflection</h3>
@@ -650,10 +650,13 @@ function App() {
           </div>
           <div className="hero-actions">
             <a className="button primary" href="/noahide-parcha.html">
-              Open Noahide Study Guide
+              Open Noahide Daily Parcha
             </a>
             <a className="button secondary" href="/sources.html">
               Open Source Library
+            </a>
+            <a className="button secondary" href="/231-gates.html">
+              Explore the 231 Gates
             </a>
             <a className="button secondary" href="/?chavrutaMode=noahide-parcha#chavruta">
               Ask Chavruta / Havari

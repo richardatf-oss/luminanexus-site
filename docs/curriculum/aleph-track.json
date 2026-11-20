@@ -1,0 +1,1015 @@
+{
+  "title": "Aleph Track — First Beginning",
+  "track": "Aleph",
+  "description": "A 36-lesson first Hebrew sequence for right-to-left direction, letter recognition, vowel cues, familiar words, and confidence before Bet. The order groups useful visual and sound families instead of following strict alphabet order.",
+  "lessons": [
+    {
+      "id": 1,
+      "title": "Opening the Hebrew Doorway",
+      "focus": "←",
+      "goal": "Start Hebrew at the right edge and move toward the left.",
+      "teach": [
+        "Start Hebrew at the right edge and move toward the left.",
+        "Hold the page sideways if helpful: Hebrew begins at the right edge. Point to the first mark before tracing toward the left."
+      ],
+      "examples": [
+        "Start → finish",
+        "Right edge → left edge"
+      ],
+      "practice": [
+        "Place a start mark at the right edge; trace a path toward the left.",
+        "Take turns pointing to the Hebrew start and saying the direction aloud."
+      ],
+      "check": "Start Hebrew at the right edge and move toward the left.",
+      "question": "Where do Hebrew readers begin?",
+      "options": [
+        "Right side",
+        "Left side",
+        "Top of the page"
+      ],
+      "answer": 0,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Start Hebrew at the right edge and move toward the left."
+    },
+    {
+      "id": 2,
+      "title": "Hebrew Letters Are Not English Letters",
+      "focus": "א ב ג",
+      "goal": "Recognize that Hebrew has its own letter shapes and names.",
+      "teach": [
+        "Recognize that Hebrew has its own letter shapes and names.",
+        "Compare a Hebrew letter with a Latin letter. Name the script first, then identify the Hebrew shapes."
+      ],
+      "examples": [
+        "א  ב  ג",
+        "A  B  C"
+      ],
+      "practice": [
+        "Sort Hebrew letters and Latin letters into separate groups.",
+        "Choose one Hebrew letter; point to it and say its name after a teacher model."
+      ],
+      "check": "Recognize that Hebrew has its own letter shapes and names.",
+      "question": "Which is a Hebrew letter?",
+      "options": [
+        "B",
+        "ב",
+        "D"
+      ],
+      "answer": 1,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Recognize that Hebrew has its own letter shapes and names."
+    },
+    {
+      "id": 3,
+      "title": "The Hebrew Side of the Page",
+      "focus": "א ב ←",
+      "goal": "Track a Hebrew line from right to left, one word at a time.",
+      "teach": [
+        "Track a Hebrew line from right to left, one word at a time.",
+        "Track one short line with a finger. Pause at each space and restart from the right side of the next word."
+      ],
+      "examples": [
+        "א ב ג →",
+        "Point right, then track left"
+      ],
+      "practice": [
+        "Track a whole line from right to left with your finger.",
+        "Pause at the space between words, then continue from the next word on the right."
+      ],
+      "check": "Track a Hebrew line from right to left, one word at a time.",
+      "question": "Which way do you follow a Hebrew line?",
+      "options": [
+        "Left to right",
+        "Bottom to top",
+        "Right to left"
+      ],
+      "answer": 2,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Track a Hebrew line from right to left, one word at a time."
+    },
+    {
+      "id": 4,
+      "title": "Aleph: The First Silent Carrier",
+      "focus": "א אַ אָ",
+      "goal": "Aleph carries a vowel mark in these examples; hear the modeled ahhh sound without adding an Aleph consonant.",
+      "teach": [
+        "Aleph does not add a consonant sound in these examples; it carries the vowel.",
+        "Patach is the Stick Vowel and Qamatz the Stick with a Handle. Point below the letter; both say ahhh in today’s examples."
+      ],
+      "examples": [
+        "אַ  אָ",
+        "Patach · Qamatz"
+      ],
+      "practice": [
+        "Circle Patach and box Qamatz.",
+        "Point to א then the mark below; say ahhh for אַ and אָ."
+      ],
+      "check": "Point to Aleph and its vowel mark, then say the modeled ahhh sound.",
+      "question": "What should you notice when reading these Aleph examples?",
+      "options": [
+        "The vowel mark supplies the modeled sound",
+        "Aleph adds an English A sound",
+        "The vowel mark is part of the picture"
+      ],
+      "answer": 0,
+      "teacher_note": "Model the Stick Vowel patach and Stick with Handle qamatz with an ahhh sound for these examples. The cue names are memory aids, not formal vowel definitions.",
+      "feedback": "Correct. The vowel mark supplies the modeled sound carried by Aleph."
+    },
+    {
+      "id": 5,
+      "title": "Ayin: Another Silent Carrier",
+      "focus": "עַ עָ",
+      "goal": "Ayin is a distinct letter; use a gentle class pronunciation and respect tradition differences.",
+      "teach": [
+        "Ayin is not Aleph; it is a separate letter with its own name.",
+        "Ayin has different pronunciations in Hebrew traditions. Use the class model and describe variation respectfully."
+      ],
+      "examples": [
+        "עַ  עָ",
+        "Ayin with the Stick Vowels"
+      ],
+      "practice": [
+        "Match עַ and עָ to the two ahhh marks.",
+        "Practice the teacher’s pronunciation model and listen respectfully to other traditions."
+      ],
+      "check": "Ayin is a distinct letter; use a gentle class pronunciation and respect tradition differences.",
+      "question": "How should learners handle pronunciation differences?",
+      "options": [
+        "Call every other tradition wrong",
+        "Use a clear model and respect established traditions",
+        "Skip the letter"
+      ],
+      "answer": 1,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Ayin is a distinct letter; use a gentle class pronunciation and respect tradition differences."
+    },
+    {
+      "id": 6,
+      "title": "Silent Carriers Review: Aleph and Ayin",
+      "focus": "א ע אַ עָ",
+      "goal": "Recognize Aleph and Ayin, then pair them with the two ahhh marks.",
+      "teach": [
+        "Recognize Aleph and Ayin, then pair them with the two ahhh marks.",
+        "Place א and ע cards in separate groups. Say each name before matching it to its vowel example."
+      ],
+      "examples": [
+        "א ע אַ עָ",
+        "Point to letter, then vowel"
+      ],
+      "practice": [
+        "Sort Aleph and Ayin letter cards.",
+        "Pair each letter with a Stick Vowel and explain which part gives the sound."
+      ],
+      "check": "Recognize Aleph and Ayin, then pair them with the two ahhh marks.",
+      "question": "Which Hebrew form or cue did we practice in “Silent Carriers Review: Aleph and Ayin”?",
+      "options": [
+        "A Latin letter",
+        "A picture clue",
+        "א ע אַ עָ"
+      ],
+      "answer": 2,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Recognize Aleph and Ayin, then pair them with the two ahhh marks."
+    },
+    {
+      "id": 7,
+      "title": "Bet and Vet: The Dot Matters",
+      "focus": "בִּ בִ",
+      "goal": "Distinguish Bet’s inside dot from Vet’s open center; learn the Pea Vowel beneath the letter.",
+      "teach": [
+        "Bet has a dot inside—the ball—and Vet has an open center—the void.",
+        "The Pea Vowel is one dot beneath a letter and says eee. The dot inside Bet and the dot below it do different jobs."
+      ],
+      "examples": [
+        "בִּ  בִ",
+        "Bet + Pea · Vet + Pea"
+      ],
+      "practice": [
+        "Circle the Bet ball and underline the Pea below.",
+        "Read בִּ and בִ after naming the inside dot and the beneath dot."
+      ],
+      "check": "Distinguish Bet’s inside dot from Vet’s open center; learn the Pea Vowel beneath the letter.",
+      "question": "Where is the Pea Vowel?",
+      "options": [
+        "Beneath the letter",
+        "Inside the letter",
+        "Above the word"
+      ],
+      "answer": 0,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Distinguish Bet’s inside dot from Vet’s open center; learn the Pea Vowel beneath the letter."
+    },
+    {
+      "id": 8,
+      "title": "Dagesh Practice: Seeing Before Saying",
+      "focus": "בּ ב כּ כ",
+      "goal": "Notice the dagesh dot inside a letter before saying its modeled consonant sound.",
+      "teach": [
+        "Dagesh is the dot inside a letter. For Bet and Kaf in these beginner examples, it helps identify the firmer sound.",
+        "Always point to the letter and the inside dot before trying its teacher-modeled sound."
+      ],
+      "examples": [
+        "בּ  ב  כּ  כ",
+        "Dot inside · open center"
+      ],
+      "practice": [
+        "Find which examples have a dot inside.",
+        "Compare בּ/ב and כּ/כ; echo the community sound model."
+      ],
+      "check": "Notice the dagesh dot inside a letter before saying its modeled consonant sound.",
+      "question": "What should you inspect before choosing a modeled sound?",
+      "options": [
+        "The picture only",
+        "The letter and its inside dot",
+        "The English translation"
+      ],
+      "answer": 1,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Notice the dagesh dot inside a letter before saying its modeled consonant sound."
+    },
+    {
+      "id": 9,
+      "title": "Bet in Simple Words and Names",
+      "focus": "בַּת · בָּא",
+      "goal": "Read two Bet examples that use the previously taught ahhh marks.",
+      "teach": [
+        "Only use marks already introduced: Patach and Qamatz.",
+        "Point to the letters from the right, blend each known part, then say the word."
+      ],
+      "examples": [
+        "בַּת (daughter)",
+        "בָּא (came)"
+      ],
+      "practice": [
+        "Cover the meanings and read בַּת and בָּא from right to left.",
+        "Uncover the gloss; tell which word means daughter and which means came."
+      ],
+      "check": "Read two Bet examples that use the previously taught ahhh marks.",
+      "question": "Which word means daughter?",
+      "options": [
+        "בָּא",
+        "אוֹר",
+        "בַּת"
+      ],
+      "answer": 2,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Read two Bet examples that use the previously taught ahhh marks."
+    },
+    {
+      "id": 10,
+      "title": "Mem and Final Mem: A Letter with an Ending Form",
+      "focus": "מ ם",
+      "goal": "Recognize Mem in its regular form and its final form at a word’s end.",
+      "teach": [
+        "Mem says m in both forms. Final Mem ם is used at the end of a word.",
+        "Do not call ם a new letter; it is Mem’s ending shape."
+      ],
+      "examples": [
+        "מ  ם",
+        "Middle · final"
+      ],
+      "practice": [
+        "Match מ with ם and find each in a letter row.",
+        "Place ם only in the ending box."
+      ],
+      "check": "Recognize Mem in its regular form and its final form at a word’s end.",
+      "question": "Where does Final Mem appear?",
+      "options": [
+        "At the end of a word",
+        "Only at the start",
+        "Only under a vowel"
+      ],
+      "answer": 0,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Recognize Mem in its regular form and its final form at a word’s end."
+    },
+    {
+      "id": 11,
+      "title": "Shin and Sin: The Dot’s Place Matters",
+      "focus": "שׁ שׂ",
+      "goal": "The right-side dot cues Shin; the left-side dot cues Sin.",
+      "teach": [
+        "Shin and Sin share a letter body. The dot’s side changes the reading.",
+        "Right-side dot: Shin, sh. Left-side dot: Sin, s. Follow the classroom model."
+      ],
+      "examples": [
+        "שׁ (sh)",
+        "שׂ (s)"
+      ],
+      "practice": [
+        "Mark the side of each dot before naming Shin or Sin.",
+        "Sort the sh and s forms; read only after checking the dot."
+      ],
+      "check": "The right-side dot cues Shin; the left-side dot cues Sin.",
+      "question": "Which dot position cues Shin, sh?",
+      "options": [
+        "Left side",
+        "Right side",
+        "No dot"
+      ],
+      "answer": 1,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. The right-side dot cues Shin; the left-side dot cues Sin."
+    },
+    {
+      "id": 12,
+      "title": "Lamed: The Tall Letter",
+      "focus": "לַ לָ",
+      "goal": "Recognize Lamed by its tall stroke and blend it with known ahhh vowels.",
+      "teach": [
+        "Recognize Lamed by its tall stroke and blend it with known ahhh vowels.",
+        "Compare ל with nearby short letters. Its tall stroke rises above the usual letter height."
+      ],
+      "examples": [
+        "לַ  לָ",
+        "Lamed + ahhh"
+      ],
+      "practice": [
+        "Find Lamed among short letters.",
+        "Trace ל, then blend לַ and לָ."
+      ],
+      "check": "Recognize Lamed by its tall stroke and blend it with known ahhh vowels.",
+      "question": "Which is the tall letter?",
+      "options": [
+        "מ",
+        "ד",
+        "ל"
+      ],
+      "answer": 2,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Recognize Lamed by its tall stroke and blend it with known ahhh vowels."
+    },
+    {
+      "id": 13,
+      "title": "The Dot Over and Vav-Cholam: Oh",
+      "focus": "בֹּ · בוֹ",
+      "goal": "Cholam is the dot over a letter; Vav-Cholam carries the oh sound.",
+      "teach": [
+        "The Cholam dot above a letter cues oh: “Over says Ohhhver Oh.”",
+        "When the dot is above Vav, Vav-Cholam carries oh. Point to the mark before reading."
+      ],
+      "examples": [
+        "בֹּ (over dot: oh)",
+        "בוֹ (Vav-Cholam: oh)"
+      ],
+      "practice": [
+        "Point to the dot over the letter in בֹּ and name oh.",
+        "Find the dot over Vav in בוֹ and compare the two oh patterns."
+      ],
+      "check": "Cholam is the dot over a letter; Vav-Cholam carries the oh sound.",
+      "question": "What sound does the Cholam dot cue here?",
+      "options": [
+        "Oh",
+        "Ah",
+        "Eee"
+      ],
+      "answer": 0,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Cholam is the dot over a letter; Vav-Cholam carries the oh sound."
+    },
+    {
+      "id": 14,
+      "title": "Vav: The Connecting Letter",
+      "focus": "ו וֹ",
+      "goal": "Recognize Vav in its upright shape and in a familiar vowel pattern.",
+      "teach": [
+        "Recognize Vav in its upright shape and in a familiar vowel pattern.",
+        "Compare ו with ל: both rise, but Vav is shorter. Find the dot in וֹ and recall its oh sound."
+      ],
+      "examples": [
+        "ו  וֹ",
+        "Vav · Vav-Cholam"
+      ],
+      "practice": [
+        "Find Vav in a mixed letter row.",
+        "Compare ו with י; name which one is taller."
+      ],
+      "check": "Recognize Vav in its upright shape and in a familiar vowel pattern.",
+      "question": "Which Hebrew form or cue did we practice in “Vav: The Connecting Letter”?",
+      "options": [
+        "A Latin letter",
+        "ו וֹ",
+        "A picture clue"
+      ],
+      "answer": 1,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Recognize Vav in its upright shape and in a familiar vowel pattern."
+    },
+    {
+      "id": 15,
+      "title": "Yod: Small but Important",
+      "focus": "י יַ",
+      "goal": "Recognize Yod as a small but important letter.",
+      "teach": [
+        "Recognize Yod as a small but important letter.",
+        "Find י beside taller letters. Notice how small it is, then locate it again in a word."
+      ],
+      "examples": [
+        "י  יַ",
+        "Yod · Yod with Patach"
+      ],
+      "practice": [
+        "Find Yod without relying on its place in a row.",
+        "Trace י and blend יַ using the already taught Patach."
+      ],
+      "check": "Recognize Yod as a small but important letter.",
+      "question": "Which Hebrew form or cue did we practice in “Yod: Small but Important”?",
+      "options": [
+        "A Latin letter",
+        "A picture clue",
+        "י יַ"
+      ],
+      "answer": 2,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Recognize Yod as a small but important letter."
+    },
+    {
+      "id": 16,
+      "title": "Hey: A Letter with Breath",
+      "focus": "ה הַ",
+      "goal": "Recognize Hey by its open shape and gentle breath sound.",
+      "teach": [
+        "Recognize Hey by its open shape and gentle breath sound.",
+        "Look for the open space in ה. Say the name, then echo the gentle breath sound modeled by the teacher."
+      ],
+      "examples": [
+        "ה  הַ",
+        "Hey · Hey with Patach"
+      ],
+      "practice": [
+        "Point to the opening in Hey.",
+        "Compare ה and ח; use the class sound model for each."
+      ],
+      "check": "Recognize Hey by its open shape and gentle breath sound.",
+      "question": "Which Hebrew form or cue did we practice in “Hey: A Letter with Breath”?",
+      "options": [
+        "ה הַ",
+        "A Latin letter",
+        "A picture clue"
+      ],
+      "answer": 0,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Recognize Hey by its open shape and gentle breath sound."
+    },
+    {
+      "id": 17,
+      "title": "Name-Building Review and the Three Eggs",
+      "focus": "בֶּ מֶ",
+      "goal": "Recognize Yod, Vav, and Hey; introduce Segol, the Three Eggs eh vowel.",
+      "teach": [
+        "Yod, Vav, and Hey have distinct sizes and openings.",
+        "Segol is three dots beneath a letter: three eggs cue eh. Say the vowel after naming the letter and the mark."
+      ],
+      "examples": [
+        "בֶּ  מֶ",
+        "Segol · Three Eggs eh"
+      ],
+      "practice": [
+        "Compare Yod, Vav, and Hey by size and opening.",
+        "Count the three Segol dots; read בֶּ and מֶ as eh."
+      ],
+      "check": "Recognize Yod, Vav, and Hey; introduce Segol, the Three Eggs eh vowel.",
+      "question": "How many dots make the Three Eggs vowel?",
+      "options": [
+        "One",
+        "Three",
+        "Two"
+      ],
+      "answer": 1,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Recognize Yod, Vav, and Hey; introduce Segol, the Three Eggs eh vowel."
+    },
+    {
+      "id": 18,
+      "title": "Dalet and Resh: Careful Corners",
+      "focus": "ד ר",
+      "goal": "Compare Dalet and Resh by their small corner and stroke differences.",
+      "teach": [
+        "Compare Dalet and Resh by their small corner and stroke differences.",
+        "Set ד and ר side by side. Follow the upper corner and right edge to tell the shapes apart."
+      ],
+      "examples": [
+        "ד  ר",
+        "Compare the corners"
+      ],
+      "practice": [
+        "Place ד and ר side by side.",
+        "Trace the corner detail slowly; identify each letter in a mixed row."
+      ],
+      "check": "Compare Dalet and Resh by their small corner and stroke differences.",
+      "question": "Which Hebrew form or cue did we practice in “Dalet and Resh: Careful Corners”?",
+      "options": [
+        "A Latin letter",
+        "A picture clue",
+        "ד ר"
+      ],
+      "answer": 2,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Compare Dalet and Resh by their small corner and stroke differences."
+    },
+    {
+      "id": 19,
+      "title": "Kaf, Khaf, and Final Kaf",
+      "focus": "כּ כ ך",
+      "goal": "Distinguish Kaf, Khaf, and final Kaf; the dot and final position matter.",
+      "teach": [
+        "Distinguish Kaf, Khaf, and final Kaf; the dot and final position matter.",
+        "The regular Kaf כּ and Khaf כ share a family shape; the dot marks the firmer sound in this beginner comparison. Final Kaf ך is used only at a word’s end."
+      ],
+      "examples": [
+        "כּ  כ  ך",
+        "Kaf · Khaf · final"
+      ],
+      "practice": [
+        "Sort כּ, כ, and ך by dot and word position.",
+        "Keep the final form in the ending box and echo the Khaf model."
+      ],
+      "check": "Distinguish Kaf, Khaf, and final Kaf; the dot and final position matter.",
+      "question": "Which is Final Kaf?",
+      "options": [
+        "ך",
+        "כּ",
+        "כ"
+      ],
+      "answer": 0,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Distinguish Kaf, Khaf, and final Kaf; the dot and final position matter."
+    },
+    {
+      "id": 20,
+      "title": "Final Forms Family I: Mem, Nun, Kaf",
+      "focus": "מ ם נ ן כ ך",
+      "goal": "Match Mem, Nun, and Kaf with their final forms.",
+      "teach": [
+        "Mem, Nun, and Kaf each change shape at a word’s end.",
+        "Regular and final forms keep their letter identity and sound; use the final shape only at the end."
+      ],
+      "examples": [
+        "מ/ם · נ/ן · כ/ך",
+        "Match the forms"
+      ],
+      "practice": [
+        "Match each middle form with its final partner.",
+        "Write one family pair and explain where the ending shape belongs."
+      ],
+      "check": "Match Mem, Nun, and Kaf with their final forms.",
+      "question": "Which Hebrew form or cue did we practice in “Final Forms Family I: Mem, Nun, Kaf”?",
+      "options": [
+        "A Latin letter",
+        "מ ם נ ן כ ך",
+        "A picture clue"
+      ],
+      "answer": 1,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Match Mem, Nun, and Kaf with their final forms."
+    },
+    {
+      "id": 21,
+      "title": "Final Forms Family II: Pey and Tsadi",
+      "focus": "פ ף צ ץ",
+      "goal": "Match Peh and Tsadi with their final forms.",
+      "teach": [
+        "Peh and Tsadi also change shape at the end of a word.",
+        "Match פ with ף and צ with ץ before reading any example."
+      ],
+      "examples": [
+        "פ/ף · צ/ץ",
+        "Match the forms"
+      ],
+      "practice": [
+        "Match פ/ף and צ/ץ.",
+        "Sort regular and final forms, then read the letter names."
+      ],
+      "check": "Match Peh and Tsadi with their final forms.",
+      "question": "Which is Final Tsadi?",
+      "options": [
+        "צ",
+        "פ",
+        "ץ"
+      ],
+      "answer": 2,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Match Peh and Tsadi with their final forms."
+    },
+    {
+      "id": 22,
+      "title": "Final Forms Review: The Ending Doorway",
+      "focus": "ך ם ן ף ץ",
+      "goal": "Review all five final letter shapes and place each at a word’s end.",
+      "teach": [
+        "There are five common final forms: ך ם ן ף ץ.",
+        "Their shapes change at a word’s end; the reading direction does not."
+      ],
+      "examples": [
+        "ך ם ן ף ץ",
+        "Five final forms"
+      ],
+      "practice": [
+        "Place all five final forms in ending boxes.",
+        "Say each family name and show its regular partner."
+      ],
+      "check": "Review all five final letter shapes and place each at a word’s end.",
+      "question": "Where are final forms placed?",
+      "options": [
+        "At the end of a word",
+        "At the beginning only",
+        "Above the vowel"
+      ],
+      "answer": 0,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Review all five final letter shapes and place each at a word’s end."
+    },
+    {
+      "id": 23,
+      "title": "Chet: A Strong New Sound",
+      "focus": "ח",
+      "goal": "Recognize Chet as a distinct letter and learn its pronunciation from the teacher.",
+      "teach": [
+        "Chet is a different letter from Hey.",
+        "Ask the teacher to model the community sound. Learners may listen and echo without forcing the throat."
+      ],
+      "examples": [
+        "ח",
+        "Chet · teacher model"
+      ],
+      "practice": [
+        "Find ח among Hey and other shapes.",
+        "Listen to the teacher’s pronunciation and echo at a comfortable level."
+      ],
+      "check": "Recognize Chet as a distinct letter and learn its pronunciation from the teacher.",
+      "question": "Which Hebrew form or cue did we practice in “Chet: A Strong New Sound”?",
+      "options": [
+        "A Latin letter",
+        "ח",
+        "A picture clue"
+      ],
+      "answer": 1,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Recognize Chet as a distinct letter and learn its pronunciation from the teacher."
+    },
+    {
+      "id": 24,
+      "title": "Tet and Tav: Similar Sounds, Different Letters",
+      "focus": "ט ת",
+      "goal": "Recognize Tet and Tav as different letters, even when both represent t.",
+      "teach": [
+        "Tet and Tav have different shapes.",
+        "Some traditions pronounce both with t. Point to the letter to identify it, not just the sound."
+      ],
+      "examples": [
+        "ט  ת",
+        "Tet · Tav"
+      ],
+      "practice": [
+        "Find ט and ת in a mixed row.",
+        "Name the shape before saying a sound; both may use t in the class tradition."
+      ],
+      "check": "Recognize Tet and Tav as different letters, even when both represent t.",
+      "question": "Which Hebrew form or cue did we practice in “Tet and Tav: Similar Sounds, Different Letters”?",
+      "options": [
+        "A Latin letter",
+        "A picture clue",
+        "ט ת"
+      ],
+      "answer": 2,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Recognize Tet and Tav as different letters, even when both represent t."
+    },
+    {
+      "id": 25,
+      "title": "The OOOH Vowel Pair: Kubutz and Vav-Shuruk",
+      "focus": "בֻ · בוּ",
+      "goal": "Kubutz is the three-dot staircase “OOOH belly”; Vav with its middle dot (Shuruk) also says oo.",
+      "teach": [
+        "Kubutz uses three small dots in a staircase and cues the “OOOH belly.”",
+        "Shuruk is Vav with a dot in its middle—the “ball hit the Vav.” Both patterns cue oo."
+      ],
+      "examples": [
+        "בֻ (Kubutz: oo)",
+        "בוּ (Shuruk: oo)"
+      ],
+      "practice": [
+        "Count the three Kubutz dots in בֻ and trace their staircase.",
+        "Point to the dot inside וּ in בוּ; compare the two oo patterns."
+      ],
+      "check": "Kubutz is the three-dot staircase “OOOH belly”; Vav with its middle dot (Shuruk) also says oo.",
+      "question": "Which two patterns cue oo?",
+      "options": [
+        "Kubutz and Shuruk",
+        "Patach and Qamatz",
+        "Chirik and Segol"
+      ],
+      "answer": 0,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Kubutz is the three-dot staircase “OOOH belly”; Vav with its middle dot (Shuruk) also says oo."
+    },
+    {
+      "id": 26,
+      "title": "Qof: The Letter Below the Line",
+      "focus": "ק",
+      "goal": "Recognize Qof by its descending shape and learn its class pronunciation.",
+      "teach": [
+        "Recognize Qof by its descending shape and learn its class pronunciation.",
+        "Compare ק with כ. Notice Qof’s stroke below the line; then repeat the teacher’s sound model."
+      ],
+      "examples": [
+        "ק",
+        "Qof · descending shape"
+      ],
+      "practice": [
+        "Trace ק and point to its descending feature.",
+        "Compare Qof with Kaf and say which one drops below."
+      ],
+      "check": "Recognize Qof by its descending shape and learn its class pronunciation.",
+      "question": "Which Hebrew form or cue did we practice in “Qof: The Letter Below the Line”?",
+      "options": [
+        "A Latin letter",
+        "ק",
+        "A picture clue"
+      ],
+      "answer": 1,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Recognize Qof by its descending shape and learn its class pronunciation."
+    },
+    {
+      "id": 27,
+      "title": "Samekh and Zayin: Visual Precision",
+      "focus": "ס ז",
+      "goal": "Compare the rounded shape of Samekh with the angled shape of Zayin.",
+      "teach": [
+        "Compare the rounded shape of Samekh with the angled shape of Zayin.",
+        "Trace ס as a rounded shape and ז as an angled shape. Name each before mixing the cards."
+      ],
+      "examples": [
+        "ס  ז",
+        "Samekh · Zayin"
+      ],
+      "practice": [
+        "Sort rounded ס and angled ז.",
+        "Find each shape in a mixed row and name it."
+      ],
+      "check": "Compare the rounded shape of Samekh with the angled shape of Zayin.",
+      "question": "Which Hebrew form or cue did we practice in “Samekh and Zayin: Visual Precision”?",
+      "options": [
+        "A Latin letter",
+        "A picture clue",
+        "ס ז"
+      ],
+      "answer": 2,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Compare the rounded shape of Samekh with the angled shape of Zayin."
+    },
+    {
+      "id": 28,
+      "title": "Gimel: Returning to a Distinct Shape",
+      "focus": "ג",
+      "goal": "Recognize Gimel by its distinct shape and modeled g sound.",
+      "teach": [
+        "Recognize Gimel by its distinct shape and modeled g sound.",
+        "Compare ג with ד and ז. Point to Gimel’s distinctive shape, then echo its modeled sound."
+      ],
+      "examples": [
+        "ג",
+        "Gimel"
+      ],
+      "practice": [
+        "Find ג among similar letters.",
+        "Trace Gimel and say its class-model sound."
+      ],
+      "check": "Recognize Gimel by its distinct shape and modeled g sound.",
+      "question": "Which Hebrew form or cue did we practice in “Gimel: Returning to a Distinct Shape”?",
+      "options": [
+        "ג",
+        "A Latin letter",
+        "A picture clue"
+      ],
+      "answer": 0,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Recognize Gimel by its distinct shape and modeled g sound."
+    },
+    {
+      "id": 29,
+      "title": "Review by Family: Quiet, Dotted, Final",
+      "focus": "א ע בּ ב ם",
+      "goal": "Sort carrier, dotted, and final-form families.",
+      "teach": [
+        "Sort carrier, dotted, and final-form families.",
+        "Sort the examples by what to notice: carrier, inside dot, or ending shape. Explain one choice."
+      ],
+      "examples": [
+        "א ע · בּ ב · מ ם",
+        "Carriers · dot · final"
+      ],
+      "practice": [
+        "Sort א/ע, בּ/ב, and מ/ם into the named families.",
+        "Explain one clue used in every group."
+      ],
+      "check": "Sort carrier, dotted, and final-form families.",
+      "question": "Which Hebrew form or cue did we practice in “Review by Family: Quiet, Dotted, Final”?",
+      "options": [
+        "A Latin letter",
+        "א ע בּ ב ם",
+        "A picture clue"
+      ],
+      "answer": 1,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Sort carrier, dotted, and final-form families."
+    },
+    {
+      "id": 30,
+      "title": "Review by Shape: Tall, Small, Closed, Confusing",
+      "focus": "ל י ח ה ד ר",
+      "goal": "Use tall, small, open, closed, and corner features to identify letters.",
+      "teach": [
+        "Use tall, small, open, closed, and corner features to identify letters.",
+        "Make three groups from the examples: tall, small, and corner shapes. Move a letter if a partner gives a better visual reason."
+      ],
+      "examples": [
+        "ל י · ח ה · ד ר",
+        "Tall · small · closed/open"
+      ],
+      "practice": [
+        "Sort letters by tall, small, open, closed, and corner features.",
+        "Name the specific letter after pointing to its shape clue."
+      ],
+      "check": "Use tall, small, open, closed, and corner features to identify letters.",
+      "question": "Which Hebrew form or cue did we practice in “Review by Shape: Tall, Small, Closed, Confusing”?",
+      "options": [
+        "A Latin letter",
+        "A picture clue",
+        "ל י ח ה ד ר"
+      ],
+      "answer": 2,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Use tall, small, open, closed, and corner features to identify letters."
+    },
+    {
+      "id": 31,
+      "title": "Simple Word: Or — Light",
+      "focus": "אוֹר",
+      "goal": "Decode אוֹר and connect it to light; Vav-Cholam was taught earlier.",
+      "teach": [
+        "Point to each letter and mark in אוֹר; read from the right.",
+        "Connect the decoded word to light after reading. The Vav-Cholam dot was taught in lesson 13."
+      ],
+      "examples": [
+        "אוֹר",
+        "light"
+      ],
+      "practice": [
+        "Cover the gloss and picture; decode אוֹר.",
+        "Uncover the meaning and explain which mark cues oh."
+      ],
+      "check": "Decode אוֹר and connect it to light; Vav-Cholam was taught earlier.",
+      "question": "What does אוֹר mean?",
+      "options": [
+        "Light",
+        "Peace",
+        "House"
+      ],
+      "answer": 0,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Decode אוֹר and connect it to light; Vav-Cholam was taught earlier."
+    },
+    {
+      "id": 32,
+      "title": "Simple Word: Shalom",
+      "focus": "שָׁלוֹם",
+      "goal": "Decode שָׁלוֹם and connect it to hello or peace.",
+      "teach": [
+        "Point to each letter and mark in שָׁלוֹם.",
+        "Decode before using the familiar greeting meaning. The Shin dot and Cholam have already been introduced."
+      ],
+      "examples": [
+        "שָׁלוֹם",
+        "shalom"
+      ],
+      "practice": [
+        "Decode שָׁלוֹם before saying its meaning.",
+        "Use it as hello or peace in a teacher-modeled example."
+      ],
+      "check": "Decode שָׁלוֹם and connect it to hello or peace.",
+      "question": "Which word can be a greeting?",
+      "options": [
+        "מַיִם",
+        "שָׁלוֹם",
+        "בַּיִת"
+      ],
+      "answer": 1,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Decode שָׁלוֹם and connect it to hello or peace."
+    },
+    {
+      "id": 33,
+      "title": "Simple Word: Bayit",
+      "focus": "בַּיִת",
+      "goal": "Decode בַּיִת and connect it to house.",
+      "teach": [
+        "Point to each part of בַּיִת and follow its known marks.",
+        "Read the word first, then connect it to a house. Yod and the Pea Vowel are already familiar."
+      ],
+      "examples": [
+        "בַּיִת",
+        "bayit"
+      ],
+      "practice": [
+        "Read בַּיִת without a picture.",
+        "Tell which familiar vowel mark helps with the second beat."
+      ],
+      "check": "Decode בַּיִת and connect it to house.",
+      "question": "What does בַּיִת mean?",
+      "options": [
+        "Day",
+        "Book",
+        "House"
+      ],
+      "answer": 2,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Decode בַּיִת and connect it to house."
+    },
+    {
+      "id": 34,
+      "title": "Names and Hebrew Letters",
+      "focus": "דָּוִד · מֹשֶׁה",
+      "goal": "Read Hebrew names from their letters and taught vowel marks.",
+      "teach": [
+        "Look at each Hebrew name as Hebrew, from right to left.",
+        "Point to the letters and already learned marks; use teacher pronunciation as a model, not English spelling as a shortcut."
+      ],
+      "examples": [
+        "דָּוִד",
+        "מֹשֶׁה"
+      ],
+      "practice": [
+        "Read דָּוִד and מֹשֶׁה from the Hebrew letters.",
+        "Point to a vowel mark already studied before saying each name."
+      ],
+      "check": "Read Hebrew names from their letters and taught vowel marks.",
+      "question": "Which Hebrew form or cue did we practice in “Names and Hebrew Letters”?",
+      "options": [
+        "דָּוִד · מֹשֶׁה",
+        "A Latin letter",
+        "A picture clue"
+      ],
+      "answer": 0,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Read Hebrew names from their letters and taught vowel marks."
+    },
+    {
+      "id": 35,
+      "title": "Aleph Track Readiness Review",
+      "focus": "א בּ ב מ ם",
+      "goal": "Show recognition of letters, marks, and familiar words without picture guessing.",
+      "teach": [
+        "Show recognition of letters, marks, and familiar words without picture guessing.",
+        "Mix letter and word cards. Identify the letters and marks first; read only patterns already taught."
+      ],
+      "examples": [
+        "בַּת · אוֹר · שָׁלוֹם",
+        "Read then explain"
+      ],
+      "practice": [
+        "Name one letter family, one vowel pattern, and one short word.",
+        "Read a short example aloud and explain the steps, not just the meaning."
+      ],
+      "check": "Show recognition of letters, marks, and familiar words without picture guessing.",
+      "question": "Which Hebrew form or cue did we practice in “Aleph Track Readiness Review”?",
+      "options": [
+        "A Latin letter",
+        "א בּ ב מ ם",
+        "A picture clue"
+      ],
+      "answer": 1,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Show recognition of letters, marks, and familiar words without picture guessing."
+    },
+    {
+      "id": 36,
+      "title": "Celebration of Beginning",
+      "focus": "א ב ג ד ה ו",
+      "goal": "Reflect on growth and choose a comfortable next learning step.",
+      "teach": [
+        "Reflect on growth and choose a comfortable next learning step.",
+        "Choose a favorite shape, sound, or word. Tell a partner one thing that feels easier now and one next step you would enjoy."
+      ],
+      "examples": [
+        "א · ב · ג · ד · ה · ו",
+        "Choose one word to read"
+      ],
+      "practice": [
+        "Choose a letter or word you can now read more confidently.",
+        "Tell a teacher one thing you learned and one thing you want to practice next."
+      ],
+      "check": "Reflect on growth and choose a comfortable next learning step.",
+      "question": "Which Hebrew form or cue did we practice in “Celebration of Beginning”?",
+      "options": [
+        "A Latin letter",
+        "A picture clue",
+        "א ב ג ד ה ו"
+      ],
+      "answer": 2,
+      "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
+      "feedback": "Correct. Reflect on growth and choose a comfortable next learning step."
+    }
+  ]
+}
