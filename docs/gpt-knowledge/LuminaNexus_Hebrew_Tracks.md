@@ -210,3 +210,11 @@ No student is late to Hebrew.
 Every letter is a beginning.
 
 Every beginning deserves a clear next step.
+
+## Current Website Track Status
+
+- **Aleph Track:** The live workbook page introduces the first Aleph lessons and vowel foundations. The teacher guide's 36-week sequence is a longer-term curriculum map; the current printable covers its opening two workbook lessons.
+- **Bet Track:** The online course and printable workbook share a 32-lesson sequence. Each lesson has a teaching page, a practice page, visual support, and teacher answers. The printable is 77 pages: one opening page, 64 lesson pages, a readiness review, and 11 teacher-key pages.
+- **Gimel Track:** The online course contains 32 reading lessons with interactive checks and saved progress. Its linked printable remains an earlier edition and does not yet match the online sequence.
+
+When advising teachers, distinguish the current lesson materials from longer-term curriculum maps and identify when a printable is an earlier edition.

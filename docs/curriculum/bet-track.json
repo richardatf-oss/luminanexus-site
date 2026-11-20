@@ -585,6 +585,2223 @@
         "שָׁלוֹם",
         "שָׁלוֹם אַבָּא"
       ]
+    },
+    {
+      "id": 7,
+      "title": "Meet Gimel in a fish word",
+      "goal": "Recognize Gimel and blend it with a familiar final consonant.",
+      "new": [
+        [
+          "ג",
+          "Gimel says g, as in garden."
+        ]
+      ],
+      "teach": [
+        "Read right to left: Dalet says d, the ahhh mark says ah, and Gimel closes the word with g.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "דָּג",
+          "dag"
+        ],
+        [
+          "דָּג",
+          "fish"
+        ]
+      ],
+      "words": [
+        [
+          "דָּג",
+          "fish"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: dag.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means fish?",
+          "options": [
+            "דָּג",
+            "יָד",
+            "יָם"
+          ],
+          "answer": 0,
+          "why": "דָּג means fish. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which letter closes דָּג?",
+          "options": [
+            "ג",
+            "ד",
+            "מ"
+          ],
+          "answer": 0,
+          "why": "ג is correct. Read right to left: Dalet says d, the ahhh mark says ah, and Gimel closes the word with g."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "דָּג"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "דָּג   יָד   יָם"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "דָּג"
+        ]
+      ],
+      "check": "I can read דָּג and explain that it means fish.",
+      "answers": [
+        "Read דָּג: dag.",
+        "Circle דָּג, meaning fish.",
+        "Copy דָּג; mark ג."
+      ],
+      "alt": "A clear classroom illustration for fish, paired with the Hebrew word דָּג.",
+      "answerTargets": [
+        "דָּג",
+        "דָּג",
+        "דָּג"
+      ],
+      "icon": "fish"
+    },
+    {
+      "id": 8,
+      "title": "Compare son and daughter",
+      "goal": "Recognize final Nun and distinguish two short family words by their final consonants.",
+      "new": [
+        [
+          "נ ן",
+          "Nun says n; at the end of a word, it changes to ן."
+        ],
+        [
+          "ת",
+          "Tav says t."
+        ]
+      ],
+      "teach": [
+        "The two dots under Bet cue ay in בֵּן, son. The ahhh mark in בַּת says ah, and Tav closes the word with t.",
+        "Final Nun changes shape but keeps its n sound. Read each word from right to left and listen to the last consonant."
+      ],
+      "model": [
+        [
+          "בֵּן",
+          "ben · son"
+        ],
+        [
+          "בַּת",
+          "bat · daughter"
+        ]
+      ],
+      "words": [
+        [
+          "בֵּן",
+          "son"
+        ],
+        [
+          "בַּת",
+          "daughter"
+        ]
+      ],
+      "steps": [
+        "Read the vowel and consonant sounds before you name the family word.",
+        "Compare the last letter in בֵּן and בַּת.",
+        "Say both words again without picture hints."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word means son?",
+          "options": [
+            "בַּת",
+            "בֵּן"
+          ],
+          "answer": 1,
+          "why": "בֵּן means son; its final Nun is ן."
+        },
+        {
+          "prompt": "Which letter closes בַּת?",
+          "options": [
+            "ת",
+            "ן",
+            "ם"
+          ],
+          "answer": 0,
+          "why": "Tav, ת, closes בַּת with t."
+        }
+      ],
+      "tasks": [
+        [
+          "Read both family words",
+          "בֵּן בַּת"
+        ],
+        [
+          "Circle the word for daughter",
+          "בֵּן בַּת"
+        ],
+        [
+          "Copy son and underline its final Nun",
+          "בֵּן"
+        ]
+      ],
+      "check": "I can read בֵּן and בַּת and tell which means son and daughter.",
+      "answers": [
+        "Read ben, son, and bat, daughter.",
+        "Circle daughter, בַּת.",
+        "Copy son, בֵּן; underline final ן."
+      ],
+      "alt": "A child stands beside two family labels, son and daughter.",
+      "answerTargets": [
+        "בֵּן בַּת",
+        "בַּת",
+        "בֵּן"
+      ],
+      "icon": "family"
+    },
+    {
+      "id": 9,
+      "title": "Read Peh in פֶּה",
+      "goal": "Read Peh with its inside dot and recognize the word for mouth.",
+      "new": [
+        [
+          "פּ פ ף",
+          "Peh with a dot says p; without the dot it often says f. At a word's end, final Peh is ף."
+        ]
+      ],
+      "teach": [
+        "The three eggs beneath Peh say eh. The final Heh is part of the spelling; follow your teacher's model for the word.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "פֶּה",
+          "peh"
+        ],
+        [
+          "פֶּה",
+          "mouth"
+        ]
+      ],
+      "words": [
+        [
+          "פֶּה",
+          "mouth"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: peh.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means mouth?",
+          "options": [
+            "פֶּה",
+            "לֵב",
+            "זֶה"
+          ],
+          "answer": 0,
+          "why": "פֶּה means mouth. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "What sound does פּ make here?",
+          "options": [
+            "p",
+            "f",
+            "m"
+          ],
+          "answer": 0,
+          "why": "p is correct. The three eggs beneath Peh say eh. The final Heh is part of the spelling; follow your teacher's model for the word."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "פֶּה"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "פֶּה   לֵב   זֶה"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "פֶּה"
+        ]
+      ],
+      "check": "I can read פֶּה and explain that it means mouth.",
+      "answers": [
+        "Read פֶּה: peh.",
+        "Circle פֶּה, meaning mouth.",
+        "Copy פֶּה; mark פּ פ ף."
+      ],
+      "alt": "A clear classroom illustration for mouth, paired with the Hebrew word פֶּה.",
+      "answerTargets": [
+        "פֶּה",
+        "פֶּה",
+        "פֶּה"
+      ],
+      "icon": "mouth"
+    },
+    {
+      "id": 10,
+      "title": "Read Tet in טוֹב",
+      "goal": "Recognize Tet and blend a familiar oh sound with Vet.",
+      "new": [
+        [
+          "ט",
+          "Tet says t."
+        ]
+      ],
+      "teach": [
+        "Read Tet first. The dot over Vav says oh; Vet closes the word with v.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "טוֹב",
+          "tov"
+        ],
+        [
+          "טוֹב",
+          "good"
+        ]
+      ],
+      "words": [
+        [
+          "טוֹב",
+          "good"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: tov.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means good?",
+          "options": [
+            "טוֹב",
+            "דָּג",
+            "עֵץ"
+          ],
+          "answer": 0,
+          "why": "טוֹב means good. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which letter begins טוֹב?",
+          "options": [
+            "ט",
+            "ת",
+            "ד"
+          ],
+          "answer": 0,
+          "why": "ט is correct. Read Tet first. The dot over Vav says oh; Vet closes the word with v."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "טוֹב"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "טוֹב   דָּג   עֵץ"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "טוֹב"
+        ]
+      ],
+      "check": "I can read טוֹב and explain that it means good.",
+      "answers": [
+        "Read טוֹב: tov.",
+        "Circle טוֹב, meaning good.",
+        "Copy טוֹב; mark ט."
+      ],
+      "alt": "A clear classroom illustration for good, paired with the Hebrew word טוֹב.",
+      "answerTargets": [
+        "טוֹב",
+        "טוֹב",
+        "טוֹב"
+      ],
+      "icon": "sunshine"
+    },
+    {
+      "id": 11,
+      "title": "Build a two-beat dog word",
+      "goal": "Blend two familiar syllables into one word without guessing from the picture.",
+      "new": [
+        [
+          "כּ כ ך",
+          "Kaf with a dot says k; without the dot it often says kh. Final Kaf is ך."
+        ]
+      ],
+      "teach": [
+        "The three eggs cue eh in both beats. Read ke, then lev, and blend the two beats into kelev.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "כֶּלֶב",
+          "ke-lev"
+        ],
+        [
+          "כֶּלֶב",
+          "dog"
+        ]
+      ],
+      "words": [
+        [
+          "כֶּלֶב",
+          "dog"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: ke-lev.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means dog?",
+          "options": [
+            "כֶּלֶב",
+            "סֵפֶר",
+            "דָּג"
+          ],
+          "answer": 0,
+          "why": "כֶּלֶב means dog. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "How many clear beats do we hear in כֶּלֶב?",
+          "options": [
+            "Two",
+            "One",
+            "Four"
+          ],
+          "answer": 0,
+          "why": "Two is correct. The three eggs cue eh in both beats. Read ke, then lev, and blend the two beats into kelev."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "כֶּלֶב"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "כֶּלֶב   סֵפֶר   דָּג"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "כֶּלֶב"
+        ]
+      ],
+      "check": "I can read כֶּלֶב and explain that it means dog.",
+      "answers": [
+        "Read כֶּלֶב: ke-lev.",
+        "Circle כֶּלֶב, meaning dog.",
+        "Copy כֶּלֶב; mark כּ כ ך."
+      ],
+      "alt": "A clear classroom illustration for dog, paired with the Hebrew word כֶּלֶב.",
+      "answerTargets": [
+        "כֶּלֶב",
+        "כֶּלֶב",
+        "כֶּלֶב"
+      ],
+      "icon": "dog"
+    },
+    {
+      "id": 12,
+      "title": "Meet Zayin in זֶה",
+      "goal": "Recognize Zayin and read a short word meaning this.",
+      "new": [
+        [
+          "ז",
+          "Zayin says z."
+        ]
+      ],
+      "teach": [
+        "Zayin begins the word. The three eggs under it cue eh; final Heh completes the written word.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "זֶה",
+          "zeh"
+        ],
+        [
+          "זֶה",
+          "this"
+        ]
+      ],
+      "words": [
+        [
+          "זֶה",
+          "this"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: zeh.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means this?",
+          "options": [
+            "זֶה",
+            "פֶּה",
+            "טוֹב"
+          ],
+          "answer": 0,
+          "why": "זֶה means this. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "What sound does ז make?",
+          "options": [
+            "z",
+            "s",
+            "g"
+          ],
+          "answer": 0,
+          "why": "z is correct. Zayin begins the word. The three eggs under it cue eh; final Heh completes the written word."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "זֶה"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "זֶה   פֶּה   טוֹב"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "זֶה"
+        ]
+      ],
+      "check": "I can read זֶה and explain that it means this.",
+      "answers": [
+        "Read זֶה: zeh.",
+        "Circle זֶה, meaning this.",
+        "Copy זֶה; mark ז."
+      ],
+      "alt": "A clear classroom illustration for this, paired with the Hebrew word זֶה.",
+      "answerTargets": [
+        "זֶה",
+        "זֶה",
+        "זֶה"
+      ],
+      "icon": "pointing"
+    },
+    {
+      "id": 13,
+      "title": "Read a tree word with final Tsadi",
+      "goal": "Notice the final form Tsadi and close the word without adding a vowel.",
+      "new": [
+        [
+          "ע ץ",
+          "Ayin is a Hebrew letter; follow your teacher's community sound. Tsadi changes to ץ at the end."
+        ]
+      ],
+      "teach": [
+        "The two dots cue ay in our class. Read from Ayin toward the final Tsadi and close the word with ts.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "עֵץ",
+          "etz"
+        ],
+        [
+          "עֵץ",
+          "tree"
+        ]
+      ],
+      "words": [
+        [
+          "עֵץ",
+          "tree"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: etz.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means tree?",
+          "options": [
+            "עֵץ",
+            "עִיר",
+            "דָּג"
+          ],
+          "answer": 0,
+          "why": "עֵץ means tree. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which letter closes עֵץ?",
+          "options": [
+            "ץ",
+            "ע",
+            "ר"
+          ],
+          "answer": 0,
+          "why": "ץ is correct. The two dots cue ay in our class. Read from Ayin toward the final Tsadi and close the word with ts."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "עֵץ"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "עֵץ   עִיר   דָּג"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "עֵץ"
+        ]
+      ],
+      "check": "I can read עֵץ and explain that it means tree.",
+      "answers": [
+        "Read עֵץ: etz.",
+        "Circle עֵץ, meaning tree.",
+        "Copy עֵץ; mark ע ץ."
+      ],
+      "alt": "A clear classroom illustration for tree, paired with the Hebrew word עֵץ.",
+      "answerTargets": [
+        "עֵץ",
+        "עֵץ",
+        "עֵץ"
+      ],
+      "icon": "tree"
+    },
+    {
+      "id": 14,
+      "title": "Hear Qof in קוֹל",
+      "goal": "Recognize Qof and decode a word for voice or sound.",
+      "new": [
+        [
+          "ק",
+          "Qof says k; listen for the teacher's model to distinguish it from Kaf."
+        ]
+      ],
+      "teach": [
+        "The dot above Vav gives the oh sound. Blend Qof, oh, and Lamed: kol.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "קוֹל",
+          "kol"
+        ],
+        [
+          "קוֹל",
+          "voice or sound"
+        ]
+      ],
+      "words": [
+        [
+          "קוֹל",
+          "voice or sound"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: kol.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means voice or sound?",
+          "options": [
+            "קוֹל",
+            "טוֹב",
+            "בֵּן"
+          ],
+          "answer": 0,
+          "why": "קוֹל means voice or sound. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which letter begins קוֹל?",
+          "options": [
+            "ק",
+            "כ",
+            "ט"
+          ],
+          "answer": 0,
+          "why": "ק is correct. The dot above Vav gives the oh sound. Blend Qof, oh, and Lamed: kol."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "קוֹל"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "קוֹל   טוֹב   בֵּן"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "קוֹל"
+        ]
+      ],
+      "check": "I can read קוֹל and explain that it means voice or sound.",
+      "answers": [
+        "Read קוֹל: kol.",
+        "Circle קוֹל, meaning voice or sound.",
+        "Copy קוֹל; mark ק."
+      ],
+      "alt": "A clear classroom illustration for voice or sound, paired with the Hebrew word קוֹל.",
+      "answerTargets": [
+        "קוֹל",
+        "קוֹל",
+        "קוֹל"
+      ],
+      "icon": "sound"
+    },
+    {
+      "id": 15,
+      "title": "Read Lamed in לֵב",
+      "goal": "Use the ay vowel cue to read a one-beat word for heart.",
+      "new": [
+        [
+          "ל",
+          "Lamed says l."
+        ]
+      ],
+      "teach": [
+        "The two dots beneath Lamed cue ay. Vet closes the word with v: lev.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "לֵב",
+          "lev"
+        ],
+        [
+          "לֵב",
+          "heart"
+        ]
+      ],
+      "words": [
+        [
+          "לֵב",
+          "heart"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: lev.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means heart?",
+          "options": [
+            "לֵב",
+            "לֶחֶם",
+            "קוֹל"
+          ],
+          "answer": 0,
+          "why": "לֵב means heart. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which meaning belongs to לֵב?",
+          "options": [
+            "heart",
+            "bread",
+            "voice"
+          ],
+          "answer": 0,
+          "why": "heart is correct. The two dots beneath Lamed cue ay. Vet closes the word with v: lev."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "לֵב"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "לֵב   לֶחֶם   קוֹל"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "לֵב"
+        ]
+      ],
+      "check": "I can read לֵב and explain that it means heart.",
+      "answers": [
+        "Read לֵב: lev.",
+        "Circle לֵב, meaning heart.",
+        "Copy לֵב; mark ל."
+      ],
+      "alt": "A clear classroom illustration for heart, paired with the Hebrew word לֵב.",
+      "answerTargets": [
+        "לֵב",
+        "לֵב",
+        "לֵב"
+      ],
+      "icon": "heart"
+    },
+    {
+      "id": 16,
+      "title": "Read Nun in נֵר",
+      "goal": "Blend Nun with the ay vowel cue and finish with Resh.",
+      "new": [
+        [
+          "נ",
+          "Nun says n."
+        ]
+      ],
+      "teach": [
+        "The two dots under Nun cue ay. Resh closes the word: ner.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "נֵר",
+          "ner"
+        ],
+        [
+          "נֵר",
+          "candle"
+        ]
+      ],
+      "words": [
+        [
+          "נֵר",
+          "candle"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: ner.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means candle?",
+          "options": [
+            "נֵר",
+            "בֵּן",
+            "טוֹב"
+          ],
+          "answer": 0,
+          "why": "נֵר means candle. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which sound begins נֵר?",
+          "options": [
+            "n",
+            "l",
+            "k"
+          ],
+          "answer": 0,
+          "why": "n is correct. The two dots under Nun cue ay. Resh closes the word: ner."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "נֵר"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "נֵר   בֵּן   טוֹב"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "נֵר"
+        ]
+      ],
+      "check": "I can read נֵר and explain that it means candle.",
+      "answers": [
+        "Read נֵר: ner.",
+        "Circle נֵר, meaning candle.",
+        "Copy נֵר; mark נ."
+      ],
+      "alt": "A clear classroom illustration for candle, paired with the Hebrew word נֵר.",
+      "answerTargets": [
+        "נֵר",
+        "נֵר",
+        "נֵר"
+      ],
+      "icon": "candle"
+    },
+    {
+      "id": 17,
+      "title": "Read small: קָטָן",
+      "goal": "Decode a two-beat describing word and attend to its vowel marks.",
+      "new": [
+        [
+          "ק ט",
+          "Qof says k; Tet says t. Both letters are already introduced; this lesson brings them together."
+        ]
+      ],
+      "teach": [
+        "The ahhh marks begin each beat. Read ka, then tan; final Nun closes the word.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "קָטָן",
+          "ka-tan"
+        ],
+        [
+          "קָטָן",
+          "small"
+        ]
+      ],
+      "words": [
+        [
+          "קָטָן",
+          "small"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: ka-tan.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means small?",
+          "options": [
+            "קָטָן",
+            "גָּדוֹל",
+            "טוֹב"
+          ],
+          "answer": 0,
+          "why": "קָטָן means small. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which meaning belongs to קָטָן?",
+          "options": [
+            "small",
+            "big",
+            "good"
+          ],
+          "answer": 0,
+          "why": "small is correct. The ahhh marks begin each beat. Read ka, then tan; final Nun closes the word."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "קָטָן"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "קָטָן   גָּדוֹל   טוֹב"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "קָטָן"
+        ]
+      ],
+      "check": "I can read קָטָן and explain that it means small.",
+      "answers": [
+        "Read קָטָן: ka-tan.",
+        "Circle קָטָן, meaning small.",
+        "Copy קָטָן; mark ק ט."
+      ],
+      "alt": "A clear classroom illustration for small, paired with the Hebrew word קָטָן.",
+      "answerTargets": [
+        "קָטָן",
+        "קָטָן",
+        "קָטָן"
+      ],
+      "icon": "small"
+    },
+    {
+      "id": 18,
+      "title": "Read big: גָּדוֹל",
+      "goal": "Blend three familiar consonants and two vowel sounds into a describing word.",
+      "new": [
+        [
+          "ג ד ל",
+          "Gimel says g, Dalet d, and Lamed l."
+        ]
+      ],
+      "teach": [
+        "Read the first beat with ahhh, then the second with oh. Keep the final Lamed audible.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "גָּדוֹל",
+          "ga-dol"
+        ],
+        [
+          "גָּדוֹל",
+          "big"
+        ]
+      ],
+      "words": [
+        [
+          "גָּדוֹל",
+          "big"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: ga-dol.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means big?",
+          "options": [
+            "גָּדוֹל",
+            "קָטָן",
+            "טוֹב"
+          ],
+          "answer": 0,
+          "why": "גָּדוֹל means big. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which vowel sound is over Vav in גָּדוֹל?",
+          "options": [
+            "oh",
+            "ee",
+            "eh"
+          ],
+          "answer": 0,
+          "why": "oh is correct. Read the first beat with ahhh, then the second with oh. Keep the final Lamed audible."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "גָּדוֹל"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "גָּדוֹל   קָטָן   טוֹב"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "גָּדוֹל"
+        ]
+      ],
+      "check": "I can read גָּדוֹל and explain that it means big.",
+      "answers": [
+        "Read גָּדוֹל: ga-dol.",
+        "Circle גָּדוֹל, meaning big.",
+        "Copy גָּדוֹל; mark ג ד ל."
+      ],
+      "alt": "A clear classroom illustration for big, paired with the Hebrew word גָּדוֹל.",
+      "answerTargets": [
+        "גָּדוֹל",
+        "גָּדוֹל",
+        "גָּדוֹל"
+      ],
+      "icon": "big"
+    },
+    {
+      "id": 19,
+      "title": "Read a familiar day word",
+      "goal": "Read יוֹם as one word and hear its final Mem.",
+      "new": [
+        [
+          "י ו ם",
+          "Yud can help mark a vowel; Vav with a dot over it says oh here."
+        ]
+      ],
+      "teach": [
+        "Read Yud, follow the dot over Vav for oh, then close with Mem: yom.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "יוֹם",
+          "yom"
+        ],
+        [
+          "יוֹם",
+          "day"
+        ]
+      ],
+      "words": [
+        [
+          "יוֹם",
+          "day"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: yom.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means day?",
+          "options": [
+            "יוֹם",
+            "יָם",
+            "יָד"
+          ],
+          "answer": 0,
+          "why": "יוֹם means day. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "What does יוֹם mean?",
+          "options": [
+            "day",
+            "sea",
+            "hand"
+          ],
+          "answer": 0,
+          "why": "day is correct. Read Yud, follow the dot over Vav for oh, then close with Mem: yom."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "יוֹם"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "יוֹם   יָם   יָד"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "יוֹם"
+        ]
+      ],
+      "check": "I can read יוֹם and explain that it means day.",
+      "answers": [
+        "Read יוֹם: yom.",
+        "Circle יוֹם, meaning day.",
+        "Copy יוֹם; mark י ו ם."
+      ],
+      "alt": "A clear classroom illustration for day, paired with the Hebrew word יוֹם.",
+      "answerTargets": [
+        "יוֹם",
+        "יוֹם",
+        "יוֹם"
+      ],
+      "icon": "calendar"
+    },
+    {
+      "id": 20,
+      "title": "Blend the two beats in מַיִם",
+      "goal": "Read a two-beat word and keep both syllables in order.",
+      "new": [
+        [
+          "מ י ם",
+          "Mem says m; Yud can help carry the second vowel sound."
+        ]
+      ],
+      "teach": [
+        "Read from the right: ma, then yim. Keep the final Mem at the end of the second beat.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "מַיִם",
+          "ma-yim"
+        ],
+        [
+          "מַיִם",
+          "water"
+        ]
+      ],
+      "words": [
+        [
+          "מַיִם",
+          "water"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: ma-yim.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means water?",
+          "options": [
+            "מַיִם",
+            "מִי",
+            "יָם"
+          ],
+          "answer": 0,
+          "why": "מַיִם means water. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "How many beats are in מַיִם?",
+          "options": [
+            "Two",
+            "One",
+            "Three"
+          ],
+          "answer": 0,
+          "why": "Two is correct. Read from the right: ma, then yim. Keep the final Mem at the end of the second beat."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "מַיִם"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "מַיִם   מִי   יָם"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "מַיִם"
+        ]
+      ],
+      "check": "I can read מַיִם and explain that it means water.",
+      "answers": [
+        "Read מַיִם: ma-yim.",
+        "Circle מַיִם, meaning water.",
+        "Copy מַיִם; mark מ י ם."
+      ],
+      "alt": "A clear classroom illustration for water, paired with the Hebrew word מַיִם.",
+      "answerTargets": [
+        "מַיִם",
+        "מַיִם",
+        "מַיִם"
+      ],
+      "icon": "water"
+    },
+    {
+      "id": 21,
+      "title": "Read the repeated sun word",
+      "goal": "Notice a repeated syllable pattern while decoding a familiar two-beat word.",
+      "new": [
+        [
+          "ש מ",
+          "Shin says sh; Mem says m."
+        ]
+      ],
+      "teach": [
+        "The three eggs cue eh in both parts. Read she, then mesh; the picture checks meaning after decoding.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "שֶׁמֶשׁ",
+          "she-mesh"
+        ],
+        [
+          "שֶׁמֶשׁ",
+          "sun"
+        ]
+      ],
+      "words": [
+        [
+          "שֶׁמֶשׁ",
+          "sun"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: she-mesh.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means sun?",
+          "options": [
+            "שֶׁמֶשׁ",
+            "שָׁלוֹם",
+            "שֵׁם"
+          ],
+          "answer": 0,
+          "why": "שֶׁמֶשׁ means sun. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which word means sun?",
+          "options": [
+            "שֶׁמֶשׁ",
+            "שָׁלוֹם",
+            "שֵׁם"
+          ],
+          "answer": 0,
+          "why": "שֶׁמֶשׁ is correct. The three eggs cue eh in both parts. Read she, then mesh; the picture checks meaning after decoding."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "שֶׁמֶשׁ"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "שֶׁמֶשׁ   שָׁלוֹם   שֵׁם"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "שֶׁמֶשׁ"
+        ]
+      ],
+      "check": "I can read שֶׁמֶשׁ and explain that it means sun.",
+      "answers": [
+        "Read שֶׁמֶשׁ: she-mesh.",
+        "Circle שֶׁמֶשׁ, meaning sun.",
+        "Copy שֶׁמֶשׁ; mark ש מ."
+      ],
+      "alt": "A clear classroom illustration for sun, paired with the Hebrew word שֶׁמֶשׁ.",
+      "answerTargets": [
+        "שֶׁמֶשׁ",
+        "שֶׁמֶשׁ",
+        "שֶׁמֶשׁ"
+      ],
+      "icon": "sun"
+    },
+    {
+      "id": 22,
+      "title": "Read a city word",
+      "goal": "Blend the hiriq sound with familiar Yud and Resh.",
+      "new": [
+        [
+          "ע י ר",
+          "Ayin begins this word; listen to the teacher's model. Yud and Resh follow."
+        ]
+      ],
+      "teach": [
+        "The pea vowel beneath Ayin gives the ee sound. Continue through Yud and finish with Resh.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "עִיר",
+          "ir"
+        ],
+        [
+          "עִיר",
+          "city"
+        ]
+      ],
+      "words": [
+        [
+          "עִיר",
+          "city"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: ir.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means city?",
+          "options": [
+            "עִיר",
+            "עֵץ",
+            "יָם"
+          ],
+          "answer": 0,
+          "why": "עִיר means city. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which vowel cue begins עִיר?",
+          "options": [
+            "pea vowel, eee",
+            "three eggs, eh",
+            "dot over, oh"
+          ],
+          "answer": 0,
+          "why": "pea vowel, eee is correct. The pea vowel beneath Ayin gives the ee sound. Continue through Yud and finish with Resh."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "עִיר"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "עִיר   עֵץ   יָם"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "עִיר"
+        ]
+      ],
+      "check": "I can read עִיר and explain that it means city.",
+      "answers": [
+        "Read עִיר: ir.",
+        "Circle עִיר, meaning city.",
+        "Copy עִיר; mark ע י ר."
+      ],
+      "alt": "A clear classroom illustration for city, paired with the Hebrew word עִיר.",
+      "answerTargets": [
+        "עִיר",
+        "עִיר",
+        "עִיר"
+      ],
+      "icon": "city"
+    },
+    {
+      "id": 23,
+      "title": "Read the word for head",
+      "goal": "Use the over vowel and familiar Shin to decode a one-beat word.",
+      "new": [
+        [
+          "ר א שׁ",
+          "Resh begins the word; Aleph carries the vowel; Shin says sh."
+        ]
+      ],
+      "teach": [
+        "The dot above Resh gives oh. Keep the final Shin audible: rosh.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "רֹאשׁ",
+          "rosh"
+        ],
+        [
+          "רֹאשׁ",
+          "head"
+        ]
+      ],
+      "words": [
+        [
+          "רֹאשׁ",
+          "head"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: rosh.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means head?",
+          "options": [
+            "רֹאשׁ",
+            "קוֹל",
+            "שֶׁמֶשׁ"
+          ],
+          "answer": 0,
+          "why": "רֹאשׁ means head. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which sound closes רֹאשׁ?",
+          "options": [
+            "sh",
+            "m",
+            "l"
+          ],
+          "answer": 0,
+          "why": "sh is correct. The dot above Resh gives oh. Keep the final Shin audible: rosh."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "רֹאשׁ"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "רֹאשׁ   קוֹל   שֶׁמֶשׁ"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "רֹאשׁ"
+        ]
+      ],
+      "check": "I can read רֹאשׁ and explain that it means head.",
+      "answers": [
+        "Read רֹאשׁ: rosh.",
+        "Circle רֹאשׁ, meaning head.",
+        "Copy רֹאשׁ; mark ר א שׁ."
+      ],
+      "alt": "A clear classroom illustration for head, paired with the Hebrew word רֹאשׁ.",
+      "answerTargets": [
+        "רֹאשׁ",
+        "רֹאשׁ",
+        "רֹאשׁ"
+      ],
+      "icon": "head"
+    },
+    {
+      "id": 24,
+      "title": "Read a book and a describing word",
+      "goal": "Read a two-word phrase and notice that Hebrew places the describing word after the noun.",
+      "new": [
+        [
+          "ס פ ר ט ו ב",
+          "Samekh says s; Peh with its dot says p; Resh says r."
+        ]
+      ],
+      "teach": [
+        "First decode סֵפֶר, book. Then read טוֹב, good. In this simple phrase the describing word follows the noun.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "סֵפֶר טוֹב",
+          "sefer tov"
+        ],
+        [
+          "סֵפֶר טוֹב",
+          "a good book"
+        ]
+      ],
+      "words": [
+        [
+          "סֵפֶר טוֹב",
+          "a good book"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: sefer tov.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means a good book?",
+          "options": [
+            "סֵפֶר טוֹב",
+            "טוֹב סֵפֶר",
+            "לֵב קוֹל"
+          ],
+          "answer": 0,
+          "why": "סֵפֶר טוֹב means a good book. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which word comes first in סֵפֶר טוֹב?",
+          "options": [
+            "book, סֵפֶר",
+            "good, טוֹב",
+            "heart, לֵב"
+          ],
+          "answer": 0,
+          "why": "book, סֵפֶר is correct. First decode סֵפֶר, book. Then read טוֹב, good. In this simple phrase the describing word follows the noun."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "סֵפֶר טוֹב"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "סֵפֶר טוֹב   טוֹב סֵפֶר   לֵב קוֹל"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "סֵפֶר טוֹב"
+        ]
+      ],
+      "check": "I can read סֵפֶר טוֹב and explain that it means a good book.",
+      "answers": [
+        "Read סֵפֶר טוֹב: sefer tov.",
+        "Circle סֵפֶר טוֹב, meaning a good book.",
+        "Copy סֵפֶר טוֹב; mark ס פ ר ט ו ב."
+      ],
+      "alt": "A clear classroom illustration for a good book, paired with the Hebrew word סֵפֶר טוֹב.",
+      "answerTargets": [
+        "סֵפֶר טוֹב",
+        "סֵפֶר טוֹב",
+        "סֵפֶר טוֹב"
+      ],
+      "icon": "book"
+    },
+    {
+      "id": 25,
+      "title": "Compare house and garden",
+      "goal": "Read two place words and compare their different lengths and endings.",
+      "new": [
+        [
+          "ב י ת ג ן",
+          "Bet says b; Gimel g; Tav t; final Nun keeps its n sound."
+        ]
+      ],
+      "teach": [
+        "Read the right word first, then the left: בַּיִת means house; גַּן means garden. Notice the final Tav and final Nun.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "בַּיִת · גַּן",
+          "bayit · gan"
+        ],
+        [
+          "בַּיִת · גַּן",
+          "house · garden"
+        ]
+      ],
+      "words": [
+        [
+          "בַּיִת · גַּן",
+          "house · garden"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: bayit · gan.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which option names both places?",
+          "options": [
+            "בַּיִת",
+            "גַּן",
+            "Both"
+          ],
+          "answer": 2,
+          "why": "בַּיִת means house and גַּן means garden. Both places are named."
+        },
+        {
+          "prompt": "Which word means garden?",
+          "options": [
+            "גַּן",
+            "בַּיִת",
+            "יוֹם"
+          ],
+          "answer": 0,
+          "why": "גַּן is correct. Read the right word first, then the left: בַּיִת means house; גַּן means garden. Notice the final Tav and final Nun."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "בַּיִת · גַּן"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "בַּיִת   גַּן   Both"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "בַּיִת · גַּן"
+        ]
+      ],
+      "check": "I can read בַּיִת · גַּן and explain that it means house · garden.",
+      "answers": [
+        "Read בַּיִת · גַּן: bayit · gan.",
+        "Circle בַּיִת · גַּן, meaning house · garden.",
+        "Copy בַּיִת · גַּן; mark ב י ת ג ן."
+      ],
+      "alt": "A clear classroom illustration for house · garden, paired with the Hebrew word בַּיִת · גַּן.",
+      "answerTargets": [
+        "בַּיִת · גַּן",
+        "בַּיִת · גַּן",
+        "בַּיִת · גַּן"
+      ],
+      "icon": "house"
+    },
+    {
+      "id": 26,
+      "title": "Compare big and small",
+      "goal": "Use vowel marks and known vocabulary to distinguish two opposites.",
+      "new": [
+        [
+          "ג ד ו ל ק ט ן",
+          "All consonants in today's two words have been introduced."
+        ]
+      ],
+      "teach": [
+        "Read each word before using the picture. גָּדוֹל means big; קָטָן means small.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "גָּדוֹל · קָטָן",
+          "gadol · katan"
+        ],
+        [
+          "גָּדוֹל · קָטָן",
+          "big · small"
+        ]
+      ],
+      "words": [
+        [
+          "גָּדוֹל · קָטָן",
+          "big · small"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: gadol · katan.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which option gives both opposites?",
+          "options": [
+            "גָּדוֹל",
+            "קָטָן",
+            "Both"
+          ],
+          "answer": 2,
+          "why": "גָּדוֹל means big and קָטָן means small. The two words are opposites."
+        },
+        {
+          "prompt": "Which word means small?",
+          "options": [
+            "קָטָן",
+            "גָּדוֹל",
+            "טוֹב"
+          ],
+          "answer": 0,
+          "why": "קָטָן is correct. Read each word before using the picture. גָּדוֹל means big; קָטָן means small."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "גָּדוֹל · קָטָן"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "גָּדוֹל   קָטָן   Both"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "גָּדוֹל · קָטָן"
+        ]
+      ],
+      "check": "I can read גָּדוֹל · קָטָן and explain that it means big · small.",
+      "answers": [
+        "Read גָּדוֹל · קָטָן: gadol · katan.",
+        "Circle גָּדוֹל · קָטָן, meaning big · small.",
+        "Copy גָּדוֹל · קָטָן; mark ג ד ו ל ק ט ן."
+      ],
+      "alt": "A clear classroom illustration for big · small, paired with the Hebrew word גָּדוֹל · קָטָן.",
+      "answerTargets": [
+        "גָּדוֹל · קָטָן",
+        "גָּדוֹל · קָטָן",
+        "גָּדוֹל · קָטָן"
+      ],
+      "icon": "compare"
+    },
+    {
+      "id": 27,
+      "title": "Ask מָה זֶה?",
+      "goal": "Read a simple question using two familiar words.",
+      "new": [
+        [
+          "מ ה ז",
+          "Mem, Heh, and Zayin are read from right to left as written."
+        ]
+      ],
+      "teach": [
+        "Read the two words in order. מָה asks what; זֶה means this. The words together ask what is this?",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "מָה זֶה?",
+          "mah zeh?"
+        ],
+        [
+          "מָה זֶה?",
+          "what is this?"
+        ]
+      ],
+      "words": [
+        [
+          "מָה זֶה?",
+          "what is this?"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: mah zeh?.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means what is this??",
+          "options": [
+            "מָה זֶה?",
+            "זֶה מָה?",
+            "מִי זֶה?"
+          ],
+          "answer": 0,
+          "why": "מָה זֶה? means what is this?. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which word asks what?",
+          "options": [
+            "מָה",
+            "זֶה",
+            "בֵּן"
+          ],
+          "answer": 0,
+          "why": "מָה is correct. Read the two words in order. מָה asks what; זֶה means this. The words together ask what is this?"
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "מָה זֶה?"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "מָה זֶה?   זֶה מָה?   מִי זֶה?"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "מָה זֶה?"
+        ]
+      ],
+      "check": "I can read מָה זֶה? and explain that it means what is this?.",
+      "answers": [
+        "Read מָה זֶה?: mah zeh?.",
+        "Circle מָה זֶה?, meaning what is this?.",
+        "Copy מָה זֶה?; mark מ ה ז."
+      ],
+      "alt": "A clear classroom illustration for what is this?, paired with the Hebrew word מָה זֶה?.",
+      "answerTargets": [
+        "מָה זֶה?",
+        "מָה זֶה?",
+        "מָה זֶה?"
+      ],
+      "icon": "question"
+    },
+    {
+      "id": 28,
+      "title": "Answer with זֶה סֵפֶר",
+      "goal": "Read a simple identification phrase and connect it to an object.",
+      "new": [
+        [
+          "ז ס פ ר",
+          "Zayin, Samekh, Peh, and Resh have all appeared in earlier lessons."
+        ]
+      ],
+      "teach": [
+        "Decode each word before looking at the picture. In a simple present-tense identification, Hebrew can say 'this book' without a separate word for is.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "זֶה סֵפֶר",
+          "zeh sefer"
+        ],
+        [
+          "זֶה סֵפֶר",
+          "this is a book"
+        ]
+      ],
+      "words": [
+        [
+          "זֶה סֵפֶר",
+          "this is a book"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: zeh sefer.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means this is a book?",
+          "options": [
+            "זֶה סֵפֶר",
+            "מָה זֶה?",
+            "סֵפֶר טוֹב"
+          ],
+          "answer": 0,
+          "why": "זֶה סֵפֶר means this is a book. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which phrase means this is a book?",
+          "options": [
+            "זֶה סֵפֶר",
+            "סֵפֶר טוֹב",
+            "מָה זֶה?"
+          ],
+          "answer": 0,
+          "why": "זֶה סֵפֶר is correct. Decode each word before looking at the picture. In a simple present-tense identification, Hebrew can say 'this book' without a separate word for is."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "זֶה סֵפֶר"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "זֶה סֵפֶר   מָה זֶה?   סֵפֶר טוֹב"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "זֶה סֵפֶר"
+        ]
+      ],
+      "check": "I can read זֶה סֵפֶר and explain that it means this is a book.",
+      "answers": [
+        "Read זֶה סֵפֶר: zeh sefer.",
+        "Circle זֶה סֵפֶר, meaning this is a book.",
+        "Copy זֶה סֵפֶר; mark ז ס פ ר."
+      ],
+      "alt": "A clear classroom illustration for this is a book, paired with the Hebrew word זֶה סֵפֶר.",
+      "answerTargets": [
+        "זֶה סֵפֶר",
+        "זֶה סֵפֶר",
+        "זֶה סֵפֶר"
+      ],
+      "icon": "book"
+    },
+    {
+      "id": 29,
+      "title": "Read an object with a friend",
+      "goal": "Practice a noun and a familiar describing word as a phrase.",
+      "new": [
+        [
+          "כ ל ב ג ד ו ל",
+          "Kaf with a dot is k; Vet is v; Gimel is g."
+        ]
+      ],
+      "teach": [
+        "Read the noun first, then its describing word. Point to the letters, not the picture, when decoding.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "כֶּלֶב גָּדוֹל",
+          "kelev gadol"
+        ],
+        [
+          "כֶּלֶב גָּדוֹל",
+          "a big dog"
+        ]
+      ],
+      "words": [
+        [
+          "כֶּלֶב גָּדוֹל",
+          "a big dog"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: kelev gadol.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means a big dog?",
+          "options": [
+            "כֶּלֶב גָּדוֹל",
+            "גָּדוֹל כֶּלֶב",
+            "קָטָן דָּג"
+          ],
+          "answer": 0,
+          "why": "כֶּלֶב גָּדוֹל means a big dog. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which word means dog?",
+          "options": [
+            "כֶּלֶב",
+            "גָּדוֹל",
+            "טוֹב"
+          ],
+          "answer": 0,
+          "why": "כֶּלֶב is correct. Read the noun first, then its describing word. Point to the letters, not the picture, when decoding."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "כֶּלֶב גָּדוֹל"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "כֶּלֶב גָּדוֹל   גָּדוֹל כֶּלֶב   קָטָן דָּג"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "כֶּלֶב גָּדוֹל"
+        ]
+      ],
+      "check": "I can read כֶּלֶב גָּדוֹל and explain that it means a big dog.",
+      "answers": [
+        "Read כֶּלֶב גָּדוֹל: kelev gadol.",
+        "Circle כֶּלֶב גָּדוֹל, meaning a big dog.",
+        "Copy כֶּלֶב גָּדוֹל; mark כ ל ב ג ד ו ל."
+      ],
+      "alt": "A clear classroom illustration for a big dog, paired with the Hebrew word כֶּלֶב גָּדוֹל.",
+      "answerTargets": [
+        "כֶּלֶב גָּדוֹל",
+        "כֶּלֶב גָּדוֹל",
+        "כֶּלֶב גָּדוֹל"
+      ],
+      "icon": "dogbig"
+    },
+    {
+      "id": 30,
+      "title": "Read a small fish phrase",
+      "goal": "Combine a familiar noun with a describing word and preserve word order.",
+      "new": [
+        [
+          "ד ג ק ט ן",
+          "Dalet says d; Gimel g; Qof k; Tet t; final Nun n."
+        ]
+      ],
+      "teach": [
+        "Read דָּג first, then קָטָן. Hebrew places the describing word after the noun in this phrase.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "דָּג קָטָן",
+          "dag katan"
+        ],
+        [
+          "דָּג קָטָן",
+          "a small fish"
+        ]
+      ],
+      "words": [
+        [
+          "דָּג קָטָן",
+          "a small fish"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: dag katan.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which word or phrase means a small fish?",
+          "options": [
+            "דָּג קָטָן",
+            "קָטָן דָּג",
+            "דָּג גָּדוֹל"
+          ],
+          "answer": 0,
+          "why": "דָּג קָטָן means a small fish. Read its letters and vowel marks before checking the picture."
+        },
+        {
+          "prompt": "Which word means fish?",
+          "options": [
+            "דָּג",
+            "קָטָן",
+            "גָּדוֹל"
+          ],
+          "answer": 0,
+          "why": "דָּג is correct. Read דָּג first, then קָטָן. Hebrew places the describing word after the noun in this phrase."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "דָּג קָטָן"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "דָּג קָטָן   קָטָן דָּג   דָּג גָּדוֹל"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "דָּג קָטָן"
+        ]
+      ],
+      "check": "I can read דָּג קָטָן and explain that it means a small fish.",
+      "answers": [
+        "Read דָּג קָטָן: dag katan.",
+        "Circle דָּג קָטָן, meaning a small fish.",
+        "Copy דָּג קָטָן; mark ד ג ק ט ן."
+      ],
+      "alt": "A clear classroom illustration for a small fish, paired with the Hebrew word דָּג קָטָן.",
+      "answerTargets": [
+        "דָּג קָטָן",
+        "דָּג קָטָן",
+        "דָּג קָטָן"
+      ],
+      "icon": "fishsmall"
+    },
+    {
+      "id": 31,
+      "title": "Read family words without picture clues",
+      "goal": "Use vowels and final consonants to identify familiar family words independently.",
+      "new": [
+        [
+          "א ב ת ן",
+          "All letters and marks in today's words were taught earlier."
+        ]
+      ],
+      "teach": [
+        "Point to each word from the right. Read first; use the family picture only after you have decoded each label.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "אַבָּא · אִמָּא · בֵּן · בַּת",
+          "abba · imma · ben · bat"
+        ],
+        [
+          "אַבָּא · אִמָּא · בֵּן · בַּת",
+          "father · mother · son · daughter"
+        ]
+      ],
+      "words": [
+        [
+          "אַבָּא · אִמָּא · בֵּן · בַּת",
+          "father · mother · son · daughter"
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: abba · imma · ben · bat.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which option includes all four family words?",
+          "options": [
+            "בֵּן",
+            "בַּת",
+            "Both"
+          ],
+          "answer": 2,
+          "why": "The set includes father, mother, son, and daughter."
+        },
+        {
+          "prompt": "Which word means son?",
+          "options": [
+            "בֵּן",
+            "בַּת",
+            "אִמָּא"
+          ],
+          "answer": 0,
+          "why": "בֵּן is correct. Point to each word from the right. Read first; use the family picture only after you have decoded each label."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "אַבָּא · אִמָּא · בֵּן · בַּת"
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "בֵּן   בַּת   Both"
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "אַבָּא · אִמָּא · בֵּן · בַּת"
+        ]
+      ],
+      "check": "I can read אַבָּא · אִמָּא · בֵּן · בַּת and explain that it means father · mother · son · daughter.",
+      "answers": [
+        "Read אַבָּא · אִמָּא · בֵּן · בַּת: abba · imma · ben · bat.",
+        "Circle אַבָּא · אִמָּא · בֵּן · בַּת, meaning father · mother · son · daughter.",
+        "Copy אַבָּא · אִמָּא · בֵּן · בַּת; mark א ב ת ן."
+      ],
+      "alt": "A clear classroom illustration for father · mother · son · daughter, paired with the Hebrew word אַבָּא · אִמָּא · בֵּן · בַּת.",
+      "answerTargets": [
+        "אַבָּא · אִמָּא · בֵּן · בַּת",
+        "אַבָּא · אִמָּא · בֵּן · בַּת",
+        "אַבָּא · אִמָּא · בֵּן · בַּת"
+      ],
+      "icon": "family"
+    },
+    {
+      "id": 32,
+      "title": "Read the Bet Track mini passage",
+      "goal": "Read a short set of linked phrases and explain what each one means.",
+      "new": [
+        [
+          "Review",
+          "Today's selection combines previously taught letters, vowels, words, and short phrases."
+        ]
+      ],
+      "teach": [
+        "Read each phrase in order. Pause at the question mark and period, then explain the meaning without looking at the picture.",
+        "Read Hebrew from right to left. Notice each vowel mark before blending the word; use the picture to check meaning only after you have tried to decode."
+      ],
+      "model": [
+        [
+          "מָה זֶה? זֶה דָּג. דָּג קָטָן.",
+          "mah zeh? zeh dag. dag katan."
+        ],
+        [
+          "מָה זֶה? זֶה דָּג. דָּג קָטָן.",
+          "What is this? This is a fish. A small fish."
+        ]
+      ],
+      "words": [
+        [
+          "מָה זֶה? זֶה דָּג. דָּג קָטָן.",
+          "What is this? This is a fish. A small fish."
+        ]
+      ],
+      "steps": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: mah zeh? zeh dag. dag katan..",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "questions": [
+        {
+          "prompt": "Which line gives the question and its fish answer?",
+          "options": [
+            "מָה זֶה? זֶה דָּג.",
+            "זֶה סֵפֶר.",
+            "טוֹב דָּג."
+          ],
+          "answer": 0,
+          "why": "מָה זֶה? asks what is this; זֶה דָּג answers this is a fish."
+        },
+        {
+          "prompt": "What does דָּג mean?",
+          "options": [
+            "fish",
+            "book",
+            "dog"
+          ],
+          "answer": 0,
+          "why": "fish is correct. Read each phrase in order. Pause at the question mark and period, then explain the meaning without looking at the picture."
+        }
+      ],
+      "tasks": [
+        [
+          "Read the word or phrase without picture hints",
+          "מָה זֶה? זֶה דָּג. דָּג קָטָן."
+        ],
+        [
+          "Circle the word or phrase for the meaning",
+          "מָה זֶה? זֶה דָּג.   זֶה סֵפֶר.   טוֹב דָּג."
+        ],
+        [
+          "Copy the Hebrew and mark the focus letter or vowel",
+          "מָה זֶה? זֶה דָּג. דָּג קָטָן."
+        ]
+      ],
+      "check": "I can read מָה זֶה? זֶה דָּג. דָּג קָטָן. and explain that it means What is this? This is a fish. A small fish..",
+      "answers": [
+        "Read מָה זֶה? זֶה דָּג. דָּג קָטָן.: mah zeh? zeh dag. dag katan..",
+        "Circle מָה זֶה? זֶה דָּג. דָּג קָטָן., meaning What is this? This is a fish. A small fish..",
+        "Copy מָה זֶה? זֶה דָּג. דָּג קָטָן.; mark Review."
+      ],
+      "alt": "A clear classroom illustration for What is this? This is a fish. A small fish., paired with the Hebrew word מָה זֶה? זֶה דָּג. דָּג קָטָן..",
+      "answerTargets": [
+        "מָה זֶה? זֶה דָּג. דָּג קָטָן.",
+        "מָה זֶה? זֶה דָּג. דָּג קָטָן.",
+        "מָה זֶה? זֶה דָּג. דָּג קָטָן."
+      ],
+      "icon": "fishsmall"
     }
   ]
 }
