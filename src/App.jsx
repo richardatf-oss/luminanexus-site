@@ -436,7 +436,7 @@ function App() {
             <article className="feature-card">
               <h3>Bet Track Workbook</h3>
               <p>
-                Building the Word. Six illustrated lessons move from blending ahhh and eee to closed words, oh, oo, eh and ay, and short greetings. Includes online practice and a matching 16 page printable with teacher answers.
+                Building the Word. Thirty-two illustrated lessons move from vowel blending and closed words to vocabulary, phrases, and short dialogue. Includes interactive online practice and a matching 77-page printable with a readiness review and teacher key.
               </p>
               <a className="button secondary" href="/bet-track.html">
                 Open Bet Track
