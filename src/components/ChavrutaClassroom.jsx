@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 const STORAGE_KEY = "chavrutaStudentProfile";
 const MODES = new Set([
   "judaism-study",
+  "name-study",
   "hebrew-classroom",
   "track-placement",
   "teacher-planning",
@@ -279,11 +280,20 @@ function ChavrutaClassroom() {
             <select id="chavruta-mode" value={mode} onChange={event => setMode(event.target.value)}>
               <option value="hebrew-classroom">Hebrew learning</option>
               <option value="judaism-study">Judaism & Jewish life</option>
+              <option value="name-study">Explore a Hebrew name</option>
               <option value="track-placement">Hebrew track placement</option>
               <option value="teacher-planning">Hebrew teacher planning</option>
               <option value="source-library">Jewish Source Library</option>
               <option value="noahide-parcha">Noahide Parcha</option>
             </select>
+
+            {mode === "name-study" && (
+              <p className="context-note">
+                Chavruta can suggest Hebrew-letter spellings and sounds, then
+                offer a playful riff. Creative associations are not the same
+                as a name’s historical origin or established Jewish teaching.
+              </p>
+            )}
 
             {isJudaismMode && (
               <div className="context-note">
@@ -326,9 +336,11 @@ function ChavrutaClassroom() {
               onKeyDown={handleQuestionKeyDown}
               placeholder={isJudaismMode
                 ? "Ask about any area of Judaism or Jewish life..."
-                : mode === "noahide-parcha"
-                  ? "Name a parsha and ask for a Noahide reflection..."
-                  : "Ask a Hebrew learning question..."}
+                : mode === "name-study"
+                  ? "Enter a first name or nickname and tell Chavruta how you pronounce it..."
+                  : mode === "noahide-parcha"
+                    ? "Name a parsha and ask for a Noahide reflection..."
+                    : "Ask a Hebrew learning question..."}
               rows={6}
             />
 
