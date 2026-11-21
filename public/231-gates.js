@@ -71,19 +71,25 @@
 
     if (firstClass === "Mother" && secondClass === "Mother") {
       scene = "Two primordial currents meet before the world has settled into form.";
-      question = "What new balance might arise when these two forces meet, and what must remain distinct?";
-    } else if (firstClass === "Mother" && secondClass === "Double" || firstClass === "Double" && secondClass === "Mother") {
+      question = "What new balance might arise when these forces meet, and what must remain distinct?";
+    } else if ((firstClass === "Mother" && secondClass === "Double") || (firstClass === "Double" && secondClass === "Mother")) {
+      const element = firstClass === "Mother" ? first : second;
+      const power = firstClass === "Double" ? first : second;
       scene = "A primordial element encounters a double power that carries its own opposite.";
-      question = `How might ${first[4]} awaken ${second[4]}—and what does the opposite pole ask you to notice?`;
-    } else if (firstClass === "Mother" && secondClass === "Simple" || firstClass === "Simple" && secondClass === "Mother") {
+      question = `How might ${element[4]} awaken or deepen ${power[4]}, and what does its opposite pole ask you to notice?`;
+    } else if ((firstClass === "Mother" && secondClass === "Simple") || (firstClass === "Simple" && secondClass === "Mother")) {
+      const element = firstClass === "Mother" ? first : second;
+      const faculty = firstClass === "Simple" ? first : second;
       scene = "A cosmic element enters a human faculty: creation becoming experience.";
-      question = `Where might ${first[4]} and ${second[4]} meet in a lived moment of speaking, seeing, moving, or listening?`;
+      question = `How might ${element[4]} illuminate ${faculty[4]} in an ordinary moment of life?`;
     } else if (firstClass === "Double" && secondClass === "Double") {
       scene = "Two powers, each shadowed by an opposite, stand in a living balance.";
       question = `How might ${first[4]} and ${second[4]} strengthen one another without erasing their tensions?`;
-    } else if (firstClass === "Double" && secondClass === "Simple" || firstClass === "Simple" && secondClass === "Double") {
+    } else if ((firstClass === "Double" && secondClass === "Simple") || (firstClass === "Simple" && secondClass === "Double")) {
+      const power = firstClass === "Double" ? first : second;
+      const faculty = firstClass === "Simple" ? first : second;
       scene = "A cosmic quality descends into a human faculty and becomes something lived.";
-      question = `How could ${first[4]} be expressed through ${second[4]}, and what would keep that expression in balance?`;
+      question = `How might ${power[4]} be expressed through ${faculty[4]}, and what would keep that expression in balance?`;
     } else {
       scene = "Two human faculties become a small bridge between inner life and the world.";
       question = `What might change when ${first[4]} is followed by ${second[4]}—or when the order is reversed?`;
