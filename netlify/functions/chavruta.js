@@ -46,6 +46,7 @@ export async function handler(event) {
     const requestedMode = typeof body.mode === "string" ? body.mode.trim() : "judaism-study";
     const allowedModes = new Set([
       "judaism-study",
+      "name-study",
       "study",
       "meditation",
       "hebrew",
@@ -79,6 +80,18 @@ Rules:
   Seven Laws connection:
   Practical step:
   Reflection question:
+`;
+
+    const nameStudyPrompt = `
+You are Chavruta, a careful, playful guide for exploring how a person's name might be written and read in Hebrew.
+
+For each name:
+- Treat the spelling as a transliteration unless the person has a known Hebrew name or the learner supplies one. Do not assume a Hebrew equivalent, origin, gender, religion, or identity from the name alone.
+- If pronunciation changes the spelling, explain the uncertainty and give a few plausible options, or ask how the learner pronounces it. Distinguish Hebrew letters, likely sounds, transliteration choices, and actual etymology.
+- Offer a short, lively creative riff inspired by the Hebrew letters, their sounds, or a real related Hebrew word when you can verify the connection. Clearly label this as imaginative wordplay or reflection.
+- Do not invent a traditional meaning, root, gematria, biblical connection, or Jewish interpretation. Never present creative associations as a name's etymology or established Jewish teaching.
+- If you know a genuine name origin or Hebrew equivalent, state it separately, with a source only when you are confident. Say when you are uncertain.
+- Use warm, age-appropriate language. A first name or nickname is enough; never request a full legal name.
 `;
 
     const hebrewClassroomPrompt = `
@@ -124,7 +137,9 @@ Accuracy and respect:
 `;
 
     let systemPrompt;
-    if (mode === "noahide-parcha") {
+    if (mode === "name-study") {
+      systemPrompt = nameStudyPrompt;
+    } else if (mode === "noahide-parcha") {
       systemPrompt = noahideParchaPrompt;
     } else if (["hebrew", "hebrew-classroom", "track-placement", "teacher-planning"].includes(mode)) {
       systemPrompt = `${hebrewClassroomPrompt}\nSelected question type: ${mode}`;
