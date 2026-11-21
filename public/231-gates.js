@@ -1,11 +1,29 @@
 (() => {
+  // Letter classes and correspondences follow one Gra Version of Sefer Yetzirah.
+  // These are source associations for contemplation, not fixed definitions of individual gates.
   const letters = [
-    ["א", "Aleph", "throat"], ["ב", "Bet", "lips"], ["ג", "Gimel", "palate"], ["ד", "Dalet", "tongue"],
-    ["ה", "Hey", "throat"], ["ו", "Vav", "lips"], ["ז", "Zayin", "teeth"], ["ח", "Chet", "throat"],
-    ["ט", "Tet", "tongue"], ["י", "Yod", "palate"], ["כ", "Kaf", "palate"], ["ל", "Lamed", "tongue"],
-    ["מ", "Mem", "lips"], ["נ", "Nun", "tongue"], ["ס", "Samekh", "teeth"], ["ע", "Ayin", "throat"],
-    ["פ", "Peh", "lips"], ["צ", "Tsadi", "teeth"], ["ק", "Qof", "palate"], ["ר", "Resh", "teeth"],
-    ["ש", "Shin", "teeth"], ["ת", "Tav", "tongue"],
+    ["א", "Aleph", "throat", "Mother", "breath · air", "temperate · chest"],
+    ["ב", "Bet", "lips", "Double", "wisdom ↔ folly", "Moon · Sunday · right eye"],
+    ["ג", "Gimel", "palate", "Double", "wealth ↔ poverty", "Mars · Monday · right ear"],
+    ["ד", "Dalet", "tongue", "Double", "seed ↔ barrenness", "Sun · Tuesday · right nostril"],
+    ["ה", "Hey", "throat", "Simple", "speech", "Aries · Nisan · right foot"],
+    ["ו", "Vav", "lips", "Simple", "thought", "Taurus · Iyar · right kidney"],
+    ["ז", "Zayin", "teeth", "Simple", "motion", "Gemini · Sivan · left foot"],
+    ["ח", "Chet", "throat", "Simple", "sight", "Cancer · Tammuz · right hand"],
+    ["ט", "Tet", "tongue", "Simple", "hearing", "Leo · Av · left kidney"],
+    ["י", "Yod", "palate", "Simple", "action", "Virgo · Elul · left hand"],
+    ["כ", "Kaf", "palate", "Double", "life ↔ death", "Venus · Wednesday · left eye"],
+    ["ל", "Lamed", "tongue", "Simple", "intimacy", "Libra · Tishrei · gall"],
+    ["מ", "Mem", "lips", "Mother", "water", "cold · belly"],
+    ["נ", "Nun", "tongue", "Simple", "smell", "Scorpio · Cheshvan · small intestine"],
+    ["ס", "Samekh", "teeth", "Simple", "sleep", "Sagittarius · Kislev · stomach"],
+    ["ע", "Ayin", "throat", "Simple", "agitation", "Capricorn · Tevet · liver"],
+    ["פ", "Peh", "lips", "Double", "dominion ↔ servitude", "Mercury · Thursday · left ear"],
+    ["צ", "Tsadi", "teeth", "Simple", "taste / ingestion", "Aquarius · Shevat · gizzard"],
+    ["ק", "Qof", "palate", "Simple", "laughter", "Pisces · Adar · spleen"],
+    ["ר", "Resh", "teeth", "Double", "peace ↔ war", "Saturn · Friday · left nostril"],
+    ["ש", "Shin", "teeth", "Mother", "fire", "hot · head"],
+    ["ת", "Tav", "tongue", "Double", "grace ↔ ugliness", "Jupiter · Shabbat · mouth"],
   ];
   const gates = [];
   for (let left = 0; left < letters.length; left += 1) {
@@ -22,6 +40,9 @@
   const pairNumber = document.querySelector("#pair-number");
   const gateMeaning = document.querySelector("#gate-meaning");
   const gateReflection = document.querySelector("#gate-reflection");
+  const gateCorrespondences = document.querySelector("#gate-correspondences");
+  const gateMysticism = document.querySelector("#gate-mysticism");
+  const mysticQuestion = document.querySelector("#mystic-question");
   const saveButton = document.querySelector("#save-gate");
   const savedList = document.querySelector("#saved-list");
   const savedEmpty = document.querySelector("#saved-empty");
@@ -42,6 +63,38 @@
     return `${letters[gate.left][1]} · ${letters[gate.right][1]}`;
   }
 
+  function mysticalReading(first, second) {
+    const firstClass = first[3];
+    const secondClass = second[3];
+    let scene;
+    let question;
+
+    if (firstClass === "Mother" && secondClass === "Mother") {
+      scene = "Two primordial currents meet before the world has settled into form.";
+      question = "What new balance might arise when these two forces meet, and what must remain distinct?";
+    } else if (firstClass === "Mother" && secondClass === "Double" || firstClass === "Double" && secondClass === "Mother") {
+      scene = "A primordial element encounters a double power that carries its own opposite.";
+      question = `How might ${first[4]} awaken ${second[4]}—and what does the opposite pole ask you to notice?`;
+    } else if (firstClass === "Mother" && secondClass === "Simple" || firstClass === "Simple" && secondClass === "Mother") {
+      scene = "A cosmic element enters a human faculty: creation becoming experience.";
+      question = `Where might ${first[4]} and ${second[4]} meet in a lived moment of speaking, seeing, moving, or listening?`;
+    } else if (firstClass === "Double" && secondClass === "Double") {
+      scene = "Two powers, each shadowed by an opposite, stand in a living balance.";
+      question = `How might ${first[4]} and ${second[4]} strengthen one another without erasing their tensions?`;
+    } else if (firstClass === "Double" && secondClass === "Simple" || firstClass === "Simple" && secondClass === "Double") {
+      scene = "A cosmic quality descends into a human faculty and becomes something lived.";
+      question = `How could ${first[4]} be expressed through ${second[4]}, and what would keep that expression in balance?`;
+    } else {
+      scene = "Two human faculties become a small bridge between inner life and the world.";
+      question = `What might change when ${first[4]} is followed by ${second[4]}—or when the order is reversed?`;
+    }
+
+    return {
+      scene: `As a LuminaNexus contemplation—not a fixed meaning assigned by the text—imagine ${first[1]} (${first[4]}) meeting ${second[1]} (${second[4]}). ${scene}`,
+      question,
+    };
+  }
+
   function renderSelected() {
     const gate = gates[selected - 1];
     const first = letters[gate.left];
@@ -50,6 +103,7 @@
     const direction = samePlace
       ? `a within-${first[2]} pairing`
       : `a ${first[2]}-to-${second[2]} path`;
+    const reflection = mysticalReading(first, second);
 
     display.textContent = label(gate);
     pairName.textContent = names(gate);
@@ -59,6 +113,10 @@
     gateReflection.textContent = samePlace
       ? `Both letters belong to the source’s ${first[2]} group. Say or identify them in a real word, then compare what changes when ${second[1]} comes first. Can you verify a word containing this adjacent pair?`
       : `Notice the shift from the ${first[2]} group to the ${second[2]} group. Try ${first[1]} → ${second[1]} and then ${second[1]} → ${first[1]}. What changes in the mouth and in the word? Verify any example in a Hebrew source.`;
+    gateCorrespondences.textContent =
+      `${first[1]} — ${first[3]}: ${first[4]}; ${first[5]}. ${second[1]} — ${second[3]}: ${second[4]}; ${second[5]}. These correspondences follow the Gra Version of Sefer Yetzirah; other recensions and translations differ.`;
+    gateMysticism.textContent = reflection.scene;
+    mysticQuestion.textContent = reflection.question;
     saveButton.setAttribute("aria-pressed", String(saved.has(gate.id)));
     saveButton.textContent = saved.has(gate.id) ? "Remove saved gate" : "Save this gate";
     grid.querySelectorAll(".gate-item").forEach(button => {
