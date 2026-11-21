@@ -1,11 +1,11 @@
 (() => {
   const letters = [
-    ["א", "Aleph"], ["ב", "Bet"], ["ג", "Gimel"], ["ד", "Dalet"],
-    ["ה", "Hey"], ["ו", "Vav"], ["ז", "Zayin"], ["ח", "Chet"],
-    ["ט", "Tet"], ["י", "Yod"], ["כ", "Kaf"], ["ל", "Lamed"],
-    ["מ", "Mem"], ["נ", "Nun"], ["ס", "Samekh"], ["ע", "Ayin"],
-    ["פ", "Peh"], ["צ", "Tsadi"], ["ק", "Qof"], ["ר", "Resh"],
-    ["ש", "Shin"], ["ת", "Tav"],
+    ["א", "Aleph", "throat"], ["ב", "Bet", "lips"], ["ג", "Gimel", "palate"], ["ד", "Dalet", "tongue"],
+    ["ה", "Hey", "throat"], ["ו", "Vav", "lips"], ["ז", "Zayin", "teeth"], ["ח", "Chet", "throat"],
+    ["ט", "Tet", "tongue"], ["י", "Yod", "palate"], ["כ", "Kaf", "palate"], ["ל", "Lamed", "tongue"],
+    ["מ", "Mem", "lips"], ["נ", "Nun", "tongue"], ["ס", "Samekh", "teeth"], ["ע", "Ayin", "throat"],
+    ["פ", "Peh", "lips"], ["צ", "Tsadi", "teeth"], ["ק", "Qof", "palate"], ["ר", "Resh", "teeth"],
+    ["ש", "Shin", "teeth"], ["ת", "Tav", "tongue"],
   ];
   const gates = [];
   for (let left = 0; left < letters.length; left += 1) {
@@ -20,6 +20,8 @@
   const display = document.querySelector("#pair-display");
   const pairName = document.querySelector("#pair-name");
   const pairNumber = document.querySelector("#pair-number");
+  const gateMeaning = document.querySelector("#gate-meaning");
+  const gateReflection = document.querySelector("#gate-reflection");
   const saveButton = document.querySelector("#save-gate");
   const savedList = document.querySelector("#saved-list");
   const savedEmpty = document.querySelector("#saved-empty");
@@ -42,9 +44,21 @@
 
   function renderSelected() {
     const gate = gates[selected - 1];
+    const first = letters[gate.left];
+    const second = letters[gate.right];
+    const samePlace = first[2] === second[2];
+    const direction = samePlace
+      ? `a within-${first[2]} pairing`
+      : `a ${first[2]}-to-${second[2]} path`;
+
     display.textContent = label(gate);
     pairName.textContent = names(gate);
     pairNumber.textContent = `Gate ${gate.id} of ${gates.length}`;
+    gateMeaning.textContent =
+      `In Sefer Yetzirah’s five-place articulation map (2:3), ${first[1]} is grouped at the ${first[2]} and ${second[1]} at the ${second[2]}. Read in this order, ${first[1]} → ${second[1]}, this gate offers ${direction} through speech. The reverse order, ${second[1]} → ${first[1]}, is the same gate read in the wheel’s other direction.`;
+    gateReflection.textContent = samePlace
+      ? `Both letters belong to the source’s ${first[2]} group. Say or identify them in a real word, then compare what changes when ${second[1]} comes first. Can you verify a word containing this adjacent pair?`
+      : `Notice the shift from the ${first[2]} group to the ${second[2]} group. Try ${first[1]} → ${second[1]} and then ${second[1]} → ${first[1]}. What changes in the mouth and in the word? Verify any example in a Hebrew source.`;
     saveButton.setAttribute("aria-pressed", String(saved.has(gate.id)));
     saveButton.textContent = saved.has(gate.id) ? "Remove saved gate" : "Save this gate";
     grid.querySelectorAll(".gate-item").forEach(button => {
