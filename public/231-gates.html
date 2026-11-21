@@ -14,7 +14,7 @@
     h1,h2,h3{line-height:1.18}h1{font-size:clamp(2.3rem,6vw,4.4rem);margin:.35rem 0}h2{font-size:clamp(1.65rem,4vw,2.25rem);margin-top:2rem}p,li{font-size:1.05rem}.intro{max-width:780px;margin:1rem auto;color:var(--muted);font-size:1.17rem}.eyebrow{font:800 .8rem Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
     .card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.35rem;box-shadow:0 10px 30px rgba(20,33,61,.07);margin:1rem 0}.principle{background:var(--cream);border-left:6px solid var(--gold);padding:1rem 1.2rem;border-radius:10px}
     .explorer{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:1.25rem;align-items:start}.tools{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:.8rem 0}.tools input{flex:1 1 230px;min-width:0;padding:.75rem .85rem;border:1px solid #aeb9c9;border-radius:10px;font:inherit}.tools button,.gate-item,.saved-item{font:inherit}.tools button,.save-button{padding:.68rem .9rem;border:1px solid #aeb9c9;border-radius:10px;background:#fff;color:var(--ink);cursor:pointer}.gate-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.42rem;max-height:580px;overflow:auto;padding:.3rem}.gate-item{min-width:0;padding:.45rem .15rem;border:1px solid var(--line);border-radius:9px;background:#fff;cursor:pointer}.gate-item:hover,.gate-item[aria-pressed="true"]{border-color:var(--blue);background:#edf4ff}.gate-item[aria-pressed="true"]{box-shadow:0 0 0 2px #1f5fbf40}.gate-item small{display:block;color:var(--muted);font:600 .72rem Arial,sans-serif}.gate-item b{font-family:"Frank Ruhl Libre",serif;font-size:1.25rem;direction:rtl;unicode-bidi:isolate}
-    .selected{position:sticky;top:1rem}.pair-display{font-family:"Frank Ruhl Libre",serif;font-size:clamp(3rem,9vw,5rem);text-align:center;line-height:1.25;letter-spacing:.05em;margin:.4rem 0;color:var(--green)}.pair-name{text-align:center;font:700 1.15rem Arial,sans-serif;color:var(--muted)}.prompt{padding:1rem;background:var(--soft);border-radius:12px}.saved-list{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;list-style:none}.saved-item{padding:.45rem .7rem;border:1px solid var(--line);border-radius:9px;background:#fff;cursor:pointer}.status{min-height:1.5em;color:var(--muted)}.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #a16a27;outline-offset:3px}.source{font-size:.94rem;color:var(--muted)}footer{width:min(1100px,92vw);margin:auto;padding:2rem 0;border-top:1px solid var(--line);color:var(--muted)}
+    .selected{position:sticky;top:1rem}.pair-display{font-family:"Frank Ruhl Libre",serif;font-size:clamp(3rem,9vw,5rem);text-align:center;line-height:1.25;letter-spacing:.05em;margin:.4rem 0;color:var(--green)}.pair-name{text-align:center;font:700 1.15rem Arial,sans-serif;color:var(--muted)}.prompt{padding:1rem;background:var(--soft);border-radius:12px}.prompt h3,.mystic h3{margin:.25rem 0 .6rem}.mystic{padding:1rem;background:radial-gradient(circle at 88% 8%,rgba(217,164,65,.2),transparent 35%),linear-gradient(145deg,#fbf5ff,#fffaf0);border:1px solid #e4d4ef;border-radius:14px;margin:1rem 0}.mystic .eyebrow{color:#65417c;margin-bottom:.35rem}.saved-list{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;list-style:none}.saved-item{padding:.45rem .7rem;border:1px solid var(--line);border-radius:9px;background:#fff;cursor:pointer}.status{min-height:1.5em;color:var(--muted)}.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #a16a27;outline-offset:3px}.source{font-size:.94rem;color:var(--muted)}footer{width:min(1100px,92vw);margin:auto;padding:2rem 0;border-top:1px solid var(--line);color:var(--muted)}
     @media(max-width:760px){.explorer{grid-template-columns:1fr}.selected{position:static}.gate-grid{grid-template-columns:repeat(5,minmax(0,1fr));max-height:420px}.tools{align-items:stretch}.tools input,.tools button{flex:1 1 100%}}
   </style>
   <script src="/231-gates.js" defer></script>
@@ -23,19 +23,23 @@
   <header>
     <p class="eyebrow">A Source-Based Letter Study</p>
     <h1>The 231 Gates</h1>
-    <p class="intro">Sefer Yetzirah describes the twenty-two Hebrew foundation letters in a turning wheel of 231 gates. Explore every distinct pair through the text’s five articulation groups, compare its two directions, and reflect on how letters meet in speech.</p>
+    <p class="intro">Sefer Yetzirah imagines letters as living creative powers. Explore the 231 gates through sacred permutation, cosmic correspondences, the movement of sound, and a mystical meditation for each pair.</p>
   </header>
   <nav aria-label="231 Gates navigation">
     <a href="/">Back to LuminaNexus</a><a class="secondary" href="/sources.html">Source Library</a><a class="secondary" href="/aleph-track.html">Aleph Track</a><a class="secondary" href="/noahide-parcha.html">Noahide Daily Parcha</a><a class="secondary" href="/?chavrutaMode=source-library#chavruta">Ask Chavruta / Havari</a>
   </nav>
   <main>
     <section class="card">
-      <h2>What each gate represents</h2>
-      <p>There are 231 distinct pairs because 22 × 21 ÷ 2 = 231; a pair and its reverse count as one gate in this explorer. Sefer Yetzirah first describes the letters by five places of articulation in the mouth (2:3), then places their distinct pairs in a wheel (2:4–5). Each selected order traces a path from one articulation group to another, or a pairing within one group.</p>
-      <p>The text does not give each of the 231 pairs its own dictionary definition or fixed mystical meaning. Its example of ע־נ־ג / נ־ג־ע (oneg, “delight”; nega, “affliction”) shows how changing letter order can change a word and its sense. The individual gate descriptions below are a source-based phonetic study lens, not a claim of separate traditional doctrine.</p>
-      <p>A later commentary by the Vilna Gaon adds another lens: each gate is an entrance formed by the first two letters of longer combinations, with many further arrangements branching from it. This explorer pairs that idea of an entrance with the articulation map, so every selection offers both a sound-path and a question for study.</p>
-      <p class="principle">These are the source’s traditional articulation groups; they do not claim that every Jewish community pronounces each letter identically. Read the pair in both directions. Notice where each sound is formed, then look for an actual Hebrew word containing the letters in that order and verify its meaning.</p>
-      <p class="source">Primary texts: <a href="https://www.sefaria.org/Sefer_Yetzirah.2.3?lang=bi&amp;with=Translations" target="_blank" rel="noopener noreferrer">Sefer Yetzirah 2:3</a> · <a href="https://www.sefaria.org/Sefer_Yetzirah.2.4?lang=bi&amp;with=Translations" target="_blank" rel="noopener noreferrer">2:4</a> · <a href="https://www.sefaria.org/Sefer_Yetzirah.2.5?lang=bi&amp;with=Translations" target="_blank" rel="noopener noreferrer">2:5 on Sefaria</a>. Later commentary: <a href="https://www.zoharonline.org/sefer-yetzirah/english/hagra/chapter-2/" target="_blank" rel="noopener noreferrer">Vilna Gaon on chapter 2</a>.</p>
+      <h2>The mystical architecture of a gate</h2>
+      <p>Twenty-two letters yield 231 distinct gates: 22 × 21 ÷ 2. In Sefer Yetzirah, a gate is a meeting-place of two letters within a turning wheel; later combinations branch from these openings. The text’s own sign is the turning between עֹנֶג (oneg, “delight”) and נֶגַע (nega, “affliction”): the letters turn, and the meaning changes.</p>
+      <p>For the mystical layer, this explorer follows the Gra Version’s three letter families: the Three Mothers with their elemental balance, the Seven Doubles with their paired powers and opposites, and the Twelve Simple letters with their faculties and cosmic cycles. Each chosen pair receives a contemplative reading made from those correspondences. It is a LuminaNexus meditation inspired by the sources, not a claim that Sefer Yetzirah assigns one canonical hidden definition to every gate.</p>
+      <p class="principle">Each gate below now opens three ways: its traditional articulation path, its Gra Version correspondences, and a mystical reflection on the meeting of those two letter-currents. Pronunciations and some correspondences vary among textual versions and Jewish communities; compare the source links and hold the reflection as study.</p>
+      <details>
+        <summary>Explore the traditional correspondences used here</summary>
+        <p>The Three Mothers—Aleph, Mem, and Shin—are linked in the Gra Version to air, water, and fire, with a balance among them. The Seven Doubles carry foundations such as wisdom, wealth, seed, life, dominion, peace, and grace, each paired with an opposite and linked to planetary and weekly cycles. The Twelve Simple letters are associated with faculties, constellations, months, and aspects of the human soul.</p>
+        <p class="source">Compare <a href="https://www.sefaria.org/Sefer_Yetzirah_Gra_Version.3" target="_blank" rel="noopener noreferrer">Gra Version, chapter 3</a> · <a href="https://www.sefaria.org/Sefer_Yetzirah_Gra_Version.4" target="_blank" rel="noopener noreferrer">chapter 4</a> · <a href="https://www.sefaria.org/Sefer_Yetzirah_Gra_Version.5" target="_blank" rel="noopener noreferrer">chapter 5</a>.</p>
+      </details>
+      <p class="source">Primary text: <a href="https://www.sefaria.org/Sefer_Yetzirah.2.3?lang=bi&amp;with=Translations" target="_blank" rel="noopener noreferrer">Sefer Yetzirah 2:3</a> · <a href="https://www.sefaria.org/Sefer_Yetzirah.2.4?lang=bi&amp;with=Translations" target="_blank" rel="noopener noreferrer">2:4</a> · <a href="https://www.sefaria.org/Sefer_Yetzirah.2.5?lang=bi&amp;with=Translations" target="_blank" rel="noopener noreferrer">2:5</a>. See also <a href="https://www.zoharonline.org/sefer-yetzirah/english/hagra/chapter-2/" target="_blank" rel="noopener noreferrer">Vilna Gaon’s commentary on chapter 2</a>.</p>
     </section>
     <section class="explorer" aria-label="Interactive letter-pair explorer">
       <div class="card">
@@ -56,10 +60,17 @@
         <div id="pair-display" class="pair-display" lang="he" dir="rtl" aria-live="polite">א · ב</div>
         <p id="pair-name" class="pair-name">Aleph · Bet</p>
         <div class="prompt">
-          <h3>What this gate represents</h3>
-          <p id="gate-meaning" aria-live="polite">This gate joins the articulation groups of its two letters. Select a pair to see its source-based sound path.</p>
+          <h3>Its path through speech</h3>
+          <p id="gate-meaning" aria-live="polite">Select a pair to see the source-based articulation path.</p>
+          <p id="gate-reflection" class="source" aria-live="polite">Read the pair in both directions; notice how the sound-path turns.</p>
         </div>
-        <p id="gate-reflection" class="principle" aria-live="polite">How does the sound move from the first letter to the second? Try the reverse order, too.</p>
+        <p id="gate-correspondences" class="source" aria-live="polite">Each letter carries a correspondence in the selected Gra Version. Choose a gate to see both.</p>
+        <div class="mystic">
+          <p class="eyebrow">Mystical contemplation</p>
+          <h3>A meeting of letter-currents</h3>
+          <p id="gate-mysticism" aria-live="polite">Select a gate and let its two source-based correspondences meet in a clearly labeled LuminaNexus reflection.</p>
+          <p id="mystic-question" class="principle" aria-live="polite">What new possibility opens when these two currents meet?</p>
+        </div>
         <p id="pair-number" class="source">Gate 1 of 231</p>
         <button id="save-gate" class="save-button" type="button" aria-pressed="false">Save this gate</button>
         <h3>Your saved gates</h3>
