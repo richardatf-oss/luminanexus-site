@@ -1,50 +1,128 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ivrit HaOr Source Library | LuminaNexus Foundation</title>
-  <style>
-    :root{--ink:#14213d;--muted:#52616b;--blue:#1f5fbf;--gold:#d9a441;--cream:#fff8e8;--soft:#f5f8ff;--line:#dfe7f5}*{box-sizing:border-box}body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:linear-gradient(180deg,#fffdf6,#f3f7ff);line-height:1.68}header{background:radial-gradient(circle at top left,#fff3bf,#eaf2ff 50%,#fff);border-bottom:1px solid var(--line);padding:3rem 1.25rem 2.5rem;text-align:center}main,nav{width:min(980px,92vw);margin:0 auto}main{padding:2rem 0 4rem}nav{padding:1rem 0;display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center}nav a,.button{display:inline-block;text-decoration:none;color:#fff;background:var(--blue);padding:.75rem 1rem;border-radius:999px;font-family:Arial,sans-serif;font-weight:700;font-size:.92rem}.secondary{background:#fff!important;color:var(--blue)!important;border:1px solid var(--line)}h1,h2,h3{line-height:1.18}h1{font-size:clamp(2.3rem,6vw,4.4rem);margin:.35rem 0}h2{margin-top:2.5rem;padding-top:1.2rem;border-top:3px solid var(--gold);font-size:clamp(1.7rem,4vw,2.6rem)}p,li{font-size:1.08rem}.eyebrow{font:800 .78rem Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--blue)}.intro{max-width:760px;margin:1rem auto;color:var(--muted);font-size:1.2rem}.header-art{width:min(980px,92vw);max-height:440px;object-fit:cover;border-radius:26px;border:1px solid var(--line);box-shadow:0 18px 50px rgba(20,33,61,.12);margin:1.5rem auto 0;display:block}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.card,.boundary{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.4rem;box-shadow:0 10px 30px rgba(20,33,61,.07)}.card h3{margin-top:0}.card a:not(.button){color:var(--blue);font-weight:700}.boundary{background:var(--cream);border-left:5px solid var(--gold);margin-top:2rem}@media(max-width:700px){.grid{grid-template-columns:1fr}}
-  </style>
-  <link rel="stylesheet" href="/styles/hebrew.css" />
-  <style>
-    .library-filter{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,.45fr) auto;gap:.7rem;align-items:end;margin:1.5rem 0;padding:1rem;background:#fff;border:1px solid #dfe7f5;border-radius:18px}
-    .library-filter label{display:grid;gap:.35rem;font-weight:700}.library-filter input,.library-filter select,.library-filter button{min-width:0;padding:.7rem .8rem;border:1px solid #aeb9c9;border-radius:9px;background:#fff;font:inherit}.library-filter button{background:#1f5fbf;color:white;font-weight:700;cursor:pointer}.library-filter :focus-visible{outline:3px solid #a16a27;outline-offset:3px}.filter-status{color:#52616b;min-height:1.5em}@media(max-width:700px){.library-filter{grid-template-columns:1fr}}
-  </style>
-</head>
-<body>
-  <header><p class="eyebrow">LuminaNexus Foundation · Ivrit HaOr</p><h1>Ivrit HaOr Source Library</h1><p class="intro">Hebrew literacy, cultural learning, and respectful pathways into source context.</p><img class="header-art" src="/images/source-library.webp" alt="An illuminated study library with open books, a scroll, and Hebrew letters" /></header>
-  <nav aria-label="Source Library navigation"><a href="/">Back to LuminaNexus</a><a class="secondary" href="/teacher-guide.html">Teacher Guide</a><a class="secondary" href="/aleph-track.html">Aleph Track</a><a class="secondary" href="/bet-track.html">Bet Track</a><a class="secondary" href="/gimel-track.html">Gimel Track</a><a class="secondary" href="/?chavrutaMode=source-library#chavruta">Ask Chavruta / Havari</a></nav>
-  <main>
-    <section><h2>Source Library Purpose</h2><p>The Source Library gives teachers and advanced learners a respectful doorway into Hebrew source texts. These links are for language, literacy, context, and cultural understanding. They do not replace a rabbi, Jewish educator, or qualified authority.</p></section>
-    <form class="library-filter" id="library-filter" role="search">
-      <label for="library-search">Search study pathways and sources<input id="library-search" type="search" placeholder="Try light, weekly portion, Hebrew…" autocomplete="off" /></label>
-      <label for="library-category">Filter by topic<select id="library-category"><option value="all">All topics</option><option value="hebrew">Hebrew learning</option><option value="torah">Torah texts</option><option value="weekly">Weekly study</option><option value="study">Study pathways</option></select></label>
-      <button type="reset">Clear filters</button>
-    </form>
-    <p class="filter-status" id="library-filter-status" role="status" aria-live="polite"></p>
-    <section><h2>Sefaria.org</h2><p>Sefaria.org is a digital library of Jewish texts, translations, and commentaries. LuminaNexus links to Sefaria as an external reference, not as a substitute for guided Jewish learning.</p><a class="button" href="https://www.sefaria.org/" target="_blank" rel="noopener noreferrer">Open Sefaria.org</a></section>
-    <section><h2>Beginner-Friendly Text Pathways</h2><div class="grid">
-      <article class="card source-card" data-categories="hebrew torah"><h3>Creation and אוֹר</h3><p>Notice the Hebrew word for light and how familiar letters form a meaningful word.</p></article>
-      <article class="card source-card" data-categories="hebrew"><h3>Shalom · שָׁלוֹם</h3><p>Explore a Hebrew word associated with peace, wholeness, greeting, and farewell.</p></article>
-      <article class="card source-card" data-categories="hebrew"><h3>Names in Hebrew</h3><p>Use names as a gentle bridge into letter recognition, directionality, and belonging.</p></article>
-      <article class="card source-card" data-categories="hebrew torah"><h3>Letters in Tanakh</h3><p>Help advanced learners recognize familiar letters inside carefully selected passages.</p></article>
-      <article class="card source-card" data-categories="weekly torah"><h3>Weekly Torah Portion</h3><p>Teachers may use weekly portion links for cultural context and preparation.</p></article>
-    </div></section>
-    <section><h2>Recommended Sefaria Links</h2><div class="grid">
-      <article class="card source-card" data-categories="torah"><h3>Creation and Light</h3><p><a href="https://www.sefaria.org/Genesis.1.1" target="_blank" rel="noopener noreferrer">Genesis 1:1</a><br/><a href="https://www.sefaria.org/Genesis.1.3" target="_blank" rel="noopener noreferrer">Genesis 1:3</a></p></article>
-      <article class="card source-card" data-categories="torah"><h3>Blessing</h3><p><a href="https://www.sefaria.org/Numbers.6.24" target="_blank" rel="noopener noreferrer">Numbers 6:24</a></p></article>
-      <article class="card source-card" data-categories="torah"><h3>Listening</h3><p><a href="https://www.sefaria.org/Deuteronomy.6.4" target="_blank" rel="noopener noreferrer">Deuteronomy 6:4</a></p></article>
-      <article class="card source-card" data-categories="torah"><h3>Light for the Path</h3><p><a href="https://www.sefaria.org/Psalms.119.105" target="_blank" rel="noopener noreferrer">Psalms 119:105</a></p></article>
-      <article class="card source-card" data-categories="weekly torah"><h3>Weekly Calendar</h3><p><a href="https://www.sefaria.org/calendars" target="_blank" rel="noopener noreferrer">Weekly Torah Portion</a></p></article>
-    </div></section>
-    <section><h2>Study Pathways</h2><div class="grid">
-      <article class="card source-card" data-categories="study weekly torah"><h3>Noahide Daily Parcha</h3><p>An optional seven-day study rhythm with a current weekly reading, short passage work, careful source use, and local progress tracking.</p><a class="button" href="/noahide-parcha.html">Open Noahide Daily Parcha</a></article>
-      <article class="card source-card" data-categories="study hebrew"><h3>The 231 Gates</h3><p>Explore the 231 distinct two-letter pairings associated with Sefer Yetzirah 2:4. The interactive tool supports letter study without inventing fixed meanings for each pair.</p><a class="button" href="/231-gates.html">Explore the 231 Gates</a></article>
-    </div></section>
-    <aside class="boundary"><h2>Classroom Boundary Note</h2><p>These links support Hebrew literacy, cultural context, and teacher reference. Ivrit HaOr is not a halachic authority, does not provide conversion guidance, and does not replace a rabbi, Jewish educator, or Jewish communal learning. Teachers should keep source use age-appropriate and school-safe.</p></aside>
-  </main>
-  <script src="/source-library.js" defer></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="An interactive Hebrew and Jewish source study library with guided reading cards, vocabulary, context, and teacher prompts." />
+    <title>Ivrit HaOr Source Library | LuminaNexus Foundation</title>
+    <link rel="stylesheet" href="/styles/hebrew.css" />
+    <style>
+      :root{--ink:#14213d;--muted:#52616b;--blue:#1f5fbf;--gold:#d9a441;--cream:#fff8e8;--soft:#f5f8ff;--line:#dfe7f5;--green:#315c4b}
+      *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:linear-gradient(180deg,#fffdf6,#f3f7ff);line-height:1.65}
+      header{background:radial-gradient(circle at top left,#fff3bf,#eaf2ff 50%,#fff);border-bottom:1px solid var(--line);padding:3rem 1.25rem 2.5rem;text-align:center}main,nav{width:min(1100px,92vw);margin:0 auto}main{padding:1.5rem 0 4rem}nav{padding:1rem 0;display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center}nav a,.button{display:inline-block;text-decoration:none;color:#fff;background:var(--blue);padding:.7rem .95rem;border-radius:999px;font:700 .92rem Arial,sans-serif}.secondary{background:#fff!important;color:var(--blue)!important;border:1px solid var(--line)}
+      h1,h2,h3{line-height:1.18}h1{font-size:clamp(2.3rem,6vw,4.3rem);margin:.35rem 0}h2{font-size:clamp(1.65rem,4vw,2.35rem);margin-top:2.2rem;padding-top:1rem;border-top:3px solid var(--gold)}h3{margin:.25rem 0 .55rem}p,li{font-size:1.04rem}.eyebrow{font:800 .78rem Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--blue)}.intro{max-width:800px;margin:1rem auto;color:var(--muted);font-size:1.17rem}.header-art{width:min(980px,92vw);max-height:420px;object-fit:cover;border-radius:26px;border:1px solid var(--line);box-shadow:0 18px 50px #14213d1f;margin:1.5rem auto 0;display:block}
+      .boundary,.library-guide,.progress-panel,.source-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.15rem;box-shadow:0 8px 24px #14213d0d}.boundary{background:var(--cream);border-left:6px solid var(--gold);margin:1.5rem 0}.library-guide{display:grid;grid-template-columns:1.2fr .8fr;gap:1rem;align-items:center}.library-guide p:last-child{margin-bottom:0}.how-to{margin:0;padding-left:1.25rem}.how-to li{margin:.3rem 0}
+      .library-filter{display:grid;grid-template-columns:minmax(0,1fr) minmax(165px,.45fr) minmax(165px,.45fr) minmax(165px,.45fr) auto;gap:.7rem;align-items:end;margin:1rem 0;padding:1rem;background:#fff;border:1px solid var(--line);border-radius:18px}.library-filter label{display:grid;gap:.35rem;font-weight:700}.library-filter input,.library-filter select,.library-filter button{min-width:0;padding:.68rem .75rem;border:1px solid #aeb9c9;border-radius:9px;background:#fff;font:inherit}.library-filter button{background:var(--blue);color:#fff;font-weight:700;cursor:pointer}.library-filter :focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #a16a27;outline-offset:3px}
+      .progress-panel{display:grid;grid-template-columns:auto minmax(150px,1fr) auto auto;gap:.8rem;align-items:center}.progress-panel progress{width:100%;height:1rem}.progress-panel button{padding:.6rem .75rem;border:1px solid #aeb9c9;border-radius:9px;background:#fff;font:700 .9rem Arial,sans-serif;cursor:pointer}.filter-status{color:var(--muted);min-height:1.5em}.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.source-card{display:flex;flex-direction:column;min-width:0}.source-card[hidden]{display:none!important}.source-card h3{color:var(--ink)}.source-card a:not(.button){color:var(--blue);font-weight:700}.tag-row{display:flex;gap:.4rem;flex-wrap:wrap;margin:.3rem 0 .75rem}.tag{padding:.2rem .5rem;border-radius:999px;background:var(--soft);color:#304365;font:700 .73rem Arial,sans-serif}.source-card details{margin:.2rem 0 .8rem;border-top:1px solid var(--line);padding-top:.65rem}.source-card summary{cursor:pointer;color:var(--blue);font-weight:700}.study-details{padding-top:.35rem}.study-details p{margin:.65rem 0}.study-question{background:var(--cream);border-radius:11px;padding:.75rem;margin:.7rem 0}.source-meta{color:var(--muted);font-size:.92rem}.completion-toggle{margin-top:auto;align-self:flex-start;padding:.6rem .75rem;border:1px solid #aeb9c9;border-radius:9px;background:#fff;color:var(--ink);font:700 .9rem Arial,sans-serif;cursor:pointer}.completion-toggle[aria-pressed="true"]{background:#edf7f0;border-color:#9dbfa7;color:#244d34}.empty-state{padding:1rem;background:var(--soft);border-radius:12px}.boundary h2{margin-top:.3rem;border:0;padding:0}.footer-links{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0}
+      @media(max-width:900px){.library-filter{grid-template-columns:repeat(2,minmax(0,1fr))}.card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.library-guide{grid-template-columns:1fr}}
+      @media(max-width:600px){.library-filter,.card-grid{grid-template-columns:1fr}.progress-panel{grid-template-columns:1fr auto}.progress-panel progress{grid-column:1/-1;grid-row:2}.progress-panel button{justify-self:start}}
+      @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    </style>
+  </head>
+  <body>
+    <header>
+      <p class="eyebrow">LuminaNexus Foundation · Ivrit HaOr</p>
+      <h1>Ivrit HaOr Source Library</h1>
+      <p class="intro">A guided shelf for Hebrew reading, Jewish text context, and thoughtful questions. Open a card, study at your level, and keep your own reflections distinct from what a source says.</p>
+      <img class="header-art" src="/images/source-library.webp" alt="An illuminated study library with open books, a scroll, and Hebrew letters" />
+    </header>
+    <nav aria-label="Source Library navigation">
+      <a href="/">Back to LuminaNexus</a><a class="secondary" href="/teacher-guide.html">Teacher Guide</a><a class="secondary" href="/aleph-track.html">Aleph Track</a><a class="secondary" href="/bet-track.html">Bet Track</a><a class="secondary" href="/gimel-track.html">Gimel Track</a><a class="secondary" href="/?chavrutaMode=source-library#chavruta">Ask Chavruta / Havari</a>
+    </nav>
+    <main>
+      <section class="library-guide" aria-labelledby="how-to-study">
+        <div><p class="eyebrow">How to use this library</p><h2 id="how-to-study">One source, one careful question</h2><p>These cards support literacy, cultural learning, and teacher preparation. They are not religious rulings. You can read Hebrew, an available translation, or both; you do not need to finish every prompt.</p></div>
+        <ol class="how-to"><li>Choose a card that fits your readiness.</li><li>Open its source and read a short passage.</li><li>Use the prompt, then mark the card explored.</li><li>Return to your track when you want more practice.</li></ol>
+      </section>
+
+      <section id="guided-cards" aria-labelledby="guided-heading">
+        <h2 id="guided-heading">Guided Study Cards</h2>
+        <form class="library-filter" id="library-filter" role="search">
+          <label for="library-search">Search cards<input id="library-search" type="search" placeholder="Try light, blessing, Hebrew…" autocomplete="off" /></label>
+          <label for="library-category">Topic<select id="library-category"><option value="all">All topics</option><option value="hebrew">Hebrew learning</option><option value="scripture">Biblical texts</option><option value="weekly">Weekly study</option><option value="culture">Jewish context</option><option value="mystical">Mystical text study</option><option value="study">Learning pathways</option></select></label>
+          <label for="library-level">Readiness<select id="library-level"><option value="all">All levels</option><option value="beginning">Beginning</option><option value="building">Building</option><option value="confident">Confident reader</option><option value="teacher">Teacher prep</option></select></label>
+          <label for="library-progress-filter">Progress<select id="library-progress-filter"><option value="all">All cards</option><option value="unexplored">Not explored</option><option value="explored">Explored</option></select></label>
+          <button type="reset">Clear filters</button>
+        </form>
+        <div class="progress-panel" aria-label="Study card progress">
+          <strong id="library-progress-label">0 of 10 cards explored</strong>
+          <progress id="library-progress-bar" max="10" value="0" aria-label="Study card progress"></progress>
+          <button id="library-show-unexplored" type="button">Next unexplored</button>
+          <button id="library-clear-progress" type="button">Reset progress</button>
+        </div>
+        <p class="filter-status" id="library-filter-status" role="status" aria-live="polite"></p>
+        <p class="empty-state" id="library-empty" hidden>No cards match these filters. Clear a filter or try another search.</p>
+
+        <div class="card-grid" id="library-card-grid">
+          <article class="source-card" data-study-id="creation-light" data-categories="hebrew scripture" data-level="beginning building confident">
+            <p class="eyebrow">Hebrew + Torah</p><h3>Creation and אוֹר · Light</h3><p>Notice how a Hebrew word is built from letters, then read it in its sentence.</p><div class="tag-row"><span class="tag">Beginning</span><span class="tag">Building</span></div>
+            <details><summary>Open guided study</summary><div class="study-details"><p><strong>Source context:</strong> Genesis opens with a creation account. Genesis 1:3 introduces the word <span lang="he" dir="rtl">אוֹר</span> (<em>or</em>, light).</p><p><strong>Vocabulary:</strong> <span lang="he" dir="rtl">אוֹר</span> · light. Look at the written letters and vowel marks in your chosen edition.</p><p><strong>Try this:</strong> Read Genesis 1:1 and 1:3. Point to one detail in the text before sharing what the passage makes you think about.</p><p class="study-question"><strong>Ask:</strong> What does the passage say happens, and which part of your answer is your own reflection?</p><p class="source-meta">Read: <a href="https://www.sefaria.org/Genesis.1.1" target="_blank" rel="noopener noreferrer">Genesis 1:1</a> · <a href="https://www.sefaria.org/Genesis.1.3" target="_blank" rel="noopener noreferrer">Genesis 1:3</a></p><a class="button secondary" href="/aleph-track.html#lesson-31">Practice reading אוֹר</a></div></details>
+            <button class="completion-toggle" type="button" data-completion="creation-light" aria-pressed="false">Mark explored</button>
+          </article>
+
+          <article class="source-card" data-study-id="shalom" data-categories="hebrew culture" data-level="beginning building">
+            <p class="eyebrow">Hebrew words</p><h3>Shalom · <span lang="he" dir="rtl">שָׁלוֹם</span></h3><p>Explore a familiar Hebrew word through its spelling, sound, and different uses.</p><div class="tag-row"><span class="tag">Beginning</span><span class="tag">Building</span></div>
+            <details><summary>Open guided study</summary><div class="study-details"><p><strong>Learning context:</strong> <span lang="he" dir="rtl">שָׁלוֹם</span> is used in greetings and can also refer to peace or well-being, depending on context.</p><p><strong>Vocabulary:</strong> Identify Shin, Lamed, Vav, and Mem. Notice that this word ends with the regular Mem form.</p><p><strong>Try this:</strong> Say the word after a trusted pronunciation model. Find one place where it is used as a greeting and another where a translation conveys peace or well-being.</p><p class="study-question"><strong>Ask:</strong> How does the surrounding sentence help you choose the meaning?</p><p class="source-meta">Check the word in a reliable Hebrew dictionary or lexicon; do not infer meaning from letter shapes alone.</p><p><a href="https://www.sefaria.org/search?q=shalom&amp;tab=texts" target="_blank" rel="noopener noreferrer">Explore text occurrences of shalom</a></p><a class="button secondary" href="/aleph-track.html#lesson-32">Practice with Shalom</a></div></details>
+            <button class="completion-toggle" type="button" data-completion="shalom" aria-pressed="false">Mark explored</button>
+          </article>
+
+          <article class="source-card" data-study-id="hebrew-names" data-categories="hebrew culture" data-level="beginning building teacher">
+            <p class="eyebrow">Letters + belonging</p><h3>Names in Hebrew</h3><p>Use a learner’s name as a welcoming bridge to letter forms and right-to-left direction.</p><div class="tag-row"><span class="tag">Beginning</span><span class="tag">Teacher prep</span></div>
+            <details><summary>Open guided study</summary><div class="study-details"><p><strong>Teaching context:</strong> Hebrew spelling of names can vary by pronunciation and transliteration. Check the preferred spelling with the learner or family; avoid presenting one spelling as the only possible form.</p><p><strong>Try this:</strong> Point to each letter from right to left. Let the learner match a familiar letter, trace the name, or describe one shape.</p><p class="study-question"><strong>Ask:</strong> Which letter do you recognize? What would you like to learn about the others?</p><p class="source-meta">Readiness: start with recognition; do not require a learner to disclose or write a personal name.</p><a class="button secondary" href="/placement-quick-check.html">Choose a starting doorway</a></div></details>
+            <button class="completion-toggle" type="button" data-completion="hebrew-names" aria-pressed="false">Mark explored</button>
+          </article>
+
+          <article class="source-card" data-study-id="letters-in-tanakh" data-categories="hebrew scripture" data-level="building confident teacher">
+            <p class="eyebrow">Reading practice</p><h3>Letters in Tanakh</h3><p>Move from recognizing letters to decoding a fully pointed word in a source text.</p><div class="tag-row"><span class="tag">Building</span><span class="tag">Confident reader</span></div>
+            <details><summary>Open guided study</summary><div class="study-details"><p><strong>Source context:</strong> Use a short verse with a word the learner already knows, such as <span lang="he" dir="rtl">אוֹר</span> in Genesis 1:3.</p><p><strong>Try this:</strong> Cover the translation, track the Hebrew from right to left, name the letters and vowel cues, then uncover the translation to compare.</p><p class="study-question"><strong>Ask:</strong> Which letter or vowel mark helped you decode the word? What does the sentence add to its meaning?</p><p class="source-meta">Teacher note: pronunciation varies across communities. Model the class standard and welcome respectful questions.</p><a class="button secondary" href="/gimel-track.html#lesson-1">Open Gimel reading practice</a></div></details>
+            <button class="completion-toggle" type="button" data-completion="letters-in-tanakh" aria-pressed="false">Mark explored</button>
+          </article>
+
+          <article class="source-card" data-study-id="weekly-portion" data-categories="weekly scripture study" data-level="building confident teacher">
+            <p class="eyebrow">Weekly study</p><h3>Weekly Torah Portion</h3><p>Choose a short passage and keep its narrative setting in view before drawing a lesson.</p><div class="tag-row"><span class="tag">Building</span><span class="tag">Teacher prep</span></div>
+            <details><summary>Open guided study</summary><div class="study-details"><p><strong>Study context:</strong> The annual Torah reading cycle differs between Israel and Diaspora communities at certain points. Follow the calendar relevant to the learner’s community.</p><p><strong>Try this:</strong> Select a few verses, identify who is speaking and what happens, then record a citation before opening commentary.</p><p class="study-question"><strong>Ask:</strong> What is clear from the passage itself? What question remains?</p><p class="source-meta">Keep personal application, rabbinic commentary, and the biblical text labeled separately.</p><a class="button secondary" href="https://www.sefaria.org/calendars" target="_blank" rel="noopener noreferrer">Open the weekly calendar</a> <a class="button secondary" href="/noahide-parcha.html">Use the Parcha study journal</a></div></details>
+            <button class="completion-toggle" type="button" data-completion="weekly-portion" aria-pressed="false">Mark explored</button>
+          </article>
+
+          <article class="source-card" data-study-id="blessing" data-categories="scripture culture" data-level="confident teacher">
+            <p class="eyebrow">Torah + Jewish context</p><h3>The Priestly Blessing</h3><p>Read a biblical blessing in context and notice how its phrases are arranged.</p><div class="tag-row"><span class="tag">Confident reader</span><span class="tag">Teacher prep</span></div>
+            <details><summary>Open guided study</summary><div class="study-details"><p><strong>Source context:</strong> Numbers 6:24–26 contains the priestly blessing, a text with a distinct place in Jewish tradition and practice.</p><p><strong>Vocabulary:</strong> In translation, notice the repeated blessing language and the movement from blessing and guarding to graciousness and peace.</p><p><strong>Try this:</strong> Read the verses in context. Mark repeated words or phrases and compare them with the Hebrew text if appropriate.</p><p class="study-question"><strong>Ask:</strong> What pattern do you notice in the words? What belongs to the text, and what belongs to your response?</p><p class="source-meta">Cultural boundary: use this for textual learning and context; do not turn it into a new Noahide liturgical requirement.</p><p><a href="https://www.sefaria.org/Numbers.6.24-26" target="_blank" rel="noopener noreferrer">Read Numbers 6:24–26 on Sefaria</a></p></div></details>
+            <button class="completion-toggle" type="button" data-completion="blessing" aria-pressed="false">Mark explored</button>
+          </article>
+
+          <article class="source-card" data-study-id="shema" data-categories="scripture culture" data-level="confident teacher">
+            <p class="eyebrow">Torah + Jewish context</p><h3>Listening · The Shema</h3><p>Study a short, culturally significant verse with care for its place in Jewish life.</p><div class="tag-row"><span class="tag">Confident reader</span><span class="tag">Teacher prep</span></div>
+            <details><summary>Open guided study</summary><div class="study-details"><p><strong>Source context:</strong> Deuteronomy 6:4 begins the Shema, a central Jewish declaration and prayer. It should be introduced as Jewish scripture and practice, not relabeled as a Noahide prayer.</p><p><strong>Vocabulary:</strong> <span lang="he" dir="rtl">שְׁמַע</span> (<em>Shema</em>) is commonly rendered “hear” or “listen.” Notice how a translation handles the full phrase.</p><p><strong>Try this:</strong> Read Deuteronomy 6:4–9 as a section. Notice what instruction follows the opening verse.</p><p class="study-question"><strong>Ask:</strong> How does the surrounding passage develop the idea of listening?</p><p><a href="https://www.sefaria.org/Deuteronomy.6.4-9" target="_blank" rel="noopener noreferrer">Read Deuteronomy 6:4–9 on Sefaria</a></p></div></details>
+            <button class="completion-toggle" type="button" data-completion="shema" aria-pressed="false">Mark explored</button>
+          </article>
+
+          <article class="source-card" data-study-id="psalm-light" data-categories="scripture culture" data-level="building confident">
+            <p class="eyebrow">Poetry + imagery</p><h3>Light for the Path</h3><p>Notice how biblical poetry uses an image to express an idea.</p><div class="tag-row"><span class="tag">Building</span><span class="tag">Confident reader</span></div>
+            <details><summary>Open guided study</summary><div class="study-details"><p><strong>Source context:</strong> Psalm 119:105 is a line of biblical poetry. Read it as poetry, noticing image and parallel language rather than treating it as a technical definition.</p><p><strong>Vocabulary:</strong> Compare how translations render “lamp” and “light.”</p><p><strong>Try this:</strong> Read the verse, then read a few verses around it. Identify the image and what the surrounding poem says about it.</p><p class="study-question"><strong>Ask:</strong> What does the image help the speaker express? What is your interpretation rather than the verse’s wording?</p><p><a href="https://www.sefaria.org/Psalms.119.105" target="_blank" rel="noopener noreferrer">Read Psalm 119:105 on Sefaria</a></p></div></details>
+            <button class="completion-toggle" type="button" data-completion="psalm-light" aria-pressed="false">Mark explored</button>
+          </article>
+
+          <article class="source-card" data-study-id="231-gates" data-categories="hebrew mystical study" data-level="confident teacher">
+            <p class="eyebrow">Source-based letter study</p><h3>The 231 Gates</h3><p>Explore letter pairs described in Sefer Yetzirah without assigning invented meanings to individual pairs.</p><div class="tag-row"><span class="tag">Confident reader</span><span class="tag">Teacher prep</span></div>
+            <details><summary>Open guided study</summary><div class="study-details"><p><strong>Source context:</strong> Sefer Yetzirah 2:4 describes the twenty-two foundation letters and their combinations. The explorer presents distinct two-letter pairs for observation.</p><p><strong>Try this:</strong> Choose one pair. Identify each letter separately, then find a real Hebrew word containing both letters and verify it in a reliable text or lexicon.</p><p class="study-question"><strong>Ask:</strong> Which observations come from the text, and which are your own? Do not treat resemblance as proof of a word relationship.</p><p class="source-meta">This is a doorway into a Jewish mystical text, not a religious ruling or a claim that every pair has a separate traditional interpretation.</p><p><a href="https://www.sefaria.org/Sefer_Yetzirah.2.4?lang=bi&amp;with=Translations" target="_blank" rel="noopener noreferrer">Read Sefer Yetzirah 2:4</a></p><a class="button secondary" href="/231-gates.html">Explore the interactive gates</a></div></details>
+            <button class="completion-toggle" type="button" data-completion="231-gates" aria-pressed="false">Mark explored</button>
+          </article>
+
+          <article class="source-card" data-study-id="noahide-parcha" data-categories="weekly scripture study" data-level="building confident">
+            <p class="eyebrow">Guided learning pathway</p><h3>Noahide Daily Parcha</h3><p>An optional weekly rhythm with passage selection, reading prompts, a saved journal, and reflection that stays distinct from religious rulings.</p><div class="tag-row"><span class="tag">Building</span><span class="tag">Confident reader</span></div>
+            <details><summary>Preview the study rhythm</summary><div class="study-details"><p><strong>Use it for:</strong> Choosing a short weekly passage, noticing a Hebrew word, reading commentary carefully, and recording one practical reflection.</p><p><strong>Important:</strong> The practice is optional and does not create Noahide obligations or imitate Jewish prayer or observance.</p><p class="study-question"><strong>Ask:</strong> What does the passage say, what does commentary say, and what am I adding as my reflection?</p></div></details>
+            <a class="button secondary" href="/noahide-parcha.html">Open the Parcha study</a>
+            <button class="completion-toggle" type="button" data-completion="noahide-parcha" aria-pressed="false">Mark explored</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="boundary" aria-labelledby="classroom-boundary">
+        <h2 id="classroom-boundary">Classroom boundary note</h2>
+        <p>These cards support Hebrew literacy, cultural context, and teacher reference. Ivrit HaOr is not a halachic authority, does not provide conversion guidance, and does not replace a rabbi, Jewish educator, or Jewish communal learning. Keep source use age-appropriate and school-safe.</p>
+        <div class="footer-links"><a class="button secondary" href="/teacher-guide.html">Teacher Guide</a><a class="button secondary" href="/placement-quick-check.html">Placement Quick-Check</a><a class="button secondary" href="/noahide-parcha.html">Noahide Daily Parcha</a></div>
+      </section>
+    </main>
+    <script src="/source-library.js" defer></script>
+  </body>
 </html>
