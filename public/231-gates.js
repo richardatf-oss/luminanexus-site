@@ -66,37 +66,45 @@
   function mysticalReading(first, second) {
     const firstClass = first[3];
     const secondClass = second[3];
+    const firstTheme = first[4].split(" ↔ ")[0];
+    const secondTheme = second[4].split(" ↔ ")[0];
+    const firstShadow = first[4].split(" ↔ ")[1];
+    const secondShadow = second[4].split(" ↔ ")[1];
     let scene;
     let question;
 
     if (firstClass === "Mother" && secondClass === "Mother") {
-      scene = "Two primordial currents meet before the world has settled into form.";
+      scene = `Let ${firstTheme} and ${secondTheme} meet in the first deep of creation. The Gra Version places these Mother-currents in a world of elemental balance.`;
       question = "What new balance might arise when these forces meet, and what must remain distinct?";
     } else if ((firstClass === "Mother" && secondClass === "Double") || (firstClass === "Double" && secondClass === "Mother")) {
       const element = firstClass === "Mother" ? first : second;
       const power = firstClass === "Double" ? first : second;
-      scene = "A primordial element encounters a double power that carries its own opposite.";
-      question = `How might ${element[4]} awaken or deepen ${power[4]}, and what does its opposite pole ask you to notice?`;
+      const theme = power[4].split(" ↔ ")[0];
+      const shadow = power[4].split(" ↔ ")[1];
+      scene = `Let ${element[4]} breathe through ${theme}. The paired shadow, ${shadow}, belongs to this current too; the gate asks how a power can create without becoming its opposite.`;
+      question = `Where do you sense ${theme} and ${shadow} as two sides of one human possibility?`;
     } else if ((firstClass === "Mother" && secondClass === "Simple") || (firstClass === "Simple" && secondClass === "Mother")) {
       const element = firstClass === "Mother" ? first : second;
       const faculty = firstClass === "Simple" ? first : second;
-      scene = "A cosmic element enters a human faculty: creation becoming experience.";
+      scene = `Let ${element[4]} enter the vessel of ${faculty[4]}. Here a cosmic current becomes a human act, perception, or inward movement.`;
       question = `How might ${element[4]} illuminate ${faculty[4]} in an ordinary moment of life?`;
     } else if (firstClass === "Double" && secondClass === "Double") {
-      scene = "Two powers, each shadowed by an opposite, stand in a living balance.";
-      question = `How might ${first[4]} and ${second[4]} strengthen one another without erasing their tensions?`;
+      scene = `Set ${firstTheme} beside ${secondTheme} in the turning wheel. Their shadows—${firstShadow} and ${secondShadow}—form two mirrors around the meeting.`;
+      question = `What balance could hold ${firstTheme} with ${secondTheme} while acknowledging ${firstShadow} and ${secondShadow}?`;
     } else if ((firstClass === "Double" && secondClass === "Simple") || (firstClass === "Simple" && secondClass === "Double")) {
       const power = firstClass === "Double" ? first : second;
       const faculty = firstClass === "Simple" ? first : second;
-      scene = "A cosmic quality descends into a human faculty and becomes something lived.";
-      question = `How might ${power[4]} be expressed through ${faculty[4]}, and what would keep that expression in balance?`;
+      const theme = power[4].split(" ↔ ")[0];
+      const shadow = power[4].split(" ↔ ")[1];
+      scene = `Let ${theme} descend through ${faculty[4]}. Its shadow, ${shadow}, asks the faculty to become discerning rather than automatic.`;
+      question = `How might ${theme} be expressed through ${faculty[4]} while staying awake to ${shadow}?`;
     } else {
-      scene = "Two human faculties become a small bridge between inner life and the world.";
-      question = `What might change when ${first[4]} is followed by ${second[4]}—or when the order is reversed?`;
+      scene = `Let ${first[4]} become a doorway into ${second[4]}; two faculties of the soul touch across one threshold.`;
+      question = `What message might pass from ${first[4]} into ${second[4]}—and what is revealed when the order turns?`;
     }
 
     return {
-      scene: `As a LuminaNexus contemplation—not a fixed meaning assigned by the text—imagine ${first[1]} (${first[4]}) meeting ${second[1]} (${second[4]}). ${scene}`,
+      scene: `LuminaNexus contemplation—not a fixed definition assigned to this gate: ${first[1]} (${first[4]}) meets ${second[1]} (${second[4]}). ${scene}`,
       question,
     };
   }
