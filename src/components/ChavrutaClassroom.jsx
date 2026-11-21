@@ -11,14 +11,14 @@ const MODES = new Set([
 ]);
 
 const JUDAISM_PROMPTS = [
-  "Give me a beginner-friendly overview of the Jewish holiday of Shavuot.",
-  "What is the difference between Torah, Mishnah, Talmud, and Midrash?",
-  "How do Jewish communities differ in their Shabbat customs?",
-  "Explain the Amidah and how it fits into Jewish prayer.",
-  "What are some major eras in Jewish history, and what changed between them?",
-  "How do Jewish views of teshuvah appear in traditional sources?",
-  "What is Kabbalah, and how is it related to other streams of Jewish thought?",
-  "Compare how different Jewish movements approach a question I name.",
+  { label: "Torah & Talmud", question: "What is the difference between Torah, Mishnah, Talmud, and Midrash?" },
+  { label: "Jewish history", question: "What are some major eras in Jewish history, and what changed between them?" },
+  { label: "Holidays", question: "Give me a beginner-friendly overview of the Jewish holiday of Shavuot." },
+  { label: "Prayer & liturgy", question: "Explain the Amidah and how it fits into Jewish prayer." },
+  { label: "Shabbat & practice", question: "How do Jewish communities differ in their Shabbat customs?" },
+  { label: "Ethics", question: "How do Jewish views of teshuvah appear in traditional sources?" },
+  { label: "Mysticism", question: "What is Kabbalah, and how is it related to other streams of Jewish thought?" },
+  { label: "Communities & movements", question: "Compare how different Jewish communities and movements approach a question I name." },
 ];
 
 const defaultProfile = {
@@ -287,14 +287,17 @@ function ChavrutaClassroom() {
 
             {isJudaismMode && (
               <div className="context-note">
-                <p>Choose a starting question, or write your own. Chavruta can adapt to a tradition or community you name.</p>
-                <div className="hero-actions" aria-label="Explore Judaism topics">
-                  {JUDAISM_PROMPTS.map(prompt => (
-                    <button key={prompt} className="button secondary" type="button" onClick={() => usePrompt(prompt)}>
-                      {prompt}
-                    </button>
-                  ))}
-                </div>
+                <p>Choose a starting topic, or write your own question. Name a tradition or community if you want that perspective.</p>
+                <details>
+                  <summary>Browse sample questions by topic</summary>
+                  <div className="hero-actions">
+                    {JUDAISM_PROMPTS.map(({ label, question: prompt }) => (
+                      <button key={label} className="button secondary" type="button" onClick={() => usePrompt(prompt)}>
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                </details>
               </div>
             )}
 
