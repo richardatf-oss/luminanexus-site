@@ -15,7 +15,7 @@
   const journalSourceLink = document.querySelector("#journal-source-link");
   const journalSourceHint = document.querySelector("#journal-source-hint");
   const journalStatus = document.querySelector("#journal-status");
-  const journalFields = journal ? Array.from(journal.querySelectorAll("input, textarea")) : [];
+  const journalFields = journal ? Array.from(journal.querySelectorAll("input, textarea, select")) : [];
   const printJournalButton = document.querySelector("#print-journal");
   const clearJournalButton = document.querySelector("#clear-journal");
   let calendarDate = new Date().toISOString().slice(0, 10);
@@ -97,6 +97,8 @@
   }
 
   function setPortion(name, href, date, label) {
+    window.clearTimeout(journalTimer);
+    if (journalKey) saveJournal();
     currentPortion = name.trim();
     calendarDate = date || calendarDate;
     current.textContent = `Current portion: ${currentPortion}`;
@@ -136,12 +138,16 @@
   }
 
   checks.forEach(check => check.addEventListener("change", saveProgress));
-  journalFields.forEach((field) => field.addEventListener("input", () => {
+  function scheduleJournalSave(field) {
     if (field === journalReference) renderJournalSource();
     window.clearTimeout(journalTimer);
     journalStatus.textContent = "Saving journal…";
     journalTimer = window.setTimeout(saveJournal, 300);
-  }));
+  }
+  journalFields.forEach((field) => {
+    field.addEventListener("input", () => scheduleJournalSave(field));
+    field.addEventListener("change", () => scheduleJournalSave(field));
+  });
   printJournalButton.addEventListener("click", () => window.print());
   clearJournalButton.addEventListener("click", () => {
     window.clearTimeout(journalTimer);
@@ -172,5 +178,16 @@
     manualInput.value = "";
     loadCalendar();
   });
+  document.querySelectorAll("[data-journal-target]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const field = document.getElementById(button.dataset.journalTarget);
+      if (!field) return;
+      const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+      document.querySelector("#reflection-journal-section").scrollIntoView({ behavior, block: "start" });
+      window.setTimeout(() => field.focus(), 250);
+      journalStatus.textContent = `Day ${button.closest(".day-card").querySelector("input[data-day]").dataset.day}: add your note below.`;
+    });
+  });
+  loadJournal();
   loadCalendar();
 })();

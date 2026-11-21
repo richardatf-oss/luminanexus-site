@@ -11,8 +11,11 @@
     <style>
       .journal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.2rem;box-shadow:0 10px 30px rgba(20,33,61,.06)}
       .journal label{display:grid;gap:.35rem;font-weight:700}.journal .wide{grid-column:1/-1}.journal input,.journal textarea{width:100%;padding:.7rem .8rem;border:1px solid #aeb9c9;border-radius:9px;background:#fff;font:inherit}.journal textarea{min-height:92px;resize:vertical}.journal-actions{display:flex;flex-wrap:wrap;gap:.65rem;align-items:center}.journal-actions button{padding:.7rem .9rem;border:1px solid #aeb9c9;border-radius:9px;background:#fff;font:inherit;font-weight:700;cursor:pointer}.journal-actions button.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.journal-source{font-weight:700;color:var(--blue)}.journal :focus-visible{outline:3px solid #a16a27;outline-offset:3px}
+      .journey-overview{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;padding:0;list-style:none}.journey-overview a{display:block;height:100%;padding:.8rem;background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--blue);font-weight:700;text-decoration:none}.day-journal-link{display:inline-block;margin:.4rem 0 0 2rem;padding:.45rem .7rem;border:1px solid var(--line);border-radius:9px;background:var(--soft);color:var(--blue);font:700 .9rem Arial,sans-serif;cursor:pointer}.journal select{width:100%;padding:.7rem .8rem;border:1px solid #aeb9c9;border-radius:9px;background:#fff;font:inherit}.journal .lens-help{margin:.1rem 0 0;color:var(--muted);font-weight:400;font-size:.95rem}
       @media(max-width:700px){.journal{grid-template-columns:1fr}.journal .wide{grid-column:auto}}
-      @media print{.journal{box-shadow:none;border-color:#777}.journal input,.journal textarea{border:0;border-bottom:1px solid #777;border-radius:0}.journal textarea{min-height:64px}.journal-actions{display:none!important}}
+      @media(max-width:760px){.journey-overview{grid-template-columns:repeat(2,minmax(0,1fr))}}
+      @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+      @media print{.journal{box-shadow:none;border-color:#777}.journal input,.journal textarea,.journal select{border:0;border-bottom:1px solid #777;border-radius:0}.journal textarea{min-height:64px}.journal-actions,.day-journal-link{display:none!important}.journey-overview a{color:#000;border-color:#777}}
     </style>
 </head>
   <body>
@@ -29,13 +32,23 @@
       <a class="secondary" href="/?chavrutaMode=noahide-parcha#chavruta">Ask Chavruta / Havari</a>
     </nav>
     <main>
+      <section class="card" aria-labelledby="journey-heading">
+        <h2 id="journey-heading">Your study path this week</h2>
+        <p>Take one small step at a time. You can skip, repeat, or combine days. Your progress is a personal reminder, not a grade.</p>
+        <ol class="journey-overview">
+          <li><a href="#portion">1 · Choose the portion</a></li>
+          <li><a href="#seven-day-rhythm">2 · Read a short passage</a></li>
+          <li><a href="#reflection-journal-section">3 · Notice and reflect</a></li>
+          <li><a href="#reflection-journal-section">4 · Carry a question</a></li>
+        </ol>
+      </section>
       <section>
         <h2>What Is Noahide Daily Parcha?</h2>
         <p>Noahide Daily Parcha is a flexible study plan for people of the nations who wish to learn from a short part of the weekly Torah portion. “Daily” means a small optional practice that can be spread across the week; it does not create a religious obligation or imitate Jewish prayer, synagogue, or Shabbat observance.</p>
         <div class="principle">Torah belongs to Israel. The nations may learn with humility.</div>
       </section>
 
-      <section>
+      <section id="portion">
         <h2>Choose This Week’s Portion</h2>
         <div class="portion-panel">
           <label for="calendar-region">Reading calendar</label>
@@ -50,18 +63,18 @@
         </div>
       </section>
 
-      <section>
+      <section id="seven-day-rhythm">
         <h2>A Seven-Day Study Rhythm</h2>
         <p>Keep each session short. You may combine days, skip a day, or repeat a passage. The goal is careful reading and one honest reflection, not finishing a checklist perfectly.</p>
         <div class="day-controls"><strong id="daily-progress">0 of 7 study steps complete</strong><progress id="daily-progress-bar" max="7" value="0" aria-label="Noahide Daily Parcha progress"></progress><button id="reset-daily-progress" type="button">Reset this plan</button></div>
         <div class="day-grid" id="daily-plan">
-          <article class="day-card"><label><input type="checkbox" data-day="1"><span><h3>Day 1 · Find the portion</h3><p>Open the weekly reading. Choose a short passage and note its book, chapter, and verses.</p><p><strong>Ask:</strong> Who is speaking, and what is happening?</p></span></label></article>
-          <article class="day-card"><label><input type="checkbox" data-day="2"><span><h3>Day 2 · Read the passage</h3><p>Read a few verses slowly in a language you understand. Keep the surrounding story in view.</p><p><strong>Notice:</strong> One detail you had not seen before.</p></span></label></article>
-          <article class="day-card"><label><input type="checkbox" data-day="3"><span><h3>Day 3 · Notice one Hebrew word</h3><p>Choose a word from the passage. Use a reliable text or lexicon to check its spelling and meaning.</p><p><strong>Record:</strong> The word, its source, and what the surrounding sentence says.</p></span></label></article>
-          <article class="day-card"><label><input type="checkbox" data-day="4"><span><h3>Day 4 · Read commentary carefully</h3><p>Open a classical commentary linked to the passage. Keep the biblical text, the commentator’s explanation, and your own thought distinct.</p><p><strong>Ask:</strong> What question is the commentary addressing?</p></span></label></article>
-          <article class="day-card"><label><input type="checkbox" data-day="5"><span><h3>Day 5 · Consider a Noahide lens</h3><p>Ask whether the passage connects clearly to justice, life, property, family, speech toward God, or care for living creatures. If no connection is clear, do not force one.</p><p><strong>Boundary:</strong> A reflection is not a ruling about Jewish law or Noahide obligations.</p></span></label></article>
-          <article class="day-card"><label><input type="checkbox" data-day="6"><span><h3>Day 6 · Choose a practical response</h3><p>Name one small act of honesty, responsibility, kindness, or repair that fits the passage’s plain lesson.</p><p><strong>Keep it:</strong> Specific, realistic, and within your own responsibility.</p></span></label></article>
-          <article class="day-card"><label><input type="checkbox" data-day="7"><span><h3>Day 7 · Review and carry a question</h3><p>Write one sentence about what you learned and one question for further study. Close by returning to the text rather than treating your reflection as the text’s only meaning.</p><p><strong>Next step:</strong> Bring complex religious questions to a qualified rabbi or teacher.</p></span></label></article>
+          <article class="day-card"><label><input type="checkbox" data-day="1"><span><h3>Day 1 · Find the portion</h3><p>Open the weekly reading. Choose a short passage and note its book, chapter, and verses.</p><p><strong>Ask:</strong> Who is speaking, and what is happening?</p></span></label><button class="day-journal-link" type="button" data-journal-target="journal-reference">Add passage reference</button></article>
+          <article class="day-card"><label><input type="checkbox" data-day="2"><span><h3>Day 2 · Read the passage</h3><p>Read a few verses slowly in a language you understand. Keep the surrounding story in view.</p><p><strong>Notice:</strong> One detail you had not seen before.</p></span></label><button class="day-journal-link" type="button" data-journal-target="journal-observation">Record an observation</button></article>
+          <article class="day-card"><label><input type="checkbox" data-day="3"><span><h3>Day 3 · Notice one Hebrew word</h3><p>Choose a word from the passage. Use a reliable text or lexicon to check its spelling and meaning.</p><p><strong>Record:</strong> The word, its source, and what the surrounding sentence says.</p></span></label><button class="day-journal-link" type="button" data-journal-target="journal-word">Record a Hebrew word</button></article>
+          <article class="day-card"><label><input type="checkbox" data-day="4"><span><h3>Day 4 · Read commentary carefully</h3><p>Open a classical commentary linked to the passage. Keep the biblical text, the commentator’s explanation, and your own thought distinct.</p><p><strong>Ask:</strong> What question is the commentary addressing?</p></span></label><button class="day-journal-link" type="button" data-journal-target="journal-commentary">Add a commentary question</button></article>
+          <article class="day-card"><label><input type="checkbox" data-day="5"><span><h3>Day 5 · Consider a Noahide lens</h3><p>Ask whether the passage connects clearly to justice, life, property, family, speech toward God, or care for living creatures. If no connection is clear, do not force one.</p><p><strong>Boundary:</strong> A reflection is not a ruling about Jewish law or Noahide obligations.</p></span></label><button class="day-journal-link" type="button" data-journal-target="journal-lens">Choose an optional lens</button></article>
+          <article class="day-card"><label><input type="checkbox" data-day="6"><span><h3>Day 6 · Choose a practical response</h3><p>Name one small act of honesty, responsibility, kindness, or repair that fits the passage’s plain lesson.</p><p><strong>Keep it:</strong> Specific, realistic, and within your own responsibility.</p></span></label><button class="day-journal-link" type="button" data-journal-target="journal-action">Choose a practical step</button></article>
+          <article class="day-card"><label><input type="checkbox" data-day="7"><span><h3>Day 7 · Review and carry a question</h3><p>Write one sentence about what you learned and one question for further study. Close by returning to the text rather than treating your reflection as the text’s only meaning.</p><p><strong>Next step:</strong> Bring complex religious questions to a qualified rabbi or teacher.</p></span></label><button class="day-journal-link" type="button" data-journal-target="journal-question">Carry a question forward</button></article>
         </div>
       </section>
 
@@ -81,6 +94,7 @@
           <label for="journal-observation">What does the passage say? Record one detail before interpreting it.<textarea id="journal-observation" maxlength="1500" placeholder="Who is speaking? What happens? What words or details repeat?"></textarea></label>
           <label for="journal-word">Hebrew word to notice<textarea id="journal-word" maxlength="500" placeholder="Write the word, its spelling, and where you will check its meaning."></textarea></label>
           <label for="journal-commentary">Commentary question<textarea id="journal-commentary" maxlength="1000" placeholder="What question is the commentary addressing? Keep its explanation separate from the verse."></textarea></label>
+          <label for="journal-lens">Optional Noahide reflection lens<select id="journal-lens"><option value="">No specific connection / leave open</option><option value="Worship and reverence">Worship and reverence</option><option value="Speech toward God">Speech toward God</option><option value="Respect for life">Respect for life</option><option value="Family and responsibility">Family and responsibility</option><option value="Property and restitution">Property and restitution</option><option value="Justice and fair process">Justice and fair process</option><option value="Care for living creatures">Care for living creatures</option></select><span class="lens-help">Choose only if the connection is clear to you. It is fine to leave this blank.</span></label>
           <label for="journal-reflection">Your reflection<textarea id="journal-reflection" maxlength="1500" placeholder="What might this passage invite you to consider? Mark this as your reflection, not the text itself."></textarea></label>
           <label for="journal-action">One practical step<textarea id="journal-action" maxlength="800" placeholder="Name one realistic act of honesty, care, justice, or repair within your responsibility."></textarea></label>
           <label class="wide" for="journal-question">Question to carry into further study<textarea id="journal-question" maxlength="800" placeholder="What would you like to ask a qualified teacher or rabbi?"></textarea></label>
