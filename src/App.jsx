@@ -45,6 +45,20 @@ const tracks = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [nameToExplore, setNameToExplore] = useState("");
+  const [nameError, setNameError] = useState("");
+
+  function exploreHebrewName(event) {
+    event.preventDefault();
+    const name = nameToExplore.trim();
+    if (!name) {
+      setNameError("Enter a first name or nickname to begin.");
+      return;
+    }
+    setNameError("");
+    const question = `Help me explore the name "${name}". If its pronunciation is not clear, ask me or offer the likely alternatives. Suggest a plausible Hebrew-letter spelling and show a readable transliteration; explain what assumptions affect the spelling. Identify the Hebrew letters and likely sounds. Then offer a playful, clearly labeled creative riff inspired by the letters or verified related Hebrew words. Keep that creative riff separate from the name's actual etymology and from established Jewish interpretation. Do not invent a traditional meaning, gematria, or source. Name: ${name}`;
+    openChavruta({ mode: "name-study", question });
+  }
 
   useEffect(() => {
     function activateLink(event) {
@@ -187,25 +201,70 @@ function App() {
             <article className="feature-card">
               <h3>Begin with letters</h3>
               <p>
-                Students learn Hebrew directionality, letter shapes, sounds, and
-                confidence through clear, gentle instruction.
+                Learning begins with Hebrew’s right-to-left direction, then the
+                shapes, names, and sounds of its letters. New vowel patterns
+                are introduced before learners use them to read.
               </p>
+              <p>
+                <strong>What learners do:</strong> notice, name, trace, sort,
+                and read short letter patterns, with calm review and small
+                practice checks along the way.
+              </p>
+              <a className="button secondary" href="/aleph-track.html">
+                Explore the Aleph Track
+              </a>
             </article>
 
             <article className="feature-card">
               <h3>Begin with names</h3>
               <p>
-                Students see themselves inside the language by learning how
-                Hebrew letters can form names and meaningful words.
+                Familiar names offer a personal doorway into Hebrew. Learners
+                can see how letters represent sounds, and how spelling may
+                change with pronunciation or transliteration choices.
               </p>
+              <p>
+                Chavruta can identify the letters and sounds, then offer a
+                playful riff while keeping creative associations separate from
+                a name’s actual history or established interpretation.
+              </p>
+              <form className="form-stack" onSubmit={exploreHebrewName}>
+                <label htmlFor="name-explorer">Explore a first name or nickname</label>
+                <input
+                  id="name-explorer"
+                  type="text"
+                  maxLength={60}
+                  value={nameToExplore}
+                  onChange={event => setNameToExplore(event.target.value)}
+                  onInput={() => setNameError("")}
+                  placeholder="For example, Elijah"
+                  aria-describedby="name-explorer-note"
+                />
+                <p className="note" id="name-explorer-note">
+                  Use a first name or nickname, not a full name. Chavruta will
+                  ask about pronunciation when it matters.
+                </p>
+                <button className="button secondary" type="submit">
+                  Explore this name with Chavruta
+                </button>
+                {nameError && <p className="error" role="alert">{nameError}</p>}
+              </form>
             </article>
 
             <article className="feature-card">
               <h3>Begin with meaning</h3>
               <p>
-                Students discover roots, vocabulary, culture, and the beauty of
-                Hebrew as a language of memory and light.
+                Once letters and vowels connect, learners read useful words
+                and greetings, notice roots, and explore how meaning shifts
+                with grammar, word form, and context.
               </p>
+              <p>
+                Learners practice decoding, compare meanings in short passages,
+                and ask what a word means in its setting. Language facts stay
+                distinct from symbolic or creative reflection.
+              </p>
+              <a className="button secondary" href="/gimel-track.html">
+                Explore the Gimel Track
+              </a>
             </article>
           </div>
         </section>
