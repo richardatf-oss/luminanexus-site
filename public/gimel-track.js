@@ -139,4 +139,11 @@
     save();render();
   });
   render();
+  const staticFallback = document.querySelector("#gimel-static-fallback");
+  const fallbackLink = document.querySelector('.toc a[href="#gimel-static-fallback"]');
+  if (staticFallback) staticFallback.hidden = true;
+  if (fallbackLink) {
+    fallbackLink.href = "#lesson-map";
+    fallbackLink.textContent = "All 32 lessons";
+  }
 })();

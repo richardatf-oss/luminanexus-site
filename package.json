@@ -6,6 +6,7 @@
   "packageManager": "pnpm@11.9.0",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/generate-gimel-fallback.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test",

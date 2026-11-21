@@ -7,6 +7,10 @@
 .gimel-lesson-map a { display:block; padding:.75rem .9rem; border:1px solid #dfe7f5; border-radius:12px; background:#fff; color:#1f3b73; text-decoration:none; font:700 .95rem Arial,sans-serif; }
 .gimel-lesson-map a:hover { background:#f5f8ff; }
 .gimel-word { margin:.5rem 0; font-size:clamp(3rem,9vw,5rem); line-height:1.5; text-align:center; color:#14213d; }
+#gimel-static-fallback { margin-top:2rem; }
+#gimel-static-fallback .gimel-fallback-lesson { margin:.6rem 0; padding:.7rem .85rem; border:1px solid #dfe7f5; border-radius:12px; background:#fff; }
+#gimel-static-fallback summary { cursor:pointer; color:#1f3b73; font-weight:700; }
+#gimel-static-fallback .gimel-word { font-size:2.7rem; }
 .gimel-progress button:focus-visible,.gimel-lesson-map a:focus-visible,.practice-check button:focus-visible,.practice-check input:focus-visible { outline:3px solid #a16a27; outline-offset:3px; }
 .practice-check.is-correct { border-color:#4f8f4f; box-shadow:0 0 0 2px rgba(79,143,79,.14); }
 @media(max-width:540px) { .gimel-lesson-map { grid-template-columns:1fr; } .gimel-progress-line { align-items:flex-start; } }
