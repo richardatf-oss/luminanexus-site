@@ -2,12 +2,24 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const STORAGE_KEY = "chavrutaStudentProfile";
 const MODES = new Set([
+  "judaism-study",
   "hebrew-classroom",
   "track-placement",
   "teacher-planning",
   "source-library",
   "noahide-parcha",
 ]);
+
+const JUDAISM_PROMPTS = [
+  "Give me a beginner-friendly overview of the Jewish holiday of Shavuot.",
+  "What is the difference between Torah, Mishnah, Talmud, and Midrash?",
+  "How do Jewish communities differ in their Shabbat customs?",
+  "Explain the Amidah and how it fits into Jewish prayer.",
+  "What are some major eras in Jewish history, and what changed between them?",
+  "How do Jewish views of teshuvah appear in traditional sources?",
+  "What is Kabbalah, and how is it related to other streams of Jewish thought?",
+  "Compare how different Jewish movements approach a question I name.",
+];
 
 const defaultProfile = {
   displayName: "",
@@ -29,10 +41,8 @@ function ChavrutaClassroom() {
   useEffect(() => {
     try {
       const savedProfile = window.localStorage.getItem(STORAGE_KEY);
-
       if (savedProfile) {
         const parsedProfile = JSON.parse(savedProfile);
-
         setProfile({
           ...defaultProfile,
           displayName: typeof parsedProfile?.displayName === "string" ? parsedProfile.displayName.slice(0, 60) : "",
@@ -51,13 +61,8 @@ function ChavrutaClassroom() {
     const requestedMode = params.get("chavrutaMode");
     const requestedQuestion = params.get("chavrutaQuestion");
 
-    if (MODES.has(requestedMode)) {
-      setMode(requestedMode);
-    }
-
-    if (requestedQuestion) {
-      setQuestion(requestedQuestion.slice(0, 1200));
-    }
+    if (MODES.has(requestedMode)) setMode(requestedMode);
+    if (requestedQuestion) setQuestion(requestedQuestion.slice(0, 1200));
 
     function openWithContext(event) {
       const detail = event.detail || {};
@@ -65,19 +70,12 @@ function ChavrutaClassroom() {
         setProfile(current => ({ ...current, track: detail.track }));
         setProfileStatus(`${detail.track} Track selected for this session. Save your profile to remember it on this device.`);
       }
-
-      if (MODES.has(detail.mode)) {
-        setMode(detail.mode);
-      }
-
-      if (typeof detail.question === "string") {
-        setQuestion(detail.question.slice(0, 1200));
-      }
+      if (MODES.has(detail.mode)) setMode(detail.mode);
+      if (typeof detail.question === "string") setQuestion(detail.question.slice(0, 1200));
     }
 
     window.addEventListener("luminanexus:open-chavruta", openWithContext);
-    return () =>
-      window.removeEventListener("luminanexus:open-chavruta", openWithContext);
+    return () => window.removeEventListener("luminanexus:open-chavruta", openWithContext);
   }, []);
 
   const activeProfile = useMemo(
@@ -91,10 +89,7 @@ function ChavrutaClassroom() {
   );
 
   function updateProfile(field, value) {
-    setProfile((currentProfile) => ({
-      ...currentProfile,
-      [field]: value,
-    }));
+    setProfile(currentProfile => ({ ...currentProfile, [field]: value }));
   }
 
   function saveProfile() {
@@ -104,11 +99,7 @@ function ChavrutaClassroom() {
       track: profile.track,
       currentSkill: profile.currentSkill.trim(),
     };
-
-    setProfile({
-      ...defaultProfile,
-      ...cleanedProfile,
-    });
+    setProfile({ ...defaultProfile, ...cleanedProfile });
 
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(cleanedProfile));
@@ -116,7 +107,6 @@ function ChavrutaClassroom() {
     } catch {
       setProfileStatus("Your profile is available for this session, but this browser could not save it on this device.");
     }
-
     setError("");
   }
 
@@ -135,7 +125,6 @@ function ChavrutaClassroom() {
   async function askChavruta(event) {
     event.preventDefault();
     if (inFlight.current) return;
-
     const trimmedQuestion = question.trim();
 
     if (!trimmedQuestion) {
@@ -151,9 +140,7 @@ function ChavrutaClassroom() {
     try {
       const response = await fetch("/.netlify/functions/chavruta", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           question: trimmedQuestion,
           profile: {
@@ -167,28 +154,16 @@ function ChavrutaClassroom() {
       });
 
       const text = await response.text();
-
       let data = {};
       try {
         data = JSON.parse(text);
       } catch {
-        data = {
-          error: text || "The server returned an unreadable response.",
-        };
+        data = { error: text || "The server returned an unreadable response." };
       }
 
-      if (!response.ok) {
-        throw new Error(
-          data.error || `Request failed with status ${response.status}.`
-        );
-      }
-
+      if (!response.ok) throw new Error(data.error || `Request failed with status ${response.status}.`);
       const answerText = data.answer || data.response;
-
-      if (!answerText) {
-        throw new Error("Chavruta answered, but no answer text came back.");
-      }
-
+      if (!answerText) throw new Error("Chavruta answered, but no answer text came back.");
       setAnswer(answerText);
     } catch (err) {
       setError(err.message || "Chavruta could not answer.");
@@ -205,30 +180,34 @@ function ChavrutaClassroom() {
     }
   }
 
+  function usePrompt(prompt) {
+    setQuestion(prompt);
+    setError("");
+    setAnswer("");
+  }
+
+  const isJudaismMode = mode === "judaism-study";
+
   return (
     <section id="chavruta" className="section">
       <div className="section-heading">
         <p className="eyebrow">Ask Chavruta</p>
-
-        <h2 tabIndex={-1}>A gentle Hebrew helper for every student’s beginning.</h2>
-
+        <h2 tabIndex={-1}>A study partner for Hebrew and the breadth of Judaism.</h2>
         <p className="section-intro">
-          Create a simple student profile, choose a starting track, and ask
-          Chavruta for Hebrew help, letter practice, catch-up guidance, or
-          one-hour lesson support. Noahide learners may also choose Noahide
-          Parcha for a humble, source-aware weekly reflection.
+          Ask about Hebrew learning or explore Jewish texts, history, holidays,
+          prayer, practice, communities, and Jewish thought. Chavruta explains
+          different traditions with care and helps you choose a study path.
         </p>
         <p className="note">
-          Chavruta Classroom is a gentle learning helper for Hebrew letters,
-          track placement, review, and next steps. The
-          tracks are doorways, not labels.
+          Chavruta is an educational companion, not a rabbi. It distinguishes
+          sources, interpretations, and community practices; for personal
+          religious decisions, consult a trusted qualified Jewish teacher.
         </p>
       </div>
 
       <div className="two-column">
         <article className="feature-card">
           <h3>Student Profile</h3>
-
           <div className="form-stack">
             <label htmlFor="student-name">Name or nickname</label>
             <input
@@ -236,9 +215,7 @@ function ChavrutaClassroom() {
               maxLength={60}
               type="text"
               value={profile.displayName}
-              onChange={(event) =>
-                updateProfile("displayName", event.target.value)
-              }
+              onChange={event => updateProfile("displayName", event.target.value)}
               placeholder="First name or nickname"
             />
 
@@ -246,7 +223,7 @@ function ChavrutaClassroom() {
             <select
               id="grade-band"
               value={profile.gradeBand}
-              onChange={(event) => updateProfile("gradeBand", event.target.value)}
+              onChange={event => updateProfile("gradeBand", event.target.value)}
             >
               <option value="K-2">K-2</option>
               <option value="3-5">3-5</option>
@@ -255,88 +232,71 @@ function ChavrutaClassroom() {
               <option value="Adult / Teacher">Adult / Teacher</option>
             </select>
 
-            <label htmlFor="track">Starting track</label>
-            <select
-              id="track"
-              value={profile.track}
-              onChange={(event) => updateProfile("track", event.target.value)}
-            >
+            <label htmlFor="track">Starting Hebrew track</label>
+            <select id="track" value={profile.track} onChange={event => updateProfile("track", event.target.value)}>
               <option value="Aleph">Aleph</option>
               <option value="Bet">Bet</option>
               <option value="Gimel">Gimel</option>
             </select>
 
-            <label htmlFor="current-skill">Current skill</label>
+            <label htmlFor="current-skill">Current Hebrew skill</label>
             <input
               id="current-skill"
               maxLength={200}
               type="text"
               value={profile.currentSkill}
-              onChange={(event) =>
-                updateProfile("currentSkill", event.target.value)
-              }
+              onChange={event => updateProfile("currentSkill", event.target.value)}
               placeholder="Example: Learning Aleph and Ayin"
             />
 
             <div className="hero-actions">
-              <button className="button primary" type="button" onClick={saveProfile}>
-                Save My Profile
-              </button>
-
-              <button
-                className="button secondary"
-                type="button"
-                onClick={clearProfile}
-              >
-                Clear Profile
-              </button>
+              <button className="button primary" type="button" onClick={saveProfile}>Save My Profile</button>
+              <button className="button secondary" type="button" onClick={clearProfile}>Clear Profile</button>
             </div>
 
             <p role="status">{profileStatus}</p>
             <p className="note">
               Use a first name or nickname only. Your profile is saved on this
               device when you save it. When you ask a question, your question,
-              nickname, grade band, track, and current skill are sent to our
-              answer service and OpenAI to generate a response. You can leave the
-              nickname blank. Please avoid private personal information.
+              nickname, grade band, Hebrew track, and current Hebrew skill are
+              sent to our answer service and OpenAI. You can leave the nickname
+              blank. Please avoid private personal information.
             </p>
-            <p className="note">
-              Chavruta is not a rabbi or religious authority.
-            </p>
-            <a className="button secondary" href="/placement-quick-check.html">
-              Placement Quick-Check
-            </a>
+            <a className="button secondary" href="/placement-quick-check.html">Hebrew Placement Quick-Check</a>
 
             <div className="pilot-box">
-              <p>
-                <strong>Current profile:</strong> {activeProfile.displayName}
-              </p>
-              <p>
-                <strong>Track:</strong> {activeProfile.track}
-              </p>
-              <p>
-                <strong>Skill:</strong> {activeProfile.currentSkill}
-              </p>
+              <p><strong>Current profile:</strong> {activeProfile.displayName}</p>
+              <p><strong>Hebrew track:</strong> {activeProfile.track}</p>
+              <p><strong>Current skill:</strong> {activeProfile.currentSkill}</p>
             </div>
           </div>
         </article>
 
         <article className="feature-card">
           <h3>Ask Chavruta</h3>
-
           <form className="form-stack" onSubmit={askChavruta} aria-busy={loading}>
-            <label htmlFor="chavruta-mode">Question type</label>
-            <select
-              id="chavruta-mode"
-              value={mode}
-              onChange={(event) => setMode(event.target.value)}
-            >
+            <label htmlFor="chavruta-mode">Study area</label>
+            <select id="chavruta-mode" value={mode} onChange={event => setMode(event.target.value)}>
               <option value="hebrew-classroom">Hebrew learning</option>
-              <option value="track-placement">Track placement</option>
-              <option value="teacher-planning">Teacher planning</option>
-              <option value="source-library">Source Library</option>
+              <option value="judaism-study">Judaism & Jewish life</option>
+              <option value="track-placement">Hebrew track placement</option>
+              <option value="teacher-planning">Hebrew teacher planning</option>
+              <option value="source-library">Jewish Source Library</option>
               <option value="noahide-parcha">Noahide Parcha</option>
             </select>
+
+            {isJudaismMode && (
+              <div className="context-note">
+                <p>Choose a starting question, or write your own. Chavruta can adapt to a tradition or community you name.</p>
+                <div className="hero-actions" aria-label="Explore Judaism topics">
+                  {JUDAISM_PROMPTS.map(prompt => (
+                    <button key={prompt} className="button secondary" type="button" onClick={() => usePrompt(prompt)}>
+                      {prompt}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {mode === "noahide-parcha" && (
               <p className="context-note">
@@ -348,31 +308,28 @@ function ChavrutaClassroom() {
 
             {mode === "source-library" && (
               <p className="context-note">
-                Source Library mode can explain a reference or Hebrew word.
-                Check linked texts in Sefaria for the source itself.
+                Explore Jewish texts and commentaries. Chavruta will distinguish
+                a known source from a suggested place to look it up; use Sefaria
+                to verify the text itself.
               </p>
             )}
 
             <label htmlFor="chavruta-question">Question</label>
-
             <textarea
               id="chavruta-question"
               maxLength={1200}
               value={question}
-              onChange={(event) => setQuestion(event.target.value)}
+              onChange={event => setQuestion(event.target.value)}
               onKeyDown={handleQuestionKeyDown}
-              placeholder={
-                mode === "noahide-parcha"
+              placeholder={isJudaismMode
+                ? "Ask about any area of Judaism or Jewish life..."
+                : mode === "noahide-parcha"
                   ? "Name a parsha and ask for a Noahide reflection..."
-                  : "Ask a Hebrew learning question..."
-              }
+                  : "Ask a Hebrew learning question..."}
               rows={6}
             />
 
-            <p className="note">
-              Press Enter to ask. Press Shift + Enter for a new line.
-            </p>
-
+            <p className="note">Press Enter to ask. Press Shift + Enter for a new line.</p>
             <button className="button primary" type="submit" disabled={loading}>
               {loading ? "Asking..." : "Ask Chavruta"}
             </button>
@@ -380,15 +337,12 @@ function ChavrutaClassroom() {
 
           <p role="status">{loading ? "Chavruta is preparing your answer…" : ""}</p>
           {error && <p className="error" role="alert">{error}</p>}
-
           {answer && (
             <div className="answer-box" role="region" aria-label="Chavruta answer" aria-live="polite">
               <h4>Chavruta says:</h4>
               <p>{answer}</p>
             </div>
           )}
-
-
         </article>
       </div>
     </section>
