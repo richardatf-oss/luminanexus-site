@@ -43,6 +43,9 @@ def make_page(data):
 <link rel="stylesheet" href="/styles/hebrew.css"><link rel="stylesheet" href="/styles/lesson-practice.css"><link rel="stylesheet" href="/styles/foundation-track.css"><script src="/lesson-practice.js" defer></script>
 <link rel="stylesheet" href="/styles/site-navigation.css">
 <script src="/site-navigation.js" defer></script>
+
+<link rel="stylesheet" href="/styles/learning-journey.css">
+<script src="/learning-journey.js" defer></script>
 </head>
 <body><luminanexus-navigation></luminanexus-navigation><header><p>Ivrit HaOr · LuminaNexus Foundation</p><h1>{escape(track)} Track</h1><p class="lead">{escape(data['description'])}</p></header>
 <nav class="course-nav" aria-label="{escape(track)} Track navigation"><a href="/downloads/{escape(track)}_Track_Printable.pdf">Printable workbook</a><a href="#lessons">Lesson map</a></nav>

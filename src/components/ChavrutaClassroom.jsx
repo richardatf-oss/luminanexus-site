@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { readLessonContext } from "../data/chavruta-navigation.js";
 
 const STORAGE_KEY = "chavrutaStudentProfile";
 const MODES = new Set([
@@ -31,6 +32,7 @@ const defaultProfile = {
 
 function ChavrutaClassroom() {
   const [profile, setProfile] = useState(defaultProfile);
+  const [lessonContext, setLessonContext] = useState(null);
   const [question, setQuestion] = useState("");
   const [mode, setMode] = useState("hebrew-classroom");
   const [answer, setAnswer] = useState("");
@@ -64,6 +66,11 @@ function ChavrutaClassroom() {
 
     if (MODES.has(requestedMode)) setMode(requestedMode);
     if (requestedQuestion) setQuestion(requestedQuestion.slice(0, 1200));
+    const context = readLessonContext(window.location.search);
+    if (context.track) {
+      setProfile(current => ({ ...current, track: context.track, currentSkill: context.currentSkill }));
+      setLessonContext(context);
+    }
 
     function openWithContext(event) {
       const detail = event.detail || {};
@@ -71,6 +78,8 @@ function ChavrutaClassroom() {
         setProfile(current => ({ ...current, track: detail.track }));
         setProfileStatus(`${detail.track} Track selected for this session. Save your profile to remember it on this device.`);
       }
+      if (typeof detail.currentSkill === "string") setProfile(current => ({ ...current, currentSkill: detail.currentSkill.slice(0, 200) }));
+      if (detail.lessonHref) setLessonContext(detail);
       if (MODES.has(detail.mode)) setMode(detail.mode);
       if (typeof detail.question === "string") setQuestion(detail.question.slice(0, 1200));
     }
@@ -190,14 +199,14 @@ function ChavrutaClassroom() {
   const isJudaismMode = mode === "judaism-study";
 
   return (
-    <section id="chavruta" className="section">
+    <section id="chavruta" className="section chavruta-section">
       <div className="section-heading">
         <p className="eyebrow">Ask Chavruta</p>
-        <h2 tabIndex={-1}>A study partner for Hebrew and the breadth of Judaism.</h2>
+        <h2 tabIndex={-1}>A good question is a beginning, too.</h2>
         <p className="section-intro">
-          Ask about Hebrew learning or explore Jewish texts, history, holidays,
-          prayer, practice, communities, and Jewish thought. Chavruta explains
-          different traditions with care and helps you choose a study path.
+          Meet Chavruta / Havari, your study companion for Hebrew and Jewish
+          learning. Bring a question, explore a source, or ask for a little help
+          with the lesson in front of you.
         </p>
         <p className="note">
           Chavruta is an educational companion, not a rabbi. It distinguishes
@@ -206,72 +215,13 @@ function ChavrutaClassroom() {
         </p>
       </div>
 
+      {lessonContext && mode === "hebrew-classroom" && <aside className="chavruta-lesson" aria-label="Current lesson">
+        <strong>{lessonContext.track} Track · Lesson {lessonContext.lesson}</strong>
+        <p>{lessonContext.currentSkill}</p>
+        <a href={lessonContext.lessonHref}>Return to this lesson</a>
+      </aside>}
       <div className="two-column">
-        <article className="feature-card">
-          <h3>Student Profile</h3>
-          <div className="form-stack">
-            <label htmlFor="student-name">Name or nickname</label>
-            <input
-              id="student-name"
-              maxLength={60}
-              type="text"
-              value={profile.displayName}
-              onChange={event => updateProfile("displayName", event.target.value)}
-              placeholder="First name or nickname"
-            />
 
-            <label htmlFor="grade-band">Grade band</label>
-            <select
-              id="grade-band"
-              value={profile.gradeBand}
-              onChange={event => updateProfile("gradeBand", event.target.value)}
-            >
-              <option value="K-2">K-2</option>
-              <option value="3-5">3-5</option>
-              <option value="6-8">6-8</option>
-              <option value="9-12">9-12</option>
-              <option value="Adult / Teacher">Adult / Teacher</option>
-            </select>
-
-            <label htmlFor="track">Starting Hebrew track</label>
-            <select id="track" value={profile.track} onChange={event => updateProfile("track", event.target.value)}>
-              <option value="Aleph">Aleph</option>
-              <option value="Bet">Bet</option>
-              <option value="Gimel">Gimel</option>
-            </select>
-
-            <label htmlFor="current-skill">Current Hebrew skill</label>
-            <input
-              id="current-skill"
-              maxLength={200}
-              type="text"
-              value={profile.currentSkill}
-              onChange={event => updateProfile("currentSkill", event.target.value)}
-              placeholder="Example: Learning Aleph and Ayin"
-            />
-
-            <div className="hero-actions">
-              <button className="button primary" type="button" onClick={saveProfile}>Save My Profile</button>
-              <button className="button secondary" type="button" onClick={clearProfile}>Clear Profile</button>
-            </div>
-
-            <p role="status">{profileStatus}</p>
-            <p className="note">
-              Use a first name or nickname only. Your profile is saved on this
-              device when you save it. When you ask a question, your question,
-              nickname, grade band, Hebrew track, and current Hebrew skill are
-              sent to our answer service and OpenAI. You can leave the nickname
-              blank. Please avoid private personal information.
-            </p>
-            <a className="button secondary" href="/placement-quick-check.html">Hebrew Placement Quick-Check</a>
-
-            <div className="pilot-box">
-              <p><strong>Current profile:</strong> {activeProfile.displayName}</p>
-              <p><strong>Hebrew track:</strong> {activeProfile.track}</p>
-              <p><strong>Current skill:</strong> {activeProfile.currentSkill}</p>
-            </div>
-          </div>
-        </article>
 
         <article className="feature-card">
           <h3>Ask Chavruta</h3>
@@ -345,6 +295,7 @@ function ChavrutaClassroom() {
             />
 
             <p className="note">Press Enter to ask. Press Shift + Enter for a new line.</p>
+            <p className="note">Your question and any learning preferences are sent to our answer service and OpenAI when you ask. Please leave out private personal information.</p>
             <button className="button primary" type="submit" disabled={loading}>
               {loading ? "Asking..." : "Ask Chavruta"}
             </button>
@@ -359,6 +310,72 @@ function ChavrutaClassroom() {
             </div>
           )}
         </article>
+        <details className="feature-card chavruta-profile">
+          <summary>Learning preferences (optional)</summary>
+          <p className="note">You can ask a question without filling in a profile.</p>
+          <div className="form-stack">
+            <label htmlFor="student-name">Name or nickname</label>
+            <input
+              id="student-name"
+              maxLength={60}
+              type="text"
+              value={profile.displayName}
+              onChange={event => updateProfile("displayName", event.target.value)}
+              placeholder="First name or nickname"
+            />
+
+            <label htmlFor="grade-band">Grade band</label>
+            <select
+              id="grade-band"
+              value={profile.gradeBand}
+              onChange={event => updateProfile("gradeBand", event.target.value)}
+            >
+              <option value="K-2">K-2</option>
+              <option value="3-5">3-5</option>
+              <option value="6-8">6-8</option>
+              <option value="9-12">9-12</option>
+              <option value="Adult / Teacher">Adult / Teacher</option>
+            </select>
+
+            <label htmlFor="track">Starting Hebrew track</label>
+            <select id="track" value={profile.track} onChange={event => updateProfile("track", event.target.value)}>
+              <option value="Aleph">Aleph</option>
+              <option value="Bet">Bet</option>
+              <option value="Gimel">Gimel</option>
+            </select>
+
+            <label htmlFor="current-skill">Current Hebrew skill</label>
+            <input
+              id="current-skill"
+              maxLength={200}
+              type="text"
+              value={profile.currentSkill}
+              onChange={event => updateProfile("currentSkill", event.target.value)}
+              placeholder="Example: Learning Aleph and Ayin"
+            />
+
+            <div className="hero-actions">
+              <button className="button primary" type="button" onClick={saveProfile}>Save My Profile</button>
+              <button className="button secondary" type="button" onClick={clearProfile}>Clear Profile</button>
+            </div>
+
+            <p role="status">{profileStatus}</p>
+            <p className="note">
+              Use a first name or nickname only. Your profile is saved on this
+              device when you save it. When you ask a question, your question,
+              nickname, grade band, Hebrew track, and current Hebrew skill are
+              sent to our answer service and OpenAI. You can leave the nickname
+              blank. Please avoid private personal information.
+            </p>
+            <a className="button secondary" href="/placement-quick-check.html">Hebrew Placement Quick-Check</a>
+
+            <div className="pilot-box">
+              <p><strong>Current profile:</strong> {activeProfile.displayName}</p>
+              <p><strong>Hebrew track:</strong> {activeProfile.track}</p>
+              <p><strong>Current skill:</strong> {activeProfile.currentSkill}</p>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
   );
