@@ -1,3 +1,4 @@
+import Header from "./components/Header.jsx";
 import { openChavruta } from "./data/chavruta-navigation.js";
 import { useEffect, useState } from "react";
 import ChavrutaClassroom from "./components/ChavrutaClassroom.jsx";
@@ -44,7 +45,6 @@ const tracks = [
 ];
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [nameToExplore, setNameToExplore] = useState("");
   const [nameError, setNameError] = useState("");
 
@@ -68,7 +68,6 @@ function App() {
       const url = new URL(link.href, window.location.href);
       if (url.origin !== window.location.origin || url.pathname !== window.location.pathname || url.hash !== "#chavruta") return;
       event.preventDefault();
-      setMenuOpen(false);
       window.history.pushState(null, "", url);
       openChavruta({ mode: url.searchParams.get("chavrutaMode"), question: url.searchParams.get("chavrutaQuestion") ?? undefined });
     }
@@ -86,60 +85,12 @@ function App() {
     };
   }, []);
 
-  const closeMenu = () => setMenuOpen(false);
 
   return (
     <div className="site">
-      <header className="site-header">
-        <nav className="nav-container" aria-label="Main navigation">
-          <a href="#home" className="brand" onClick={closeMenu}>
-            <span className="brand-mark">א</span>
-            <span className="brand-text">LuminaNexus</span>
-          </a>
+      <Header />
 
-          <button
-            className="menu-toggle"
-            type="button"
-            aria-label="Toggle navigation menu"
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            ☰
-          </button>
-
-          <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-            <a href="#mission" onClick={closeMenu}>
-              Mission
-            </a>
-
-            <a href="#study-doorways" onClick={closeMenu}>
-              Doorways
-            </a>
-
-            <a href="#ivrit-haor" onClick={closeMenu}>
-              Ivrit HaOr
-            </a>
-
-            <a href="/noahide-parcha.html" onClick={closeMenu}>
-              Noahide Parcha
-            </a>
-
-            <a href="#resources" onClick={closeMenu}>
-              Resources
-            </a>
-
-            <a href="#chavruta" onClick={closeMenu}>
-              Chavruta / Havari
-            </a>
-
-            <a href="#support" onClick={closeMenu}>
-              Support
-            </a>
-          </div>
-        </nav>
-      </header>
-
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <section id="home" className="hero">
           <div>
             <p className="eyebrow">Hebrew for Every Grade, Every Beginning</p>
