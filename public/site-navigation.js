@@ -8,7 +8,7 @@ const navigation = [
     ["About Ivrit HaOr", "/#ivrit-haor"],
   ]],
   ["Study", [
-    ["Explore study paths", "/#study-doorways"],
+    ["Explore study paths", "/study.html"],
     ["Source Library", "/sources.html"],
     ["The 231 Gates", "/231-gates.html"],
     ["Noahide Daily Parcha", "/noahide-parcha.html"],
@@ -18,12 +18,13 @@ const navigation = [
     ["Placement Quick-Check", "/placement-quick-check.html"],
     ["Week 1 Teaching Packet", "/week-1-teaching-packet.html"],
     ["Workbooks & resources", "/#resources"],
-    ["For schools", "/#schools"],
+    ["For schools", "/about.html#schools"],
   ]],
   ["About", [
-    ["Our mission", "/#mission"],
-    ["Pilot program", "/#pilot"],
-    ["Support the work", "/#support"],
+    ["The Foundation", "/about.html"],
+    ["Our mission", "/about.html#mission"],
+    ["Pilot program", "/about.html#pilot"],
+    ["Support the work", "/about.html#support"],
   ]],
 ];
 
@@ -96,7 +97,7 @@ class LuminaNexusNavigation extends HTMLElement {
     const markCurrent = () => {
       this.querySelectorAll(".ln-dropdown a").forEach(link => {
         const url = new URL(link.href);
-        const current = url.pathname === location.pathname && (url.hash ? url.hash === location.hash : !location.hash);
+        const current = url.pathname === location.pathname && (url.hash ? url.hash === location.hash : true);
         if (current) link.setAttribute("aria-current", url.hash ? "location" : "page");
         else link.removeAttribute("aria-current");
       });
