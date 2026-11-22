@@ -89,6 +89,7 @@ class LuminaNexusNavigation extends HTMLElement {
         requestAnimationFrame(() => {
           const target = document.getElementById(url.hash.slice(1));
           if (!target) return;
+          if (target.tagName === "DETAILS") target.open = true;
           if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
           target.focus({ preventScroll: true });
         });
