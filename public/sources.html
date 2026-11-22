@@ -18,18 +18,22 @@
       @media(max-width:600px){.library-filter,.card-grid{grid-template-columns:1fr}.progress-panel{grid-template-columns:1fr auto}.progress-panel progress{grid-column:1/-1;grid-row:2}.progress-panel button{justify-self:start}}
       @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
     </style>
-  </head>
+
+<link rel="stylesheet" href="/styles/site-navigation.css">
+<script src="/site-navigation.js" defer></script>
+</head>
   <body>
+<luminanexus-navigation></luminanexus-navigation>
     <header>
       <p class="eyebrow">LuminaNexus Foundation · Ivrit HaOr</p>
       <h1>Ivrit HaOr Source Library</h1>
       <p class="intro">A guided shelf for Hebrew reading, Jewish text context, and thoughtful questions. Open a card, study at your level, and keep your own reflections distinct from what a source says.</p>
       <img class="header-art" src="/images/source-library.webp" alt="An illuminated study library with open books, a scroll, and Hebrew letters" />
     </header>
-    <nav aria-label="Source Library navigation">
-      <a href="/">Back to LuminaNexus</a><a class="secondary" href="/teacher-guide.html">Teacher Guide</a><a class="secondary" href="/aleph-track.html">Aleph Track</a><a class="secondary" href="/bet-track.html">Bet Track</a><a class="secondary" href="/gimel-track.html">Gimel Track</a><a class="secondary" href="/?chavrutaMode=source-library#chavruta">Ask Chavruta / Havari</a>
+    <nav aria-label="Source Library navigation"><a href="#guided-cards">Browse study cards</a>
+      <a class="secondary" href="/?chavrutaMode=source-library#chavruta">Ask Chavruta / Havari</a>
     </nav>
-    <main>
+    <main id="main-content" tabindex="-1">
       <section class="library-guide" aria-labelledby="how-to-study">
         <div><p class="eyebrow">How to use this library</p><h2 id="how-to-study">One source, one careful question</h2><p>These cards support literacy, cultural learning, and teacher preparation. They are not religious rulings. You can read Hebrew, an available translation, or both; you do not need to finish every prompt.</p></div>
         <ol class="how-to"><li>Choose a card that fits your readiness.</li><li>Open its source and read a short passage.</li><li>Use the prompt, then mark the card explored.</li><li>Return to your track when you want more practice.</li></ol>

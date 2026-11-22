@@ -16,17 +16,21 @@
       .toolbar{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin:1rem 0}.toolbar label{font-weight:700}.toolbar select,.toolbar button,.activity button{font:inherit;padding:.65rem .75rem;border:1px solid #aeb9c9;border-radius:9px;background:#fff;color:var(--ink)}button{cursor:pointer}.toolbar button,.activity button{font-weight:700}.activity-list{display:grid;gap:.6rem}.activity-list label,.prep-list label{display:flex;gap:.65rem;align-items:flex-start;cursor:pointer}.activity-list input,.prep-list input{margin-top:.35rem;width:1.1rem;height:1.1rem;flex:0 0 auto}.practice{padding:1rem;background:var(--soft);border-radius:12px;margin-top:.8rem}.answer{margin-top:1rem;padding:.9rem;background:var(--cream);border-radius:12px}.writing{width:100%;min-height:100px;padding:.7rem;border:1px solid #aeb9c9;border-radius:9px;font:inherit}.status{min-height:1.4em;color:var(--muted)}.progress-row{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}.progress-row progress{height:1rem;flex:1;min-width:160px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #a16a27;outline-offset:3px}
       [hidden]{display:none!important}@media(max-width:720px){.grid{grid-template-columns:1fr}.schedule{grid-template-columns:1fr}.schedule dd{margin-bottom:.35rem}}@media print{body{background:#fff;color:#000}nav,.no-print,.toolbar button{display:none!important}main{width:100%;padding:0}.panel,.activity,.callout{box-shadow:none;border-color:#777;break-inside:avoid}textarea{border:1px solid #777}.track-activity[hidden]{display:block!important}.grid{grid-template-columns:repeat(3,1fr)}}
     </style>
-  </head>
+
+<link rel="stylesheet" href="/styles/site-navigation.css">
+<script src="/site-navigation.js" defer></script>
+</head>
   <body>
+<luminanexus-navigation></luminanexus-navigation>
     <header>
       <p class="eyebrow">Ivrit HaOr · Teacher Dashboard</p>
       <h1>Week 1 Teaching Packet</h1>
       <p class="intro">A flexible first session for a mixed-readiness group. Everyone practices careful looking, listening, and respectful Hebrew reading; students work at the doorway that fits them today.</p>
     </header>
     <nav aria-label="Teaching packet navigation">
-      <a href="/">Home</a><a class="secondary" href="/teacher-guide.html">Teacher Guide</a><a class="secondary" href="/placement-quick-check.html">Placement Quick-Check</a><a class="secondary" href="#lesson">Lesson Plan</a><a class="secondary" href="#practice">Practice</a>
+      <a class="secondary" href="#lesson">Lesson Plan</a><a class="secondary" href="#practice">Practice</a>
     </nav>
-    <main>
+    <main id="main-content" tabindex="-1">
       <section class="callout" aria-label="Teaching principle">
         <strong>Keep the room together; differentiate the task.</strong>
         <p>Use one shared theme and let each student show learning at a comfortable level. A track is a starting point, not a label or a race.</p>

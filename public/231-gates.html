@@ -18,17 +18,21 @@
     @media(max-width:760px){.explorer{grid-template-columns:1fr}.selected{position:static}.gate-grid{grid-template-columns:repeat(5,minmax(0,1fr));max-height:420px}.tools{align-items:stretch}.tools input,.tools button{flex:1 1 100%}}
   </style>
   <script src="/231-gates.js" defer></script>
+
+<link rel="stylesheet" href="/styles/site-navigation.css">
+<script src="/site-navigation.js" defer></script>
 </head>
 <body>
+<luminanexus-navigation></luminanexus-navigation>
   <header>
     <p class="eyebrow">A Source-Based Letter Study</p>
     <h1>The 231 Gates</h1>
     <p class="intro">Sefer Yetzirah imagines letters as living creative powers. Explore the 231 gates through sacred permutation, cosmic correspondences, the movement of sound, and a mystical meditation for each pair.</p>
   </header>
-  <nav aria-label="231 Gates navigation">
-    <a href="/">Back to LuminaNexus</a><a class="secondary" href="/sources.html">Source Library</a><a class="secondary" href="/aleph-track.html">Aleph Track</a><a class="secondary" href="/noahide-parcha.html">Noahide Daily Parcha</a><a class="secondary" href="/?chavrutaMode=source-library#chavruta">Ask Chavruta / Havari</a>
+  <nav aria-label="231 Gates navigation"><a href="#gate-grid">Explore the gates</a><a class="secondary" href="#saved-list">Saved gates</a>
+    <a class="secondary" href="/?chavrutaMode=source-library#chavruta">Ask Chavruta / Havari</a>
   </nav>
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="card">
       <h2>The mystical architecture of a gate</h2>
       <p>Twenty-two letters yield 231 distinct gates: 22 × 21 ÷ 2. In Sefer Yetzirah, a gate is a meeting-place of two letters within a turning wheel; later combinations branch from these openings. The text’s own sign is the turning between עֹנֶג (oneg, “delight”) and נֶגַע (nega, “affliction”): the letters turn, and the meaning changes.</p>
