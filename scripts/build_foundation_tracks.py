@@ -40,10 +40,13 @@ def make_page(data):
     html = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title} | Ivrit HaOr</title><meta name="description" content="{escape(data['description'])}">
-<link rel="stylesheet" href="/styles/hebrew.css"><link rel="stylesheet" href="/styles/lesson-practice.css"><link rel="stylesheet" href="/styles/foundation-track.css"><script src="/lesson-practice.js" defer></script></head>
-<body><header><p>Ivrit HaOr · LuminaNexus Foundation</p><h1>{escape(track)} Track</h1><p class="lead">{escape(data['description'])}</p></header>
-<nav class="course-nav" aria-label="{escape(track)} Track navigation"><a href="/">Home</a><a href="/aleph-track.html">Aleph</a><a href="/bet-track.html">Bet</a><a href="/gimel-track.html">Gimel</a><a href="/downloads/{escape(track)}_Track_Printable.pdf">Printable workbook</a><a href="#lessons">Lesson map</a><a href="/teacher-guide.html">Teacher guide</a></nav>
-<main><section class="intro"><h2>Welcome to {escape(track)}</h2><p>{escape(data['description'])}</p><p>Use a steady rhythm: look carefully, listen to a model, practice together, then try independently. The printable workbook and online lessons follow this same sequence.</p></section>
+<link rel="stylesheet" href="/styles/hebrew.css"><link rel="stylesheet" href="/styles/lesson-practice.css"><link rel="stylesheet" href="/styles/foundation-track.css"><script src="/lesson-practice.js" defer></script>
+<link rel="stylesheet" href="/styles/site-navigation.css">
+<script src="/site-navigation.js" defer></script>
+</head>
+<body><luminanexus-navigation></luminanexus-navigation><header><p>Ivrit HaOr · LuminaNexus Foundation</p><h1>{escape(track)} Track</h1><p class="lead">{escape(data['description'])}</p></header>
+<nav class="course-nav" aria-label="{escape(track)} Track navigation"><a href="/downloads/{escape(track)}_Track_Printable.pdf">Printable workbook</a><a href="#lessons">Lesson map</a></nav>
+<main id="main-content" tabindex="-1"><section class="intro"><h2>Welcome to {escape(track)}</h2><p>{escape(data['description'])}</p><p>Use a steady rhythm: look carefully, listen to a model, practice together, then try independently. The printable workbook and online lessons follow this same sequence.</p></section>
 <section id="lessons"><h2>{len(lessons)} lessons</h2><ol class="lesson-map">'''
     for lesson in lessons:
         html += f'<li><a href="#lesson-{lesson["id"]}">{escape(lesson["title"])}</a><p>{escape(lesson["goal"])}</p></li>'
