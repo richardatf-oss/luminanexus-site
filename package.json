@@ -6,11 +6,11 @@
   "packageManager": "pnpm@11.9.0",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/generate-gimel-fallback.mjs",
+    "prebuild": "node scripts/generate-gimel-fallback.mjs && node scripts/generate-lesson-catalog.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test",
-    "check:links": "node scripts/check-links.mjs",
+    "check:links": "node scripts/check-links.mjs && node scripts/check-navigation.mjs",
     "check": "pnpm run build && pnpm run check:links && pnpm run test"
   },
   "dependencies": {

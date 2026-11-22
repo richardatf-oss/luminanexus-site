@@ -8,6 +8,8 @@ Each reading track has one canonical lesson source. The build scripts generate t
 
 Run `python scripts/build_hebrew_tracks.py` to regenerate all three tracks. Pass track names to build selected courses, for example `python scripts/build_hebrew_tracks.py Aleph Gimel`. Aleph and Gimel are built by `scripts/build_foundation_tracks.py`; Bet is built by `scripts/build_bet_track.py`.
 
-Regeneration requires Python 3, `python-docx`, LibreOffice (`soffice`), Pillow, fontTools, and ReportLab. Bet’s illustration/PDF builder uses the last three packages; all tracks use the DOCX and PDF tools.
+Regeneration requires Python 3, `python-docx`, LibreOffice (`soffice`), Pillow, fontTools, and ReportLab. Bet’s illustration/PDF builder uses Pillow, fontTools, and ReportLab. Aleph and Gimel use python-docx and LibreOffice.
 
 The build creates the Aleph and Gimel lesson pages, Gimel runtime data, editable DOCX workbooks under `docs/workbooks-source/`, and matching PDFs under `public/downloads/`. Bet has its own generator and the same canonical-source rule. Hebrew display uses Frank Ruhl Libre. Classroom cues are memory aids; teacher notes preserve pronunciation differences and vowel scope.
+
+Directionality is rendered by `scripts/curriculum_text.py`. English examples remain left-to-right; Hebrew runs are isolated right-to-left. Direction demonstrations use fixed physical positions rather than neutral arrow characters inside mixed-script strings. The workbook builder sets complex-script fonts and sizes explicitly and checks that Frank Ruhl Libre is available before PDF conversion. Regenerating Aleph also refreshes the public editable DOCX so it matches the active 36-lesson sequence.

@@ -6,15 +6,15 @@
     {
       "id": 1,
       "title": "Opening the Hebrew Doorway",
-      "focus": "←",
+      "focus": "Begin at the right; move toward the left.",
       "goal": "Start Hebrew at the right edge and move toward the left.",
       "teach": [
         "Start Hebrew at the right edge and move toward the left.",
-        "Hold the page sideways if helpful: Hebrew begins at the right edge. Point to the first mark before tracing toward the left."
+        "Keep the page upright. Touch the right edge to find the start, then trace toward the left."
       ],
       "examples": [
-        "Start → finish",
-        "Right edge → left edge"
+        "The start belongs at the right edge.",
+        "Move toward the finish at the left edge."
       ],
       "practice": [
         "Place a start mark at the right edge; trace a path toward the left.",
@@ -29,7 +29,8 @@
       ],
       "answer": 0,
       "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
-      "feedback": "Correct. Start Hebrew at the right edge and move toward the left."
+      "feedback": "Correct. Start Hebrew at the right edge and move toward the left.",
+      "direction_demo": true
     },
     {
       "id": 2,
@@ -62,15 +63,15 @@
     {
       "id": 3,
       "title": "The Hebrew Side of the Page",
-      "focus": "א ב ←",
+      "focus": "א ב ג",
       "goal": "Track a Hebrew line from right to left, one word at a time.",
       "teach": [
         "Track a Hebrew line from right to left, one word at a time.",
         "Track one short line with a finger. Pause at each space and restart from the right side of the next word."
       ],
       "examples": [
-        "א ב ג →",
-        "Point right, then track left"
+        "א ב ג",
+        "Start with Aleph on the right. Continue left to Bet, then Gimel."
       ],
       "practice": [
         "Track a whole line from right to left with your finger.",
@@ -85,7 +86,8 @@
       ],
       "answer": 2,
       "teacher_note": "Model a consistent community pronunciation, respect established differences, and use class cues as memory aids rather than formal definitions.",
-      "feedback": "Correct. Track a Hebrew line from right to left, one word at a time."
+      "feedback": "Correct. Track a Hebrew line from right to left, one word at a time.",
+      "direction_demo": true
     },
     {
       "id": 4,

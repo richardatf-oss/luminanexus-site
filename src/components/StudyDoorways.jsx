@@ -92,14 +92,14 @@ export default function StudyDoorways() {
               <span className="eyebrow">{path.eyebrow} · {guide.time}</span>
               <h3>{path.title}</h3>
               <p>{path.text}</p>
-              <a className="study-path-action" href={path.href}>{path.action} <span aria-hidden="true">→</span></a>
+              <a className="study-path-action" href={path.href}>{path.action}</a>
               <details>
                 <summary>Open this gate’s study guide</summary>
                 <h4>Your first steps</h4>
                 <ol>{guide.steps.map((step) => <li key={step}>{step}</li>)}</ol>
                 <h4>Try it</h4><p>{guide.practice}</p>
                 <h4>Pause and reflect</h4><p>{guide.reflection}</p>
-                <a href={guide.resource}>{guide.label} →</a>
+                <a href={guide.resource}>{guide.label}</a>
               </details>
             </article>
           );

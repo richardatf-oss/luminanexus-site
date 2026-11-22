@@ -123,10 +123,10 @@
     pairName.textContent = names(gate);
     pairNumber.textContent = `Gate ${gate.id} of ${gates.length}`;
     gateMeaning.textContent =
-      `In Sefer Yetzirah’s five-place articulation map (2:3), ${first[1]} is grouped at the ${first[2]} and ${second[1]} at the ${second[2]}. Read in this order, ${first[1]} → ${second[1]}, this gate offers ${direction} through speech. The reverse order, ${second[1]} → ${first[1]}, is the same gate read in the wheel’s other direction.`;
+      `In Sefer Yetzirah’s five-place articulation map (2:3), ${first[1]} is grouped at the ${first[2]} and ${second[1]} at the ${second[2]}. Read in this order, ${first[1]} followed by ${second[1]}, this gate offers ${direction} through speech. The reverse order, ${second[1]} followed by ${first[1]}, is the same gate read in the wheel’s other direction.`;
     gateReflection.textContent = samePlace
       ? `Both letters belong to the source’s ${first[2]} group. Say or identify them in a real word, then compare what changes when ${second[1]} comes first. Can you verify a word containing this adjacent pair?`
-      : `Notice the shift from the ${first[2]} group to the ${second[2]} group. Try ${first[1]} → ${second[1]} and then ${second[1]} → ${first[1]}. What changes in the mouth and in the word? Verify any example in a Hebrew source.`;
+      : `Notice the shift from the ${first[2]} group to the ${second[2]} group. Try ${first[1]} followed by ${second[1]} and then ${second[1]} followed by ${first[1]}. What changes in the mouth and in the word? Verify any example in a Hebrew source.`;
     gateCorrespondences.textContent =
       `${first[1]} — ${first[3]}: ${first[4]}; ${first[5]}. ${second[1]} — ${second[3]}: ${second[4]}; ${second[5]}. These correspondences follow the Gra Version of Sefer Yetzirah; other recensions and translations differ.`;
     gateMysticism.textContent = reflection.scene;

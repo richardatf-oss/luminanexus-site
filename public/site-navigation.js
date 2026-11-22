@@ -9,6 +9,7 @@ const navigation = [
   ]],
   ["Study", [
     ["Explore study paths", "/study.html"],
+    ["Guided Jewish study", "/jewish-study.html"],
     ["Source Library", "/sources.html"],
     ["The 231 Gates", "/231-gates.html"],
     ["Noahide Daily Parcha", "/noahide-parcha.html"],
@@ -17,7 +18,7 @@ const navigation = [
     ["Teacher Guide", "/teacher-guide.html"],
     ["Placement Quick-Check", "/placement-quick-check.html"],
     ["Week 1 Teaching Packet", "/week-1-teaching-packet.html"],
-    ["Workbooks & resources", "/#resources"],
+    ["Workbooks & lesson planning", "/teacher-resources.html"],
     ["For schools", "/about.html#schools"],
   ]],
   ["About", [

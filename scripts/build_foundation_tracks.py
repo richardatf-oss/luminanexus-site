@@ -5,6 +5,12 @@ from pathlib import Path
 import subprocess
 import sys
 from urllib.parse import urlencode
+from curriculum_text import sample_html, direction_html
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+import re
+import os
+import shutil
 
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -22,7 +28,7 @@ def read_data(track):
 
 
 def hebrew(text):
-    return f'<span lang="he" dir="rtl">{escape(text)}</span>'
+    return sample_html(text)
 
 
 def chavruta_url(track, lesson):
@@ -59,7 +65,7 @@ def make_page(data):
         html += f'''<section class="track-lesson" id="lesson-{n}"><p class="eyebrow">{escape(track)} lesson {n} of {len(lessons)}</p>
 <h2>{escape(lesson['title'])}</h2><p><strong>Focus:</strong> {hebrew(lesson['focus'])}</p><p><strong>Goal:</strong> {escape(lesson['goal'])}</p>
 <h3>Learn together</h3><ul>{''.join(f'<li>{escape(line)}</li>' for line in lesson['teach'])}</ul>
-<h3>Read or notice</h3><div class="examples">{''.join(f'<p>{hebrew(item)}</p>' for item in lesson['examples'])}</div>
+<h3>Read or notice</h3>{direction_html() if lesson.get("direction_demo") else ""}<div class="examples">{''.join(f'<p>{hebrew(item)}</p>' for item in lesson['examples'])}</div>
 <h3>Practice</h3><ol>{''.join(f'<li>{escape(item)}</li>' for item in lesson['practice'])}</ol>
 <form class="practice-check" data-answer="{lesson['answer']}" data-correct="{escape(lesson['feedback'], quote=True)}" data-retry="Look at the focus and examples above, then try once more.">
 <fieldset><legend>{escape(lesson['question'])}</legend>{''.join(f'<label><input type="radio" name="{slug}-{n}" value="{i}"><span>{hebrew(option) if any(0x590 <= ord(ch) <= 0x5ff for ch in option) else escape(option)}</span></label>' for i, option in enumerate(lesson['options']))}</fieldset>
@@ -95,6 +101,39 @@ def make_gimel_runtime(data):
     page.write_text(text)
 
 
+
+def add_sample(doc, text, size=12, style=None, centered=False):
+    p = doc.add_paragraph(style=style)
+    if centered: p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    has_latin = bool(re.search(r"[A-Za-z]", text))
+    for part in re.split(r"([\u0590-\u05ff]+(?:[ \t]+[\u0590-\u05ff]+)*)", text):
+        if not part: continue
+        run = p.add_run(part)
+        is_hebrew = bool(re.search(r"[\u0590-\u05ff]", part))
+        run.font.name = "Frank Ruhl Libre" if is_hebrew else "Aptos"
+        run.font.size = Pt(size)
+        props = run._element.get_or_add_rPr()
+        if is_hebrew:
+            fonts = props.find(qn("w:rFonts"))
+            fonts.set(qn("w:cs"), "Frank Ruhl Libre")
+            fonts.set(qn("w:eastAsia"), "Frank Ruhl Libre")
+            complex_size = OxmlElement("w:szCs"); complex_size.set(qn("w:val"), str(int(size*2))); props.append(complex_size)
+            rtl = OxmlElement("w:rtl"); rtl.set(qn("w:val"), "1"); props.append(rtl)
+    if not has_latin and re.search(r"[\u0590-\u05ff]", text):
+        bidi = OxmlElement("w:bidi"); p._element.get_or_add_pPr().append(bidi)
+    return p
+
+def add_direction(doc):
+    table = doc.add_table(rows=1, cols=3)
+    table.autofit = False
+    labels = ["Finish\nLeft edge", "←", "Start\nRight edge"]
+    for cell, label in zip(table.rows[0].cells, labels):
+        cell.width = Inches(2)
+        p = cell.paragraphs[0]; p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        run = p.add_run(label); run.font.name = "Aptos"; run.font.size = Pt(13)
+        bidi = OxmlElement("w:bidi"); bidi.set(qn("w:val"), "0"); p._element.get_or_add_pPr().append(bidi)
+    doc.add_paragraph("Begin on the right. Move toward the left.")
+
 def make_workbook(data):
     track = data["track"]
     doc = Document()
@@ -104,6 +143,7 @@ def make_workbook(data):
     normal = doc.styles["Normal"]
     normal.font.name = "Aptos"
     normal.font.size = Pt(11)
+    normal.element.get_or_add_rPr().get_or_add_rFonts().set(qn("w:cs"), "Frank Ruhl Libre")
     normal.font.color.rgb = RGBColor(37, 49, 58)
     normal.paragraph_format.space_after = Pt(6)
 
@@ -124,52 +164,45 @@ def make_workbook(data):
     doc.add_heading("Lesson map", 0)
     for lesson in data["lessons"]:
         goal = lesson.get("goal", lesson.get("focus", lesson.get("meaning", "")))
-        doc.add_paragraph(f"{lesson['id']}. {lesson['title']} — {goal}")
+        add_sample(doc, f"{lesson['id']}. {lesson['title']} — {goal}", size=11)
     doc.add_paragraph("Use one lesson at a time. A learner may repeat a lesson or split it across sessions.")
 
     for lesson in data["lessons"]:
         doc.add_page_break()
         doc.add_heading(f"Lesson {lesson['id']}: {lesson['title']}", 0)
         doc.add_heading("Focus", 2)
-        p = doc.add_paragraph(lesson.get("word", lesson["focus"]))
-        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        for run in p.runs:
-            run.font.name = "Frank Ruhl Libre"
-            run.font.size = Pt(28)
+        add_sample(doc, lesson.get("word", lesson["focus"]), size=28 if re.search(r"[\u0590-\u05ff]", lesson.get("word", lesson["focus"])) else 12, centered=True)
         doc.add_heading("Goal", 2)
-        doc.add_paragraph(lesson.get("goal", lesson.get("focus", "")))
+        add_sample(doc, lesson.get("goal", lesson.get("focus", "")))
         if lesson.get("say"):
             doc.add_paragraph(f"Read it: {lesson['say']} · Meaning: {lesson['meaning']}")
         if lesson.get("teach"):
             doc.add_heading("Learn together", 2)
             for line in lesson["teach"]:
-                doc.add_paragraph(line, style="List Bullet")
+                add_sample(doc, line, style="List Bullet")
         doc.add_heading("Examples", 2)
+        if lesson.get("direction_demo"): add_direction(doc)
         for example in lesson.get("examples", [lesson.get("word", "")]):
-            p = doc.add_paragraph(example)
-            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            for run in p.runs:
-                run.font.name = "Frank Ruhl Libre"
-                run.font.size = Pt(20)
+            add_sample(doc, example, size=20 if re.search(r"[\u0590-\u05ff]", example) else 12, centered=True)
         doc.add_heading("Practice", 2)
         tasks = lesson.get("practice", [lesson.get("cue", "Read the word, write it, then explain what it means."), "Read the word again and show the meaning."])
         for task in tasks:
-            doc.add_paragraph(task, style="List Number")
+            add_sample(doc, task, style="List Number")
             doc.add_paragraph("________________________________________________________________________")
         doc.add_heading("Check your learning", 2)
-        doc.add_paragraph(lesson.get("check", lesson.get("focus", "")))
+        add_sample(doc, lesson.get("check", lesson.get("focus", "")))
         doc.add_paragraph("□ Not yet     □ With help     □ By myself")
         if lesson.get("teacher_note"):
-            doc.add_paragraph(f"Teacher note: {lesson['teacher_note']}")
+            add_sample(doc, f"Teacher note: {lesson['teacher_note']}")
 
     doc.add_page_break()
     doc.add_heading("Teacher answer key", 0)
     for lesson in data["lessons"]:
         doc.add_heading(f"Lesson {lesson['id']}: {lesson['title']}", 2)
         choices = lesson.get("options", lesson.get("choices", []))
-        doc.add_paragraph(f"Question: {lesson['question']}")
-        doc.add_paragraph(f"Answer: {choices[lesson['answer']]}")
-        doc.add_paragraph(lesson.get("feedback", f"{lesson.get('word', '')} means {lesson.get('meaning', '')}."))
+        add_sample(doc, f"Question: {lesson['question']}")
+        add_sample(doc, f"Answer: {choices[lesson['answer']]}")
+        add_sample(doc, lesson.get("feedback", f"{lesson.get('word', '')} means {lesson.get('meaning', '')}."))
 
     footer = section.footer.paragraphs[0]
     footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -177,10 +210,26 @@ def make_workbook(data):
     WORKBOOKS.mkdir(parents=True, exist_ok=True)
     out = WORKBOOKS / f"{track}_Track_Curriculum.docx"
     doc.save(out)
+    if track == "Aleph":
+        (DOWNLOADS / "Aleph_Track_Printable.docx").write_bytes(out.read_bytes())
     return out
 
 
+
+def ensure_hebrew_font():
+    if not shutil.which("fc-match"): return
+    def family():
+        return subprocess.check_output(["fc-match", "--format=%{family}", "Frank Ruhl Libre"], text=True)
+    if "Frank Ruhl Libre" not in family():
+        directory = Path(os.environ.get("XDG_DATA_HOME", str(Path.home() / ".local/share"))) / "fonts"
+        directory.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(PUBLIC / "fonts/FrankRuhlLibre.ttf", directory / "FrankRuhlLibre.ttf")
+        subprocess.run(["fc-cache", "-f", str(directory)], check=True, capture_output=True)
+        if "Frank Ruhl Libre" not in family():
+            raise RuntimeError("Install Frank Ruhl Libre before generating Hebrew workbooks; font substitution is not acceptable.")
+
 def build(track):
+    ensure_hebrew_font()
     data = read_data(track)
     ids = [lesson["id"] for lesson in data["lessons"]]
     if ids != list(range(1, len(ids) + 1)):
