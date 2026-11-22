@@ -1,0 +1,97 @@
+.home-page { background: #fffdf8; }
+.home-page .home-hero { min-height: 0; padding-top: clamp(2.5rem, 6vw, 5rem); padding-bottom: 3.5rem; grid-template-columns: 1.05fr 1fr; gap: 3rem; }
+.home-hero h1 { font-size: clamp(2.8rem, 5.9vw, 5.15rem); letter-spacing: -.045em; max-width: 620px; }
+.home-hero .eyebrow { font-size: .875rem; letter-spacing: .09em; }
+.home-hero .hero-text { font-size: 1.2rem; max-width: 480px; color: #46546b; }
+.home-hero .hero-actions { gap: .7rem; margin-top: 1.6rem; }
+.home-welcome { font: .95rem/1.6 Arial, sans-serif; color: #5d6474; margin-top: 1.6rem; max-width: 360px; }
+.home-hero-art { position: relative; margin: 0; }
+.home-hero-art img { display: block; width: 100%; height: 480px; object-fit: cover; border-radius: 48% 48% 3rem 3rem; }
+.home-hero-art figcaption { position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 1rem; padding: .6rem 1.3rem; border-radius: 14px; background: #fffdf5ed; color: #14213d; box-shadow: 0 8px 30px #14213d14; white-space: nowrap; }
+.home-hero-art figcaption [lang=he] { font-size: 2.5rem; line-height: 1.2; }
+.home-hero-art figcaption span:last-child { font: .95rem Arial, sans-serif; }
+.home-page .section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+.home-page .section-heading { margin-bottom: 1.8rem; }
+.home-page h2 { font-size: clamp(1.9rem, 3.5vw, 2.8rem); letter-spacing: -.025em; line-height: 1.18; }
+.home-page .section-intro { font-size: 1.1rem; line-height: 1.7; color: #526075; }
+.home-path-grid, .home-tool-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.home-path { display: flex; flex-direction: column; align-items: flex-start; padding: 1.5rem; border: 1px solid #dfe4e9; background: #fff; border-radius: 18px; }
+.home-path-mark { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: #edf3fc; color: #254678; font-size: 1.8rem; margin-bottom: 1.2rem; }
+.home-path:nth-child(2) .home-path-mark { background: #f2eef9; color: #62477b; }
+.home-path:nth-child(3) .home-path-mark { background: #edf5ee; color: #375f47; }
+.home-path h3 { font-size: 1.4rem; }
+.home-path p, .home-tool-grid p { color: #526075; margin: .4rem 0 1.3rem; }
+.home-path a, .home-tool-grid a, .home-text-link { margin-top: auto; color: #244a79; font: 700 .95rem/1.5 Arial, sans-serif; text-decoration: underline; text-underline-offset: .25em; }
+.home-page .home-paths { padding-top: 1.5rem; }
+.home-learning { border-top: 1px solid #e4e6e6; }
+.home-page .track-card.home-track { padding: 0; overflow: hidden; display: flex; flex-direction: column; min-width: 0; box-shadow: none; }
+.home-track .track-image { width: 100%; height: 200px; object-fit: cover; border-radius: 0; }
+.home-track-copy { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; align-items: flex-start; }
+.home-track-copy .eyebrow { font-size: .875rem; letter-spacing: .025em; }
+.home-track-copy h3 { display: flex; gap: .6rem; align-items: center; }
+.home-track-copy h3 span { font-size: 1.9rem; color: #957019; }
+.home-track-copy p:not(.eyebrow) { color: #526075; margin: .5rem 0 1.3rem; }
+.home-track-copy .button { margin-top: auto; width: 100%; }
+.home-download { font: 600 .9rem/1.6 Arial, sans-serif; color: #244a79; display: flex; align-items: center; gap: .6rem; align-self: center; padding-top: 1rem; text-decoration: underline; text-underline-offset: .2em; }
+.file-type { font: 700 .75rem Arial, sans-serif; background: #eef1f6; padding: .15rem .3rem; border-radius: 3px; text-decoration: none; }
+.home-placement { margin-top: 1.5rem; border: 1px solid #dfe4e9; border-radius: 14px; background: #f6f8fc; }
+.home-placement > summary { padding: 1.25rem; font: 600 1rem/1.5 Arial, sans-serif; color: #244a79; cursor: pointer; }
+.home-page .home-placement .doorway-finder { padding: 1.5rem; background: none; }
+.home-teachers { border-top: 1px solid #e4e6e6; }
+.home-teacher-intro { display: grid; grid-template-columns: 1fr .9fr; gap: 3rem; align-items: center; margin-bottom: 2rem; }
+.home-teacher-intro > img { width: 100%; height: 270px; object-fit: cover; border-radius: 20px; }
+.home-tool-grid { padding: 1.5rem; background: #f0f5f2; border-radius: 18px; }
+.home-tool-grid article { display: flex; flex-direction: column; align-items: flex-start; padding: .5rem; }
+.home-tool-grid h3 { font-size: 1.3rem; }
+.home-tool-grid .eyebrow { font-size: .875rem; }
+.home-page #chavruta { border-top: 1px solid #e4e6e6; }
+.home-page #chavruta .two-column { grid-template-columns: minmax(0, 1.5fr) minmax(260px, .8fr); align-items: start; }
+.chavruta-profile > summary { cursor: pointer; font: 700 1rem/1.5 Arial, sans-serif; color: #244a79; }
+.chavruta-profile .form-stack { margin-top: 1.2rem; }
+.chavruta-lesson { padding: 1rem 1.25rem; margin-bottom: 1.3rem; border-left: 4px solid #d4aa45; background: #fff5d6; border-radius: 0 10px 10px 0; }
+.chavruta-lesson p { margin: .2rem 0 .6rem; }
+.chavruta-lesson a { color: #244a79; text-decoration: underline; font: 700 .95rem Arial, sans-serif; }
+.home-page .home-name { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; border-top: 1px solid #e4e6e6; }
+.home-name h2 { font-size: clamp(1.8rem, 3vw, 2.3rem); }
+.home-name p { color: #526075; }
+.home-name-input { display: flex; gap: .7rem; align-items: center; }
+.home-name-input input { min-width: 0; flex: 1; }
+.home-name-input button { flex-shrink: 0; }
+.home-resume { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; max-width: 1140px; margin: 0 auto 1rem; padding: 1.3rem 1.5rem; background: #edf5ef; border: 1px solid #cbded0; border-radius: 16px; }
+.home-resume p { margin: .3rem 0; }
+.home-resume .eyebrow { font-size: .875rem; }
+.home-resume small { color: #526075; font: .875rem/1.5 Arial, sans-serif; }
+.home-resume-actions { display: flex; flex-direction: column; align-items: center; gap: .6rem; flex-shrink: 0; }
+.home-page .home-footer { text-align: left; padding: 3rem max(1.25rem, calc((100vw - 1140px)/2)); }
+.home-footer-brand { font: 700 1.6rem Georgia, serif; }
+.home-footer nav { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; margin: 1.5rem 0; font-size: .95rem; }
+.home-footer nav a { text-decoration: underline; text-underline-offset: .25rem; }
+.home-footer-note { color: #cbd5e4; max-width: 740px; font-size: .9rem; }
+.home-footer small { color: #cbd5e4; font-size: .875rem; }
+.home-page :is(a,button,input,summary,textarea,select):focus-visible { outline: 3px solid #a16a27; outline-offset: 4px; }
+@media(max-width: 820px) {
+  .home-page .home-hero { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .home-hero-art img { height: 380px; }
+  .home-path-grid, .home-tool-grid { grid-template-columns: 1fr; }
+  .home-path { padding: 1.4rem; }
+  .home-teacher-intro { gap: 1.5rem; }
+  .home-page #chavruta .two-column { grid-template-columns: 1fr; }
+  .chavruta-profile { grid-row: 2; }
+  .home-name-input { flex-direction: column; align-items: stretch; }
+  .home-resume { margin-left: 1.25rem; margin-right: 1.25rem; }
+}
+@media(max-width: 600px) {
+  .home-page .home-hero, .home-teacher-intro, .home-page .home-name { grid-template-columns: 1fr; }
+  .home-page .home-hero { padding-bottom: 1.5rem; gap: 1rem; }
+  .home-hero-art { max-width: 400px; width: 100%; justify-self: center; }
+  .home-hero-art img { height: 300px; border-radius: 40% 40% 2rem 2rem; }
+  .home-hero h1 { font-size: 3rem; }
+  .home-page .section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .home-teacher-intro > img { height: 210px; }
+  .home-resume { flex-direction: column; align-items: flex-start; }
+  .home-resume-actions { width: 100%; }
+  .home-page .home-placement .doorway-finder { padding: 1rem .75rem; }
+}
+@media(prefers-reduced-motion:reduce) { .home-page .button { transition: none; } .home-page .button:hover { transform: none; } }
+
+.home-page [tabindex="-1"]:focus { outline: none; }
