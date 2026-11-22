@@ -247,7 +247,7 @@ function ChavrutaClassroom() {
 
             {isJudaismMode && (
               <div className="context-note">
-                <p>Choose a starting topic, or write your own question. Name a tradition or community if you want that perspective.</p>
+                <p>Choose a starting topic, or write your own question. Name a tradition or community if you want that perspective.</p><p><a href="/jewish-study.html">Read the guided topic introductions and try a study task</a></p>
                 <details>
                   <summary>Browse sample questions by topic</summary>
                   <div className="hero-actions">

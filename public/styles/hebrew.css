@@ -1,5 +1,12 @@
 @font-face { font-family: "Frank Ruhl Libre"; src: url("/fonts/FrankRuhlLibre.ttf") format("truetype"); font-weight:100 900; font-style:normal; font-display:swap; unicode-range:U+0590-05FF,U+FB1D-FB4F; }
 body { font-family:"Frank Ruhl Libre", Georgia, "Times New Roman", serif; }
 .hebrew, .hebrew-large, .doorway-hebrew, .track-letter, .brand-mark, .study-path-marker, .result-title > span, [lang="he"], [dir="rtl"] { font-family:"Frank Ruhl Libre", serif; }
-.reading-direction { display:flex; direction:ltr; align-items:center; justify-content:space-between; gap:.4rem; font-family:Arial,sans-serif; font-size:clamp(.8rem,3vw,1rem); }
-.reading-direction strong { white-space:nowrap; }
+.sample-hebrew, .hebrew, [lang="he"] { direction:rtl; unicode-bidi:isolate; }
+.sample-english, .sample-mixed { direction:ltr; unicode-bidi:isolate; }
+.examples .sample-english { font:1rem/1.6 Arial,sans-serif; }
+.reading-direction { display:grid; grid-template-columns:minmax(65px,1fr) minmax(50px,2fr) minmax(65px,1fr); direction:ltr; align-items:center; gap:.7rem; padding:1.2rem .8rem; margin:.8rem 0; background:#edf5f3; border:1px solid #c7dcd2; border-radius:12px; color:#244d3c; font:1rem/1.4 Arial,sans-serif; }
+.reading-direction .direction-finish { grid-column:1; text-align:left; direction:ltr; }
+.reading-direction .direction-line { grid-column:2; width:100%; height:28px; }
+.reading-direction .direction-start { grid-column:3; text-align:right; direction:ltr; }
+.reading-direction strong, .reading-direction span span { display:block; }
+.reading-direction span span { font-size:.875rem; margin-top:.25rem; }

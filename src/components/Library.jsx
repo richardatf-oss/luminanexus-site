@@ -57,7 +57,7 @@ export default function Library() {
               <p className="library-card__content">{entry.content}</p>
 
               <a href="#chavruta" className="library-card__ask">
-                Ask Chavruta →
+                Ask Chavruta
               </a>
             </article>
           ))}

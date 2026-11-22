@@ -4,6 +4,7 @@ Run with the Codex primary Python runtime (Pillow, fontTools, reportlab).
 from pathlib import Path
 from io import BytesIO
 from html import escape
+from curriculum_text import sample_html
 from urllib.parse import urlencode
 import json
 from PIL import Image,ImageDraw,ImageFont
@@ -19,7 +20,7 @@ L=DATA['lessons'];TMP=ROOT/'tmp/bet-review';TMP.mkdir(parents=True,exist_ok=True
 FONT=TMP/'Frank-Regular.ttf';BOLD=TMP/'Frank-Bold.ttf'
 for path,w in [(FONT,400),(BOLD,700)]:
  f=Font(ROOT/'public/fonts/FrankRuhlLibre.ttf');instantiateVariableFont(f,{'wght':w},inplace=True).save(path)
-def he(t):return f'<span lang="he" dir="rtl">{escape(t)}</span>'
+def he(t):return sample_html(t)
 def helpurl(l):return '/?'+urlencode({'chavrutaMode':'hebrew-classroom','chavrutaQuestion':f"I am studying Bet Track lesson {l['id']}: {l['title']}. {l['goal']} Help me practice only these words: "+' '.join(w[0] for w in l['words'])})+'#chavruta'
 
 def make_illustration(l):
@@ -86,14 +87,15 @@ def make_illustration(l):
  d.text(((860-(bb[2]-bb[0]))/2-bb[0],352-bb[1]),label,font=hf,fill=navy,direction='rtl')
  small=ImageFont.truetype(str(FONT),27);caption=l.get('alt','');d.text((54,455),caption[:72],font=small,fill='#486174')
  im.save(path,'WEBP',quality=88,method=6)
-for lesson in L[6:]:make_illustration(lesson)
+for lesson in L[6:]:
+ if not (ROOT/f"public/images/bet-track/lesson-{lesson['id']}.webp").exists():make_illustration(lesson)
 header='''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bet Track Building and Reading Words | Ivrit HaOr</title><meta name="description" content="Thirty-two illustrated Hebrew reading lessons with explicit vowel teaching, blending, word meanings, practice feedback, and a matching printable workbook."><link rel="stylesheet" href="/styles/hebrew.css"><link rel="stylesheet" href="/styles/lesson-practice.css"><link rel="stylesheet" href="/styles/bet-track.css"><script src="/lesson-practice.js" defer></script>
 <link rel="stylesheet" href="/styles/site-navigation.css">
 <script src="/site-navigation.js" defer></script>
 
 <link rel="stylesheet" href="/styles/learning-journey.css">
 <script src="/learning-journey.js" defer></script>
-</head><body><luminanexus-navigation></luminanexus-navigation><header><p>Ivrit HaOr · LuminaNexus Foundation</p><h1>Bet Track</h1><p class="lead">Building and Reading Words</p><p>Blend the sounds. Read the word. Tell its meaning.</p></header><nav class="course-nav" aria-label="Bet Track navigation"><a href="/downloads/Bet_Track_Printable.pdf">Print the 77 page workbook</a><a href="#lessons">Lesson map</a><a href="#teacher-key">Teacher answers</a></nav><main id="main-content" tabindex="-1"><section id="start"><h2>Ready for Bet</h2><p>Start here when you can find Hebrew's starting side, recognize several letters, and use the ahhh Stick Vowels and eee Pea Vowel with help. Each lesson introduces any new consonants before using them. This course develops decoding; it does not repeat Aleph's tracing sequence.</p><p>If a foundation feels unfamiliar, <a href="/aleph-track.html#stick-vowels">review it in Aleph</a> and return. Read the letters and vowel marks before looking to the picture for meaning.</p><p>The online lessons and printable workbook follow the same 32 lesson sequence. Sound labels use our class cues. Community pronunciation differences are respected.</p></section><section id="lessons"><h2>Your 32 lesson journey</h2><ol class="lesson-map">'''
+</head><body><luminanexus-navigation></luminanexus-navigation><header><p>Ivrit HaOr · LuminaNexus Foundation</p><h1>Bet Track</h1><p class="lead">Building and Reading Words</p><p>Blend the sounds. Read the word. Tell its meaning.</p></header><nav class="course-nav" aria-label="Bet Track navigation"><a href="/downloads/Bet_Track_Printable.pdf">Print the 77 page workbook</a><a href="#lessons">Lesson map</a><a href="#teacher-key">Teacher answers</a></nav><main id="main-content" tabindex="-1"><section id="start"><h2>Ready for Bet</h2><p>Start here when you can find Hebrew's starting side, recognize several letters, and use the ahhh Stick Vowels and eee Pea Vowel with help. Each lesson introduces any new consonants before using them. This course develops decoding; it does not repeat Aleph's tracing sequence.</p><p>If a foundation feels unfamiliar, <a href="/aleph-track.html#lesson-4">review it in Aleph</a> and return. Read the letters and vowel marks before looking to the picture for meaning.</p><p>The online lessons and printable workbook follow the same 32 lesson sequence. Sound labels use our class cues. Community pronunciation differences are respected.</p></section><section id="lessons"><h2>Your 32 lesson journey</h2><ol class="lesson-map">'''
 html=header+''.join(f'<li><a href="#lesson-{l["id"]}">{escape(l["title"])}</a><p>{escape(l["goal"])}</p><small>Workbook pages {l["id"]*2} and {l["id"]*2+1}</small></li>' for l in L)+'</ol><p>Work at a comfortable pace. Spend one session on a lesson, or split it into teaching and practice.</p></section>'
 for l in L:
  n=l['id'];html+=f'<section class="bet-lesson" id="lesson-{n}"><p class="eyebrow">Bet Lesson {n} · Workbook pages {n*2} and {n*2+1}</p><h2>{escape(l["title"])}</h2><p><strong>Goal</strong> {escape(l["goal"])}</p><h3>Meet the sounds you will use</h3><div class="sound-grid">'
@@ -117,7 +119,16 @@ html+='</section></main><footer>© 2026 LuminaNexus Foundation · Ivrit HaOr · 
 pdfmetrics.registerFont(TTFont('Frank',str(FONT)));pdfmetrics.registerFont(TTFont('FrankBold',str(BOLD)))
 P=ROOT/'public/downloads/Bet_Track_Printable.pdf';c=canvas.Canvas(str(P),pagesize=(612,792),pageCompression=1);c.setTitle('Bet Track Building and Reading Words');c.setAuthor('LuminaNexus Foundation');page=0
 
-def tx(x,y,t,size=12,bold=False):c.setFont('FrankBold' if bold else 'Frank',size);c.setFillColorRGB(0,0,0);c.drawString(x,792-y,t)
+def tx(x,y,t,size=12,bold=False):
+ # ReportLab drawString does not shape Hebrew inside English sentences.
+ if any('\u0590' <= ch <= '\u05ff' for ch in t):
+  scale=4;pad=8;font=ImageFont.truetype(str(BOLD if bold else FONT),round(size*scale))
+  draw=ImageDraw.Draw(Image.new('RGBA',(1,1)));box=draw.textbbox((0,0),t,font=font,direction='ltr',anchor='ls')
+  im=Image.new('RGBA',(box[2]-box[0]+2*pad,box[3]-box[1]+2*pad))
+  ImageDraw.Draw(im).text((pad-box[0],pad-box[1]),t,font=font,fill='black',direction='ltr',anchor='ls')
+  c.drawImage(ImageReader(im),x+(box[0]-pad)/scale,792-y-(box[3]+pad)/scale,im.width/scale,im.height/scale,mask='auto')
+ else:
+  c.setFont('FrankBold' if bold else 'Frank',size);c.setFillColorRGB(0,0,0);c.drawString(x,792-y,t)
 def para(t,y,size=12,width=518):
  words=t.split();line=''
  for w in words:

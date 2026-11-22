@@ -1,0 +1,1008 @@
+{
+  "Aleph": [
+    {
+      "id": 1,
+      "title": "Opening the Hebrew Doorway",
+      "goal": "Start Hebrew at the right edge and move toward the left.",
+      "practice": [
+        "Place a start mark at the right edge; trace a path toward the left.",
+        "Take turns pointing to the Hebrew start and saying the direction aloud."
+      ],
+      "href": "/aleph-track.html#lesson-1"
+    },
+    {
+      "id": 2,
+      "title": "Hebrew Letters Are Not English Letters",
+      "goal": "Recognize that Hebrew has its own letter shapes and names.",
+      "practice": [
+        "Sort Hebrew letters and Latin letters into separate groups.",
+        "Choose one Hebrew letter; point to it and say its name after a teacher model."
+      ],
+      "href": "/aleph-track.html#lesson-2"
+    },
+    {
+      "id": 3,
+      "title": "The Hebrew Side of the Page",
+      "goal": "Track a Hebrew line from right to left, one word at a time.",
+      "practice": [
+        "Track a whole line from right to left with your finger.",
+        "Pause at the space between words, then continue from the next word on the right."
+      ],
+      "href": "/aleph-track.html#lesson-3"
+    },
+    {
+      "id": 4,
+      "title": "Aleph: The First Silent Carrier",
+      "goal": "Aleph carries a vowel mark in these examples; hear the modeled ahhh sound without adding an Aleph consonant.",
+      "practice": [
+        "Circle Patach and box Qamatz.",
+        "Point to א then the mark below; say ahhh for אַ and אָ."
+      ],
+      "href": "/aleph-track.html#lesson-4"
+    },
+    {
+      "id": 5,
+      "title": "Ayin: Another Silent Carrier",
+      "goal": "Ayin is a distinct letter; use a gentle class pronunciation and respect tradition differences.",
+      "practice": [
+        "Match עַ and עָ to the two ahhh marks.",
+        "Practice the teacher’s pronunciation model and listen respectfully to other traditions."
+      ],
+      "href": "/aleph-track.html#lesson-5"
+    },
+    {
+      "id": 6,
+      "title": "Silent Carriers Review: Aleph and Ayin",
+      "goal": "Recognize Aleph and Ayin, then pair them with the two ahhh marks.",
+      "practice": [
+        "Sort Aleph and Ayin letter cards.",
+        "Pair each letter with a Stick Vowel and explain which part gives the sound."
+      ],
+      "href": "/aleph-track.html#lesson-6"
+    },
+    {
+      "id": 7,
+      "title": "Bet and Vet: The Dot Matters",
+      "goal": "Distinguish Bet’s inside dot from Vet’s open center; learn the Pea Vowel beneath the letter.",
+      "practice": [
+        "Circle the Bet ball and underline the Pea below.",
+        "Read בִּ and בִ after naming the inside dot and the beneath dot."
+      ],
+      "href": "/aleph-track.html#lesson-7"
+    },
+    {
+      "id": 8,
+      "title": "Dagesh Practice: Seeing Before Saying",
+      "goal": "Notice the dagesh dot inside a letter before saying its modeled consonant sound.",
+      "practice": [
+        "Find which examples have a dot inside.",
+        "Compare בּ/ב and כּ/כ; echo the community sound model."
+      ],
+      "href": "/aleph-track.html#lesson-8"
+    },
+    {
+      "id": 9,
+      "title": "Bet in Simple Words and Names",
+      "goal": "Read two Bet examples that use the previously taught ahhh marks.",
+      "practice": [
+        "Cover the meanings and read בַּת and בָּא from right to left.",
+        "Uncover the gloss; tell which word means daughter and which means came."
+      ],
+      "href": "/aleph-track.html#lesson-9"
+    },
+    {
+      "id": 10,
+      "title": "Mem and Final Mem: A Letter with an Ending Form",
+      "goal": "Recognize Mem in its regular form and its final form at a word’s end.",
+      "practice": [
+        "Match מ with ם and find each in a letter row.",
+        "Place ם only in the ending box."
+      ],
+      "href": "/aleph-track.html#lesson-10"
+    },
+    {
+      "id": 11,
+      "title": "Shin and Sin: The Dot’s Place Matters",
+      "goal": "The right-side dot cues Shin; the left-side dot cues Sin.",
+      "practice": [
+        "Mark the side of each dot before naming Shin or Sin.",
+        "Sort the sh and s forms; read only after checking the dot."
+      ],
+      "href": "/aleph-track.html#lesson-11"
+    },
+    {
+      "id": 12,
+      "title": "Lamed: The Tall Letter",
+      "goal": "Recognize Lamed by its tall stroke and blend it with known ahhh vowels.",
+      "practice": [
+        "Find Lamed among short letters.",
+        "Trace ל, then blend לַ and לָ."
+      ],
+      "href": "/aleph-track.html#lesson-12"
+    },
+    {
+      "id": 13,
+      "title": "The Dot Over and Vav-Cholam: Oh",
+      "goal": "Cholam is the dot over a letter; Vav-Cholam carries the oh sound.",
+      "practice": [
+        "Point to the dot over the letter in בֹּ and name oh.",
+        "Find the dot over Vav in בוֹ and compare the two oh patterns."
+      ],
+      "href": "/aleph-track.html#lesson-13"
+    },
+    {
+      "id": 14,
+      "title": "Vav: The Connecting Letter",
+      "goal": "Recognize Vav in its upright shape and in a familiar vowel pattern.",
+      "practice": [
+        "Find Vav in a mixed letter row.",
+        "Compare ו with י; name which one is taller."
+      ],
+      "href": "/aleph-track.html#lesson-14"
+    },
+    {
+      "id": 15,
+      "title": "Yod: Small but Important",
+      "goal": "Recognize Yod as a small but important letter.",
+      "practice": [
+        "Find Yod without relying on its place in a row.",
+        "Trace י and blend יַ using the already taught Patach."
+      ],
+      "href": "/aleph-track.html#lesson-15"
+    },
+    {
+      "id": 16,
+      "title": "Hey: A Letter with Breath",
+      "goal": "Recognize Hey by its open shape and gentle breath sound.",
+      "practice": [
+        "Point to the opening in Hey.",
+        "Compare ה and ח; use the class sound model for each."
+      ],
+      "href": "/aleph-track.html#lesson-16"
+    },
+    {
+      "id": 17,
+      "title": "Name-Building Review and the Three Eggs",
+      "goal": "Recognize Yod, Vav, and Hey; introduce Segol, the Three Eggs eh vowel.",
+      "practice": [
+        "Compare Yod, Vav, and Hey by size and opening.",
+        "Count the three Segol dots; read בֶּ and מֶ as eh."
+      ],
+      "href": "/aleph-track.html#lesson-17"
+    },
+    {
+      "id": 18,
+      "title": "Dalet and Resh: Careful Corners",
+      "goal": "Compare Dalet and Resh by their small corner and stroke differences.",
+      "practice": [
+        "Place ד and ר side by side.",
+        "Trace the corner detail slowly; identify each letter in a mixed row."
+      ],
+      "href": "/aleph-track.html#lesson-18"
+    },
+    {
+      "id": 19,
+      "title": "Kaf, Khaf, and Final Kaf",
+      "goal": "Distinguish Kaf, Khaf, and final Kaf; the dot and final position matter.",
+      "practice": [
+        "Sort כּ, כ, and ך by dot and word position.",
+        "Keep the final form in the ending box and echo the Khaf model."
+      ],
+      "href": "/aleph-track.html#lesson-19"
+    },
+    {
+      "id": 20,
+      "title": "Final Forms Family I: Mem, Nun, Kaf",
+      "goal": "Match Mem, Nun, and Kaf with their final forms.",
+      "practice": [
+        "Match each middle form with its final partner.",
+        "Write one family pair and explain where the ending shape belongs."
+      ],
+      "href": "/aleph-track.html#lesson-20"
+    },
+    {
+      "id": 21,
+      "title": "Final Forms Family II: Pey and Tsadi",
+      "goal": "Match Peh and Tsadi with their final forms.",
+      "practice": [
+        "Match פ/ף and צ/ץ.",
+        "Sort regular and final forms, then read the letter names."
+      ],
+      "href": "/aleph-track.html#lesson-21"
+    },
+    {
+      "id": 22,
+      "title": "Final Forms Review: The Ending Doorway",
+      "goal": "Review all five final letter shapes and place each at a word’s end.",
+      "practice": [
+        "Place all five final forms in ending boxes.",
+        "Say each family name and show its regular partner."
+      ],
+      "href": "/aleph-track.html#lesson-22"
+    },
+    {
+      "id": 23,
+      "title": "Chet: A Strong New Sound",
+      "goal": "Recognize Chet as a distinct letter and learn its pronunciation from the teacher.",
+      "practice": [
+        "Find ח among Hey and other shapes.",
+        "Listen to the teacher’s pronunciation and echo at a comfortable level."
+      ],
+      "href": "/aleph-track.html#lesson-23"
+    },
+    {
+      "id": 24,
+      "title": "Tet and Tav: Similar Sounds, Different Letters",
+      "goal": "Recognize Tet and Tav as different letters, even when both represent t.",
+      "practice": [
+        "Find ט and ת in a mixed row.",
+        "Name the shape before saying a sound; both may use t in the class tradition."
+      ],
+      "href": "/aleph-track.html#lesson-24"
+    },
+    {
+      "id": 25,
+      "title": "The OOOH Vowel Pair: Kubutz and Vav-Shuruk",
+      "goal": "Kubutz is the three-dot staircase “OOOH belly”; Vav with its middle dot (Shuruk) also says oo.",
+      "practice": [
+        "Count the three Kubutz dots in בֻ and trace their staircase.",
+        "Point to the dot inside וּ in בוּ; compare the two oo patterns."
+      ],
+      "href": "/aleph-track.html#lesson-25"
+    },
+    {
+      "id": 26,
+      "title": "Qof: The Letter Below the Line",
+      "goal": "Recognize Qof by its descending shape and learn its class pronunciation.",
+      "practice": [
+        "Trace ק and point to its descending feature.",
+        "Compare Qof with Kaf and say which one drops below."
+      ],
+      "href": "/aleph-track.html#lesson-26"
+    },
+    {
+      "id": 27,
+      "title": "Samekh and Zayin: Visual Precision",
+      "goal": "Compare the rounded shape of Samekh with the angled shape of Zayin.",
+      "practice": [
+        "Sort rounded ס and angled ז.",
+        "Find each shape in a mixed row and name it."
+      ],
+      "href": "/aleph-track.html#lesson-27"
+    },
+    {
+      "id": 28,
+      "title": "Gimel: Returning to a Distinct Shape",
+      "goal": "Recognize Gimel by its distinct shape and modeled g sound.",
+      "practice": [
+        "Find ג among similar letters.",
+        "Trace Gimel and say its class-model sound."
+      ],
+      "href": "/aleph-track.html#lesson-28"
+    },
+    {
+      "id": 29,
+      "title": "Review by Family: Quiet, Dotted, Final",
+      "goal": "Sort carrier, dotted, and final-form families.",
+      "practice": [
+        "Sort א/ע, בּ/ב, and מ/ם into the named families.",
+        "Explain one clue used in every group."
+      ],
+      "href": "/aleph-track.html#lesson-29"
+    },
+    {
+      "id": 30,
+      "title": "Review by Shape: Tall, Small, Closed, Confusing",
+      "goal": "Use tall, small, open, closed, and corner features to identify letters.",
+      "practice": [
+        "Sort letters by tall, small, open, closed, and corner features.",
+        "Name the specific letter after pointing to its shape clue."
+      ],
+      "href": "/aleph-track.html#lesson-30"
+    },
+    {
+      "id": 31,
+      "title": "Simple Word: Or — Light",
+      "goal": "Decode אוֹר and connect it to light; Vav-Cholam was taught earlier.",
+      "practice": [
+        "Cover the gloss and picture; decode אוֹר.",
+        "Uncover the meaning and explain which mark cues oh."
+      ],
+      "href": "/aleph-track.html#lesson-31"
+    },
+    {
+      "id": 32,
+      "title": "Simple Word: Shalom",
+      "goal": "Decode שָׁלוֹם and connect it to hello or peace.",
+      "practice": [
+        "Decode שָׁלוֹם before saying its meaning.",
+        "Use it as hello or peace in a teacher-modeled example."
+      ],
+      "href": "/aleph-track.html#lesson-32"
+    },
+    {
+      "id": 33,
+      "title": "Simple Word: Bayit",
+      "goal": "Decode בַּיִת and connect it to house.",
+      "practice": [
+        "Read בַּיִת without a picture.",
+        "Tell which familiar vowel mark helps with the second beat."
+      ],
+      "href": "/aleph-track.html#lesson-33"
+    },
+    {
+      "id": 34,
+      "title": "Names and Hebrew Letters",
+      "goal": "Read Hebrew names from their letters and taught vowel marks.",
+      "practice": [
+        "Read דָּוִד and מֹשֶׁה from the Hebrew letters.",
+        "Point to a vowel mark already studied before saying each name."
+      ],
+      "href": "/aleph-track.html#lesson-34"
+    },
+    {
+      "id": 35,
+      "title": "Aleph Track Readiness Review",
+      "goal": "Show recognition of letters, marks, and familiar words without picture guessing.",
+      "practice": [
+        "Name one letter family, one vowel pattern, and one short word.",
+        "Read a short example aloud and explain the steps, not just the meaning."
+      ],
+      "href": "/aleph-track.html#lesson-35"
+    },
+    {
+      "id": 36,
+      "title": "Celebration of Beginning",
+      "goal": "Reflect on growth and choose a comfortable next learning step.",
+      "practice": [
+        "Choose a letter or word you can now read more confidently.",
+        "Tell a teacher one thing you learned and one thing you want to practice next."
+      ],
+      "href": "/aleph-track.html#lesson-36"
+    }
+  ],
+  "Bet": [
+    {
+      "id": 1,
+      "title": "Blend ahhh and eee",
+      "goal": "Blend a familiar consonant and vowel without guessing a whole word.",
+      "practice": [
+        "Read each small sound before blending the whole word.",
+        "Point to the mother and father in the picture. Read their labels.",
+        "Say each word again without using the picture to guess."
+      ],
+      "href": "/bet-track.html#lesson-1"
+    },
+    {
+      "id": 2,
+      "title": "Close a word with a consonant",
+      "goal": "Read the final consonant without adding an extra vowel.",
+      "practice": [
+        "Touch the rightmost letter first.",
+        "Blend the vowel, then finish with m or d.",
+        "Use the sea and hand picture to check meaning after reading."
+      ],
+      "href": "/bet-track.html#lesson-2"
+    },
+    {
+      "id": 3,
+      "title": "Read the over vowel oh",
+      "goal": "Recognize both common oh spellings and blend a word for light.",
+      "practice": [
+        "Find the dot above in each model.",
+        "Blend oh and r. Finish with r, without an added vowel.",
+        "Read the word, then point to the light in the picture."
+      ],
+      "href": "/bet-track.html#lesson-3"
+    },
+    {
+      "id": 4,
+      "title": "Read the belly vowel oo",
+      "goal": "Read both oo patterns and decode two pictured words.",
+      "practice": [
+        "Find the belly dot and the three-dot staircase.",
+        "Read the word before using the picture.",
+        "Point to the horse or a strawberry to show meaning."
+      ],
+      "href": "/bet-track.html#lesson-4"
+    },
+    {
+      "id": 5,
+      "title": "Read eh and ay carefully",
+      "goal": "Distinguish the three eggs from the two side-by-side dots.",
+      "practice": [
+        "Point to each vowel and say eh or the class ay cue.",
+        "Read bread slowly, joining the last m without adding a vowel.",
+        "Read son with your teacher: class bayn; often ben in modern Hebrew."
+      ],
+      "href": "/bet-track.html#lesson-5"
+    },
+    {
+      "id": 6,
+      "title": "Read a greeting with meaning",
+      "goal": "Blend known patterns into shalom and two short greetings.",
+      "practice": [
+        "Read shalom without a picture hint.",
+        "Read each greeting, then tell whom you greeted.",
+        "Act out one greeting with a study partner."
+      ],
+      "href": "/bet-track.html#lesson-6"
+    },
+    {
+      "id": 7,
+      "title": "Meet Gimel in a fish word",
+      "goal": "Recognize Gimel and blend it with a familiar final consonant.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: dag.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-7"
+    },
+    {
+      "id": 8,
+      "title": "Compare son and daughter",
+      "goal": "Recognize final Nun and distinguish two short family words by their final consonants.",
+      "practice": [
+        "Read the vowel and consonant sounds before you name the family word.",
+        "Compare the last letter in בֵּן and בַּת.",
+        "Say both words again without picture hints."
+      ],
+      "href": "/bet-track.html#lesson-8"
+    },
+    {
+      "id": 9,
+      "title": "Read Peh in פֶּה",
+      "goal": "Read Peh with its inside dot and recognize the word for mouth.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: peh.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-9"
+    },
+    {
+      "id": 10,
+      "title": "Read Tet in טוֹב",
+      "goal": "Recognize Tet and blend a familiar oh sound with Vet.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: tov.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-10"
+    },
+    {
+      "id": 11,
+      "title": "Build a two-beat dog word",
+      "goal": "Blend two familiar syllables into one word without guessing from the picture.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: ke-lev.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-11"
+    },
+    {
+      "id": 12,
+      "title": "Meet Zayin in זֶה",
+      "goal": "Recognize Zayin and read a short word meaning this.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: zeh.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-12"
+    },
+    {
+      "id": 13,
+      "title": "Read a tree word with final Tsadi",
+      "goal": "Notice the final form Tsadi and close the word without adding a vowel.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: etz.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-13"
+    },
+    {
+      "id": 14,
+      "title": "Hear Qof in קוֹל",
+      "goal": "Recognize Qof and decode a word for voice or sound.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: kol.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-14"
+    },
+    {
+      "id": 15,
+      "title": "Read Lamed in לֵב",
+      "goal": "Use the ay vowel cue to read a one-beat word for heart.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: lev.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-15"
+    },
+    {
+      "id": 16,
+      "title": "Read Nun in נֵר",
+      "goal": "Blend Nun with the ay vowel cue and finish with Resh.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: ner.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-16"
+    },
+    {
+      "id": 17,
+      "title": "Read small: קָטָן",
+      "goal": "Decode a two-beat describing word and attend to its vowel marks.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: ka-tan.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-17"
+    },
+    {
+      "id": 18,
+      "title": "Read big: גָּדוֹל",
+      "goal": "Blend three familiar consonants and two vowel sounds into a describing word.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: ga-dol.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-18"
+    },
+    {
+      "id": 19,
+      "title": "Read a familiar day word",
+      "goal": "Read יוֹם as one word and hear its final Mem.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: yom.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-19"
+    },
+    {
+      "id": 20,
+      "title": "Blend the two beats in מַיִם",
+      "goal": "Read a two-beat word and keep both syllables in order.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: ma-yim.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-20"
+    },
+    {
+      "id": 21,
+      "title": "Read the repeated sun word",
+      "goal": "Notice a repeated syllable pattern while decoding a familiar two-beat word.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: she-mesh.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-21"
+    },
+    {
+      "id": 22,
+      "title": "Read a city word",
+      "goal": "Blend the hiriq sound with familiar Yud and Resh.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: ir.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-22"
+    },
+    {
+      "id": 23,
+      "title": "Read the word for head",
+      "goal": "Use the over vowel and familiar Shin to decode a one-beat word.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: rosh.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-23"
+    },
+    {
+      "id": 24,
+      "title": "Read a book and a describing word",
+      "goal": "Read a two-word phrase and notice that Hebrew places the describing word after the noun.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: sefer tov.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-24"
+    },
+    {
+      "id": 25,
+      "title": "Compare house and garden",
+      "goal": "Read two place words and compare their different lengths and endings.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: bayit · gan.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-25"
+    },
+    {
+      "id": 26,
+      "title": "Compare big and small",
+      "goal": "Use vowel marks and known vocabulary to distinguish two opposites.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: gadol · katan.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-26"
+    },
+    {
+      "id": 27,
+      "title": "Ask מָה זֶה?",
+      "goal": "Read a simple question using two familiar words.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: mah zeh?.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-27"
+    },
+    {
+      "id": 28,
+      "title": "Answer with זֶה סֵפֶר",
+      "goal": "Read a simple identification phrase and connect it to an object.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: zeh sefer.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-28"
+    },
+    {
+      "id": 29,
+      "title": "Read an object with a friend",
+      "goal": "Practice a noun and a familiar describing word as a phrase.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: kelev gadol.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-29"
+    },
+    {
+      "id": 30,
+      "title": "Read a small fish phrase",
+      "goal": "Combine a familiar noun with a describing word and preserve word order.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: dag katan.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-30"
+    },
+    {
+      "id": 31,
+      "title": "Read family words without picture clues",
+      "goal": "Use vowels and final consonants to identify familiar family words independently.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: abba · imma · ben · bat.",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-31"
+    },
+    {
+      "id": 32,
+      "title": "Read the Bet Track mini passage",
+      "goal": "Read a short set of linked phrases and explain what each one means.",
+      "practice": [
+        "Point to the rightmost letter first, then move left as you read.",
+        "Say the word or phrase aloud: mah zeh? zeh dag. dag katan..",
+        "Tell the meaning in your own words, then check the picture."
+      ],
+      "href": "/bet-track.html#lesson-32"
+    }
+  ],
+  "Gimel": [
+    {
+      "id": 1,
+      "title": "Reading with Meaning",
+      "goal": "See the letters, read the word from right to left, then explain its meaning.",
+      "practice": [
+        "Point to each letter in אוֹר. Read or first; look for light only after you have decoded it."
+      ],
+      "href": "/gimel-track.html#lesson-1"
+    },
+    {
+      "id": 2,
+      "title": "Notice the Sun Word",
+      "goal": "Read from the first letter on the right. Let the two syllables stay clear: she-mesh.",
+      "practice": [
+        "Point to each letter as you read; then cover the picture and tell what the word means."
+      ],
+      "href": "/gimel-track.html#lesson-2"
+    },
+    {
+      "id": 3,
+      "title": "Read a Hand Word",
+      "goal": "Blend the vowel and finish with ד, Dalet. Do not add an extra vowel after the last letter.",
+      "practice": [
+        "Touch the final letter only after you have read the vowel."
+      ],
+      "href": "/gimel-track.html#lesson-3"
+    },
+    {
+      "id": 4,
+      "title": "Read a Sea Word",
+      "goal": "Read right to left and close the word with final Mem, ם.",
+      "practice": [
+        "Stretch the vowel briefly, then close with m."
+      ],
+      "href": "/gimel-track.html#lesson-4"
+    },
+    {
+      "id": 5,
+      "title": "Read Water in Two Beats",
+      "goal": "Hear the word in two beats: ma-yim. The final ם keeps its m sound.",
+      "practice": [
+        "Say both beats, then blend them into one word."
+      ],
+      "href": "/gimel-track.html#lesson-5"
+    },
+    {
+      "id": 6,
+      "title": "Read a House Word",
+      "goal": "Read the Bet first, then follow the vowel pattern toward Tav. The word names a place to live.",
+      "practice": [
+        "Read before looking at the picture. Point to a house only after you say the word."
+      ],
+      "href": "/gimel-track.html#lesson-6"
+    },
+    {
+      "id": 7,
+      "title": "Read a Bread Word",
+      "goal": "Read the two parts slowly, then close with ם. Follow your teacher’s model for ח.",
+      "practice": [
+        "Do not guess from the picture; use the letters and vowels first."
+      ],
+      "href": "/gimel-track.html#lesson-7"
+    },
+    {
+      "id": 8,
+      "title": "Read a Strawberry Word",
+      "goal": "The two ת letters frame the oo sound. Keep the word short and clear.",
+      "practice": [
+        "Point to the middle vowel, then say the first and last sounds."
+      ],
+      "href": "/gimel-track.html#lesson-8"
+    },
+    {
+      "id": 9,
+      "title": "Compare Sea and Hand",
+      "goal": "The first letter and vowel are alike. The final consonant changes the word’s meaning.",
+      "practice": [
+        "Read both words, then point to the final letter that makes them different."
+      ],
+      "href": "/gimel-track.html#lesson-9"
+    },
+    {
+      "id": 10,
+      "title": "Ask Who?",
+      "goal": "This short word asks about a person. Read it as one smooth syllable.",
+      "practice": [
+        "Ask “מִי?” and invite a partner to answer with a person’s name."
+      ],
+      "href": "/gimel-track.html#lesson-10"
+    },
+    {
+      "id": 11,
+      "title": "Use a Greeting",
+      "goal": "Read the parts sha-lom. The same greeting can open or close a conversation.",
+      "practice": [
+        "Say shalom to a partner, then use it again when you part."
+      ],
+      "href": "/gimel-track.html#lesson-11"
+    },
+    {
+      "id": 12,
+      "title": "Read Mother",
+      "goal": "Use the class pronunciation model. Read the whole word before connecting it to a person.",
+      "practice": [
+        "Say the word gently, then point to the matching family picture."
+      ],
+      "href": "/gimel-track.html#lesson-12"
+    },
+    {
+      "id": 13,
+      "title": "Read Father",
+      "goal": "Notice the repeated sound pattern. Read both syllables without rushing.",
+      "practice": [
+        "Read the word, then use it in a greeting: שָׁלוֹם אַבָּא."
+      ],
+      "href": "/gimel-track.html#lesson-13"
+    },
+    {
+      "id": 14,
+      "title": "Read Son",
+      "goal": "Start at Bet and finish with final Nun, ן. The last form changes shape, not sound.",
+      "practice": [
+        "Find ן at the end and keep its n sound."
+      ],
+      "href": "/gimel-track.html#lesson-14"
+    },
+    {
+      "id": 15,
+      "title": "Read a Book Word",
+      "goal": "Read the vowel under Samech, then the two syllables. Follow your teacher’s pronunciation for Peh.",
+      "practice": [
+        "Read the word first. Then choose a book and say סֵפֶר."
+      ],
+      "href": "/gimel-track.html#lesson-15"
+    },
+    {
+      "id": 16,
+      "title": "Read Child",
+      "goal": "Read both short syllables and finish with Dalet. A word can name a person.",
+      "practice": [
+        "Say the word, then show the picture that matches it."
+      ],
+      "href": "/gimel-track.html#lesson-16"
+    },
+    {
+      "id": 17,
+      "title": "Read Girl",
+      "goal": "Compare this word with יֶלֶד. Notice how a different ending can change the word.",
+      "practice": [
+        "Read both words aloud with a teacher, then sort the matching pictures."
+      ],
+      "href": "/gimel-track.html#lesson-17"
+    },
+    {
+      "id": 18,
+      "title": "Read Heart",
+      "goal": "The final ב without a dot is read as v in this word. Keep the final sound soft.",
+      "practice": [
+        "Read the word, then connect “heart” to a feeling or kind action."
+      ],
+      "href": "/gimel-track.html#lesson-18"
+    },
+    {
+      "id": 19,
+      "title": "Read Friend",
+      "goal": "Follow the teacher’s model for ח. Read both syllables before naming the relationship.",
+      "practice": [
+        "Read the word, then use it to greet a friend."
+      ],
+      "href": "/gimel-track.html#lesson-19"
+    },
+    {
+      "id": 20,
+      "title": "Read Good",
+      "goal": "The over vowel gives oh here. Finish with Bet, which is soft after the vowel.",
+      "practice": [
+        "Read טוֹב, then use it with a picture or object you like."
+      ],
+      "href": "/gimel-track.html#lesson-20"
+    },
+    {
+      "id": 21,
+      "title": "Read Day",
+      "goal": "Read the whole word as one beat. Final Mem closes the word.",
+      "practice": [
+        "Say יוֹם and point to a picture of daytime."
+      ],
+      "href": "/gimel-track.html#lesson-21"
+    },
+    {
+      "id": 22,
+      "title": "Read Song",
+      "goal": "Find the dot on the right side of ש for Shin. Read the vowel and finish with Resh.",
+      "practice": [
+        "Read the word, then hum a short tune you know."
+      ],
+      "href": "/gimel-track.html#lesson-22"
+    },
+    {
+      "id": 23,
+      "title": "Read Voice",
+      "goal": "The Qof begins the word. Read the oh pattern and close with Lamed.",
+      "practice": [
+        "Say קוֹל softly and loudly; notice that the meaning stays the same."
+      ],
+      "href": "/gimel-track.html#lesson-23"
+    },
+    {
+      "id": 24,
+      "title": "Read Flower",
+      "goal": "Read the first syllable, then follow the vowel under Resh. Use your teacher’s model for ח.",
+      "practice": [
+        "Trace the word from right to left and match it to a flower."
+      ],
+      "href": "/gimel-track.html#lesson-24"
+    },
+    {
+      "id": 25,
+      "title": "Read Bird",
+      "goal": "The first letter is Tsadi. Read all three parts slowly, then blend them.",
+      "practice": [
+        "Point to each sound. Use the picture only after you have decoded the word."
+      ],
+      "href": "/gimel-track.html#lesson-25"
+    },
+    {
+      "id": 26,
+      "title": "Read Tree",
+      "goal": "The final form ץ is Tsadi at the end of a word. Its shape changes, but its sound remains.",
+      "practice": [
+        "Find the final letter and say its sound without adding a vowel."
+      ],
+      "href": "/gimel-track.html#lesson-26"
+    },
+    {
+      "id": 27,
+      "title": "Read King",
+      "goal": "Final Kaf ך appears at the end. The small sheva here closes the word; follow the teacher’s model.",
+      "practice": [
+        "Read the word, then point to final ך. Do not add another syllable."
+      ],
+      "href": "/gimel-track.html#lesson-27"
+    },
+    {
+      "id": 28,
+      "title": "Read Silver",
+      "goal": "Kaf begins the word and final Peh ף closes it. A final letter keeps its familiar sound.",
+      "practice": [
+        "Find the two letters with changed or dotted forms, then read the word."
+      ],
+      "href": "/gimel-track.html#lesson-28"
+    },
+    {
+      "id": 29,
+      "title": "Read Land",
+      "goal": "The word ends with final Tsadi ץ. Read to the end without adding an extra vowel.",
+      "practice": [
+        "Point to the final form and compare it with צ at the start of צִפּוֹר."
+      ],
+      "href": "/gimel-track.html#lesson-29"
+    },
+    {
+      "id": 30,
+      "title": "Say “This Is a Book”",
+      "goal": "Read each word, then join them. זֶה points to something nearby; סֵפֶר names it.",
+      "practice": [
+        "Place a book nearby, point to it, and say זֶה סֵפֶר."
+      ],
+      "href": "/gimel-track.html#lesson-30"
+    },
+    {
+      "id": 31,
+      "title": "Ask “What Is This?”",
+      "goal": "Read the question words together. Let your voice show that you are asking.",
+      "practice": [
+        "Point to a familiar object and ask מַה זֶה? Let your partner answer."
+      ],
+      "href": "/gimel-track.html#lesson-31"
+    },
+    {
+      "id": 32,
+      "title": "Read “I Have a Book”",
+      "goal": "Read the phrase in three parts. Keep the spaces between words, then say the whole idea.",
+      "practice": [
+        "Hold a book and say the phrase. Then trade roles with a partner."
+      ],
+      "href": "/gimel-track.html#lesson-32"
+    }
+  ]
+}

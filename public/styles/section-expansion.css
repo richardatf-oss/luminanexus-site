@@ -1,0 +1,36 @@
+.resource-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin:1.5rem 0; }
+.resource-card { padding:1.5rem; border:1px solid #dbe3e9; border-radius:16px; background:white; min-width:0; }
+.resource-card p { color:#526075; }
+.resource-card a { display:block; margin-top:.8rem; font:600 .95rem/1.5 Arial,sans-serif; }
+.resource-form { display:grid; grid-template-columns:.7fr 1.8fr .8fr; gap:1rem; padding:1.3rem; background:#eef3f8; border-radius:14px; }
+.resource-form label, .planner-notes-label { display:grid; gap:.4rem; font:600 1rem/1.5 Arial,sans-serif; }
+.resource-form :is(select,input), .planner-notes-label textarea { min-width:0; max-width:100%; width:100%; padding:.75rem; color:#14213d; background:white; border:1px solid #aab9cb; border-radius:8px; font:1rem/1.5 Arial,sans-serif; }
+.resource-form button { grid-column:1/-1; justify-self:start; cursor:pointer; }
+.resource-plan { padding:1.5rem; border:1px solid #d2dfd5; border-radius:16px; background:#f8fcf8; }
+.resource-plan table { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:1rem; }
+.resource-plan th, .resource-plan td { padding:.8rem; text-align:left; border-bottom:1px solid #cbd8d0; vertical-align:top; }
+.resource-plan th:first-child, .resource-plan td:first-child { width:100px; }
+.resource-plan h3 { margin-top:1.2rem; }
+.resource-steps li { margin-bottom:1rem; }
+.printed-notes { display:none; white-space:pre-wrap; }
+.study-topic { padding:2.5rem 0; border-top:1px solid #dfe4e9; }
+.study-topic > p { max-width:850px; }
+.study-task { padding:1.2rem 1.5rem; border-radius:12px; background:#eef3f8; }
+.study-task h3 { margin-bottom:.5rem; }
+.study-task ol { padding-left:1.25rem; }
+.study-task li { margin-bottom:.7rem; }
+.study-topic .page-actions { margin-bottom:.8rem; }
+.reader-panel { padding:1.4rem; border:1px solid #cedbdb; border-radius:16px; background:#f5faf9; margin:1.5rem 0; }
+.reader-panel h2 { border:0; margin-top:0; padding-top:0; }
+.reader-controls { display:flex; align-items:end; gap:.8rem; flex-wrap:wrap; }
+.reader-controls label { display:grid; gap:.4rem; flex:1; min-width:0; font-weight:bold; }
+.reader-controls select { min-width:0; width:100%; padding:.7rem; font:inherit; border:1px solid #aab9cb; border-radius:8px; background:white; }
+.reader-controls button, .read-source { padding:.7rem 1rem; border:1px solid #244a79; border-radius:8px; background:#244a79; color:white; font:600 .95rem/1.5 Arial,sans-serif; cursor:pointer; }
+.read-source { margin-top:.5rem; align-self:flex-start; }
+.reader-columns { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.reader-columns p { white-space:pre-wrap; }
+.reader-hebrew { direction:rtl; font-family:'Frank Ruhl Libre',serif; font-size:1.7rem; line-height:1.8; }
+.reader-credit { color:#526075; font-size:.9rem; }
+.reader-context { padding:1rem; background:white; border-radius:10px; }
+@media(max-width:760px) { .resource-grid,.resource-form,.reader-columns { grid-template-columns:1fr; }.resource-plan { padding:1rem; }.resource-plan th,.resource-plan td { padding:.6rem; } }
+@media print { body.print-plan .ln-navigation,body.print-plan header,body.print-plan .page-footer,body.print-plan .page-jumps,body.print-plan main>section:not(#lesson-planner),body.print-plan #lesson-planner>:not(#teaching-plan),body.print-plan #teaching-plan .page-actions,body.print-plan .planner-notes-label { display:none!important; }body.print-plan #teaching-plan { display:block; border:0; padding:0; background:white; }body.print-plan #lesson-planner { padding:0; border:0; }body.print-plan .printed-notes { display:block; }body.print-plan .page-wrap { width:100%; }.reader-controls,.read-source { display:none; } }
