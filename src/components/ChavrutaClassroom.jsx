@@ -147,6 +147,8 @@ function ChavrutaClassroom() {
     setError("");
     setAnswer("");
 
+    let calendarRegion = '1';
+    try { if (window.localStorage.getItem('luminanexus-reading-region') === '0') calendarRegion = '0'; } catch {}
     try {
       const response = await fetch("/.netlify/functions/chavruta", {
         method: "POST",
@@ -160,6 +162,7 @@ function ChavrutaClassroom() {
             currentSkill: activeProfile.currentSkill,
           },
           mode,
+          ...(mode === 'noahide-parcha' ? { calendar: { diaspora: calendarRegion, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC' } } : {}),
         }),
       });
 
@@ -263,9 +266,9 @@ function ChavrutaClassroom() {
 
             {mode === "noahide-parcha" && (
               <p className="context-note">
-                Parcha mode offers a structured Noahide reflection with source
-                boundaries. Name the portion rather than asking Chavruta to
-                guess this week’s reading.
+                Parcha mode checks this week’s Torah reading before answering.
+                Your Diaspora or Israel choice on the daily study page carries
+                here. You can also ask about a different named portion.
               </p>
             )}
 
@@ -289,7 +292,7 @@ function ChavrutaClassroom() {
                 : mode === "name-study"
                   ? "Enter a first name or nickname and tell Chavruta how you pronounce it..."
                   : mode === "noahide-parcha"
-                    ? "Name a parsha and ask for a Noahide reflection..."
+                    ? "Help me study this week’s parsha from a Noahide perspective..."
                     : "Ask a Hebrew learning question..."}
               rows={6}
             />
