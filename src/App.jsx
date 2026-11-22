@@ -1,747 +1,138 @@
-import Header from "./components/Header.jsx";
-import { openChavruta } from "./data/chavruta-navigation.js";
 import { useEffect, useState } from "react";
+import Header from "./components/Header.jsx";
 import ChavrutaClassroom from "./components/ChavrutaClassroom.jsx";
 import DoorwayFinder from "./components/DoorwayFinder.jsx";
-import StudyDoorways from "./components/StudyDoorways.jsx";
-
-const zeffyLink =
-  "https://www.zeffy.com/en-US/donation-form/luminanexus-a-digital-sanctuary-of-light";
+import { openChavruta, readLessonContext } from "./data/chavruta-navigation.js";
+import "./styles/home.css";
 
 const tracks = [
-  {
-    letter: "א",
-    title: "Aleph Track",
-    page: "/aleph-track.html",
-    pdf: "/downloads/Aleph_Track_Printable.pdf",
-    subtitle: "First Beginning",
-    image: "/images/aleph-doorway.webp",
-    alt: "An illustrated Hebrew workbook beside a glowing doorway",
-    description:
-      "For students who are new to Hebrew at any grade level. Learners begin with directionality, letter recognition, sounds, names, simple words, and confidence.",
-  },
-  {
-    letter: "ב",
-    title: "Bet Track",
-    page: "/bet-track.html",
-    pdf: "/downloads/Bet_Track_Printable.pdf",
-    subtitle: "Building the Word",
-    image: "/images/bet-building-words.webp",
-    alt: "Illustrated Hebrew letter blocks arranged for word-building",
-    description:
-      "For students ready to blend familiar sounds, learn vowel patterns, close syllables, and decode words and short greetings with meaning.",
-  },
-  {
-    letter: "ג",
-    title: "Gimel Track",
-    page: "/gimel-track.html",
-    pdf: "/downloads/Gimel_Track_Printable.pdf",
-    subtitle: "Reading with Meaning",
-    image: "/images/gimel-reading-meaning.webp",
-    alt: "An illustrated path of Hebrew letters rising from an open book",
-    description:
-      "For students ready to read words and short phrases while exploring roots, fluency, culture, meaning, and interpretation.",
-  },
+  { name: "Aleph", letter: "א", subtitle: "First letters", lessons: 36, image: "aleph-doorway.webp", description: "Learn the shapes, sounds, and vowels. Begin reading with small, encouraging steps." },
+  { name: "Bet", letter: "ב", subtitle: "Build words", lessons: 32, image: "bet-building-words.webp", description: "Blend familiar sounds into words, greetings, and short conversations." },
+  { name: "Gimel", letter: "ג", subtitle: "Read with meaning", lessons: 32, image: "gimel-reading-meaning.webp", description: "Read words and phrases, connect them to meaning, and explain what you notice." },
 ];
+const legacyPages = new Set(["mission", "pilot", "schools", "support"]);
 
-function App() {
-  const [nameToExplore, setNameToExplore] = useState("");
+function readLearningPlace() {
+  try {
+    const place = JSON.parse(localStorage.getItem("luminanexus-learning-place-v1"));
+    const track = tracks.find(item => item.name === place?.track);
+    if (track && Number.isInteger(place.lesson) && place.lesson >= 1 && place.lesson <= track.lessons && typeof place.title === "string") {
+      return { ...place, title: place.title.slice(0, 160), href: `/${track.name.toLowerCase()}-track.html#lesson-${place.lesson}` };
+    }
+  } catch {}
+  return null;
+}
+
+export default function App() {
+  const [learningPlace, setLearningPlace] = useState(readLearningPlace);
+  const [finderOpen, setFinderOpen] = useState(location.hash === "#find-your-doorway");
+  const [name, setName] = useState("");
   const [nameError, setNameError] = useState("");
 
-  function exploreHebrewName(event) {
-    event.preventDefault();
-    const name = nameToExplore.trim();
-    if (!name) {
-      setNameError("Enter a first name or nickname to begin.");
-      return;
-    }
-    setNameError("");
-    const question = `Help me explore the name "${name}". If its pronunciation is not clear, ask me or offer the likely alternatives. Suggest a plausible Hebrew-letter spelling and show a readable transliteration; explain what assumptions affect the spelling. Identify the Hebrew letters and likely sounds. Then offer a playful, clearly labeled creative riff inspired by the letters or verified related Hebrew words. Keep that creative riff separate from the name's actual etymology and from established Jewish interpretation. Do not invent a traditional meaning, gematria, or source. Name: ${name}`;
-    openChavruta({ mode: "name-study", question });
-  }
-
   useEffect(() => {
-    function activateLink(event) {
+    function alignDestination() {
+      const hash = location.hash.slice(1);
+      if (legacyPages.has(hash)) { location.replace(`/about.html#${hash}`); return; }
+      if (hash === "noahide-parcha") { location.replace("/noahide-parcha.html"); return; }
+      if (hash === "teacher-dashboard") { location.replace("/#resources"); return; }
+      if (hash === "find-your-doorway") setFinderOpen(true);
+      if (hash === "chavruta") openChavruta();
+    }
+    function activateChavruta(event) {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const link = event.target.closest?.("a[href]");
       if (!link || link.target === "_blank" || link.hasAttribute("download")) return;
-      const url = new URL(link.href, window.location.href);
-      if (url.origin !== window.location.origin || url.pathname !== window.location.pathname || url.hash !== "#chavruta") return;
+      const url = new URL(link.href);
+      if (url.origin !== location.origin || url.pathname !== location.pathname || url.hash !== "#chavruta") return;
       event.preventDefault();
-      window.history.pushState(null, "", url);
-      openChavruta({ mode: url.searchParams.get("chavrutaMode"), question: url.searchParams.get("chavrutaQuestion") ?? undefined });
+      history.pushState(null, "", url);
+      openChavruta({ mode: url.searchParams.get("chavrutaMode"), question: url.searchParams.get("chavrutaQuestion") ?? undefined, ...readLessonContext(url.search) });
     }
-    function alignInitialChavruta() {
-      if (window.location.hash === "#chavruta") openChavruta();
-    }
-    document.addEventListener("click", activateLink);
-    window.addEventListener("hashchange", alignInitialChavruta);
-    window.addEventListener("load", alignInitialChavruta, { once: true });
-    alignInitialChavruta();
+    const refreshPlace = () => setLearningPlace(readLearningPlace());
+    document.addEventListener("click", activateChavruta);
+    window.addEventListener("hashchange", alignDestination);
+    window.addEventListener("load", alignDestination, { once: true });
+    window.addEventListener("storage", refreshPlace);
+    window.addEventListener("pageshow", refreshPlace);
+    alignDestination();
     return () => {
-      document.removeEventListener("click", activateLink);
-      window.removeEventListener("hashchange", alignInitialChavruta);
-      window.removeEventListener("load", alignInitialChavruta);
+      document.removeEventListener("click", activateChavruta);
+      window.removeEventListener("hashchange", alignDestination);
+      window.removeEventListener("load", alignDestination);
+      window.removeEventListener("storage", refreshPlace);
+      window.removeEventListener("pageshow", refreshPlace);
     };
   }, []);
 
+  function exploreName(event) {
+    event.preventDefault();
+    if (!name.trim()) { setNameError("Enter a first name or nickname to begin."); return; }
+    setNameError("");
+    openChavruta({ mode: "name-study", question: `Help me explore the name "${name.trim()}". Ask about pronunciation if needed. Suggest a plausible Hebrew-letter spelling and readable transliteration. Identify the letters and sounds, then offer a playful, clearly labeled creative riff. Separate this from the name's actual etymology and established Jewish interpretation; do not invent a traditional meaning or source.` });
+  }
 
   return (
-    <div className="site">
+    <div className="site home-page">
       <Header />
-
       <main id="main-content" tabIndex={-1}>
-        <section id="home" className="hero">
-          <div>
-            <p className="eyebrow">Hebrew for Every Grade, Every Beginning</p>
-
-            <h1>
-              No student is late to Hebrew.
-              <span>Every letter is a beginning.</span>
-            </h1>
-
-            <p className="hero-text">
-              Accessible Hebrew enrichment for schools, families, and beginning
-              learners—meeting every student by readiness, not shame or grade level.
-            </p>
-
+        <section id="home" className="hero home-hero">
+          <div className="home-hero-copy">
+            <p className="eyebrow">LuminaNexus Foundation · Ivrit HaOr</p>
+            <h1>Every letter is <span>a beginning.</span></h1>
+            <p className="hero-text">Learn Hebrew. Explore Jewish wisdom. Find a place to begin, and a study partner for the journey.</p>
             <div className="hero-actions">
-              <a className="button primary" href="#study-doorways">
-                Choose Your Doorway
-              </a>
-
-              <a className="button secondary" href="#chavruta">
-                Open Chavruta
-              </a>
-
-              <a className="button secondary" href="#support">
-                Support the Work
-              </a>
+              <a className="button primary" href="#tracks">Start learning Hebrew</a>
+              <a className="button secondary" href="#chavruta">Meet Chavruta</a>
             </div>
+            <p className="home-welcome">No student is late to Hebrew. Start by readiness, at any age.</p>
           </div>
-
-          <aside className="hero-card hero-image-card" aria-label="Hebrew word for light">
-            <img
-              src="/images/ivrit-haor-hero.webp"
-              alt="A luminous tree and doorway rising from an open book with Hebrew letters"
-              fetchPriority="high"
-            />
-            <div className="hebrew-large" dir="rtl">
-              אור
-            </div>
-            <p className="translit">or</p>
-            <p className="meaning">Light</p>
-          </aside>
+          <figure className="home-hero-art">
+            <img src="/images/ivrit-haor-hero.webp" alt="An open book becoming a luminous tree, with a welcoming doorway among its roots" fetchPriority="high" width="1024" height="1024" />
+            <figcaption><span lang="he" dir="rtl">אוֹר</span><span>or · light</span></figcaption>
+          </figure>
         </section>
 
-        <section id="mission" className="section">
-          <div className="section-heading">
-            <p className="eyebrow">Our Mission</p>
+        {learningPlace && <aside className="home-resume" aria-label="Continue learning">
+          <div><span className="eyebrow">Welcome back</span><p><strong>{learningPlace.track} · Lesson {learningPlace.lesson}</strong> — {learningPlace.title}</p><small>Your last opened lesson on this device.</small></div>
+          <div className="home-resume-actions"><a className="button primary" href={learningPlace.href}>Continue learning</a><button className="text-button" type="button" onClick={() => { try { localStorage.removeItem("luminanexus-learning-place-v1"); } catch {} setLearningPlace(null); }}>Clear saved place</button></div>
+        </aside>}
 
-            <h2>Every student begins somewhere.</h2>
-
-            <p className="section-intro">
-              LuminaNexus Foundation provides accessible Hebrew education for
-              K–12 students through a one-hour-per-week enrichment program
-              designed so learners can enter at any grade level and quickly
-              find their place.
-            </p>
-          </div>
-
-          <div className="feature-grid">
-            <article className="feature-card">
-              <h3>Begin with letters</h3>
-              <p>
-                Learning begins with Hebrew’s right-to-left direction, then the
-                shapes, names, and sounds of its letters. New vowel patterns
-                are introduced before learners use them to read.
-              </p>
-              <p>
-                <strong>What learners do:</strong> notice, name, trace, sort,
-                and read short letter patterns, with calm review and small
-                practice checks along the way.
-              </p>
-              <a className="button secondary" href="/aleph-track.html">
-                Explore the Aleph Track
-              </a>
-            </article>
-
-            <article className="feature-card">
-              <h3>Begin with names</h3>
-              <p>
-                Familiar names offer a personal doorway into Hebrew. Learners
-                can see how letters represent sounds, and how spelling may
-                change with pronunciation or transliteration choices.
-              </p>
-              <p>
-                Chavruta can identify the letters and sounds, then offer a
-                playful riff while keeping creative associations separate from
-                a name’s actual history or established interpretation.
-              </p>
-              <form className="form-stack" onSubmit={exploreHebrewName}>
-                <label htmlFor="name-explorer">Explore a first name or nickname</label>
-                <input
-                  id="name-explorer"
-                  type="text"
-                  maxLength={60}
-                  value={nameToExplore}
-                  onChange={event => setNameToExplore(event.target.value)}
-                  onInput={() => setNameError("")}
-                  placeholder="For example, Elijah"
-                  aria-describedby="name-explorer-note"
-                />
-                <p className="note" id="name-explorer-note">
-                  Use a first name or nickname, not a full name. Chavruta will
-                  ask about pronunciation when it matters.
-                </p>
-                <button className="button secondary" type="submit">
-                  Explore this name with Chavruta
-                </button>
-                {nameError && <p className="error" role="alert">{nameError}</p>}
-              </form>
-            </article>
-
-            <article className="feature-card">
-              <h3>Begin with meaning</h3>
-              <p>
-                Once letters and vowels connect, learners read useful words
-                and greetings, notice roots, and explore how meaning shifts
-                with grammar, word form, and context.
-              </p>
-              <p>
-                Learners practice decoding, compare meanings in short passages,
-                and ask what a word means in its setting. Language facts stay
-                distinct from symbolic or creative reflection.
-              </p>
-              <a className="button secondary" href="/gimel-track.html">
-                Explore the Gimel Track
-              </a>
-            </article>
+        <section id="study-doorways" className="section home-paths" aria-labelledby="paths-heading">
+          <div className="section-heading"><p className="eyebrow">Your next step</p><h2 id="paths-heading">What brings you here?</h2></div>
+          <div className="home-path-grid">
+            <article className="home-path"><span className="home-path-mark" lang="he" aria-hidden="true">א</span><h3>Learn Hebrew</h3><p>Letters, sounds, words, and meaning. Three gentle tracks meet you where you are.</p><a href="#tracks">Choose a Hebrew track</a></article>
+            <article className="home-path"><span className="home-path-mark" lang="he" aria-hidden="true">ס</span><h3>Explore Jewish study</h3><p>Read a source, explore the 231 Gates, or follow the Noahide daily study path.</p><a href="/study.html">Find a study path</a></article>
+            <article className="home-path"><span className="home-path-mark" lang="he" aria-hidden="true">מ</span><h3>Teach a class</h3><p>A teacher guide, a first lesson, and practical tools to help every learner begin.</p><a href="#resources">Open teacher resources</a></article>
           </div>
         </section>
 
-        <StudyDoorways />
-
-        <section id="ivrit-haor" className="section warm">
-          <div className="section-heading">
-            <p className="eyebrow">Ivrit HaOr</p>
-
-            <h2>Hebrew of Light: the LuminaNexus curriculum.</h2>
-
-            <p className="section-intro">
-              Ivrit HaOr is a readiness-based Hebrew enrichment program for K–12
-              students. It introduces Hebrew letters, sounds, names, roots,
-              culture, and meaning through a gentle one-hour-per-week model.
-            </p>
+        <section id="ivrit-haor" className="section home-learning">
+          <div id="tracks" className="section-heading"><p className="eyebrow">Ivrit HaOr · Hebrew of Light</p><h2>From the first letter<br />to the meaning of a word.</h2><p className="section-intro">Choose by what feels familiar, rather than age or grade. Each track pairs online lessons with a printable workbook. Repeat a lesson whenever it helps.</p></div>
+          <div className="track-grid">
+            {tracks.map(track => <article className="track-card home-track" key={track.name}>
+              <img className="track-image" src={`/images/${track.image}`} alt="" loading="lazy" width="1024" height="1024" />
+              <div className="home-track-copy"><p className="eyebrow">{track.lessons} lessons · {track.name} Track</p><h3><span lang="he" aria-hidden="true">{track.letter}</span> {track.subtitle}</h3><p>{track.description}</p>
+              <a className="button primary" href={`/${track.name.toLowerCase()}-track.html#lesson-1`}>Begin {track.name}</a>
+              <a className="home-download" href={`/downloads/${track.name}_Track_Printable.pdf`}>Printable workbook <span className="file-type">PDF</span></a></div>
+            </article>)}
           </div>
-
-          <div className="feature-grid">
-            <article className="feature-card">
-              <h3>What it teaches</h3>
-              <p>
-                Hebrew directionality, letter recognition, basic sounds, vowels,
-                syllables, simple vocabulary, roots, names in Hebrew, cultural
-                literacy, and confidence.
-              </p>
-            </article>
-
-            <article className="feature-card">
-              <h3>Who it serves</h3>
-              <p>
-                Students may begin in kindergarten, middle school, high school,
-                or anywhere in between. A student who starts later is not
-                behind; they are simply beginning at their doorway.
-              </p>
-            </article>
-
-            <article className="feature-card">
-              <h3>How it works</h3>
-              <p>
-                Students enter through Aleph, Bet, or Gimel Tracks based on
-                readiness. Each lesson gives learners a clear skill, a simple
-                practice, and a meaningful next step.
-              </p>
-            </article>
-          </div>
-
-          <div className="two-column">
-            <div className="feature-card">
-              <h3>The one-hour lesson rhythm</h3>
-
-              <p>
-                A typical Ivrit HaOr lesson includes welcome, review, new Hebrew
-                learning, guided practice, student participation, and a short
-                closing reflection.
-              </p>
-
-              <p>
-                The structure is simple enough for weekly enrichment, but
-                flexible enough for mixed-age groups and students who enter at
-                different levels.
-              </p>
-            </div>
-
-            <div className="feature-card">
-              <h3>Ready-to-use learning paths</h3>
-
-              <p>
-                The Teacher Guide, placement quick-check, and Aleph, Bet, and Gimel tracks are ready to use. Each track has a printable workbook; the online lessons include practice checks and feedback.
-              </p>
-
-              <p>
-                Learners can move between the three tracks as their confidence and reading skills grow. Teachers can use the lesson maps, printable practice, and answer notes to plan a session.
-              </p>
-            </div>
-          </div>
-
-          <div className="hero-actions">
-            <a className="button primary" href="#tracks">
-              View the Tracks
-            </a>
-
-            <a className="button secondary" href="#schools">
-              For Schools
-            </a>
-
-            <a className="button secondary" href="#resources">
-              Curriculum Resources
-            </a>
-
-            <a className="button secondary" href="#chavruta">
-              Try Chavruta
-            </a>
-          </div>
+          <details id="find-your-doorway" className="home-placement" open={finderOpen} onToggle={event => setFinderOpen(event.currentTarget.open)}><summary>Not sure where to start? Find your Hebrew track.</summary><DoorwayFinder /></details>
         </section>
 
-        <DoorwayFinder />
-
-        <section id="schools" className="section">
-          <div className="section-heading">
-            <p className="eyebrow">For Schools</p>
-
-            <h2>A gentle Hebrew enrichment model for real classrooms.</h2>
-
-            <p className="section-intro">
-              Ivrit HaOr is designed for schools, homeschool groups, enrichment
-              programs, and pilot classrooms that want to introduce Hebrew in a
-              respectful, accessible, and readiness-based way.
-            </p>
-          </div>
-
-          <div className="feature-grid">
-            <article className="feature-card">
-              <h3>One hour per week</h3>
-              <p>
-                The program is built around a practical weekly enrichment block.
-                Each lesson can include letter review, sound practice,
-                vocabulary, student names, short activities, and a simple
-                confidence-building close.
-              </p>
-            </article>
-
-            <article className="feature-card">
-              <h3>Readiness-based placement</h3>
-              <p>
-                Students enter through Aleph, Bet, or Gimel Tracks based on
-                Hebrew readiness rather than grade level. A student who begins
-                later is not behind; they are simply at their first doorway.
-              </p>
-            </article>
-
-            <article className="feature-card">
-              <h3>School-safe boundaries</h3>
-              <p>
-                Ivrit HaOr teaches Hebrew language, letters, sounds, roots,
-                culture, and meaning. It is not a conversion program, religious
-                authority, or substitute for a rabbi or Jewish educator.
-              </p>
-            </article>
-          </div>
-
-          <div className="two-column">
-            <div className="feature-card">
-              <h3>What a school can expect</h3>
-
-              <p>
-                LuminaNexus Foundation provides a flexible framework for Hebrew
-                enrichment: teacher guidance, student-friendly pacing, printable
-                materials, family-facing language, and Chavruta Classroom
-                support.
-              </p>
-
-              <p>
-                The goal is to help students recognize Hebrew as approachable,
-                beautiful, and meaningful while building literacy confidence one
-                letter at a time.
-              </p>
-            </div>
-
-            <div className="feature-card">
-              <h3>Program guardrails</h3>
-
-              <p>
-                Sacred language is handled respectfully and sparingly. Lessons
-                may acknowledge Jewish culture and tradition, but the classroom
-                focus remains Hebrew enrichment, cultural literacy, and language
-                learning.
-              </p>
-
-              <p>
-                Questions involving Jewish law, conversion, religious rulings,
-                or personal spiritual authority should be directed to a
-                qualified rabbi or Jewish educator.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="resources" className="section warm">
-          <div className="section-heading">
-            <p className="eyebrow">Curriculum Resources</p>
-
-            <h2>Living curriculum pages for the Ivrit HaOr classroom.</h2>
-
-            <p className="section-intro">
-              Start with the 36-lesson Aleph sequence, the 32-lesson Bet course,
-              or the 32-lesson Gimel course. Online lessons and printable
-              workbooks give learners and teachers a shared path to follow.
-            </p>
-          </div>
-
-          <div className="feature-grid">
-            <article className="feature-card">
-              <h3>Teacher Guide</h3>
-              <p>
-                Read the online Teacher Guide for classroom posture, the
-                one-hour rhythm, Chavruta Classroom, assessment without shame,
-                family communication, track maps, lesson practice, and teacher answers.
-              </p>
-              <a className="button primary" href="/teacher-guide.html">
-                Open Teacher Guide
-              </a>
-              <a className="button secondary" href="/placement-quick-check.html">
-                Placement Quick-Check
-              </a>
-            </article>
-
-            <article className="feature-card">
-              <h3>Aleph Track Workbook</h3>
-              <p>
-                First Beginning. A gentle student workbook for Hebrew
-                directionality, Aleph and Ayin, the “ahhh” Stick Vowels, Bet and
-                Vet, the Pea Vowel, tracing, confidence checks, and early Hebrew
-                confidence. The current matching printable edition is 46 pages.
-              </p>
-              <a className="button secondary" href="/aleph-track.html">
-                Open Aleph Track
-              </a>
-              <a
-                className="button secondary"
-                href="/downloads/Aleph_Track_Printable.pdf"
-              >
-                Download PDF
-              </a>
-            </article>
-
-            <article className="feature-card">
-              <h3>Bet Track Workbook</h3>
-              <p>
-                Building the Word. Thirty-two illustrated lessons move from vowel blending and closed words to vocabulary, phrases, and short dialogue. Includes interactive online practice and a matching 77-page printable with a readiness review and teacher key.
-              </p>
-              <a className="button secondary" href="/bet-track.html">
-                Open Bet Track
-              </a>
-              <a className="button secondary" href="/downloads/Bet_Track_Printable.pdf">
-                Download PDF
-              </a>
-            </article>
-
-            <article className="feature-card">
-              <h3>Gimel Track Workbook</h3>
-              <p>
-                Reading with Meaning. Thirty-two lessons help students decode
-                words and phrases, connect them to meaning, and begin explaining
-                what they read. Includes online checks and a matching 40-page
-                printable workbook.
-              </p>
-              <a className="button secondary" href="/gimel-track.html">
-                Open Gimel Track
-              </a>
-              <a className="button secondary" href="/downloads/Gimel_Track_Printable.pdf">
-                Download PDF
-              </a>
-            </article>
-
-            <article className="feature-card">
-              <h3>Placement Quick-Check</h3>
-              <p>
-                Find the right starting doorway without ranking or shaming a
-                student. Placement supports confidence and may change over time.
-              </p>
-              <a className="button secondary" href="/placement-quick-check.html">
-                Open Placement Tool
-              </a>
-            </article>
-
-            <article className="feature-card">
-              <h3>Printable Downloads</h3>
-              <p>
-                Download the current Aleph, Bet, or Gimel workbook. Each print
-                edition follows its online sequence and includes guided practice
-                and teacher support.
-              </p>
-              <a className="button secondary" href="/downloads/Aleph_Track_Printable.pdf">
-                Aleph Printable
-              </a>
-              <a className="button secondary" href="/downloads/Bet_Track_Printable.pdf">
-                Bet Printable
-              </a>
-              <a className="button secondary" href="/downloads/Gimel_Track_Printable.pdf">
-                Gimel Printable
-              </a>
-            </article>
-
-            <article className="feature-card">
-              <h3>Source Library</h3>
-              <p>
-                Sefaria.org provides access to Jewish texts and translations.
-                Ivrit HaOr may link to selected Hebrew source passages for
-                cultural literacy and teacher reference.
-              </p>
-              <a
-                className="button secondary"
-                href="https://www.sefaria.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Open Sefaria
-              </a>
-              <a className="button secondary" href="/sources.html">
-                Open Source Library
-              </a>
-            </article>
-          </div>
-        </section>
-
-        <section id="teacher-dashboard" className="section">
-          <div className="section-heading">
-            <p className="eyebrow">Teacher Dashboard</p>
-            <h2>A practical doorway for the pilot classroom.</h2>
-            <p className="section-intro">
-              Prepare a first session, find each student’s starting doorway,
-              and move into track work without labels or shame.
-            </p>
-          </div>
-
-          <img
-            className="section-banner"
-            src="/images/teacher-dashboard.webp"
-            alt="A warm illustrated teacher workspace with curriculum cards, notebooks, and Hebrew letter blocks"
-            loading="lazy"
-          />
-
-          <div className="feature-grid">
-            <article className="feature-card">
-              <h3>Week 1 Teaching Packet</h3>
-              <p>
-                A ready-to-teach 60-minute lesson with differentiated Aleph,
-                Bet, and Gimel activities, printable practice, and an answer key.
-              </p>
-              <a className="button primary" href="/week-1-teaching-packet.html">
-                Open Week 1 Packet
-              </a>
-            </article>
-
-            <article className="feature-card">
-              <h3>Placement Quick-Check</h3>
-              <p>
-                A no-shame way to observe whether a student begins with
-                letters, word-building, or reading with meaning.
-              </p>
-              <a className="button secondary" href="/placement-quick-check.html">
-                Find the Right Doorway
-              </a>
-            </article>
-
-            <article className="feature-card">
-              <h3>Printable Materials</h3>
-              <p>
-                The print editions match the current online tracks: 36 Aleph
-                lessons, 32 Bet lessons, and 32 Gimel lessons.
-              </p>
-              <a className="button secondary" href="/downloads/Aleph_Track_Printable.pdf">
-                Aleph Printable
-              </a>
-              <a className="button secondary" href="/downloads/Bet_Track_Printable.pdf">
-                Bet Printable
-              </a>
-              <a className="button secondary" href="/downloads/Gimel_Track_Printable.pdf">
-                Gimel Printable
-              </a>
-            </article>
-
-            <article className="feature-card">
-              <h3>Chavruta Support</h3>
-              <p>
-                Use Chavruta for gentle review questions, student next
-                steps, and teacher language.
-              </p>
-              <a className="button secondary" href="#chavruta">
-                Ask Chavruta
-              </a>
-            </article>
+        <section id="resources" className="section home-teachers">
+          <div className="home-teacher-intro"><div className="section-heading"><p className="eyebrow">For teachers & families</p><h2>A little preparation.<br />A welcoming first lesson.</h2><p className="section-intro">Plan a weekly session, find each learner’s starting point, and use the matching workbook. The tools are ready when you are.</p><a className="home-text-link" href="/about.html#schools">Bring Ivrit HaOr to your school</a></div><img src="/images/teacher-dashboard.webp" alt="A teacher’s workspace with Hebrew letter blocks, lesson materials, and a notebook" loading="lazy" width="1536" height="1024" /></div>
+          <div className="home-tool-grid">
+            <article><p className="eyebrow">Plan</p><h3>Teacher Guide</h3><p>Lesson rhythm, track maps, classroom practice, and teaching notes.</p><a href="/teacher-guide.html">Read the guide</a></article>
+            <article><p className="eyebrow">Place</p><h3>Placement Quick-Check</h3><p>Observe what a learner can do and choose a comfortable starting track.</p><a href="/placement-quick-check.html">Find a starting point</a></article>
+            <article><p className="eyebrow">Teach</p><h3>Week 1 Packet</h3><p>A ready-to-teach session with activities, practice, and an answer key.</p><a href="/week-1-teaching-packet.html">Prepare the first lesson</a></article>
           </div>
         </section>
 
         <ChavrutaClassroom />
 
-        <section id="tracks" className="section">
-          <div className="section-heading">
-            <p className="eyebrow">Flexible Learning Paths</p>
-
-            <h2>Three tracks. Many beginnings.</h2>
-
-            <p className="section-intro">
-              Students are placed by Hebrew readiness, not shame or grade level.
-              Each track gives learners a clear doorway and a next step.
-            </p>
-          </div>
-
-          <div className="track-grid">
-            {tracks.map((track) => (
-              <article className="track-card" key={track.title}>
-                <img className="track-image" src={track.image} alt={track.alt} loading="lazy" />
-                <div className="track-letter">{track.letter}</div>
-                <h3>{track.title}</h3>
-                <p className="track-subtitle">{track.subtitle}</p>
-                <p>{track.description}</p>
-                <div className="hero-actions"><a className="button primary" href={track.page}>Open {track.title}</a><a className="button secondary" href={track.pdf}>Download workbook</a></div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="noahide-parcha" className="section noahide-path">
-          <div className="section-heading">
-            <p className="eyebrow">A Separate Study Path</p>
-            <h2>Noahide Daily Parcha</h2>
-            <p className="section-intro">
-              A gentle, optional seven-day rhythm for studying a short passage from the weekly Torah portion.
-            </p>
-            <p className="section-intro">
-              This separate study path helps learners find the current reading,
-              work through one short passage, keep biblical text distinct from
-              commentary, and record a personal reflection without creating a
-              religious obligation or replacing Jewish authority.
-            </p>
-          </div>
-          <img
-            className="section-banner"
-            src="/images/noahide-parchat.webp"
-            alt="An illuminated scroll and open book beneath a pathway of Hebrew letters"
-            loading="lazy"
-          />
-          <div className="feature-grid">
-            <article className="feature-card">
-              <h3>Torah Belongs to Israel</h3>
-              <p>We approach the Torah as students from the nations, with gratitude and humility, not as owners or replacers.</p>
-            </article>
-            <article className="feature-card">
-              <h3>Seven-Day Study Rhythm</h3>
-              <p>Short, optional steps guide learners from finding the portion to carrying one question into further study.</p>
-            </article>
-            <article className="feature-card">
-              <h3>Source-Aware Learning</h3>
-              <p>Keep the biblical passage, classical commentary, and personal application clearly distinguished.</p>
-            </article>
-            <article className="feature-card">
-              <h3>Noahide Reflection</h3>
-              <p>The focus is practical: what can a person from the nations learn, repair, avoid, or strengthen this week?</p>
-            </article>
-          </div>
-          <div className="hero-actions">
-            <a className="button primary" href="/noahide-parcha.html">
-              Open Noahide Daily Parcha
-            </a>
-            <a className="button secondary" href="/sources.html">
-              Open Source Library
-            </a>
-            <a className="button secondary" href="/231-gates.html">
-              Explore the 231 Gates
-            </a>
-            <a className="button secondary" href="/?chavrutaMode=noahide-parcha#chavruta">
-              Ask Chavruta / Havari
-            </a>
-          </div>
-        </section>
-
-        <section id="pilot" className="section pilot">
-          <div>
-            <p className="eyebrow">Pilot Program</p>
-
-            <h2>A classroom doorway in Kingman, Arizona.</h2>
-
-            <div className="pilot-box">
-              <p>
-                LuminaNexus Foundation is honored to launch the pilot phase of{" "}
-                <strong>Ivrit HaOr: Hebrew for Every Grade, Every Beginning</strong>{" "}
-                in collaboration with{" "}
-                <strong>Desert Ridge Preparatory in Kingman, Arizona</strong>.
-              </p>
-
-              <p>
-                This pilot will help demonstrate how the Aleph, Bet, and Gimel
-                Tracks can serve students of different ages, backgrounds, and
-                Hebrew readiness levels within a flexible classroom setting.
-              </p>
-
-              <p>
-                We gratefully acknowledge Desert Ridge Preparatory for helping
-                make this first implementation possible and for welcoming a
-                model designed to make Hebrew learning approachable, joyful, and
-                confidence-building.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="support" className="section support">
-          <div className="support-content">
-            <p className="eyebrow">Support the Work</p>
-
-            <h2>Help build the first doorway into Hebrew learning.</h2>
-
-            <p>
-              Your gift helps LuminaNexus Foundation provide accessible Hebrew
-              enrichment, classroom materials, teacher guides, student resources,
-              family handouts, pilot documentation, Noahide study materials, and
-              future school partnerships.
-            </p>
-
-            <a
-              className="button primary"
-              href={zeffyLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Donate with Zeffy
-            </a>
-
-            <p>
-              <strong>Every donation helps a student begin.</strong>
-            </p>
-          </div>
-        </section>
+        <section className="section home-name" aria-labelledby="name-heading"><div><p className="eyebrow">A personal beginning</p><h2 id="name-heading">What might your name<br />look like in Hebrew?</h2><p>Explore possible spellings and sounds with Chavruta, then enjoy a clearly labeled creative reflection on the letters.</p></div><form className="form-stack" onSubmit={exploreName}><label htmlFor="name-explorer">First name or nickname</label><div className="home-name-input"><input id="name-explorer" maxLength={60} value={name} onChange={event => { setName(event.target.value); setNameError(""); }} placeholder="For example, Elijah" aria-describedby="name-note" /><button className="button primary" type="submit">Explore my name</button></div><p id="name-note" className="note">Use a first name or nickname. Spelling depends on pronunciation; creative reflections are separate from a name’s history.</p>{nameError && <p role="alert" className="error">{nameError}</p>}</form></section>
       </main>
-
-      <footer className="site-footer">
-        <p>
-          © 2026 LuminaNexus Foundation. Hebrew for Every Grade, Every
-          Beginning.
-        </p>
-      </footer>
+      <footer className="site-footer home-footer"><div><a href="/" className="home-footer-brand">LuminaNexus</a><p>Hebrew learning. Thoughtful study. Many beginnings.</p></div><nav aria-label="Footer navigation"><a href="/about.html">About the Foundation</a><a href="/study.html">Jewish study</a><a href="#resources">Teacher resources</a><a href="/about.html#support">Support the work</a></nav><p className="home-footer-note">Torah belongs to Israel. We approach Jewish sources with gratitude and respect for Jewish tradition and rabbinic authority.</p><small>© {new Date().getFullYear()} LuminaNexus Foundation</small></footer>
     </div>
   );
 }
-
-export default App;
