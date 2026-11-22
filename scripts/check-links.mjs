@@ -57,7 +57,7 @@ for (const htmlFile of htmlFiles) {
 }
 
 // React links often come from track data rather than literal HTML attributes.
-const sourceFiles = listFiles(resolve("src")).filter((path) => /\.(jsx?|tsx?)$/.test(path));
+const sourceFiles = [...listFiles(resolve("src")).filter((path) => /\.(jsx?|tsx?)$/.test(path)), resolve("public/site-navigation.js")];
 for (const sourceFile of sourceFiles) {
   const source = readFileSync(sourceFile, "utf8");
   const targets = source.matchAll(/["'](\/[^"'\s]+\.(?:html|pdf|docx|webp|png|svg|jpg)(?:[?#][^"']*)?)["']/g);
