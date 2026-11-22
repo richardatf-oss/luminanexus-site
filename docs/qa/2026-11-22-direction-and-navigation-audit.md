@@ -37,3 +37,9 @@ The audit follows the reported Aleph Lesson 1 reversal and the request to expand
 `pnpm run check` now validates local files and section destinations, tests script-direction rendering, and checks all canonical lessons. Workbook regeneration uses `python scripts/build_hebrew_tracks.py`; the builders preserve the shared navigation and reading-direction helpers.
 
 Visual review targeted the affected layouts and representative examples; the automated scans covered the full source and published-workbook set described above. These checks should accompany future curriculum changes.
+
+## Automatic weekly Noahide study
+
+The Noahide page now resolves the reading for the learner’s local Saturday through a same-origin Sefaria calendar service. It remembers the Diaspora/Israel choice, handles the calendar’s festival or combined readings, opens the appropriate reading section in Hebrew and English, and supplies a concrete study prompt and contextual Chavruta link. Progress and journals use the Saturday date so they remain available throughout the week; older daily entries can be reopened from the same week.
+
+Chavruta independently verifies the current reading before answering in Noahide mode. When the calendar is unavailable it explicitly reports that limitation instead of inventing a portion. Tests cover time-zone boundaries, Sunday rollover, year rollover, both regional schedules, festival and combined labels, invalid calendar input, and verified/unavailable Chavruta context. The complete suite now contains 22 passing tests and checks 433 local destinations.

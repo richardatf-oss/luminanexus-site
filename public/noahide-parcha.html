@@ -19,6 +19,7 @@
     </style>
 
 <link rel="stylesheet" href="/styles/site-navigation.css">
+<link rel="stylesheet" href="/styles/weekly-study.css">
 <script src="/site-navigation.js" defer></script>
 </head>
   <body>
@@ -36,8 +37,8 @@
         <h2 id="journey-heading">Your study path this week</h2>
         <p>Take one small step at a time. You can skip, repeat, or combine days. Your progress is a personal reminder, not a grade.</p>
         <ol class="journey-overview">
-          <li><a href="#portion">1 · Choose the portion</a></li>
-          <li><a href="#seven-day-rhythm">2 · Read a short passage</a></li>
+          <li><a href="#portion">1 · This week’s portion</a></li>
+          <li><a href="#weekly-study">2 · Read today’s passage</a></li>
           <li><a href="#reflection-journal-section">3 · Notice and reflect</a></li>
           <li><a href="#reflection-journal-section">4 · Carry a question</a></li>
         </ol>
@@ -49,17 +50,44 @@
       </section>
 
       <section id="portion">
-        <h2>Choose This Week’s Portion</h2>
+        <h2>This Week’s Portion</h2>
         <div class="portion-panel">
           <label for="calendar-region">Reading calendar</label>
           <select id="calendar-region"><option value="1">Diaspora calendar</option><option value="0">Israel calendar</option></select>
           <p id="portion-status" class="status wide" role="status" aria-live="polite">Loading the current Torah reading from Sefaria…</p>
           <p id="portion-current" class="portion-current wide">Current portion: waiting for calendar</p>
           <a id="portion-text-link" class="button wide" href="https://www.sefaria.org/calendars" target="_blank" rel="noopener noreferrer">Open the Sefaria weekly calendar</a>
-          <p class="source wide">The displayed reading comes from Sefaria’s public calendar. Choose the calendar used by your community; if the current reading cannot load, use the calendar link and enter its name below. <a href="https://developers.sefaria.org/reference/get-calendars" target="_blank" rel="noopener noreferrer">Calendar API details</a>.</p>
-          <label for="manual-portion" class="wide">Or enter the portion you are studying</label>
-          <input id="manual-portion" class="wide" type="text" maxlength="80" placeholder="For example: Noach" autocomplete="off" />
-          <button id="apply-manual-portion" class="wide" type="button">Use this portion for my study plan</button>
+          <p class="source wide">The reading for this coming Shabbat loads automatically from Sefaria using your time zone. On Saturday, it shows that day’s reading. Your calendar choice is remembered on this device, and festival readings follow the selected calendar.</p>
+          <button id="refresh-weekly-portion" class="wide" type="button">Refresh this week’s reading</button>
+          <details class="wide"><summary>Study a different portion</summary>
+            <label for="manual-portion">Enter another portion for your journal</label>
+            <input id="manual-portion" type="text" maxlength="80" placeholder="For example: Noach" autocomplete="off" />
+            <button id="apply-manual-portion" type="button">Use this portion for my study plan</button>
+          </details>
+        </div>
+      </section>
+
+      <section id="weekly-study" aria-labelledby="weekly-study-heading" hidden>
+        <h2 id="weekly-study-heading">Study This Week’s Reading</h2>
+        <p id="weekly-reading-range"></p>
+        <details><summary>Portion overview from Sefaria</summary><p id="weekly-overview"></p></details>
+        <div class="weekly-reading-controls no-print">
+          <label for="weekly-reading-day">Choose a reading section</label>
+          <select id="weekly-reading-day"></select>
+        </div>
+        <p class="status" id="weekly-passage-status" role="status" aria-live="polite"></p>
+        <div class="weekly-passage" id="weekly-passage" hidden>
+          <article><h3>Hebrew source</h3><div id="weekly-hebrew" lang="he" dir="rtl"></div></article>
+          <article><h3>English translation</h3><div id="weekly-english" lang="en" dir="ltr"></div></article>
+        </div>
+        <p><a id="weekly-passage-link" href="https://www.sefaria.org/calendars" target="_blank" rel="noopener noreferrer">Open this passage on Sefaria</a></p>
+        <p class="status">Text, overview, and reading divisions are supplied by Sefaria. The source page gives edition and licensing details. Read a few verses at a time; these seven sections follow the Torah reading divisions, while the reflection steps below can be used at your own pace.</p>
+        <div class="weekly-reflection">
+          <h3>Begin with the passage</h3>
+          <ol><li>Describe what happens or what is taught. Point to a verse that supports your description.</li><li>Notice a choice, responsibility, or consequence. What does the passage leave unresolved?</li><li>Consider a Noahide connection only where the text supports it. Keep a personal application separate from the source.</li></ol>
+          <p id="weekly-study-prompt"></p>
+          <a id="weekly-chavruta-link" class="button" href="/?chavrutaMode=noahide-parcha#chavruta">Study this reading with Chavruta</a>
+          <button id="weekly-use-passage" type="button">Use this passage in my journal</button>
         </div>
       </section>
 
