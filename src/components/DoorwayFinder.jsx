@@ -112,7 +112,7 @@ export default function DoorwayFinder() {
   }
 
   return (
-    <section id="find-your-doorway" className="section doorway-finder">
+    <section id="doorway-questions" className="section doorway-finder">
       <div className="doorway-intro">
         <div>
           <p className="eyebrow">Find Your Hebrew Doorway</p>
@@ -138,12 +138,12 @@ export default function DoorwayFinder() {
             <div className="doorway-answers" role="group" aria-label={questions[step].prompt}>
               {questions[step].answers.map((option) => (
                 <button key={option.label} type="button" onClick={() => answer(option.value)}>
-                  <span lang={/[\u0590-\u05ff]/.test(option.label) ? "he" : undefined}>{option.label}</span><span aria-hidden="true">→</span>
+                  <span lang={/[\u0590-\u05ff]/.test(option.label) ? "he" : undefined}>{option.label}</span>
                 </button>
               ))}
             </div>
             <div className="doorway-meta">
-              {step > 0 ? <button className="text-button" type="button" onClick={goBack}>← Previous question</button> : <span />}
+              {step > 0 ? <button className="text-button" type="button" onClick={goBack}>Previous question</button> : <span />}
               <small>No name or student information is collected.</small>
             </div>
           </div>
